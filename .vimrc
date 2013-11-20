@@ -76,32 +76,14 @@ set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
 "set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
 
 """"""mapping
-"map jk <Esc>
 map! jk <Esc>
 
-" Use ctrl-[hjkl] to select the active split!
-nmap <silent> <C-k> :wincmd k<CR>
-nmap <silent> <C-j> :wincmd j<CR>
-nmap <silent> <C-h> :wincmd h<CR>
-nmap <silent> <C-l> :wincmd l<CR>
-"imap <C-d> <C-[>diwi
-" Fix keycodes
-map ^[OH <Home>
-map ^[OF <End>
-imap ^[OH <Home>
-imap ^[OF <End>
-
-" TERM variable set by screen
-"if $TERM == 'screen'
-"  set term = xterm
-"endif
-vmap ,x :!tidy -q -i --show-errors 0<CR>
 
 let g:indent_guides_auto_colors = 0
 hi IndentGuidesOdd  ctermbg=darkblue
 hi IndentGuidesEven ctermbg=black
 
-" Go to tab by number
+" Go to tab by number.
 noremap <leader>1 1gt
 noremap <leader>2 2gt
 noremap <leader>3 3gt
@@ -113,7 +95,17 @@ noremap <leader>8 8gt
 noremap <leader>9 9gt
 noremap <leader>0 :tablast<cr>
 
-" Go to last active tab
+" Go to last active tab.
 let g:lasttab = 1
-nmap <leader>l :exe "tabn ".g:lasttab<CR>
+nmap <leader>a :exe "tabn ".g:lasttab<CR>
 au TabLeave * let g:lasttab = tabpagenr()
+
+" Split pane.
+nmap <silent> <leader>- :new<cr>
+nmap <silent> <leader><bar> :vnew<cr>
+
+" Select the pane split.
+nnoremap <silent> <leader>k :wincmd k<CR>
+nnoremap <silent> <leader>j :wincmd j<CR>
+nnoremap <silent> <leader>h :wincmd h<CR>
+nnoremap <silent> <leader>l :wincmd l<CR>
