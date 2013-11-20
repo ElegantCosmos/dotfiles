@@ -78,9 +78,6 @@ set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
 """"""mapping
 "map jk <Esc>
 map! jk <Esc>
-let g:lasttab = 1
-nmap <Leader>tl :exe "tabn ".g:lasttab<CR>
-au TabLeave * let g:lasttab = tabpagenr()
 
 " Use ctrl-[hjkl] to select the active split!
 nmap <silent> <C-k> :wincmd k<CR>
@@ -103,3 +100,8 @@ vmap ,x :!tidy -q -i --show-errors 0<CR>
 let g:indent_guides_auto_colors = 0
 hi IndentGuidesOdd  ctermbg=darkblue
 hi IndentGuidesEven ctermbg=black
+
+" Toggle between VIM tabs.
+let g:lasttab = 1
+nmap gl :exe "tabn ".g:lasttab<CR>
+au TabLeave * let g:lasttab = tabpagenr()
