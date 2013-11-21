@@ -20,7 +20,7 @@ fun SetupVAM()
 		git://github.com/MarcWeber/vim-addon-manager '
 					\shellescape(c.plugin_root_dir.'/vim-addon-manager', 1)
 	endif
-	call vam#ActivateAddons(['fugitive', 'The_NERD_tree', 'ctrlp', 'Syntastic', 'EasyMotion', 'LaTeX-Suite_aka_Vim-LaTeX'], {'auto_install' : 0})
+	call vam#ActivateAddons(['fugitive', 'The_NERD_tree', 'ctrlp', 'Syntastic', 'EasyMotion', 'LaTeX-Suite_aka_Vim-LaTeX', 'Indent_Guides'], {'auto_install' : 0})
 	" Also See "plugins-per-line" below
 endfun
 call SetupVAM()
