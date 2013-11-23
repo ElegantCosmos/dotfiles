@@ -29,6 +29,8 @@ call SetupVAM()
 autocmd FileType * setlocal formatoptions=cqt
 
 syntax on
+filetype on
+autocmd BufNewFile,BufRead *.icc set filetype=c
 set spelllang=en_us
 set spellfile=/data/school/research/kamland/dissertation/phd_thesis/vim/spell/en.utf-8.add
 set hlsearch
