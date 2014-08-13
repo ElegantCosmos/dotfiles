@@ -1,30 +1,44 @@
 set nocompatible " Necesary for lots of cool vim things set nocompatible
 
-" REQUIRED. This makes vim invoke Latex-Suite when you open a tex file.
-filetype plugin on
+""" Vim addon manager """
+"" REQUIRED. This makes vim invoke Latex-Suite when you open a tex file.
+"filetype plugin on
+"
+"" OPTIONAL: This enables automatic indentation as you type.
+"filetype indent on
+"
+"" put this line first in ~/.vimrc
+"set nocompatible | filetype indent plugin on | syn on
+"
+"fun SetupVAM()
+"	let c = get(g:, 'vim_addon_manager', {})
+"	let g:vim_addon_manager = c
+"	let c.plugin_root_dir = expand('$HOME', 1) . '/.vim/vim-addons'
+"	let &rtp.=(empty(&rtp)?'':',').c.plugin_root_dir.'/vim-addon-manager'
+"	" let g:vim_addon_manager = { your config here see "commented version" example and help
+"	if !isdirectory(c.plugin_root_dir.'/vim-addon-manager/autoload')
+"		execute '!git clone --depth=1
+"		git://github.com/MarcWeber/vim-addon-manager '
+"					\shellescape(c.plugin_root_dir.'/vim-addon-manager', 1)
+"	endif
+"	call vam#ActivateAddons([
+"				\ 'fugitive',
+"				\ 'The_NERD_tree',
+"				\ 'ctrlp',
+"				\ 'EasyMotion',
+"				\ 'LaTeX-Suite_aka_Vim-LaTeX',
+"				\ 'Indent_Guides',
+"				\ 'keepcase'
+"				\], {'auto_install' : 0})
+"	" Also See "plugins-per-line" below
+"endfun
+"call SetupVAM()
 
-" OPTIONAL: This enables automatic indentation as you type.
-filetype indent on
-
-" put this line first in ~/.vimrc
-set nocompatible | filetype indent plugin on | syn on
-
-fun SetupVAM()
-	let c = get(g:, 'vim_addon_manager', {})
-	let g:vim_addon_manager = c
-	let c.plugin_root_dir = expand('$HOME', 1) . '/.vim/vim-addons'
-	let &rtp.=(empty(&rtp)?'':',').c.plugin_root_dir.'/vim-addon-manager'
-	" let g:vim_addon_manager = { your config here see "commented version" example and help
-	if !isdirectory(c.plugin_root_dir.'/vim-addon-manager/autoload')
-		execute '!git clone --depth=1
-		git://github.com/MarcWeber/vim-addon-manager '
-					\shellescape(c.plugin_root_dir.'/vim-addon-manager', 1)
-	endif
-	call vam#ActivateAddons(['fugitive', 'The_NERD_tree', 'ctrlp', 'Syntastic', 'EasyMotion', 'LaTeX-Suite_aka_Vim-LaTeX', 'Indent_Guides'], {'auto_install' : 0})
-	" Also See "plugins-per-line" below
-endfun
-call SetupVAM()
-
+""" Pathogen """
+execute pathogen#infect()
+syntax on
+filetype plugin indent on
+"""
 
 autocmd FileType * setlocal formatoptions=cqt
 
