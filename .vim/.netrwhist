@@ -1,0 +1,7 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =5
+let g:netrw_dirhist_1='/home/mich/mtc-sim-read-only/mtcg4sim/trunk'
+let g:netrw_dirhist_2='/home/mich/mtc-sim-read-only/mtcg4sim/trunk/include'
+let g:netrw_dirhist_3='/mnt/datadisk/school/research/mtc/mtcg4sim/fit_birks_constant/trunk-build'
+let g:netrw_dirhist_4='/mnt/backupdisk/backup/skype'
+let g:netrw_dirhist_5='/home/mich/Downloads/rootpy/.git'
