@@ -84,6 +84,9 @@ colorscheme darkblue
 set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
 "set tabstop=2 softtabstop=2 shiftwidth=2 noexpandtab
 "set tabstop=2 softtabstop=2 shiftwidth=2 expandtab
+set cino+=(0 "Indent align for function variables on more than one line.
+set cino+=:0 "Indent 0 for switch case labes.
+set cino+=g0 "Indent 0 for scope declaration of class members.
 
 """"""fortran
 "set tabstop=6 softtabstop=6 shiftwidth=6 expandtab
