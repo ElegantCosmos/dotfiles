@@ -1,0 +1,17 @@
+#!/bin/sh
+
+if [ $# -eq 1 ]; then
+    N_FILES=$1
+else
+    N_FILES=1
+fi 
+
+echo $N_FILES "file(s) will be openned with zathura."
+LATEST_FILES=`ls -rt /tmp/*.eps /tmp/*.pdf /tmp/*.ps 2> /dev/null | tail -n $N_FILES | awk '{print $1}'`
+#LATEST_FILES=`ls -rt /tmp/*.eps /tmp/*.pdf /tmp/*.ps 2> /dev/null | tail -n $N_FILES`
+#LATEST_FILES=`ls -rt /tmp/*.eps /tmp/*.pdf /tmp/*.ps 2> /dev/null`
+#LATEST_FILES=`ls -rt /tmp/*.eps /tmp/*.pdf /tmp/*.ps`
+#echo $LATEST_FILES
+zathura $LATEST_FILES &
+
+exit 0

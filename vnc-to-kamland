@@ -1,0 +1,2 @@
+#!/bin/bash
+xvnc4viewer dc01.in.awa.tohoku.ac.jp:1 &
