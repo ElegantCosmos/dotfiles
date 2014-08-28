@@ -118,12 +118,12 @@ noremap <leader>7 7gt
 noremap <leader>8 8gt
 noremap <leader>9 9gt
 noremap <leader>0 :tablast<cr>
-noremap <leader>s gT
-noremap <leader>d gt
+noremap <leader>d gT
+noremap <leader>f gt
 
 " Go to last active tab.
 let g:lasttab = 1
-nmap <leader>f :exe "tabn ".g:lasttab<CR>
+nmap <leader>s :exe "tabn ".g:lasttab<CR>
 au TabLeave * let g:lasttab = tabpagenr()
 
 " Split pane.
