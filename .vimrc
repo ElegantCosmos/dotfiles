@@ -51,13 +51,16 @@ set hlsearch
 set ignorecase
 set smartcase
 set incsearch
-set clipboard=unnamed
+if $TMUX == '' " don't use unnamed register when using tmux
+	set clipboard=unnamed
+endif
 let mapleader = ","
 set cindent
 set tw=80
 set pastetoggle=<F4>
 "set autoindent
 "set nu
+set backspace=indent,eol,start
 set laststatus=2
 set formatoptions=cqt
 set statusline=%t       "tail of the filename
