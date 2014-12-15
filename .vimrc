@@ -40,6 +40,16 @@ syntax on
 filetype plugin indent on
 """
 
+""" Options for Vim-Latex
+" IMPORTANT: grep will sometimes skip displaying the file name if you
+" search in a singe file. This will confuse Latex-Suite. Set your grep
+" program to always generate a file-name.
+set grepprg=grep\ -nH\ $*
+" OPTIONAL: Starting with Vim 7, the filetype of empty .tex files defaults to
+" 'plaintex' instead of 'tex', which results in vim-latex not being loaded.
+" The following changes the default filetype back to 'tex':
+let g:tex_flavor='latex'
+
 autocmd FileType * setlocal formatoptions=cqt
 
 syntax on
@@ -51,13 +61,16 @@ set hlsearch
 set ignorecase
 set smartcase
 set incsearch
-set clipboard=unnamed
+if $TMUX == '' " don't use unnamed register when using tmux
+	set clipboard=unnamed
+endif
 let mapleader = ","
 set cindent
 set tw=80
 set pastetoggle=<F4>
 "set autoindent
 "set nu
+set backspace=indent,eol,start
 set laststatus=2
 set formatoptions=cqt
 set statusline=%t       "tail of the filename
