@@ -41,14 +41,27 @@ filetype plugin indent on
 """
 
 """ Options for Vim-Latex
-" IMPORTANT: grep will sometimes skip displaying the file name if you
-" search in a singe file. This will confuse Latex-Suite. Set your grep
-" program to always generate a file-name.
-set grepprg=grep\ -nH\ $*
-" OPTIONAL: Starting with Vim 7, the filetype of empty .tex files defaults to
-" 'plaintex' instead of 'tex', which results in vim-latex not being loaded.
-" The following changes the default filetype back to 'tex':
-let g:tex_flavor='latex'
+"" IMPORTANT: grep will sometimes skip displaying the file name if you
+"" search in a singe file. This will confuse Latex-Suite. Set your grep
+"" program to always generate a file-name.
+"set grepprg=grep\ -nH\ $*
+"" OPTIONAL: Starting with Vim 7, the filetype of empty .tex files defaults to
+"" 'plaintex' instead of 'tex', which results in vim-latex not being loaded.
+"" The following changes the default filetype back to 'tex':
+"let g:tex_flavor='latex'
+"""
+
+" make YCM compatible with UltiSnips (using supertab)
+let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+let g:SuperTabDefaultCompletionType = '<C-n>'
+
+" better key bindings for UltiSnipsExpandTrigger
+let g:UltiSnipsExpandTrigger = "<tab>"
+let g:UltiSnipsJumpForwardTrigger = "<tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="horizontal"
 
 autocmd FileType * setlocal formatoptions=cqt
 
