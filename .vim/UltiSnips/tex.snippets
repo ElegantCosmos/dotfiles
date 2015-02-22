@@ -1,25 +1,29 @@
-snippet _ "subscript" w
+snippet _ "subscript" i
 _{${1:${VISUAL}}}
 endsnippet
 
-snippet ^ "superscript" w
+snippet ^ "superscript" i
 ^{${1:${VISUAL}}}
 endsnippet
 
-snippet {} "braces" w
+snippet {} "braces" i
 {${1:${VISUAL}}}
 endsnippet
 
-snippet () "parentheses" w
+snippet () "parentheses" i
 (${1:${VISUAL}})
 endsnippet
 
-snippet (( "left( right)" w
+snippet (( "left( right)" i
 \left( ${1:${VISUAL}} \right)
 endsnippet
 
 snippet mr "\mathrm{}" w
 \mathrm{${1:${VISUAL}}}
+endsnippet
+
+snippet emph "\emph{}" w
+\emph{${1:${VISUAL}}}
 endsnippet
 
 snippet sin "sin" w
@@ -34,7 +38,7 @@ snippet tan "tan" w
 \tan{${1:${VISUAL}}}
 endsnippet
 
-snippet theta "theta" w
+snippet th "theta" w
 \theta{${1:${VISUAL}}}
 endsnippet
 
