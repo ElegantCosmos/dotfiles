@@ -67,21 +67,21 @@ let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 let g:UltiSnipsEditSplit="horizontal"
 
 " YCM work-around to select from word list using c-j and c-k.
-func! g:jInYCM()
+func! g:JInYCM()
     if pumvisible()
         return "\<C-n>"
     else
         return "\<c-j>"
 endfunction
 
-func! g:kInYCM()
+func! g:KInYCM()
     if pumvisible()
         return "\<C-p>"
     else
         return "\<c-k>"
 endfunction
-inoremap <c-j> <c-r>=g:jInYCM()<cr>
-au BufEnter,BufRead * exec "inoremap <silent> " . g:UltiSnipsJumpBackwordTrigger . " <C-R>=g:kInYCM()<cr>"
+inoremap <c-j> <c-r>=g:JInYCM()<cr>
+au BufEnter,BufRead * exec "inoremap <silent> " . g:UltiSnipsJumpBackwordTrigger . " <C-R>=g:KInYCM()<cr>"
 let g:UltiSnipsJumpBackwordTrigger = "<c-k>"
 " End of YCM work-around.
 
@@ -108,6 +108,7 @@ set pastetoggle=<F4>
 "set autoindent
 "set nu
 set backspace=indent,eol,start
+set nojoinspaces
 set laststatus=2
 set formatoptions=cqt
 set statusline=%t       "tail of the filename
