@@ -14,15 +14,35 @@ snippet ^ "superscript" i
 ^{${1:${VISUAL}}}
 endsnippet
 
-snippet {} "braces" i
+snippet || "||" i
+|${1:${VISUAL}}|
+endsnippet
+
+snippet \|| "\left| \right|" i
+\left| ${1:${VISUAL}} \right|
+endsnippet
+
+snippet [] "[]" i
+[${1:${VISUAL}}]
+endsnippet
+
+snippet \[] "\left[ \right]" i
+\left[ ${1:${VISUAL}} \right]
+endsnippet
+
+snippet {} "{}" i
 {${1:${VISUAL}}}
 endsnippet
 
-snippet () "parentheses" i
+snippet \{} "\left{ \right}" i
+\left{ ${1:${VISUAL}} \right}
+endsnippet
+
+snippet () "()" i
 (${1:${VISUAL}})
 endsnippet
 
-snippet (( "left( right)" i
+snippet \() "left( right)" i
 \left( ${1:${VISUAL}} \right)
 endsnippet
 
@@ -66,6 +86,6 @@ snippet what "\widehat{}" w
 \widehat{${1:${VISUAL}}}
 endsnippet
 
-snippet frac "\frac{}{}" w
+snippet frac "\frac{}{}" i
 \frac{${1:${VISUAL}}}{$2}
 endsnippet
