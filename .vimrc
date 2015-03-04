@@ -102,7 +102,7 @@ if $TMUX == '' " don't use unnamed register when using tmux
 	set clipboard=unnamed
 endif
 let mapleader = ","
-set cindent
+"set cindent
 set tw=80
 set pastetoggle=<F4>
 "set autoindent
