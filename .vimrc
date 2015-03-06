@@ -93,7 +93,7 @@ autocmd BufNewFile,BufRead *.icc set filetype=c
 set wildmode=longest,list,full " BASH-like tab completion in file search
 set wildmenu " list menu in file search
 set spelllang=en_us
-set spellfile=/data/school/research/kamland/dissertation/phd_thesis/vim/spell/en.utf-8.add
+set spellfile=/data/work/kamland/dissertation/phd_thesis/vim/spell/en.utf-8.add
 set hlsearch
 set ignorecase
 set smartcase
@@ -102,7 +102,7 @@ if $TMUX == '' " don't use unnamed register when using tmux
 	set clipboard=unnamed
 endif
 let mapleader = ","
-set cindent
+"set cindent
 set tw=80
 set pastetoggle=<F4>
 "set autoindent

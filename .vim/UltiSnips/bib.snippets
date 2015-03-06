@@ -1,0 +1,18 @@
+snippet article "@article{}" b
+@article{$1,
+	author  = "$2",
+	title   = "$3",
+	journal = "$4",
+	year    = "$5"
+}
+endsnippet
+
+snippet misc "@misc{}" b
+@misc{$1,
+	author       = "$2",
+	title        = "$3",
+	month        = "$4",
+	year         = "$5"
+	howpublished = "\url{$6}"
+}
+endsnippet
