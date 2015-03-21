@@ -1,18 +1,22 @@
 snippet article "@article{}" b
 @article{$1,
-	author  = "$2",
-	title   = "$3",
-	journal = "$4",
-	year    = "$5"
+	author  = {{${2:Last}},${3:First}~${4:Middle}.},
+	title   = "{$5}",
+	journal = "{$6}",
+	year    = $7,
+	month   = $8,
+	volume  = $9,
+	pages   = {$10},
+	doi     = {$11}
 }
 endsnippet
 
 snippet misc "@misc{}" b
 @misc{$1,
-	author       = "$2",
-	title        = "$3",
-	month        = "$4",
-	year         = "$5"
-	howpublished = "\url{$6}"
+	author  = {{${2:Last}},${3:First}~${4:Middle}.},
+	title        = "{$5}",
+	year         = "$6",
+	month        = "$7",
+	howpublished = "\url{$8}"
 }
 endsnippet
