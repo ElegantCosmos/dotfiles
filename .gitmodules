@@ -1,33 +1,33 @@
-[submodule ".vim/bundle/linediff"]
-	path = .vim/bundle/linediff
-	url = git://github.com/AndrewRadev/linediff.vim.git
-[submodule ".vim/bundle/EasyMotion"]
-	path = .vim/bundle/EasyMotion
+[submodule "vim/.vim/bundle/linediff"]
+	path = vim/.vim/bundle/linediff
+	url = git://github.com/AndrewRadev/linediffvim/.vim.git
+[submodule "vim/.vim/bundle/EasyMotion"]
+	path = vim/.vim/bundle/EasyMotion
 	url = https://github.com/vim-scripts/EasyMotion.git
-[submodule ".vim/bundle/supertab"]
-	path = .vim/bundle/supertab
+[submodule "vim/.vim/bundle/supertab"]
+	path = vim/.vim/bundle/supertab
 	url = https://github.com/ervandew/supertab.git
-[submodule ".vim/bundle/nerdtree"]
-	path = .vim/bundle/nerdtree
+[submodule "vim/.vim/bundle/nerdtree"]
+	path = vim/.vim/bundle/nerdtree
 	url = https://github.com/scrooloose/nerdtree.git
-[submodule ".vim/bundle/ultisnips"]
-	path = .vim/bundle/ultisnips
+[submodule "vim/.vim/bundle/ultisnips"]
+	path = vim/.vim/bundle/ultisnips
 	url = https://github.com/SirVer/ultisnips.git
-[submodule ".vim/bundle/vim-easy-align"]
-	path = .vim/bundle/vim-easy-align
+[submodule "vim/.vim/bundle/vim-easy-align"]
+	path = vim/.vim/bundle/vim-easy-align
 	url = https://github.com/junegunn/vim-easy-align.git
-[submodule ".vim/bundle/vim-fugitive"]
-	path = .vim/bundle/vim-fugitive
+[submodule "vim/.vim/bundle/vim-fugitive"]
+	path = vim/.vim/bundle/vim-fugitive
 	url = https://github.com/tpope/vim-fugitive.git
-[submodule ".vim/bundle/vim-indent-guides"]
-	path = .vim/bundle/vim-indent-guides
+[submodule "vim/.vim/bundle/vim-indent-guides"]
+	path = vim/.vim/bundle/vim-indent-guides
 	url = https://github.com/nathanaelkane/vim-indent-guides.git
-[submodule ".vim/bundle/vim-snippets"]
-	path = .vim/bundle/vim-snippets
+[submodule "vim/.vim/bundle/vim-snippets"]
+	path = vim/.vim/bundle/vim-snippets
 	url = https://github.com/honza/vim-snippets.git
-[submodule ".vim/bundle/YouCompleteMe"]
-	path = .vim/bundle/YouCompleteMe
+[submodule "vim/.vim/bundle/YouCompleteMe"]
+	path = vim/.vim/bundle/YouCompleteMe
 	url = https://github.com/Valloric/YouCompleteMe.git
-[submodule ".vim/bundle/keepcase"]
-	path = .vim/bundle/keepcase
-	url = https://github.com/vim-scripts/keepcase.vim.git
+[submodule "vim/.vim/bundle/keepcase"]
+	path = vim/.vim/bundle/keepcase
+	url = https://github.com/vim-scripts/keepcasevim/.vim.git
