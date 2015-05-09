@@ -1,6 +1,6 @@
 [submodule "vim/.vim/bundle/linediff"]
 	path = vim/.vim/bundle/linediff
-	url = git://github.com/AndrewRadev/linediffvim/.vim.git
+	url = https://github.com/AndrewRadev/linediff.vim.git
 [submodule "vim/.vim/bundle/EasyMotion"]
 	path = vim/.vim/bundle/EasyMotion
 	url = https://github.com/vim-scripts/EasyMotion.git
@@ -27,7 +27,7 @@
 	url = https://github.com/honza/vim-snippets.git
 [submodule "vim/.vim/bundle/YouCompleteMe"]
 	path = vim/.vim/bundle/YouCompleteMe
-	url = https://github.com/Valloric/YouCompleteMe.git
+	url = https://github.com/ElegantCosmos/dotfiles.git
 [submodule "vim/.vim/bundle/keepcase"]
 	path = vim/.vim/bundle/keepcase
 	url = https://github.com/vim-scripts/keepcasevim/.vim.git
