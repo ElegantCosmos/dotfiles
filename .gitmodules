@@ -30,7 +30,4 @@
 	url = https://github.com/ElegantCosmos/dotfiles.git
 [submodule "vim/.vim/bundle/keepcase"]
 	path = vim/.vim/bundle/keepcase
-	url = https://github.com/vim-scripts/keepcasevim/.vim.git
-[submodule "vim/.vim/bundle/taglist"]
-	path = vim/.vim/bundle/taglist
-	url = https://github.com/vim-scripts/taglist.vim.git
+	url = https://github.com/vim-scripts/keepcase.vim.git
