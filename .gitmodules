@@ -25,9 +25,6 @@
 [submodule "vim/.vim/bundle/vim-snippets"]
 	path = vim/.vim/bundle/vim-snippets
 	url = https://github.com/honza/vim-snippets.git
-[submodule "vim/.vim/bundle/YouCompleteMe"]
-	path = vim/.vim/bundle/YouCompleteMe
-	url = https://github.com/ElegantCosmos/dotfiles.git
 [submodule "vim/.vim/bundle/keepcase"]
 	path = vim/.vim/bundle/keepcase
 	url = https://github.com/vim-scripts/keepcase.vim.git
