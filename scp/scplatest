@@ -1,0 +1,14 @@
+#!/bin/sh
+
+if [ $# -eq 1 ]; then
+    N_FILES=$1
+else
+    N_FILES=1
+fi
+echo N_FILES=$N_FILES
+LATEST_FILES=`ls -rt *.eps *.pdf *.ps 2> /dev/null | tail -n $N_FILES | awk '{print $1}'`
+#LATEST_FILES=`ls -rt *.eps *.pdf *.ps 2> /dev/null | tail -n $N_FILES`
+#LATEST_FILES=`ls -rt *.eps *.pdf *.ps 2> /dev/null`
+#LATEST_FILES=`ls -rt *.eps *.pdf *.ps`
+#echo $LATEST_FILES
+scplocal $LATEST_FILES

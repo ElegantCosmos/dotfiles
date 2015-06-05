@@ -1,0 +1,4 @@
+#!/bin/sh
+
+scp -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -P 12345 $@ \
+	localhost:/tmp/
