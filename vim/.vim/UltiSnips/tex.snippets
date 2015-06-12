@@ -1,3 +1,7 @@
+snippet text "\text{}" i
+\text{${1:${VISUAL}}}
+endsnippet
+
 snippet href "\href{}{}" i
 \href{${1:${VISUAL}}}{\nolinkurl{${1:${VISUAL}}}
 endsnippet
@@ -54,14 +58,16 @@ endsnippet
 snippet figures "\begin{figure}" b
 \begin{figure}
 	\centering
-	\begin{subfigure}{0.49\linewidth}
-		\includegraphics[width=\linewidth]{$1}
-		\caption{$2}
+	\begin{subfigure}{\linewidth}
+		\centering
+		\includegraphics[width=0.49\linewidth]{$1}
+		\subcaption{$2}
 		\label{sub:$3}
 	\end{subfigure}
-	\begin{subfigure}{0.49\linewidth}
-		\includegraphics[width=\linewidth]{$4}
-		\caption{$5}
+	\begin{subfigure}{\linewidth}
+		\centering
+		\includegraphics[width=0.49\linewidth]{$4}
+		\subcaption{$5}
 		\label{sub:$6}
 	\end{subfigure}
 	\caption{$7}
@@ -127,7 +133,7 @@ snippet () "()" i
 (${1:${VISUAL}})
 endsnippet
 
-snippet l( "left( right)" i
+snippet (( "left( right)" i
 \left( ${1:${VISUAL}} \right)
 endsnippet
 
