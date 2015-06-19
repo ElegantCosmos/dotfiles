@@ -1,0 +1,12 @@
+# Custom executables
+export PATH=/opt/bin:$PATH
+
+# Set tabe completion for sudo
+complete -cf sudo
+
+# Aliases by Mich
+alias root="root -l"
+alias ipython="ipython-2.7"
+
+# Bash prompt
+export PS1="\u@\h:\w$ "
