@@ -208,3 +208,17 @@ endsnippet
 snippet chem "\chem{}" w
 \chem{$1}
 endsnippet
+
+snippet newgl "\newglossaryentry{}" b
+\newglossaryentry{$1}
+{
+	name={${2:$1}},
+	description={%
+		$3
+	}
+}
+endsnippet
+
+snippet newac "\newacronym{}" b
+\newacronym{$1}{${2:$1}}{$3}
+endsnippet
