@@ -90,8 +90,11 @@ nmap <Leader>a <Plug>(EasyAlign)
 """"""Gundo
 nnoremap <F5> :GundoToggle<CR>
 
-colorscheme darkblue
 "colorscheme default
+colorscheme darkblue
+""" Transparent background.
+highlight Normal ctermbg=none
+
 "tab settings
 """"""c-like languages
 "set tabstop=8 softtabstop=8 shiftwidth=8 noexpandtab
@@ -113,8 +116,8 @@ map! jk <Esc>
 
 
 let g:indent_guides_auto_colors = 0
-hi IndentGuidesOdd  ctermbg=darkblue
-hi IndentGuidesEven ctermbg=black
+highlight IndentGuidesOdd  ctermbg=darkblue
+highlight IndentGuidesEven ctermbg=black
 
 " Go to tab by number.
 noremap <leader>1 1gt
