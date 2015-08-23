@@ -1,0 +1,13 @@
+style"gtkdrawingarea"
+{
+engine"mist"{}}
+class"*GtkDrawingArea*"style"gtkdrawingarea"
+class"*GtkCurve*"style"gtkdrawingarea"
+class"*GdkPixbuf*"style"gtkdrawingarea"
+
+style "gtktreeviewselectedbgworkaround"{
+bg[SELECTED]="#292929"
+bg[ACTIVE]="#292929"
+base[ACTIVE]="#292929"
+base[SELECTED]="#292929"
+}widget"*Tree*"style"gtktreeviewselectedbgworkaround"

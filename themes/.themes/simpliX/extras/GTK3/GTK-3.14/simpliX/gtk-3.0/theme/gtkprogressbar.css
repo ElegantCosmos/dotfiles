@@ -1,0 +1,42 @@
+GtkProgressBar,
+.progressbar{
+-GtkProgressBar-min-horizontal-bar-height:20;
+-GtkProgressBar-min-horizontal-bar-width:150;
+-GtkProgressBar-min-vertical-bar-height:150;
+-GtkProgressBar-min-vertical-bar-width:20;
+background-color:#fff;
+border:1px solid #dadada;}
+
+.progressbar row
+GtkProgressBar row:hover,
+GtkProgressBar row:selected,
+GtkProgressBar row:selected:focused{
+background-color:#ff00ff;
+border:1px solid #dadada;}
+
+GtkProgressBar.progressbar,
+GtkTreeView GtkProgressBar.progressbar{
+background-color:#292929;}
+
+.level-bar {
+-GtkLevelBar-min-block-width: 10;
+-GtkLevelBar-min-block-height: 5; }
+.level-bar.vertical {
+-GtkLevelBar-min-block-width: 5;
+-GtkLevelBar-min-block-height: 10; }
+.level-bar.trough {
+border: 1px solid #dadada;}
+
+.level-bar.fill-block {
+background-color: #e04613;}
+.level-bar.fill-block.indicator-discrete.horizontal {
+margin: 0 0; }
+.level-bar.fill-block.indicator-discrete.vertical {
+margin: 0 0; }
+.level-bar.fill-block.level-high {
+background-color: #e04613; }
+
+.level-bar.fill-block.level-low {
+background-color: #fff; }
+.level-bar.fill-block.empty-fill-block {
+background-color: #fff;}
