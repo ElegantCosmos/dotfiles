@@ -1,1 +1,5 @@
+#set height 1024
+#set width 768
+set adjust-open width
+#set adjust-open height
 set window-title-basename true
