@@ -199,3 +199,7 @@ export TEXMFHOME=~/.texmf
 
 # Set XDG_CONFIG_HOME for zathura.
 export XDG_CONFIG_HOME=$HOME/.config
+
+# SAGE
+SAGE_ROOT=/opt/sage/sage-6.8-x86_64-Linux
+export PATH=$SAGE_ROOT:$PATH
