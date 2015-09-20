@@ -205,3 +205,7 @@ export XDG_CONFIG_HOME=$HOME/.config
 # SAGE
 SAGE_ROOT=/opt/sage/sage-6.8-x86_64-Linux
 export PATH=$SAGE_ROOT:$PATH
+
+# Firefox
+FIREFOX_INSTALL_DIR=/opt/firefox
+export PATH=$FIREFOX_INSTALL_DIR:$PATH
