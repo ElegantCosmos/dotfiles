@@ -1,0 +1,55 @@
+GtkCheckButton,
+GtkCheckButton:checked,
+GtkCheckButton:hover,
+GtkCheckMenuItem {
+-GtkCheckMenuItem-indicator-size:18px;
+-GtkCheckButton-indicator-size:18px;
+-GtkCheckButton-indicator-spacing:1px;
+-GtkButton-child-displacement-x:0;
+-GtkButton-child-displacement-y:0;
+background-color:transparent;}
+
+*.check:insensitive,
+*.radio:insensitive{
+background-color:transparent;
+-gtk-icon-source: -gtk-scaled(url("../images/checkradiounchecked.gif"));}
+
+*.check,
+*.radio{
+background-color:transparent;
+-gtk-icon-source: -gtk-scaled(url("../images/checkradiounchecked.gif"));}
+
+*.check:hover,
+*.radio:hover{
+background-color:transparent;
+-gtk-icon-source: -gtk-scaled(url("../images/checkradiounchecked.gif"));}
+
+*.check:checked:insensitive,
+*.radio:checked:insensitive{
+background-color:transparent;
+-gtk-icon-source: -gtk-scaled(url("../images/checkradiocheckedinsensitive.gif"));}
+
+*.check:checked,
+*.radio:checked{
+background-color:transparent;
+-gtk-icon-source: -gtk-scaled(url("../images/checkradiochecked.gif"));}
+
+*.check:checked:hover,
+*.radio:checked:hover{
+background-color:transparent;
+-gtk-icon-source: -gtk-scaled(url("../images/checkradiocheckedprelight.gif"));}
+
+*.check:inconsistent:insensitive,
+*.radio:inconsistent:insensitive{
+background-color:transparent;
+-gtk-icon-source: -gtk-scaled(url("../images/checkradiocheckedinsensitive.gif"));}
+
+*.check:inconsistent,
+*.radio:inconsistent{
+background-color:transparent;
+-gtk-icon-source: -gtk-scaled(url("../images/checkradioinconsistentchecked.gif"));}
+
+*.check:inconsistent:hover,
+*.radio:inconsistent:hover{
+background-color:transparent;
+-gtk-icon-source: -gtk-scaled(url("../images/checkradioinconsistentprelight.gif"));}

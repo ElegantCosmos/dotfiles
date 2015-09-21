@@ -1,0 +1,205 @@
+# ~/.bashrc: executed by bash(1) for non-login shells.
+# see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
+# for examples
+
+# If not running interactively, don't do anything
+[ -z "$PS1" ] && return
+
+# don't put duplicate lines in the history. See bash(1) for more options
+# don't overwrite GNU Midnight Commander's setting of `ignorespace'.
+HISTCONTROL=$HISTCONTROL${HISTCONTROL+:}ignoredups
+# ... or force ignoredups and ignorespace
+HISTCONTROL=ignoreboth
+
+# append to the history file, don't overwrite it
+shopt -s histappend
+
+# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
+
+# check the window size after each command and, if necessary,
+# update the values of LINES and COLUMNS.
+shopt -s checkwinsize
+
+# make less more friendly for non-text input files, see lesspipe(1)
+#[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
+
+# set variable identifying the chroot you work in (used in the prompt below)
+if [ -z "$debian_chroot" ] && [ -r /etc/debian_chroot ]; then
+    debian_chroot=$(cat /etc/debian_chroot)
+fi
+
+# set a fancy prompt (non-color, unless we know we "want" color)
+case "$TERM" in
+    xterm-color) color_prompt=yes;;
+esac
+
+# uncomment for a colored prompt, if the terminal has the capability; turned
+# off by default to not distract the user: the focus in a terminal window
+# should be on the output of commands, not on the prompt
+#force_color_prompt=yes
+
+if [ -n "$force_color_prompt" ]; then
+    if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
+	# We have color support; assume it's compliant with Ecma-48
+	# (ISO/IEC-6429). (Lack of such support is extremely rare, and such
+	# a case would tend to support setf rather than setaf.)
+	color_prompt=yes
+    else
+	color_prompt=
+    fi
+fi
+
+if [ "$color_prompt" = yes ]; then
+    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+else
+    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+fi
+unset color_prompt force_color_prompt
+
+# If this is an xterm set the title to user@host:dir
+case "$TERM" in
+xterm*|rxvt*)
+    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
+    ;;
+*)
+    ;;
+esac
+
+# enable color support of ls and also add handy aliases
+if [ -x /usr/bin/dircolors ]; then
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    alias ls='ls --color=auto'
+    #alias dir='dir --color=auto'
+    #alias vdir='vdir --color=auto'
+
+    #alias grep='grep --color=auto'
+    #alias fgrep='fgrep --color=auto'
+    #alias egrep='egrep --color=auto'
+fi
+
+# some more ls aliases
+alias ll='ls -l'
+alias la='ls -A'
+alias l='ls -CF'
+
+# Alias definitions.
+# You may want to put all your additions into a separate file like
+# ~/.bash_aliases, instead of adding them here directly.
+# See /usr/share/doc/bash-doc/examples in the bash-doc package.
+
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
+fi
+
+# enable programmable completion features (you don't need to enable
+# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
+# sources /etc/bash.bashrc).
+if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
+    . /etc/bash_completion
+fi
+
+# /usr/local
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib
+
+# CVS for KLG4sim
+export CVSROOT=:ext:mich@ernie.awa.tohoku.ac.jp:/home/kamland/cvsroot
+export CVS_RSH=/usr/bin/ssh
+export CVS_SERVER="env=LOGNAME=mich=cvs"
+
+# Watanabe Hall Printer
+export PRINTER="hep6700"
+
+# ls color options
+#eval "`dircolors -b ~/.my_dir_colors`"
+#export LS_OPTIONS='--color=auto'
+
+# Functions by Mich
+mg() { # Compile c++ source with MatLab libraries using g++.
+	g++ -I$MATLAB_INSTALL_DIR/extern/include "$@" \
+	-Wl,-rpath -Wl,$MATLAB_INSTALL_DIR/bin/glnxa64 \
+	-L$MATLAB_INSTALL_DIR/bin/glnxa64 \
+	-leng -lmat -lmx -lm -lmex
+}
+export -f mg
+rg() { # Compile c++ source with ROOT libraries using g++.
+	g++ $(root-config --cflags) "$@" $(root-config --glibs)
+}
+export -f rg
+
+# Aliases by Mich
+alias vlc='cvlc'
+#alias rg++='g++ $(root-config --cflags --libs --glibs)'
+#alias root='root -l'
+alias matlab='matlab -nosplash -nodesktop -noFigureWindows'
+alias math='rlwrap math' # Run Mathematica console mode with readline wrapper.
+
+# tmux
+source /usr/share/doc/tmux/examples/bash_completion_tmux.sh
+
+# Mathematica
+export PATH=/opt/mathematica/8.0/bin/:$PATH
+
+# MATLAB
+MATLAB_INSTALL_DIR=/opt/matlab/R2013a
+export PATH=$MATLAB_INSTALL_DIR/bin:$PATH
+export LD_LIBRARY_PATH=$MATLAB_INSTALL_DIR/bin/glnxa64:$LD_LIBRARY_PATH
+
+# Assimp
+export ASSIMP_INSTALL_DIR=/opt/assimp/assimp--3.0.1270
+
+# CADMesh
+export CADMESH_INSTALL_DIR=/opt/cadmesh/cadmesh-v0.9
+
+# Geant4
+export GEANT4_INSTALL_DIR=/opt/geant4/geant4.9.6.p01
+source $GEANT4_INSTALL_DIR/bin/geant4.sh
+source $GEANT4_INSTALL_DIR/share/Geant4-9.6.1/geant4make/geant4make.sh
+
+# DAWN
+export PATH=/opt/dawn/dawn_3_90b:$PATH
+
+# DAVID
+export PATH=/opt/david/david_1_36a:$PATH
+export DAVID_DAWN_PVNAME=1
+
+# DAWNCUT
+export PATH=/opt/dawncut/dawncut_1_54a:$PATH
+
+# ROOT
+#export ROOT_INSTALL_DIR=/opt/root/root_v5.34.07
+#source $ROOT_INSTALL_DIR/bin/thisroot.sh
+#export LD_LIBRARY_PATH=$ROOT_INSTALL_DIR/lib:$LD_LIBRARY_PATH
+
+# MTC-SDS
+export MTCSDS_INSTALL_DIR=/opt/mtc-sds
+
+# PYTHIA6
+PYTHIA6_INSTALL_DIR=/opt/pythia/v6_424
+export LD_LIBRARY_PATH=$PYTHIA6_INSTALL_DIR/lib:$LD_LIBRARY_PATH
+
+# LHAPDF
+LHAPDF_INSTALL_DIR=/opt/lhapdf/lhapdf-5.8.9
+export LHAPATH=$LHAPDF_INSTALL_DIR/share/lhapdf/PDFsets
+export LD_LIBRARY_PATH=$LHAPDF_INSTALL_DIR/lib:$LD_LIBRARY_PATH
+
+# GENIE
+export GENIE=/opt/genie/Genie-2.8.0
+#export GENIE=/mnt/datadisk/software/linux/genie/Genie-2.8.0
+export PATH=$GENIE/bin:$PATH
+export LD_LIBRARY_PATH=$GENIE/lib:$LD_LIBRARY_PATH
+# Extra library paths needed for Genie to work.
+libxml2_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu
+log4cpp_LIBRARY_PATH=/usr/lib
+export LD_LIBRARY_PATH=$libxml2_LIBRARY_PATH:$log4cpp_LIBRARY_PATH:$PYTHIA6_INSTALL_DIR:$LD_LIBRARY_PATH
+
+# TEXLIVE
+TEXLIVE_INSTALL_DIR=/opt/texlive/2015
+export PATH=$TEXLIVE_INSTALL_DIR/bin/x86_64-linux:$PATH
+export TEXMFHOME=~/.texmf
+
+# Set XDG_CONFIG_HOME for zathura.
+export XDG_CONFIG_HOME=$HOME/.config
+
+# SAGE
+SAGE_ROOT=/opt/sage/sage-6.8-x86_64-Linux
+export PATH=$SAGE_ROOT:$PATH

@@ -1,0 +1,21 @@
+GtkAboutDialog,
+GtkAppChooserDialog,
+GtkColorSelectionDialog,
+GtkColorChooserDialog,
+GtkFileChooserDialog,
+GtkFileSelection,
+GtkFontSelectionDialog,
+GtkFontChooserDialog,
+GtkInputDialog,
+GtkMessageDialog,
+GtkPageSetupUnixDialog,
+GtkPrintUnixDialog,
+GtkRecentChooserDialog,
+GtkDialog {
+-GtkDialog-content-area-border:3px;
+-GtkDialog-action-area-border:5px;
+background-image:url("../images/dialogbg-gtk3.gif");
+background-repeat:repeat-x;}
+
+GtkDialog .dialog-action-area .button{
+padding:5px;}

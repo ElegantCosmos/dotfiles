@@ -55,35 +55,35 @@ snippet subref "\protect\subref{}" i
 endsnippet
 
 snippet figure "\begin{figure}" b
-\begin{figure}
+\begin{figure}$1
 	\centering
-	\includegraphics[width=\linewidth]{$1}
+	\includegraphics[width=\linewidth]{$2}
 	\caption{
-		$2
+		$3
 	}
-	\label{fig:$3}
+	\label{fig:$4}
 \end{figure}
 endsnippet
 
 snippet figures "\begin{figure}" b
-\begin{figure}
+\begin{figure}$1
 	\centering
 	\begin{subfigure}{\linewidth}
 		\centering
-		\includegraphics[width=0.49\linewidth]{$1}
-		\subcaption{$2}
-		\label{sub:$3}
+		\includegraphics[width=0.49\linewidth]{$2}
+		\subcaption{$3}
+		\label{sub:$4}
 	\end{subfigure}
 	\begin{subfigure}{\linewidth}
 		\centering
-		\includegraphics[width=0.49\linewidth]{$4}
-		\subcaption{$5}
-		\label{sub:$6}
+		\includegraphics[width=0.49\linewidth]{$5}
+		\subcaption{$6}
+		\label{sub:$7}
 	\end{subfigure}
 	\caption{
-		$7
+		$8\protect\subref{sub:$4}$9\protect\subref{sub:$7}${10}
 	}
-	\label{fig:$8}
+	\label{fig:${11}}
 \end{figure}
 endsnippet
 
@@ -224,11 +224,11 @@ snippet newac "\newacronym{}" b
 endsnippet
 
 snippet gls "\gls{}" w
-\gls{$1}
+\gls{${1:${VISUAL}}}
 endsnippet
 
 snippet glspl "\glspl{}" w
-\glspl{$1}
+\glspl{${1:${VISUAL}}}
 endsnippet
 
 snippet pmt "\gls{PMT}" w
@@ -237,4 +237,44 @@ endsnippet
 
 snippet pmts "\glspl{PMT}" w
 \glspl{PMT}
+endsnippet
+
+snippet qel "\gls{quasi-elastic scattering}" w
+\gls{quasi-elastic scattering}
+endsnippet
+
+snippet id "\gls{ID}" w
+\gls{ID}
+endsnippet
+
+snippet od "\gls{OD}" w
+\gls{OD}
+endsnippet
+
+snippet ls "\gls{LS}" w
+\gls{LS}
+endsnippet
+
+snippet bo "\gls{BO}" w
+\gls{BO}
+endsnippet
+
+snippet t2k "\gls{T2K}" w
+\gls{T2K}
+endsnippet
+
+snippet jparc "\gls{J-PARC}" w
+\gls{J-PARC}
+endsnippet
+
+snippet wimp "\gls{WIMP}" w
+\gls{WIMP}
+endsnippet
+
+snippet wimps "\glspl{WIMP}" w
+\glspl{WIMP}
+endsnippet
+
+snippet wimpsim "\gls{WimpSim}" w
+\gls{WimpSim}
 endsnippet

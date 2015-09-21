@@ -1,0 +1,12 @@
+GtkToolbar{
+-GtkToolbar-space-size:0;
+padding:4px 2px 2px 2px}
+
+GtkToolbar .separator{
+color:#dadada;}
+
+GtkToolbar .button{
+border:1px solid Transparent;}
+
+GtkToolbar .button:hover,GtkToolbar .button:active {
+border:1px solid rgba(0,0,0,0.1);}

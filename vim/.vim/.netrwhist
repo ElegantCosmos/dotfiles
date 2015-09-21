@@ -1,10 +1,6 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =8
-let g:netrw_dirhist_1='/mnt/datadisk/work/mtc/papers/mTC_article/sections'
-let g:netrw_dirhist_2='/mnt/datadisk/work/mtc/papers/mTC_article'
-let g:netrw_dirhist_3='/mnt/datadisk/work/mtc/papers/mTC_article/figures'
-let g:netrw_dirhist_4='/mnt/datadisk/work/mtc/papers/mTC_article/figures/cosmogenic_backgrounds'
-let g:netrw_dirhist_5='/mnt/datadisk/work/kamland/dissertation/phd_thesis/kamland/intro'
-let g:netrw_dirhist_6='/home/mich/.vim/syntax'
-let g:netrw_dirhist_7='/home/mich/.vim'
-let g:netrw_dirhist_8='/home/mich'
+let g:netrw_dirhist_cnt =4
+let g:netrw_dirhist_1='/mnt/datadisk/work/kamland/dissertation/phd_thesis/kamland/detector_calibration_and_event_reconstruction'
+let g:netrw_dirhist_2='/mnt/datadisk/work/kamland/dissertation/phd_thesis/kamland'
+let g:netrw_dirhist_3='/mnt/datadisk/work/kamland/dissertation/phd_thesis/kamland/figures'
+let g:netrw_dirhist_4='/mnt/datadisk/work/kamland/dissertation/phd_thesis/kamland/detector_calibration_and_event_reconstruction'
