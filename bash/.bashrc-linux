@@ -166,9 +166,15 @@ export DAVID_DAWN_PVNAME=1
 export PATH=/opt/dawncut/dawncut_1_54a:$PATH
 
 # ROOT
+# if manually compiled and installed
 #export ROOT_INSTALL_DIR=/opt/root/root_v5.34.07
 #source $ROOT_INSTALL_DIR/bin/thisroot.sh
 #export LD_LIBRARY_PATH=$ROOT_INSTALL_DIR/lib:$LD_LIBRARY_PATH
+
+# PYROOT
+# in case we installed ROOT from repository
+export LD_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu/root5.34:$LD_LIBRARY_PATH
+export PYTHONPATH=/usr/lib/x86_64-linux-gnu/root5.34:$PYTHONPATH
 
 # MTC-SDS
 export MTCSDS_INSTALL_DIR=/opt/mtc-sds
