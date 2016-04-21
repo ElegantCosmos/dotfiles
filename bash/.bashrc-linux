@@ -82,6 +82,8 @@ alias ll='ls -l'
 alias la='ls -A'
 alias l='ls -CF'
 
+alias root='root -l'
+
 # Alias for PDF viewers using high DPI
 alias evince='GDK_SCALE=1 evince'
 alias zathura='GDK_SCALE=1 zathura'

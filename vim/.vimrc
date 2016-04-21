@@ -61,7 +61,7 @@ if $TMUX == '' " don't use unnamed register when using tmux
 endif
 let mapleader = ","
 "set cindent
-set tw=80
+"set tw=80
 set pastetoggle=<F4>
 "set autoindent
 "set nu
@@ -147,3 +147,17 @@ nnoremap <silent> <leader>k :wincmd k<CR>
 nnoremap <silent> <leader>j :wincmd j<CR>
 nnoremap <silent> <leader>h :wincmd h<CR>
 nnoremap <silent> <leader>l :wincmd l<CR>
+
+""" Function to create necessary parent directories upon file save """
+function s:MkNonExDir(file, buf)
+    if empty(getbufvar(a:buf, '&buftype')) && a:file!~#'\v^\w+\:\/'
+        let dir=fnamemodify(a:file, ':h')
+        if !isdirectory(dir)
+            call mkdir(dir, 'p')
+        endif
+    endif
+endfunction
+augroup BWCCreateDir
+    autocmd!
+    autocmd BufWritePre * :call s:MkNonExDir(expand('<afile>'), +expand('<abuf>'))
+augroup END
