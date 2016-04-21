@@ -1,5 +1,0 @@
-GtkToolbar{
-padding:1px}
-
-GtkToolbar .separator{
-color: #dadada;}
