@@ -1,8 +1,4 @@
 {
-	//std::string styleFile_str = "~/.dotfiles/root/style.root";
-	//TFile *styleFile = new TFile(styleFile_str.c_str(), "read");
-	//TStyle *style = NULL;
-	//styleFile->GetObject("style", style);
-	//style->cd();
-	//gROOT->ForceStyle(1);
+  gROOT->ProcessLine(".x $CUORE_INSTALL/lib/diana-root.C");
+  gROOT->ProcessLine(".L ~/.dotfiles/root/savecp.C");
 }

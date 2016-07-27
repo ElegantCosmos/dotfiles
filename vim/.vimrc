@@ -100,8 +100,8 @@ highlight Normal ctermbg=none
 "set tabstop=8 softtabstop=8 shiftwidth=8 noexpandtab
 "set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
 "set tabstop=4 softtabstop=4 shiftwidth=4 expandtab
-set tabstop=2 softtabstop=2 shiftwidth=2 noexpandtab
-"set tabstop=2 softtabstop=2 shiftwidth=2 expandtab
+"set tabstop=2 softtabstop=2 shiftwidth=2 noexpandtab
+set tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 "set tabstop=1 softtabstop=1 shiftwidth=1 expandtab
 set cino+=(0 "Indent align for function variables on more than one line.
 set cino+=:0 "Indent 0 for switch case labes.
