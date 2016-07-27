@@ -34,3 +34,6 @@
 [submodule "vim/.vim/bundle/rename"]
 	path = vim/.vim/bundle/rename
 	url = https://github.com/danro/rename.vim.git
+[submodule "vim/.vim/bundle/syntax"]
+	path = vim/.vim/bundle/syntax
+	url = https://github.com/octol/vim-cpp-enhanced-highlight.git

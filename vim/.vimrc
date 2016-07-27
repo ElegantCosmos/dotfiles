@@ -2,7 +2,7 @@ set nocompatible " Necesary for lots of cool vim things set nocompatible
 
 """ Pathogen """
 execute pathogen#infect()
-syntax on
+"syntax on
 filetype plugin indent on
 """"""""""""""""
 
@@ -26,14 +26,14 @@ let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 let g:UltiSnipsEditSplit="horizontal"
 
 " YCM work-around to select from word list using c-j and c-k.
-func! g:JInYCM()
+function! g:JInYCM()
     if pumvisible()
         return "\<C-n>"
     else
         return "\<c-j>"
 endfunction
 
-func! g:KInYCM()
+function! g:KInYCM()
     if pumvisible()
         return "\<C-p>"
     else
@@ -60,7 +60,7 @@ if $TMUX == '' " don't use unnamed register when using tmux
 	set clipboard=unnamed
 endif
 let mapleader = ","
-"set cindent
+set cindent
 "set tw=80
 set pastetoggle=<F4>
 "set autoindent
@@ -91,16 +91,18 @@ nmap <Leader>a <Plug>(EasyAlign)
 nnoremap <F5> :GundoToggle<CR>
 
 "colorscheme default
-colorscheme darkblue
+"colorscheme darkblue
 """ Transparent background.
 highlight Normal ctermbg=none
 
 "tab settings
 """"""c-like languages
 "set tabstop=8 softtabstop=8 shiftwidth=8 noexpandtab
-set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
-"set tabstop=2 softtabstop=2 shiftwidth=2 noexpandtab
+"set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
+"set tabstop=4 softtabstop=4 shiftwidth=4 expandtab
+set tabstop=2 softtabstop=2 shiftwidth=2 noexpandtab
 "set tabstop=2 softtabstop=2 shiftwidth=2 expandtab
+"set tabstop=1 softtabstop=1 shiftwidth=1 expandtab
 set cino+=(0 "Indent align for function variables on more than one line.
 set cino+=:0 "Indent 0 for switch case labes.
 set cino+=g0 "Indent 0 for scope declaration of class members.
@@ -110,6 +112,11 @@ set cino+=g0 "Indent 0 for scope declaration of class members.
 
 """"""bash script
 "set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
+
+""" fold method
+set foldmethod=indent
+highlight Folded ctermbg=black
+au BufRead * normal zR
 
 """"""mapping
 map! jk <Esc>
@@ -135,7 +142,7 @@ noremap <leader>f gt
 
 " Go to last active tab.
 let g:lasttab = 1
-nmap <leader>s :exe "tabn ".g:lasttab<CR>
+nmap <leader>a :exe "tabn ".g:lasttab<CR>
 au TabLeave * let g:lasttab = tabpagenr()
 
 " Split pane.
@@ -149,7 +156,7 @@ nnoremap <silent> <leader>h :wincmd h<CR>
 nnoremap <silent> <leader>l :wincmd l<CR>
 
 """ Function to create necessary parent directories upon file save """
-function s:MkNonExDir(file, buf)
+function! s:MkNonExDir(file, buf)
     if empty(getbufvar(a:buf, '&buftype')) && a:file!~#'\v^\w+\:\/'
         let dir=fnamemodify(a:file, ':h')
         if !isdirectory(dir)
@@ -169,3 +176,8 @@ function PrintFile(fname)
 	call delete(a:fname)
 	return v:shell_error
 endfunc
+
+" Use an undo file
+set undofile
+" Set directory to store the undo history
+set undodir=~/.vimundo
