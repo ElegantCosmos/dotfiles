@@ -157,9 +157,9 @@ export ASSIMP_INSTALL_DIR=/opt/assimp/assimp--3.0.1270
 export CADMESH_INSTALL_DIR=/opt/cadmesh/cadmesh-v0.9
 
 # Geant4
-export GEANT4_INSTALL_DIR=/opt/geant4/geant4.9.6.p01
-source $GEANT4_INSTALL_DIR/bin/geant4.sh
-source $GEANT4_INSTALL_DIR/share/Geant4-9.6.1/geant4make/geant4make.sh
+#export GEANT4_INSTALL_DIR=/opt/geant4/geant4.9.6.p01
+#source $GEANT4_INSTALL_DIR/bin/geant4.sh
+#source $GEANT4_INSTALL_DIR/share/Geant4-9.6.1/geant4make/geant4make.sh
 
 # DAWN
 export PATH=/opt/dawn/dawn_3_90b:$PATH
@@ -176,6 +176,10 @@ export PATH=/opt/dawncut/dawncut_1_54a:$PATH
 #export ROOT_INSTALL_DIR=/opt/root/root_v5.34.07
 #source $ROOT_INSTALL_DIR/bin/thisroot.sh
 #export LD_LIBRARY_PATH=$ROOT_INSTALL_DIR/lib:$LD_LIBRARY_PATH
+
+# PYTHON
+# Use custom python.
+export PATH=/usr/local/bin:$PATH
 
 # PYROOT
 # in case we installed ROOT from repository
