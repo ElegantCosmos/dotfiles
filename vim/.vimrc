@@ -169,6 +169,14 @@ augroup BWCCreateDir
     autocmd BufWritePre * :call s:MkNonExDir(expand('<afile>'), +expand('<abuf>'))
 augroup END
 
+""" Call printer prompt at :print commant
+set printexpr=PrintFile(v:fname_in)
+function PrintFile(fname)
+	call system("gtklp " . a:fname)
+	call delete(a:fname)
+	return v:shell_error
+endfunc
+
 " Use an undo file
 set undofile
 " Set directory to store the undo history
