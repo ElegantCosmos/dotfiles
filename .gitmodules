@@ -37,3 +37,9 @@
 [submodule "vim/.vim/bundle/syntax"]
 	path = vim/.vim/bundle/syntax
 	url = https://github.com/octol/vim-cpp-enhanced-highlight.git
+[submodule "tmux/.tmux/plugins/vim-copycat"]
+	path = tmux/.tmux/plugins/vim-copycat
+	url = https://github.com/georgefs/vim-copycat.git
+[submodule "tmux/.tmux/plugins/tmux-yank"]
+	path = tmux/.tmux/plugins/tmux-yank
+	url = https://github.com/tmux-plugins/tmux-yank.git

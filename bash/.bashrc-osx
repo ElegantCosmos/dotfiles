@@ -1,12 +1,12 @@
-# Custom executables
-export PATH=/opt/bin:$PATH
+# .bashrc
 
-# Set tabe completion for sudo
-complete -cf sudo
+# Source global definitions
+if [ -f /etc/bashrc ]; then
+  source /etc/bashrc
+fi
 
-# Aliases by Mich
-alias root="root -l"
-alias ipython="ipython-2.7"
+export PS1='\u@\h:\w\$ '
 
-# Bash prompt
-export PS1="\u@\h:\w$ "
+export PAGER=vimpager
+alias less=$PAGER
+alias zless=$PAGER
