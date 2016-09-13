@@ -1,3 +1,4 @@
+### vim plugins
 [submodule "vim/.vim/bundle/linediff"]
 	path = vim/.vim/bundle/linediff
 	url = https://github.com/AndrewRadev/linediff.vim.git
@@ -37,6 +38,11 @@
 [submodule "vim/.vim/bundle/syntax"]
 	path = vim/.vim/bundle/syntax
 	url = https://github.com/octol/vim-cpp-enhanced-highlight.git
+[submodule "vim/.vim/bundle/matchit"]
+	path = vim/.vim/bundle/matchit
+	url = https://github.com/tmhedberg/matchit.git
+
+### tmux plugins
 [submodule "tmux/.tmux/plugins/vim-copycat"]
 	path = tmux/.tmux/plugins/vim-copycat
 	url = https://github.com/georgefs/vim-copycat.git
