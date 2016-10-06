@@ -53,6 +53,7 @@ set wildmode=longest,list,full " BASH-like tab completion in file search
 set wildmenu " list menu in file search
 set spelllang=en_us
 set hlsearch
+"set scrolloff=2
 set ignorecase
 set smartcase
 set incsearch
@@ -98,8 +99,8 @@ highlight Normal ctermbg=none
 "tab settings
 """"""c-like languages
 "set tabstop=8 softtabstop=8 shiftwidth=8 noexpandtab
-"set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
-set tabstop=4 softtabstop=4 shiftwidth=4 expandtab
+set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
+"set tabstop=4 softtabstop=4 shiftwidth=4 expandtab
 "set tabstop=2 softtabstop=2 shiftwidth=2 noexpandtab
 "set tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 "set tabstop=1 softtabstop=1 shiftwidth=1 expandtab
@@ -181,3 +182,31 @@ endfunc
 set undofile
 " Set directory to store the undo history
 set undodir=~/.vimundo
+
+" search in normal mode while keeping search text in middle of screen
+nnoremap <silent> <F4> :call <SID>SearchMode()<CR>
+function s:SearchMode()
+	if !exists('s:searchmode') || s:searchmode == 0
+		echo 'Search next: scroll hit to middle if not on same page'
+		nnoremap <silent> n n:call <SID>MaybeMiddle()<CR>
+		nnoremap <silent> N N:call <SID>MaybeMiddle()<CR>
+		let s:searchmode = 1
+	elseif s:searchmode == 1
+		echo 'Search next: scroll hit to middle'
+		nnoremap n nzz
+		nnoremap N Nzz
+		let s:searchmode = 2
+	else
+		echo 'Search next: normal'
+		nunmap n
+		nunmap N
+		let s:searchmode = 0
+	endif
+endfunction
+
+" If cursor is in first or last line of window, scroll to middle line.
+function s:MaybeMiddle()
+	if winline() == 1 || winline() == winheight(0)
+		normal! zz
+	endif
+endfunction
