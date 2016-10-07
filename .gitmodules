@@ -41,6 +41,9 @@
 [submodule "vim/.vim/bundle/matchit"]
 	path = vim/.vim/bundle/matchit
 	url = https://github.com/tmhedberg/matchit.git
+[submodule "bash-it"]
+	path = bash-it
+	url = https://github.com/Bash-it/bash-it
 
 ### tmux plugins
 [submodule "tmux/.tmux/plugins/vim-copycat"]
