@@ -53,25 +53,7 @@
 	path = bash-it
 	url = https://github.com/Bash-it/bash-it.git
 
-### tmux plugins
-[submodule "tmux-copycat"]
-	path = tmux/.tmux/plugins/tmux-copycat
-	url = https://github.com/tmux-plugins/tmux-copycat.git
-[submodule "tmux-yank"]
-	path = tmux/.tmux/plugins/tmux-yank
-	url = https://github.com/tmux-plugins/tmux-yank.git
-[submodule "tmux-continuum"]
-    path = tmux/.tmux/plugins/tmux-continuum
-    url = https://github.com/tmux-plugins/tmux-continuum.git
-[submodule "tmux-open"]
-    path = tmux/.tmux/plugins/tmux-open
-    url = https://github.com/tmux-plugins/tmux-open.git
-[submodule "tmux-resurrect"]
-    path = tmux/.tmux/plugins/tmux-resurrect
-    url = https://github.com/tmux-plugins/tmux-resurrect.git
-[submodule "tmux-sensible"]
-    path = tmux/.tmux/plugins/tmux-sensible
-    url = https://github.com/tmux-plugins/tmux-sensible.git
+### tmux plugin manager (all tmux plugins are downloaded with this manager, look in ~/.tmux.conf for list of plugins)
 [submodule "tpm"]
     path = tmux/.tmux/plugins/tpm
     url = https://github.com/tmux-plugins/tpm.git
