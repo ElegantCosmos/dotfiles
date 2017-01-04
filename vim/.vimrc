@@ -99,8 +99,8 @@ highlight Normal ctermbg=none
 "tab settings
 """"""c-like languages
 "set tabstop=8 softtabstop=8 shiftwidth=8 noexpandtab
-set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
-"set tabstop=4 softtabstop=4 shiftwidth=4 expandtab
+"set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
+set tabstop=4 softtabstop=4 shiftwidth=4 expandtab
 "set tabstop=2 softtabstop=2 shiftwidth=2 noexpandtab
 "set tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 "set tabstop=1 softtabstop=1 shiftwidth=1 expandtab
