@@ -1,9 +1,28 @@
 set nocompatible " Necesary for lots of cool vim things set nocompatible
 
-""" Pathogen """
-execute pathogen#infect()
+""" vim-plug vim plugin manager
+call plug#begin()
+Plug 'tpope/vim-sensible'
+Plug 'easymotion/vim-easymotion'
+Plug 'vim-scripts/keepcase.vim'
+Plug 'AndrewRadev/linediff.vim'
+Plug 'vim-scripts/matchit.zip'
+Plug 'danro/rename.vim'
+Plug 'ervandew/supertab'
+Plug 'octol/vim-cpp-enhanced-highlight'
+Plug 'SirVer/ultisnips'
+Plug 'junegunn/vim-easy-align'
+Plug 'tpope/vim-fugitive'
+Plug 'nathanaelkane/vim-indent-guides'
+Plug 'honza/vim-snippets'
+Plug 'tpope/vim-obsession'
+
+" On-demand loading
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+call plug#end()
+
 "syntax on
-filetype plugin indent on
+"filetype plugin indent on
 """"""""""""""""
 
 """ Recognize .tex files as plaintex for correct vim spell checking """
@@ -46,8 +65,6 @@ let g:UltiSnipsJumpBackwordTrigger = "<c-k>"
 
 autocmd FileType * setlocal formatoptions=cqt
 
-syntax on
-filetype on
 autocmd BufNewFile,BufRead *.icc set filetype=c
 set wildmode=longest,list,full " BASH-like tab completion in file search
 set wildmenu " list menu in file search
