@@ -19,6 +19,7 @@ Plug 'tpope/vim-obsession'
 
 " On-demand loading
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py --all' }
 call plug#end()
 
 "syntax on
