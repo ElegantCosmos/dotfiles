@@ -1,3 +1,4 @@
 vim/.vim/bundle/YouCompleteMe
 vim/.vimundo/*
 *.swp
+tmux/.tmux/resurrect
