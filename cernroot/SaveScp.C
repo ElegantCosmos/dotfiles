@@ -1,4 +1,4 @@
-void savecp(const char* file = "", int nFiles = 1) // Draw and copy quickly with one function.
+void SaveScp(const char* file = "", int nFiles = 1) // Draw and copy quickly with one function.
 {
   if (strcmp(file, "") == 0) { // if empty
     file = "test.pdf";
