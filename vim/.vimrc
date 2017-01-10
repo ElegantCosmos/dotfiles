@@ -113,6 +113,7 @@ colorscheme default
 "colorscheme darkblue
 """ Transparent background.
 highlight Normal ctermbg=none
+highlight Search ctermbg=Yellow ctermfg=Black
 
 "tab settings
 """"""c-like languages
