@@ -16,10 +16,10 @@ Plug 'tpope/vim-fugitive'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'honza/vim-snippets'
 Plug 'tpope/vim-obsession'
+Plug 'Valloric/YouCompleteMe'
 
 " On-demand loading
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py --all' }
 call plug#end()
 
 "syntax on
