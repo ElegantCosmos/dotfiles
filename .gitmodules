@@ -7,3 +7,6 @@
 [submodule "tpm"]
     path = tmux/.tmux/plugins/tpm
     url = https://github.com/tmux-plugins/tpm.git
+[submodule "dircolors/dircolors-solarized"]
+	path = dircolors/dircolors-solarized
+	url = git@github.com:seebi/dircolors-solarized.git
