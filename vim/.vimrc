@@ -1,30 +1,10 @@
 set nocompatible " Necesary for lots of cool vim things set nocompatible
 
-""" vim-plug vim plugin manager
-call plug#begin()
-Plug 'tpope/vim-sensible'
-Plug 'easymotion/vim-easymotion'
-Plug 'vim-scripts/keepcase.vim'
-Plug 'AndrewRadev/linediff.vim'
-Plug 'vim-scripts/matchit.zip'
-Plug 'danro/rename.vim'
-Plug 'ervandew/supertab'
-Plug 'octol/vim-cpp-enhanced-highlight'
-Plug 'SirVer/ultisnips'
-Plug 'junegunn/vim-easy-align'
-Plug 'tpope/vim-fugitive'
-Plug 'nathanaelkane/vim-indent-guides'
-Plug 'honza/vim-snippets'
-Plug 'tpope/vim-obsession'
-Plug 'Valloric/YouCompleteMe'
+""" Pathogen VIM plugin runtime path manager """
+call pathogen#infect()
 
-" On-demand loading
-Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-call plug#end()
-
-"syntax on
-"filetype plugin indent on
-""""""""""""""""
+syntax on
+filetype plugin indent on
 
 """ Recognize .tex files as plaintex for correct vim spell checking """
 let g:tex_flavor = "tex"
