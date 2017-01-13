@@ -3,13 +3,12 @@
 	path = bash-it
 	url = https://github.com/Bash-it/bash-it.git
 
-### tmux plugin manager (all tmux plugins are downloaded with this manager, look in ~/.tmux.conf for list of plugins)
-[submodule "tpm"]
-    path = tmux/.tmux/plugins/tpm
-    url = https://github.com/tmux-plugins/tpm.git
+### DIR_COLORS
 [submodule "dircolors/dircolors-solarized"]
 	path = dircolors/dircolors-solarized
 	url = git@github.com:seebi/dircolors-solarized.git
+
+### VIM
 [submodule "vim/.vim/bundle/vim-sensible"]
 	path = vim/.vim/bundle/vim-sensible
 	url = git@github.com:tpope/vim-sensible.git
