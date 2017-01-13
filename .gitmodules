@@ -10,3 +10,48 @@
 [submodule "dircolors/dircolors-solarized"]
 	path = dircolors/dircolors-solarized
 	url = git@github.com:seebi/dircolors-solarized.git
+[submodule "vim/.vim/bundle/vim-sensible"]
+	path = vim/.vim/bundle/vim-sensible
+	url = git@github.com:tpope/vim-sensible.git
+[submodule "vim/.vim/bundle/vim-easymotion"]
+	path = vim/.vim/bundle/vim-easymotion
+	url = git@github.com:easymotion/vim-easymotion.git
+[submodule "vim/.vim/bundle/keepcase.vim"]
+	path = vim/.vim/bundle/keepcase.vim
+	url = git@github.com:vim-scripts/keepcase.vim.git
+[submodule "vim/.vim/bundle/linediff.vim"]
+	path = vim/.vim/bundle/linediff.vim
+	url = git@github.com:AndrewRadev/linediff.vim.git
+[submodule "vim/.vim/bundle/matchit"]
+	path = vim/.vim/bundle/matchit
+	url = git@github.com:tmhedberg/matchit.git
+[submodule "vim/.vim/bundle/rename.vim"]
+	path = vim/.vim/bundle/rename.vim
+	url = git@github.com:danro/rename.vim.git
+[submodule "vim/.vim/bundle/supertab"]
+	path = vim/.vim/bundle/supertab
+	url = git@github.com:ervandew/supertab.git
+[submodule "vim/.vim/bundle/vim-cpp-enhanced-highlight"]
+	path = vim/.vim/bundle/vim-cpp-enhanced-highlight
+	url = git@github.com:octol/vim-cpp-enhanced-highlight.git
+[submodule "vim/.vim/bundle/ultisnips"]
+	path = vim/.vim/bundle/ultisnips
+	url = git@github.com:SirVer/ultisnips.git
+[submodule "vim/.vim/bundle/vim-easy-align"]
+	path = vim/.vim/bundle/vim-easy-align
+	url = git@github.com:junegunn/vim-easy-align.git
+[submodule "vim/.vim/bundle/vim-fugitive"]
+	path = vim/.vim/bundle/vim-fugitive
+	url = git@github.com:tpope/vim-fugitive.git
+[submodule "vim/.vim/bundle/vim-indent-guides"]
+	path = vim/.vim/bundle/vim-indent-guides
+	url = git@github.com:nathanaelkane/vim-indent-guides.git
+[submodule "vim/.vim/bundle/vim-snippets"]
+	path = vim/.vim/bundle/vim-snippets
+	url = git@github.com:honza/vim-snippets.git
+[submodule "vim/.vim/bundle/nerdtree"]
+	path = vim/.vim/bundle/nerdtree
+	url = git@github.com:scrooloose/nerdtree.git
+[submodule "vim/.vim/bundle/YouCompleteMe"]
+	path = vim/.vim/bundle/YouCompleteMe
+	url = git@github.com:Valloric/YouCompleteMe.git
