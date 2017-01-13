@@ -1,6 +1,3 @@
-vim/.vim/bundle/YouCompleteMe
 vim/.vimundo
-vim/.vim/plugged
 *.swp
 tmux/.tmux/resurrect
-tmux/.tmux/plugins/tmux-*
