@@ -74,3 +74,6 @@
 [submodule "tmux/.tmux/plugins/tmux-sensible"]
 	path = tmux/.tmux/plugins/tmux-sensible
 	url = git@github.com:tmux-plugins/tmux-sensible.git
+[submodule "vim/.vim/bundle/vim-obsession"]
+	path = vim/.vim/bundle/vim-obsession
+	url = git@github.com:tpope/vim-obsession.git
