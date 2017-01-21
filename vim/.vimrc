@@ -123,7 +123,7 @@ map! jk <Esc>
 
 
 let g:indent_guides_auto_colors = 0
-highlight IndentGuidesOdd  ctermbg=darkblue
+highlight IndentGuidesOdd  ctermbg=none
 highlight IndentGuidesEven ctermbg=black
 
 " Go to tab by number.
