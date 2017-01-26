@@ -96,18 +96,11 @@ highlight Normal ctermbg=none
 highlight Search ctermbg=Yellow ctermfg=Black
 
 "tab settings
-""""""c-like languages
-"set tabstop=8 softtabstop=8 shiftwidth=8 noexpandtab
-"set tabstop=8 softtabstop=8 shiftwidth=8 expandtab
-set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
-noremap <leader>T :set tabstop=4 softtabstop=4 shiftwidth=4
-noremap <leader>t :set tabstop=2 softtabstop=2 shiftwidth=2
-noremap <leader>e :set expandtab
-noremap <leader>E :set noexpandtab
-"set tabstop=4 softtabstop=4 shiftwidth=4 expandtab
-"set tabstop=2 softtabstop=2 shiftwidth=2 noexpandtab
-"set tabstop=2 softtabstop=2 shiftwidth=2 expandtab
-"set tabstop=1 softtabstop=1 shiftwidth=1 expandtab
+set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab "default tab setting
+noremap <leader>T :set tabstop=4 softtabstop=4 shiftwidth=4<CR>
+noremap <leader>t :set tabstop=2 softtabstop=2 shiftwidth=2<CR>
+noremap <leader>e :set expandtab<CR>
+noremap <leader>E :set noexpandtab<CR>
 set cino+=(0 "Indent align for function variables on more than one line.
 set cino+=:0 "Indent 0 for switch case labes.
 set cino+=g0 "Indent 0 for scope declaration of class members.
