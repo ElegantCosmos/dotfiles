@@ -98,8 +98,13 @@ highlight Search ctermbg=Yellow ctermfg=Black
 "tab settings
 """"""c-like languages
 "set tabstop=8 softtabstop=8 shiftwidth=8 noexpandtab
-"set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
-set tabstop=4 softtabstop=4 shiftwidth=4 expandtab
+"set tabstop=8 softtabstop=8 shiftwidth=8 expandtab
+set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
+noremap <leader>T :set tabstop=4 softtabstop=4 shiftwidth=4
+noremap <leader>t :set tabstop=2 softtabstop=2 shiftwidth=2
+noremap <leader>e :set expandtab
+noremap <leader>E :set noexpandtab
+"set tabstop=4 softtabstop=4 shiftwidth=4 expandtab
 "set tabstop=2 softtabstop=2 shiftwidth=2 noexpandtab
 "set tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 "set tabstop=1 softtabstop=1 shiftwidth=1 expandtab
