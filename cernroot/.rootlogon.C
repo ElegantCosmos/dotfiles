@@ -1,25 +1,32 @@
 {
-	gROOT->ProcessLine(".x $CUORE_INSTALL/lib/diana_root.C");
-	gROOT->ProcessLine(".L ~/.dotfiles/cernroot/SaveScp.C");
+	if (gSystem->AccessPathName("~/.rootlogon_local.C")) {
+		gROOT->ProcessLine(".x ~/.rootlogon_local.C");
+	}
+
+	if (gSystem->AccessPathName("~/.dotfiles/cernroot/SaveScp.C")) {
+		gROOT->ProcessLine(".L ~/.dotfiles/cernroot/SaveScp.C");
+	}
 
 	//Double_t textsize_large = 0.0744; // 0.05 % of pad height
-	//Double_t textsize_small = 0.0521; // 0.035 % of pad height
-	Double_t textsize_small = 17; // 0.05 % of pad height
-	gStyle->SetTitleFont(133, "t");
+	Double_t textsize_small = 0.0521; // 0.035 % of pad height
+	//Double_t textsize_small = 17; // default ROOT small text size
+	Int_t font = 132; // Time New Roman (size of fraction of canvas height)
+	//Int_t font = 133; // Time New Roman (size in pixel)
+	gStyle->SetTitleFont(font, "t");
 	gStyle->SetTitleSize(textsize_small, "t");
 
-	gStyle->SetTitleFont(133, "xyz");
+	gStyle->SetTitleFont(font, "xyz");
 	gStyle->SetTitleSize(textsize_small, "xyz");
 	gStyle->SetTitleOffset(1.2, "x");
 	gStyle->SetTitleOffset(1.0, "y");
 
-	gStyle->SetLabelFont(133, "xyz");
+	gStyle->SetLabelFont(font, "xyz");
 	gStyle->SetLabelSize(textsize_small, "xyz");
 	gStyle->SetLabelOffset(0.01, "x");
 	gStyle->SetLabelOffset(0.01, "y");
 
 	gStyle->SetOptStat("emrou");
-	gStyle->SetStatFont(133);
+	gStyle->SetStatFont(font);
 	gStyle->SetStatFontSize(textsize_small);
 	gStyle->SetStatY(0.925);
 	gStyle->SetStatX(0.9);
