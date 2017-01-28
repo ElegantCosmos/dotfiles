@@ -1,9 +1,9 @@
 {
-	if (gSystem->AccessPathName("~/.rootlogon_local.C")) {
+	if (gSystem->AccessPathName("~/.rootlogon_local.C") == kFALSE) { // execute if file exists
 		gROOT->ProcessLine(".x ~/.rootlogon_local.C");
 	}
 
-	if (gSystem->AccessPathName("~/.dotfiles/cernroot/SaveScp.C")) {
+	if (gSystem->AccessPathName("~/.dotfiles/cernroot/SaveScp.C") == kFALSE) { // load if file exists
 		gROOT->ProcessLine(".L ~/.dotfiles/cernroot/SaveScp.C");
 	}
 
