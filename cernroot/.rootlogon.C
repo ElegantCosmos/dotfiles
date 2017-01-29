@@ -1,12 +1,4 @@
 {
-	if (gSystem->AccessPathName("~/.rootlogon_local.C") == kFALSE) { // execute if file exists
-		gROOT->ProcessLine(".x ~/.rootlogon_local.C");
-	}
-
-	if (gSystem->AccessPathName("~/.dotfiles/cernroot/SaveScp.C") == kFALSE) { // load if file exists
-		gROOT->ProcessLine(".L ~/.dotfiles/cernroot/SaveScp.C");
-	}
-
 	Double_t zoomFactor = 2.0;
 
 	////Double_t fontSize_large = 0.0744; // 0.05 % of pad height
@@ -32,7 +24,7 @@
 	gStyle->SetTitleSize(fontSize, "xyz");
 	gStyle->SetTitleOffset(1.2, "x");
 	gStyle->SetTitleOffset(1.2, "y");
-	gStyle->SetTitleOffset(-0.4, "z");
+	//gStyle->SetTitleOffset(-0.4, "z"); // doesn't work in current ROOT 5.34/23
 
 	gStyle->SetLabelFont(font, "xyz");
 	gStyle->SetLabelSize(fontSize, "xyz");
@@ -69,4 +61,15 @@
 
 	//TPaletteAxis* pa = (TPaletteAxis*)h1.GetListOfFunctions()->FindObject("palette");
 	//pa->SetX1NDC(0.91); pa->SetX2NDC(0.92); gPad->Modified();
+	//pa->GetAxis()->SetTitleOffset(-0.4);
+	//pa->GetAxis()->SetTitle("Title [unit]");
+
+	if (gSystem->AccessPathName("~/.rootlogon_local.C") == kTRUE) { // execute if file exists
+		gROOT->ProcessLine(".x ~/.rootlogon_local.C");
+	}
+
+	if (gSystem->AccessPathName("~/.dotfiles/cernroot/SaveScp.C") == kTRUE) { // load if file exists
+		gROOT->ProcessLine(".L ~/.dotfiles/cernroot/SaveScp.C");
+	}
+
 }
