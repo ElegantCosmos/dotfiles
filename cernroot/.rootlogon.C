@@ -1,4 +1,6 @@
 {
+	gROOT->SetStyle("Modern");
+
 	Double_t zoomFactor = 2.0;
 
 	////Double_t fontSize_large = 0.0744; // 0.05 % of pad height
@@ -17,8 +19,19 @@
 	Double_t canvasHeight = zoomFactor*152.0; // pixels
 	Double_t margin = 0.175; // common pad margin
 
-	gStyle->SetTitleFont(font, "t");
-	gStyle->SetTitleSize(fontSize, "t");
+	gStyle->SetCanvasBorderMode(0);
+	gStyle->SetCanvasBorderSize(0);
+	gStyle->SetPadBorderMode(0);
+	gStyle->SetPadBorderSize(0);
+	gStyle->SetPadTopMargin(margin);
+	gStyle->SetPadBottomMargin(margin);
+	gStyle->SetPadRightMargin(margin);
+	gStyle->SetPadLeftMargin(margin);
+	gStyle->SetCanvasDefH(canvasHeight + 25); // canvas height + 25 px = window height)
+	gStyle->SetCanvasDefW(canvasWidth + 2); // canvas width + 2 px = window width)
+
+	//gStyle->SetTitleFont(font, "t");
+	//gStyle->SetTitleSize(fontSize, "t");
 
 	gStyle->SetTitleFont(font, "xyz");
 	gStyle->SetTitleSize(fontSize, "xyz");
@@ -40,17 +53,6 @@
 	gStyle->SetStatW(0.2);
 	gStyle->SetStatH(0.15);
 
-	gStyle->SetCanvasBorderMode(0);
-	gStyle->SetCanvasBorderSize(0);
-	gStyle->SetPadBorderMode(0);
-	gStyle->SetPadBorderSize(0);
-	gStyle->SetPadTopMargin(margin);
-	gStyle->SetPadBottomMargin(margin);
-	gStyle->SetPadRightMargin(margin);
-	gStyle->SetPadLeftMargin(margin);
-	gStyle->SetCanvasDefH(canvasHeight + 25); // canvas height + 25 px = window height)
-	gStyle->SetCanvasDefW(canvasWidth + 2); // canvas width + 2 px = window width)
-
 	gStyle->SetNdivisions(10, "xyz");
 	//gStyle->SetNdivisions(510, "xyz");
 	gStyle->SetTickLength(-5.0/canvasHeight, "x");
@@ -71,5 +73,4 @@
 	if (gSystem->AccessPathName("~/.dotfiles/cernroot/SaveScp.C") == kTRUE) { // load if file exists
 		gROOT->ProcessLine(".L ~/.dotfiles/cernroot/SaveScp.C");
 	}
-
 }
