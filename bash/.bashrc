@@ -13,5 +13,3 @@ fi
 export PS1='\u@\h:\w\$ '
 
 export EDITOR=vim
-
-eval `dircolors $HOME/.dircolors.256`
