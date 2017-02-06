@@ -2,21 +2,17 @@
 	gROOT->SetStyle("Modern");
 
 	Double_t zoomFactor = 2.0;
+	Double_t goldenRatio = (1 + sqrt(5))/2.0;
 
-	////Double_t fontSize_large = 0.0744; // 0.05 % of pad height
-	////Double_t fontSize = 0.0521; // 0.035 % of pad height
-	Double_t fontSize = zoomFactor*9.0; // default font size
-	Double_t fontSize_small = zoomFactor*6.0; // small font size
-	//Int_t font = 132; // Time New Roman (size of fraction of canvas height)
+	Double_t fontSize = 9.0; // default font size
+	fontSize *= zoomFactor;
+	Double_t fontSize_small = 6.0; // small font size
+	fontSize_small *= zoomFactor;
 	Int_t font = 133; // Time New Roman (size in pixel)
-	//Double_t canvasWidth = 516.0; // pixels
-	//Double_t canvasHeight = 319.0; // pixels
-	//Double_t canvasWidth = zoomFactor*248.4; // pixels
-	//Double_t canvasHeight = zoomFactor*153.5; // pixels
-	//Double_t canvasWidth = zoomFactor*244.8; // pixels
-	//Double_t canvasHeight = zoomFactor*151.3; // pixels
-	Double_t canvasWidth = zoomFactor*246.0; // pixels
-	Double_t canvasHeight = zoomFactor*152.0; // pixels
+	Double_t canvasWidth = 246.0; // pixels, typical width of single column for double column paper
+	canvasWidth *= zoomFactor;
+	Double_t canvasHeight = canvasWidth/goldenRatio; // pixels
+	canvasHeight *= zoomFactor;
 	Double_t margin = 0.175; // common pad margin
 
 	gStyle->SetCanvasBorderMode(0);
@@ -27,16 +23,16 @@
 	gStyle->SetPadBottomMargin(margin);
 	gStyle->SetPadRightMargin(margin);
 	gStyle->SetPadLeftMargin(margin);
-	gStyle->SetCanvasDefH(canvasHeight + 25); // canvas height + 25 px = window height)
-	gStyle->SetCanvasDefW(canvasWidth + 2); // canvas width + 2 px = window width)
+	gStyle->SetCanvasDefH(canvasHeight + 25); // (canvas height + 25 px) = window height)
+	gStyle->SetCanvasDefW(canvasWidth + 2); // (canvas width + 2 px) = window width)
 
-	//gStyle->SetTitleFont(font, "t");
-	//gStyle->SetTitleSize(fontSize, "t");
+	//gStyle->SetTitleFont(font, "t"); // doesn't work in current ROOT 5.34/23
+	//gStyle->SetTitleSize(fontSize, "t"); // doesn't work in current ROOT 5.34/23
 
 	gStyle->SetTitleFont(font, "xyz");
 	gStyle->SetTitleSize(fontSize, "xyz");
-	gStyle->SetTitleOffset(1.2, "x");
-	gStyle->SetTitleOffset(1.2, "y");
+	gStyle->SetTitleOffset(1.4, "x");
+	gStyle->SetTitleOffset(1.6, "y");
 	//gStyle->SetTitleOffset(-0.4, "z"); // doesn't work in current ROOT 5.34/23
 
 	gStyle->SetLabelFont(font, "xyz");
@@ -54,13 +50,14 @@
 	gStyle->SetStatH(0.15);
 
 	gStyle->SetNdivisions(10, "xyz");
-	//gStyle->SetNdivisions(510, "xyz");
-	gStyle->SetTickLength(-5.0/canvasHeight, "x");
-	gStyle->SetTickLength(-5.0/canvasWidth, "y");
-	gStyle->SetTickLength(-5.0/canvasWidth, "z");
+	//gStyle->SetNdivisions(510, "xyz"); // show sub-ticks
+	gStyle->SetTickLength(-10.0/canvasHeight, "x");
+	gStyle->SetTickLength(-10.0/canvasWidth, "y");
+	gStyle->SetTickLength(-10.0/canvasWidth, "z");
 
 	TGaxis::SetMaxDigits(3);
 
+	//// Some extra command here for reference. Used when showing colored z-axis.
 	//TPaletteAxis* pa = (TPaletteAxis*)h1.GetListOfFunctions()->FindObject("palette");
 	//pa->SetX1NDC(0.91); pa->SetX2NDC(0.92); gPad->Modified();
 	//pa->GetAxis()->SetTitleOffset(-0.4);
