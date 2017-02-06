@@ -113,6 +113,7 @@ set cino+=g0 "Indent 0 for scope declaration of class members.
 
 """ fold method
 set foldmethod=indent
+set foldopen-=search "Do not open fold during search
 highlight Folded ctermbg=black
 au BufRead * normal zR
 
