@@ -1,20 +1,23 @@
 {
 	gROOT->SetStyle("Modern");
 
-	Double_t zoomFactor = 2.0;
-	Double_t goldenRatio = (1 + sqrt(5))/2.0;
+	const Double_t zoomFactor = 2.0;
+	const Double_t goldenRatio = (1 + sqrt(5))/2.0;
 
 	Double_t fontSize = 9.0; // default font size
-	fontSize *= zoomFactor;
 	Double_t fontSize_small = 6.0; // small font size
-	fontSize_small *= zoomFactor;
 	Int_t font = 133; // Time New Roman (size in pixel)
 	Double_t canvasWidth = 246.0; // pixels, typical width of single column for double column paper
-	canvasWidth *= zoomFactor;
 	Double_t canvasHeight = canvasWidth/goldenRatio; // pixels
-	canvasHeight *= zoomFactor;
 	Double_t margin = 0.175; // common pad margin
 
+	// Apply zoom factor for confortable viewing in high DPI screens.
+	fontSize *= zoomFactor;
+	fontSize_small *= zoomFactor;
+	canvasWidth *= zoomFactor;
+	canvasHeight *= zoomFactor;
+
+	// Canvas properties.
 	gStyle->SetCanvasBorderMode(0);
 	gStyle->SetCanvasBorderSize(0);
 	gStyle->SetPadBorderMode(0);
@@ -51,9 +54,9 @@
 
 	gStyle->SetNdivisions(10, "xyz");
 	//gStyle->SetNdivisions(510, "xyz"); // show sub-ticks
-	gStyle->SetTickLength(-10.0/canvasHeight, "x");
-	gStyle->SetTickLength(-10.0/canvasWidth, "y");
-	gStyle->SetTickLength(-10.0/canvasWidth, "z");
+	gStyle->SetTickLength(-7.0/canvasHeight, "x");
+	gStyle->SetTickLength(-7.0/canvasWidth, "y");
+	gStyle->SetTickLength(-7.0/canvasWidth, "z");
 
 	TGaxis::SetMaxDigits(3);
 
