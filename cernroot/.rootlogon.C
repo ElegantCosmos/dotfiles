@@ -1,4 +1,12 @@
 {
+	if (gSystem->AccessPathName("~/.rootlogon_local.C") == kTRUE) { // execute if file exists
+		gROOT->ProcessLine(".x ~/.rootlogon_local.C");
+	}
+
+	if (gSystem->AccessPathName("~/.dotfiles/cernroot/SaveOpen.C") == kTRUE) { // load if file exists
+		gROOT->ProcessLine(".L ~/.dotfiles/cernroot/SaveOpen.C");
+	}
+
 	gROOT->SetStyle("Modern");
 
 	const Double_t zoomFactor = 2.0;
@@ -65,12 +73,4 @@
 	//pa->SetX1NDC(0.91); pa->SetX2NDC(0.92); gPad->Modified();
 	//pa->GetAxis()->SetTitleOffset(-0.4);
 	//pa->GetAxis()->SetTitle("Title [unit]");
-
-	if (gSystem->AccessPathName("~/.rootlogon_local.C") == kTRUE) { // execute if file exists
-		gROOT->ProcessLine(".x ~/.rootlogon_local.C");
-	}
-
-	if (gSystem->AccessPathName("~/.dotfiles/cernroot/SaveScp.C") == kTRUE) { // load if file exists
-		gROOT->ProcessLine(".L ~/.dotfiles/cernroot/SaveScp.C");
-	}
 }
