@@ -93,7 +93,7 @@ colorscheme default
 "colorscheme darkblue
 """ Transparent background.
 highlight Normal ctermbg=none
-highlight Search ctermbg=Yellow ctermfg=Black
+highlight Search ctermbg=LightYellow
 
 "tab settings
 set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab "default tab setting
@@ -114,7 +114,7 @@ set cino+=g0 "Indent 0 for scope declaration of class members.
 """ fold method
 set foldmethod=indent
 set foldopen-=search "Do not open fold during search
-highlight Folded ctermbg=black
+highlight Folded ctermbg=Black
 au BufRead * normal zR
 
 """"""mapping
@@ -123,7 +123,7 @@ map! jk <Esc>
 
 let g:indent_guides_auto_colors = 0
 highlight IndentGuidesOdd  ctermbg=none
-highlight IndentGuidesEven ctermbg=black
+highlight IndentGuidesEven ctermbg=Black
 
 " Go to tab by number.
 noremap <leader>1 1gt
