@@ -3,17 +3,19 @@
 if [ $# -eq 1 ]; then
     if [ $1 -gt 0 ]; then
         N_FILES=$1
-        echo Copying $N_FILES most recent files...
+        echo Copying $N_FILES most recent of *.pdf, *.eps, *.ps files...
     else
         echo Error: single argument must be a number greater than 0.
     fi
 else
     N_FILES=1
-    echo Copying most recent file...
+    echo Copying most recent of *.pdf, *.eps, *.ps files...
 fi
 LATEST_FILES=`ls -rt *.eps *.pdf *.ps 2> /dev/null | tail -n $N_FILES | awk '{print $1}'`
 #LATEST_FILES=`ls -rt *.eps *.pdf *.ps 2> /dev/null | tail -n $N_FILES`
 #LATEST_FILES=`ls -rt *.eps *.pdf *.ps 2> /dev/null`
 #LATEST_FILES=`ls -rt *.eps *.pdf *.ps`
 #echo $LATEST_FILES
-scplocal $LATEST_FILES
+openlocal $LATEST_FILES
+
+exit
