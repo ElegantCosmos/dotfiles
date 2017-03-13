@@ -68,7 +68,8 @@ set backspace=indent,eol,start
 set nojoinspaces
 set laststatus=2
 set formatoptions=cqt
-set statusline=%t       "tail of the filename
+"set statusline=%t       "tail of the filename
+set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P "branch name from fugitive
 set statusline+=[%{strlen(&fenc)?&fenc:'none'}, "file encoding
 set statusline+=%{&ff}] "file format
 set statusline+=%h      "help file flag
@@ -94,6 +95,7 @@ colorscheme default
 """ Transparent background.
 highlight Normal ctermbg=none
 highlight Search ctermbg=LightYellow
+highlight DiffText cterm=bold ctermbg=DarkYellow
 
 "tab settings
 set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab "default tab setting
