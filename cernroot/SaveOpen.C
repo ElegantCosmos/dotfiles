@@ -1,6 +1,10 @@
 void SaveOpen(const char* file = "test.pdf", int nFiles = 1) // Draw and copy quickly with one function.
 {
   assert(strcmp(file, "") != 0); // filename must not be empty
+  if (gPad == NULL) {
+	  std::cerr << "No gPad object found for plot." << std::endl;
+	  return;
+  }
   gPad->SaveAs(file);
 
   assert(nFiles > 0);
