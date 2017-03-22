@@ -95,7 +95,7 @@ colorscheme default
 """ Transparent background.
 highlight Normal ctermbg=none
 highlight Search ctermbg=LightYellow
-highlight DiffText cterm=bold ctermbg=DarkYellow
+highlight DiffText cterm=bold ctermbg=LightYellow
 
 "tab settings
 set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab "default tab setting
@@ -181,7 +181,10 @@ endfunc
 " Use an undo file
 set undofile
 " Set directory to store the undo history
-set undodir=~/.vimundo
+set undodir=~/.vim/.undo//
+
+set backupdir=~/.vim/.backup//
+set directory=~/.vim/.swp//
 
 " search in normal mode while keeping search text in middle of screen
 nnoremap <silent> <F4> :call <SID>SearchMode()<CR>
