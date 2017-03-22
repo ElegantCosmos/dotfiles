@@ -1,3 +1,5 @@
-vim/.vimundo
+vim/.vim/.undo
+vim/.vim/.swp
+vim/.vim/.backup
 *.swp
 tmux/.tmux/resurrect
