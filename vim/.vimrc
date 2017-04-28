@@ -95,7 +95,8 @@ colorscheme default
 """ Transparent background.
 highlight Normal ctermbg=none
 highlight Search ctermbg=LightYellow
-highlight DiffText cterm=bold ctermbg=LightYellow
+highlight DiffChange ctermbg=LightYellow
+highlight DiffText cterm=bold ctermbg=LightRed
 
 "tab settings
 set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab "default tab setting
@@ -106,6 +107,9 @@ noremap <leader>E :set noexpandtab<CR>
 set cino+=(0 "Indent align for function variables on more than one line.
 set cino+=:0 "Indent 0 for switch case labes.
 set cino+=g0 "Indent 0 for scope declaration of class members.
+
+"make
+noremap <leader>m :!make<CR>
 
 """"""fortran
 "set tabstop=6 softtabstop=6 shiftwidth=6 expandtab
