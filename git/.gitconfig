@@ -1,14 +1,12 @@
 [user]
-	name = mich
-	email = michinar@hawaii.edu
-
-[alias]
-    co = checkout
-    ci = commit
-    st = status
-    br = branch
-    hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
-    type = cat-file -t
-    dump = cat-file -p
+	name = Michinari Sakai
+	email = michsakai@ucla.edu
+[core]
+	editor = vim
 [push]
 	default = simple
+[diff]
+	submodule = log
+	tool = vimdiff
+[difftool]
+	prompt = false
