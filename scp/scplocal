@@ -1,8 +1,0 @@
-#!/bin/sh
-
-OUTPUT_DIR=/tmp
-
-#scp -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -P 33333 "$@" mich@localhost:/tmp/
-scp -P 33333 "$@" mich@localhost:${OUTPUT_DIR}
-
-exit
