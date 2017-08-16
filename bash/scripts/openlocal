@@ -1,0 +1,11 @@
+#!/bin/sh
+
+OUTPUT_DIR=/tmp
+
+scplocal "$@"
+for file in "$@"; do
+	file=$(basename ${file}) # strip path
+	ssh mich@localhost -p 33333 'open '"${OUTPUT_DIR}"'/'"${file}"''
+done
+
+exit
