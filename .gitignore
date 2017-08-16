@@ -1,5 +1,7 @@
+*.swp
 vim/.vim/.undo
 vim/.vim/.swp
 vim/.vim/.backup
-*.swp
+vim/.vim/bundle
 tmux/.tmux/resurrect
+tmux/.tmux/plugins
