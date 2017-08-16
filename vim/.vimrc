@@ -93,10 +93,16 @@ nnoremap <F5> :GundoToggle<CR>
 colorscheme default
 "colorscheme darkblue
 """ Transparent background.
-highlight Normal ctermbg=none
-highlight Search ctermbg=LightYellow
-highlight DiffChange ctermbg=LightYellow
-highlight DiffText cterm=bold ctermbg=LightRed
+highlight Normal cterm=none ctermbg=none
+highlight Search cterm=bold ctermfg=White ctermbg=DarkMagenta
+"highlight DiffAdd cterm=none ctermfg=White ctermbg=LightBlue
+"highlight DiffDelete cterm=none ctermfg=White ctermbg=LightBlue
+"highlight DiffChange cterm=none ctermfg=White ctermbg=Magenta
+"highlight DiffText cterm=none ctermfg=White ctermbg=DarkRed
+highlight DiffAdd cterm=none ctermbg=LightBlue
+highlight DiffDelete cterm=none ctermbg=DarkGray
+highlight DiffChange cterm=none ctermfg=White ctermbg=DarkGray
+highlight DiffText cterm=bold ctermfg=White ctermbg=DarkRed
 
 "tab settings
 set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab "default tab setting
@@ -186,9 +192,11 @@ endfunc
 set undofile
 " Set directory to store the undo history
 set undodir=~/.vim/.undo//
-
-set backupdir=~/.vim/.backup//
-set directory=~/.vim/.swp//
+" set creation of backup files and designate common directory them
+set backup
+set backupdir=~/.vim/.backup//,.
+" set common directory for swap files
+set directory=~/.vim/.swp//,.
 
 " search in normal mode while keeping search text in middle of screen
 nnoremap <silent> <F4> :call <SID>SearchMode()<CR>
