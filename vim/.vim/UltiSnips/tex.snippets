@@ -35,7 +35,11 @@ snippet SIr "\SIrange{}{}{}" w
 endsnippet
 
 snippet ig "\includegraphics{}" b
-\includegraphics[${1:width=\linewidth}]{${2}}
+\includegraphics[${1:width=\linewidth}]{\detokenize{${2}}}
+endsnippet
+
+snippet dt "\detokenize{}" w
+\detokenize{${1:${VISUAL}}}
 endsnippet
 
 snippet cite "~\cite{}" i
