@@ -46,7 +46,6 @@ let g:UltiSnipsJumpBackwordTrigger = "<c-k>"
 
 autocmd FileType * setlocal formatoptions=cqt
 
-autocmd BufNewFile,BufRead *.icc set filetype=c
 set wildmode=longest,list,full " BASH-like tab completion in file search
 set wildmenu " list menu in file search
 set spelllang=en_us
