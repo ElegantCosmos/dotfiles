@@ -10,39 +10,39 @@ filetype plugin indent on
 let g:tex_flavor = "tex"
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" make YCM compatible with UltiSnips (using supertab)
-let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
-let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
-let g:SuperTabDefaultCompletionType = '<C-n>'
-" YCM Debugging.
-let g:ycm_server_keep_logfiles = 1
-let g:ycm_server_log_level = 'debug'
-
-" better key bindings for UltiSnipsExpandTrigger
-let g:UltiSnipsExpandTrigger = "<tab>"
-let g:UltiSnipsJumpForwardTrigger = "<tab>"
-let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
-" If you want :UltiSnipsEdit to split your window.
-let g:UltiSnipsEditSplit="horizontal"
-
-" YCM work-around to select from word list using c-j and c-k.
-function! g:JInYCM()
-    if pumvisible()
-        return "\<C-n>"
-    else
-        return "\<c-j>"
-endfunction
-
-function! g:KInYCM()
-    if pumvisible()
-        return "\<C-p>"
-    else
-        return "\<c-k>"
-endfunction
-inoremap <c-j> <c-r>=g:JInYCM()<cr>
-au BufEnter,BufRead * exec "inoremap <silent> " . g:UltiSnipsJumpBackwordTrigger . " <C-R>=g:KInYCM()<cr>"
-let g:UltiSnipsJumpBackwordTrigger = "<c-k>"
-" End of YCM work-around.
+"" make YCM compatible with UltiSnips (using supertab)
+"let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+"let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+"let g:SuperTabDefaultCompletionType = '<C-n>'
+"" YCM Debugging.
+"let g:ycm_server_keep_logfiles = 1
+"let g:ycm_server_log_level = 'debug'
+"
+"" better key bindings for UltiSnipsExpandTrigger
+"let g:UltiSnipsExpandTrigger = "<tab>"
+"let g:UltiSnipsJumpForwardTrigger = "<tab>"
+"let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
+"" If you want :UltiSnipsEdit to split your window.
+"let g:UltiSnipsEditSplit="horizontal"
+"
+"" YCM work-around to select from word list using c-j and c-k.
+"function! g:JInYCM()
+"    if pumvisible()
+"        return "\<C-n>"
+"    else
+"        return "\<c-j>"
+"endfunction
+"
+"function! g:KInYCM()
+"    if pumvisible()
+"        return "\<C-p>"
+"    else
+"        return "\<c-k>"
+"endfunction
+"inoremap <c-j> <c-r>=g:JInYCM()<cr>
+"au BufEnter,BufRead * exec "inoremap <silent> " . g:UltiSnipsJumpBackwordTrigger . " <C-R>=g:KInYCM()<cr>"
+"let g:UltiSnipsJumpBackwordTrigger = "<c-k>"
+"" End of YCM work-around.
 
 autocmd FileType * setlocal formatoptions=cqt
 
@@ -55,6 +55,7 @@ set hlsearch
 set ignorecase
 set smartcase
 set incsearch
+set nrformats-=octal
 if $TMUX == '' " don't use unnamed register when using tmux
 	set clipboard=unnamed
 endif
@@ -64,23 +65,21 @@ set cindent
 set pastetoggle=<F4>
 "set autoindent
 "set nu
+set smarttab
+set complete-=i
 set backspace=indent,eol,start
 set nojoinspaces
 set laststatus=2
 set formatoptions=cqt
-"set statusline=%t       "tail of the filename
-set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P "branch name from fugitive
-set statusline+=[%{strlen(&fenc)?&fenc:'none'}, "file encoding
-set statusline+=%{&ff}] "file format
-set statusline+=%h      "help file flag
-set statusline+=%m      "modified flag
-set statusline+=%r      "read only flag
-set statusline+=%y      "filetype
-set statusline+=[%{&fo}] "show format option list"
-set statusline+=%=      "left/right separator
-set statusline+=%c,     "cursor column
-set statusline+=%l/%L   "cursor line/total lines
-set statusline+=\ %P    "percent through file
+let g:airline_theme='minimalist'
+"let g:airline_solarized_bg='dark' # for 'solarized' airline_theme
+let g:tmuxline_powerline_separators = 0
+let g:tmuxline_separators = {
+    \ 'left' : '',
+    \ 'left_alt': '',
+    \ 'right' : '',
+    \ 'right_alt' : '',
+    \ 'space' : ' '}
 
 " Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
 vmap <Enter> <Plug>(EasyAlign)
@@ -89,20 +88,6 @@ nmap <Leader>a <Plug>(EasyAlign)
 
 """"""Gundo
 nnoremap <F5> :GundoToggle<CR>
-
-colorscheme default
-"colorscheme darkblue
-""" Transparent background.
-highlight Normal cterm=none ctermbg=none
-highlight Search cterm=bold ctermfg=White ctermbg=DarkMagenta
-"highlight DiffAdd cterm=none ctermfg=White ctermbg=LightBlue
-"highlight DiffDelete cterm=none ctermfg=White ctermbg=LightBlue
-"highlight DiffChange cterm=none ctermfg=White ctermbg=Magenta
-"highlight DiffText cterm=none ctermfg=White ctermbg=DarkRed
-highlight DiffAdd cterm=none ctermbg=LightBlue
-highlight DiffDelete cterm=none ctermbg=DarkGray
-highlight DiffChange cterm=none ctermfg=White ctermbg=DarkGray
-highlight DiffText cterm=bold ctermfg=White ctermbg=DarkRed
 
 "tab settings
 set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab "default tab setting
@@ -132,10 +117,10 @@ au BufRead * normal zR
 """"""mapping
 map! jk <Esc>
 
-
-let g:indent_guides_auto_colors = 0
-highlight IndentGuidesOdd  ctermbg=none
-highlight IndentGuidesEven ctermbg=Black
+"let g:indent_guides_auto_colors = 0
+"highlight IndentGuidesOdd ctermbg=none
+"highlight IndentGuidesEven ctermbg=Black
+"highlight IndentGuidesEven ctermbg=White
 
 " Go to tab by number.
 noremap <leader>1 1gt
@@ -225,3 +210,19 @@ function s:MaybeMiddle()
 		normal! zz
 	endif
 endfunction
+
+"set background=dark
+"colorscheme default
+colorscheme desert
+""" Transparent background.
+highlight Normal cterm=none ctermbg=none
+highlight Search cterm=bold ctermfg=White ctermbg=DarkMagenta
+"highlight DiffAdd cterm=none ctermfg=White ctermbg=LightBlue
+"highlight DiffDelete cterm=none ctermfg=White ctermbg=LightBlue
+"highlight DiffChange cterm=none ctermfg=White ctermbg=Magenta
+"highlight DiffText cterm=none ctermfg=White ctermbg=DarkRed
+highlight DiffAdd cterm=none ctermbg=LightBlue
+highlight DiffDelete cterm=none ctermbg=DarkGray
+highlight DiffChange cterm=none ctermfg=White ctermbg=DarkGray
+highlight DiffText cterm=bold ctermfg=White ctermbg=DarkRed
+
