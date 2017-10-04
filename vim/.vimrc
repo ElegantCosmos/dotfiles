@@ -80,16 +80,17 @@ let g:tmuxline_separators = {
     \ 'right_alt' : '',
     \ 'space' : ' '}
 
-" Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
-vmap <Enter> <Plug>(EasyAlign)
-" Start interactive EasyAlign for a motion/text object (e.g. <Leader>aip)
-nmap <Leader>a <Plug>(EasyAlign)
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
 
 """"""Gundo
 nnoremap <F5> :GundoToggle<CR>
 
 "tab settings
-set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab "default tab setting
+set tabstop=2 softtabstop=2 shiftwidth=2 expandtab "default tab setting
+"set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab "default tab setting
 noremap <leader>T :set tabstop=4 softtabstop=4 shiftwidth=4<CR>
 noremap <leader>t :set tabstop=2 softtabstop=2 shiftwidth=2<CR>
 noremap <leader>e :set expandtab<CR>
