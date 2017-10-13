@@ -10,20 +10,32 @@ snippet ; "; // " i
 ; // 
 endsnippet
 
-snippet ) ") // " i
-) // 
+snippet ( "()" i
+(${1:${VISUAL}})$0
 endsnippet
 
-snippet { "{ // " i
-{ // 
+snippet { "{}" i
+{
+	$0
+}
 endsnippet
 
-snippet "" "text inside double quotation" i
-"${1:${VISUAL}}"
+snippet test "test" w
+($1)($2) {
+$3
+}
 endsnippet
 
-snippet '' "text inside double quotation" i
-'${1:${VISUAL}}'
+snippet < "<>" i
+<${1:${VISUAL}}>$0
+endsnippet
+
+snippet " "text inside double quotation" i
+"${1:${VISUAL}}"$0
+endsnippet
+
+snippet ' "text inside double quotation" i
+'${1:${VISUAL}}'$0
 endsnippet
 
 snippet ccout "cout with clear output to user" w
