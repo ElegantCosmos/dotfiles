@@ -18,13 +18,13 @@ let g:tex_flavor = "tex"
 "let g:ycm_server_keep_logfiles = 1
 "let g:ycm_server_log_level = 'debug'
 "
-"" better key bindings for UltiSnipsExpandTrigger
-"let g:UltiSnipsExpandTrigger = "<tab>"
-"let g:UltiSnipsJumpForwardTrigger = "<tab>"
-"let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
-"" If you want :UltiSnipsEdit to split your window.
-"let g:UltiSnipsEditSplit="horizontal"
-"
+" better key bindings for UltiSnipsExpandTrigger
+let g:UltiSnipsExpandTrigger = "<tab>"
+let g:UltiSnipsJumpForwardTrigger = "<tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit = "horizontal"
+
 "" YCM work-around to select from word list using c-j and c-k.
 "function! g:JInYCM()
 "    if pumvisible()
@@ -50,7 +50,7 @@ set wildmode=longest,list,full " BASH-like tab completion in file search
 set wildmenu " list menu in file search
 set spelllang=en_us
 set hlsearch
-"set scrolloff=2
+set scrolloff=1
 set ignorecase
 set smartcase
 set incsearch
@@ -225,4 +225,3 @@ highlight DiffAdd cterm=none ctermbg=LightBlue
 highlight DiffDelete cterm=none ctermbg=DarkGray
 highlight DiffChange cterm=none ctermfg=White ctermbg=DarkGray
 highlight DiffText cterm=bold ctermfg=White ctermbg=DarkRed
-
