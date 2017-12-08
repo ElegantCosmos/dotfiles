@@ -10,32 +10,52 @@ snippet ; "; // " i
 ; // 
 endsnippet
 
-snippet ) ") // " i
-) // 
+snippet ( "()" i
+(${1:${VISUAL}})$0
 endsnippet
 
-snippet { "{ // " i
-{ // 
+snippet { "{}" i
+{
+	$0
+}
 endsnippet
 
-snippet "" "text inside double quotation" i
-"${1:${VISUAL}}"
+snippet test "test" w
+($1)($2) {
+$3
+}
 endsnippet
 
-snippet '' "text inside double quotation" i
-'${1:${VISUAL}}'
+snippet < "<>" i
+<${1:${VISUAL}}>$0
+endsnippet
+
+snippet " "text inside double quotation" i
+"${1:${VISUAL}}"$0
+endsnippet
+
+snippet ' "text inside double quotation" i
+'${1:${VISUAL}}'$0
 endsnippet
 
 snippet ccout "cout with clear output to user" w
 std::cout << "${1:${VISUAL}}" << $1 << ";" << std::endl;
 endsnippet
 
-snippet ccerr "cerr with clear output to user" w
-std::cerr << "${1:${VISUAL}}" << $1 << ";" << std::endl;
+snippet G4cout "G4cout output to user" w
+G4cout << ${1:${VISUAL}} << G4endl;
+endsnippet
+
+snippet G4ccout "G4cout output to user" w
+G4cout << "${1:${VISUAL}}" << $1 << ";" << G4endl;
 endsnippet
 
 snippet cerr "cerr output" w
 std::cerr << ${1:${VISUAL}} << std::endl;
+endsnippet
+
+snippet ccerr "cerr with clear output to user" w
+std::cerr << "${1:${VISUAL}}" << $1 << ";" << std::endl;
 endsnippet
 
 snippet /* "doxygen brief comment" b
