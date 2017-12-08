@@ -1,11 +1,21 @@
 {
-	if (gSystem->AccessPathName("~/.rootlogon_local.C") == kFALSE) { // execute if file exists
-		gROOT->ProcessLine(".x ~/.rootlogon_local.C");
+	TString file;
+
+	file = "~/.rootlogon_local.C";
+	gSystem->ExpandPathName(file);
+	if (gSystem->AccessPathName(file) == kFALSE) { // execute if file exists
+		gROOT->ProcessLine(TString(".x ") + file);
 	}
-	if (gSystem->AccessPathName("~/.dotfiles/cernroot/SaveOpen.C") == kFALSE) { // load if file exists
-		gROOT->ProcessLine(".L ~/.dotfiles/cernroot/SaveOpen.C");
+
+	file = "~/.rootlogon_style.C";
+	gSystem->ExpandPathName(file);
+	if (gSystem->AccessPathName(file) == kFALSE) { // load if file exists
+		gROOT->ProcessLine(TString(".x ") + file);
 	}
-	//if (gSystem->AccessPathName("~/.dotfiles/cernroot/rootlogon_style.C") == kTRUE) {
-	//	gROOT->ProcessLine(".L ~/.dotfiles/cernroot/rootlogon_style.C");
-	//}
+
+	file = "~/.dotfiles/cernroot/SaveOpen.C";
+	gSystem->ExpandPathName(file);
+	if (gSystem->AccessPathName(file) == kFALSE) { // load if file exists
+		gROOT->ProcessLine(TString(".L ") + file);
+	}
 }
