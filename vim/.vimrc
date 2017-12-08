@@ -89,8 +89,8 @@ nmap ga <Plug>(EasyAlign)
 nnoremap <F5> :GundoToggle<CR>
 
 "tab settings
-set tabstop=2 softtabstop=2 shiftwidth=2 expandtab "default tab setting
-"set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab "default tab setting
+"set tabstop=2 softtabstop=2 shiftwidth=2 expandtab "default tab setting
+set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab "default tab setting
 noremap <leader>T :set tabstop=4 softtabstop=4 shiftwidth=4<CR>
 noremap <leader>t :set tabstop=2 softtabstop=2 shiftwidth=2<CR>
 noremap <leader>e :set expandtab<CR>
