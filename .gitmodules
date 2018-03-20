@@ -33,6 +33,8 @@
 [submodule "vim/.vim/bundle/linediff.vim"]
 	path = vim/.vim/bundle/linediff.vim
 	url = https://github.com/AndrewRadev/linediff.vim.git
+
+### TMux
 [submodule "tmux/.tmux/plugins/tpm"]
 	path = tmux/.tmux/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm.git
