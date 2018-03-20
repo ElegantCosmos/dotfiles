@@ -10,3 +10,24 @@
 [submodule "vim/.vim/bundle/ultisnips"]
 	path = vim/.vim/bundle/ultisnips
 	url = https://github.com/SirVer/ultisnips.git
+[submodule "vim/.vim/bundle/vim-indent-guides"]
+	path = vim/.vim/bundle/vim-indent-guides
+	url = https://github.com/nathanaelkane/vim-indent-guides.git
+[submodule "vim/.vim/bundle/vim-easy-align"]
+	path = vim/.vim/bundle/vim-easy-align
+	url = https://github.com/junegunn/vim-easy-align.git
+[submodule "vim/.vim/bundle/vim-easymotion"]
+	path = vim/.vim/bundle/vim-easymotion
+	url = https://github.com/easymotion/vim-easymotion.git
+[submodule "vim/.vim/bundle/vim-snippets"]
+	path = vim/.vim/bundle/vim-snippets
+	url = https://github.com/honza/vim-snippets.git
+[submodule "vim/.vim/bundle/vim-cpp-enhanced-highlight"]
+	path = vim/.vim/bundle/vim-cpp-enhanced-highlight
+	url = https://github.com/octol/vim-cpp-enhanced-highlight.git
+[submodule "vim/.vim/bundle/rename.vim"]
+	path = vim/.vim/bundle/rename.vim
+	url = https://github.com/danro/rename.vim.git
+[submodule "vim/.vim/bundle/linediff.vim"]
+	path = vim/.vim/bundle/linediff.vim
+	url = https://github.com/AndrewRadev/linediff.vim.git
