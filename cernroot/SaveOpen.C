@@ -5,13 +5,14 @@ void SaveOpen(const std::string file = "plot.pdf", int nFiles = 1) // Draw and c
 	  std::cerr << "No gPad object found for plot." << std::endl;
 	  return;
   }
-  std::string file_pdf = file;
+
+  std::string file_pdf = file; // save plot as PDF
   if (file_pdf.find(".pdf") == std::string::npos) {
     file_pdf += ".pdf";
   }
   gPad->SaveAs(file_pdf.c_str());
 
-  std::string file_C = file;
+  std::string file_C = file; // save plot as script
   if (file_C.find(".pdf") != std::string::npos) {
     size_t found = file_C.find(".pdf");
     file_C = file_C.substr(0, file_C.length() - std::string(".pdf").length());
@@ -20,6 +21,16 @@ void SaveOpen(const std::string file = "plot.pdf", int nFiles = 1) // Draw and c
     file_C += ".C";
   }
   gPad->SaveAs(file_C.c_str());
+
+  std::string file_ROOT = file; // save plot in ROOT file
+  if (file_ROOT.find(".pdf") != std::string::npos) {
+    size_t found = file_ROOT.find(".pdf");
+    file_ROOT = file_ROOT.substr(0, file_ROOT.length() - std::string(".pdf").length());
+    file_ROOT += ".root";
+  } else {
+    file_ROOT += ".root";
+  }
+  gPad->SaveAs(file_ROOT.c_str());
 
 
   assert(nFiles > 0);
