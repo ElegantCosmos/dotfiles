@@ -33,6 +33,15 @@
 [submodule "vim/.vim/bundle/linediff.vim"]
 	path = vim/.vim/bundle/linediff.vim
 	url = https://github.com/AndrewRadev/linediff.vim.git
+[submodule "vim/.vim/bundle/vim-airline"]
+	path = vim/.vim/bundle/vim-airline
+	url = git@github.com:vim-airline/vim-airline.git
+[submodule "vim/.vim/bundle/vim-airline-themes"]
+	path = vim/.vim/bundle/vim-airline-themes
+	url = git@github.com:vim-airline/vim-airline-themes.git
+[submodule "vim/.vim/bundle/tmuxline.vim"]
+	path = vim/.vim/bundle/tmuxline.vim
+	url = git@github.com:edkolev/tmuxline.vim.git
 
 ### TMux
 [submodule "tmux/.tmux/plugins/tpm"]
