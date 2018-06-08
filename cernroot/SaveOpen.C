@@ -1,7 +1,7 @@
 void SaveOpen(const std::string file = "plot.pdf", int nFiles = 1) // Draw and copy quickly with one function.
 {
 	assert(!file.empty()); // filename must not be empty
-	if (gPad == NULL) {
+	if (gPad == NULL) { // check if pad for plot exists
 		std::cerr << "No gPad object found for plot." << std::endl;
 		return;
 	}
@@ -11,7 +11,7 @@ void SaveOpen(const std::string file = "plot.pdf", int nFiles = 1) // Draw and c
 		size_t dotPos = file.find_last_of(".");
 		std::string file_base = file.substr(0, dotPos);
 		const std::string plotStr = "plot";
-		if (file.substr(file.length() - plotStr.length(), plotStr.length()) != plotStr) {
+		if (file_base.substr(file_base.length() - plotStr.length(), plotStr.length()) != plotStr) {
 			file_base += std::string("_") + plotStr;
 		}
 	}
