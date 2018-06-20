@@ -47,7 +47,7 @@ snippet SIr "\SIrange{}{}{}" w
 endsnippet
 
 snippet ig "\includegraphics{}" b
-\includegraphics[${1:width=\linewidth}]{${2}}
+\includegraphics[${1:width=\linewidth,height=\textheight,keepaspectratio}]{${2}}
 endsnippet
 
 snippet dt "\detokenize{}" w
@@ -315,4 +315,12 @@ endsnippet
 
 snippet color "\color{}" w
 \color{${1:${VISUAL}}}
+endsnippet
+
+snippet bra "\bra{}" w
+\bra{${1:${VISUAL}}}
+endsnippet
+
+snippet ket "\ket{}" w
+\ket{${1:${VISUAL}}}
 endsnippet

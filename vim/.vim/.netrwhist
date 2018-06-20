@@ -1,6 +1,7 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =4
+let g:netrw_dirhist_cnt =5
 let g:netrw_dirhist_1='/mnt/datadisk/work/kamland/dissertation/phd_thesis/kamland/detector_calibration_and_event_reconstruction'
 let g:netrw_dirhist_2='/mnt/datadisk/work/kamland/dissertation/phd_thesis/kamland'
 let g:netrw_dirhist_3='/mnt/datadisk/work/kamland/dissertation/phd_thesis/kamland/figures'
 let g:netrw_dirhist_4='/mnt/datadisk/work/kamland/dissertation/phd_thesis/kamland/detector_calibration_and_event_reconstruction'
+let g:netrw_dirhist_5='/Users/mich/.config'

@@ -8,6 +8,7 @@ filetype plugin indent on
 
 """ Recognize .tex files as plaintex for correct vim spell checking """
 let g:tex_flavor = "tex"
+let g:tex_comment_nospell=1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 "" make YCM compatible with UltiSnips (using supertab)
