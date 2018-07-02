@@ -6,8 +6,8 @@ if [ -f /etc/bashrc ]; then
 fi
 
 # Source local definitions
-if [ -f ~/.bashrc_local ]; then
-    source ~/.bashrc_local
+if [ -f $HOME/.bashrc_local ]; then
+    source $HOME/.bashrc_local
 fi
 
 export PS1='\u@\h:\w\$ '

@@ -3,6 +3,11 @@
 	path = dircolors/dircolors-solarized
 	url = git@github.com:seebi/dircolors-solarized.git
 
+### Bash-it
+[submodule "bash-it"]
+	path = bash-it
+	url = git@github.com:Bash-it/bash-it.git
+
 ### VIM
 [submodule "vim/.vim/bundle/ultisnips"]
 	path = vim/.vim/bundle/ultisnips
