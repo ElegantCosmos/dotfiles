@@ -38,7 +38,8 @@
 #
 # If you omit this parameter, it will always default to "Agg", which is a
 # non-interactive backend.
-backend      : qt5agg
+#backend      : qt5agg
+backend      : MacOSX
 
 # Note that this can be overridden by the environment variable
 # QT_API used by Enthought Tool Suite (ETS); valid values are
@@ -61,7 +62,7 @@ backend      : qt5agg
 # if you are running pyplot inside a GUI and your backend choice
 # conflicts, we will automatically try to find a compatible one for
 # you if backend_fallback is True
-#backend_fallback: True
+backend_fallback: True
 
 #interactive  : False
 #toolbar      : toolbar2   # None | toolbar2  ("classic" is deprecated)
@@ -81,6 +82,7 @@ backend      : qt5agg
 #lines.marker      : None    # the default marker
 #lines.markeredgewidth  : 1.0     # the line width around the marker symbol
 #lines.markersize  : 6            # markersize, in points
+lines.markersize  : 3            # markersize, in points
 #lines.dash_joinstyle : miter        # miter|round|bevel
 #lines.dash_capstyle : butt          # butt|round|projecting
 #lines.solid_joinstyle : miter       # miter|round|bevel
@@ -191,6 +193,7 @@ backend      : qt5agg
 # 10 pt is the standard value.
 #
 #font.family         : sans-serif
+font.family         : serif
 #font.style          : normal
 #font.variant        : normal
 #font.weight         : medium
@@ -216,6 +219,15 @@ backend      : qt5agg
 
 ### LaTeX customizations. See http://wiki.scipy.org/Cookbook/Matplotlib/UsingTex
 #text.usetex         : False  # use latex for all text handling. The following fonts
+                              # are supported through the usual rc parameter settings:
+                              # new century schoolbook, bookman, times, palatino,
+                              # zapf chancery, charter, serif, sans-serif, helvetica,
+                              # avant garde, courier, monospace, computer modern roman,
+                              # computer modern sans serif, computer modern typewriter
+                              # If another font is desired which can loaded using the
+                              # LaTeX \usepackage command, please inquire at the
+                              # matplotlib mailing list
+text.usetex         : True  # use latex for all text handling. The following fonts
                               # are supported through the usual rc parameter settings:
                               # new century schoolbook, bookman, times, palatino,
                               # zapf chancery, charter, serif, sans-serif, helvetica,
@@ -288,6 +300,7 @@ backend      : qt5agg
 #axes.titlesize      : large   # fontsize of the axes title
 #axes.titlepad       : 6.0     # pad between axes and title in points
 #axes.labelsize      : medium  # fontsize of the x any y labels
+axes.labelsize      : 8  # fontsize of the x any y labels
 #axes.labelpad       : 4.0     # space between label and axis
 #axes.labelweight    : normal  # weight of the x and y labels
 #axes.labelcolor     : black
@@ -365,7 +378,9 @@ backend      : qt5agg
 #xtick.minor.pad      : 3.4      # distance to the minor tick label in points
 #xtick.color          : k      # color of the tick labels
 #xtick.labelsize      : medium # fontsize of the tick labels
+xtick.labelsize      : 8 # fontsize of the tick labels
 #xtick.direction      : out    # direction: in, out, or inout
+xtick.direction      : out    # direction: in, out, or inout
 #xtick.minor.visible  : False  # visibility of minor ticks on x-axis
 #xtick.major.top      : True   # draw x axis top major ticks
 #xtick.major.bottom   : True   # draw x axis bottom major ticks
@@ -382,7 +397,9 @@ backend      : qt5agg
 #ytick.minor.pad      : 3.4      # distance to the minor tick label in points
 #ytick.color          : k      # color of the tick labels
 #ytick.labelsize      : medium # fontsize of the tick labels
+ytick.labelsize      : 8 # fontsize of the tick labels
 #ytick.direction      : out    # direction: in, out, or inout
+ytick.direction      : out    # direction: in, out, or inout
 #ytick.minor.visible  : False  # visibility of minor ticks on y-axis
 #ytick.major.left     : True   # draw y axis left major ticks
 #ytick.major.right    : True   # draw y axis right major ticks
@@ -423,7 +440,9 @@ backend      : qt5agg
 #figure.titlesize : large      # size of the figure title (Figure.suptitle())
 #figure.titleweight : normal   # weight of the figure title
 #figure.figsize   : 6.4, 4.8   # figure size in inches
+figure.figsize   : 3.487, 2.155 # figure size in inches
 #figure.dpi       : 100      # figure dots per inch
+figure.dpi       : 227      # figure dots per inch
 #figure.facecolor : white   # figure facecolor; 0.75 is scalar gray
 #figure.edgecolor : white   # figure edgecolor
 #figure.autolayout : False  # When True, automatically adjust subplot
