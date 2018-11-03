@@ -54,15 +54,15 @@
 
 	gStyle->SetTitleFont(font, "xyz");
 	gStyle->SetTitleSize(fontSize_px, "xyz");
-	gStyle->SetTitleOffset(1.2, "x");
-	gStyle->SetTitleOffset(1.2, "y");
-	gStyle->SetTitleOffset(-1.2, "z"); // doesn't work in current ROOT 5.34/23
+	gStyle->SetTitleOffset(1.25, "x");
+	gStyle->SetTitleOffset(1.35, "y");
+	gStyle->SetTitleOffset(-1.25, "z"); // doesn't work in current ROOT 5.34/23
 
 	gStyle->SetLabelFont(font, "xyz");
 	gStyle->SetLabelSize(fontSize_px, "xyz");
-	gStyle->SetLabelOffset(0.02, "x");
-	gStyle->SetLabelOffset(0.02, "y");
-	gStyle->SetLabelOffset(0.02, "z");
+	gStyle->SetLabelOffset(0.015, "x");
+	gStyle->SetLabelOffset(0.015, "y");
+	gStyle->SetLabelOffset(0.015, "z");
 
 	gStyle->SetOptStat("emrou");
 	gStyle->SetStatFont(font);
@@ -78,7 +78,7 @@
 	gStyle->SetTickLength(-10.0/canvasWidth_px, "y");
 	gStyle->SetTickLength(-10.0/canvasWidth_px, "z");
 
-	TGaxis::SetMaxDigits(4);
+	TGaxis::SetMaxDigits(3);
 
 	//// Example of how to make palette axis neat
 	//TH2F hist2("hist2", "hist2", 100, 0, 10000, 100, 0, 10000);
