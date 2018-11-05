@@ -4,9 +4,9 @@
 	// Get window manager decoration height and width
 	TCanvas* canvas_tmp = new TCanvas("canvas_tmp", "canvas_tmp", 500, 500);
 	unsigned int decorationWidth = 500 - canvas_tmp->GetWw();
-	cout << "decorationWidth" << decorationWidth << endl;
+	//cout << "decorationWidth" << decorationWidth << endl;
 	unsigned int decorationHeight = 500 - canvas_tmp->GetWh();
-	cout << "decorationHeight" << decorationHeight << endl;
+	//cout << "decorationHeight" << decorationHeight << endl;
 	delete canvas_tmp;
 	canvas_tmp = NULL;
 
@@ -21,62 +21,82 @@
 	double fontSize_small_px = ppi*ptToInch*fontSize_small_pt;
 
 	double canvasWidth_in = 3.404; // inch, typical width of single column for double column paper
-	cout << "canvasWidth_in" << canvasWidth_in << endl;
+	//cout << "canvasWidth_in" << canvasWidth_in << endl;
 	double canvasHeight_in = canvasWidth_in/goldenRatio; // inch
-	cout << "canvasHeight_in" << canvasHeight_in << endl;
+	//cout << "canvasHeight_in" << canvasHeight_in << endl;
 
 	//// Apply zoom factor for confortable viewing in high DPI screens.
 	int canvasWidth_px = int(ppi*canvasWidth_in + 0.5);
-	cout << "canvasWidth_px" << canvasWidth_px << endl;
+	//cout << "canvasWidth_px" << canvasWidth_px << endl;
 	int canvasHeight_px = int(ppi*canvasHeight_in + 0.5);
-	cout << "canvasHeight_px" << canvasHeight_px << endl;
+	//cout << "canvasHeight_px" << canvasHeight_px << endl;
 
 	//// Canvas properties.
-	//gStyle->SetCanvasBorderMode(0);
-	//gStyle->SetCanvasBorderSize(0);
-	//gStyle->SetPadBorderMode(0);
-	//gStyle->SetPadBorderSize(0);
+	TStyle * paper_doubleColumn= new TStyle("paper_doubleColumn","Double Column Paper");
+	paper_doubleColumn->SetFrameBorderMode(0);
+	paper_doubleColumn->SetFrameBorderSize(0);
+	paper_doubleColumn->SetFrameFillStyle(0);
+	paper_doubleColumn->SetFrameFillColor(kWhite);
+	paper_doubleColumn->SetHistFillStyle(0);
+	paper_doubleColumn->SetHistFillColor(kWhite);
+	paper_doubleColumn->SetFillStyle(0);
+	paper_doubleColumn->SetFillColor(kWhite);
+	paper_doubleColumn->SetCanvasBorderMode(0);
+	paper_doubleColumn->SetCanvasBorderSize(0);
+	paper_doubleColumn->SetCanvasColor(kWhite);
+	paper_doubleColumn->SetPadBorderMode(0);
+	paper_doubleColumn->SetPadBorderSize(0);
+	paper_doubleColumn->SetPadColor(kWhite);
 	Double_t margin = 0.15; // common pad margin
 	double margin_small = 0.6*margin;
-	//gStyle->SetPadTopMargin(margin_small);
-	gStyle->SetPadTopMargin(margin);
-	gStyle->SetPadBottomMargin(margin);
-	//gStyle->SetPadRightMargin(margin_small);
-	gStyle->SetPadRightMargin(margin);
-	gStyle->SetPadLeftMargin(margin);
-	gStyle->SetCanvasDefH(canvasHeight_px + decorationHeight); // (canvas height + 25 px) = window height)
-	//gStyle->SetCanvasDefH(500); // (canvas height + 25 px) = window height)
-	gStyle->SetCanvasDefW(canvasWidth_px + decorationWidth); // (canvas width + 2 px) = window width)
-	//gStyle->SetCanvasDefW(500); // (canvas width + 2 px) = window width)
+	//paper_doubleColumn->SetPadTopMargin(margin_small);
+	paper_doubleColumn->SetPadTopMargin(margin);
+	paper_doubleColumn->SetPadBottomMargin(margin);
+	//paper_doubleColumn->SetPadRightMargin(margin_small);
+	paper_doubleColumn->SetPadRightMargin(margin);
+	paper_doubleColumn->SetPadLeftMargin(margin);
+	paper_doubleColumn->SetCanvasDefH(canvasHeight_px + decorationHeight); // (canvas height + 25 px) = window height)
+	//paper_doubleColumn->SetCanvasDefH(500); // (canvas height + 25 px) = window height)
+	paper_doubleColumn->SetCanvasDefW(canvasWidth_px + decorationWidth); // (canvas width + 2 px) = window width)
+	//paper_doubleColumn->SetCanvasDefW(500); // (canvas width + 2 px) = window width)
 
-	gStyle->SetTitleFont(font, "t"); // doesn't work in current ROOT 5.34/23
-	gStyle->SetTitleSize(fontSize_px, "t"); // doesn't work in current ROOT 5.34/23
+	paper_doubleColumn->SetOptTitle(0);
+	paper_doubleColumn->SetTitleFillColor(0);
+	paper_doubleColumn->SetTitleFont(font, "t"); // doesn't work in current ROOT 5.34/23
+	paper_doubleColumn->SetTitleSize(fontSize_px, "t"); // doesn't work in current ROOT 5.34/23
 
-	gStyle->SetTitleFont(font, "xyz");
-	gStyle->SetTitleSize(fontSize_px, "xyz");
-	gStyle->SetTitleOffset(1.25, "x");
-	gStyle->SetTitleOffset(1.35, "y");
-	gStyle->SetTitleOffset(-1.25, "z"); // doesn't work in current ROOT 5.34/23
+	paper_doubleColumn->SetTitleFont(font, "xyz");
+	paper_doubleColumn->SetTitleSize(fontSize_px, "xyz");
+	paper_doubleColumn->SetTitleOffset(1.15, "x");
+	paper_doubleColumn->SetTitleOffset(1.29, "y");
+	paper_doubleColumn->SetTitleOffset(-0.35, "z"); // doesn't work in current ROOT 5.34/23
 
-	gStyle->SetLabelFont(font, "xyz");
-	gStyle->SetLabelSize(fontSize_px, "xyz");
-	gStyle->SetLabelOffset(0.015, "x");
-	gStyle->SetLabelOffset(0.015, "y");
-	gStyle->SetLabelOffset(0.015, "z");
+	paper_doubleColumn->SetLabelFont(font, "xyz");
+	paper_doubleColumn->SetLabelSize(fontSize_px, "xyz");
+	paper_doubleColumn->SetLabelOffset(0.015, "x");
+	paper_doubleColumn->SetLabelOffset(0.015, "y");
+	paper_doubleColumn->SetLabelOffset(0.015, "z");
 
-	gStyle->SetOptStat("emrou");
-	gStyle->SetStatFont(font);
-	gStyle->SetStatFontSize(fontSize_small_px);
-	gStyle->SetStatY(1 - margin_small);
-	gStyle->SetStatX(1 - margin_small);
-	gStyle->SetStatW(0.2);
-	gStyle->SetStatH(0.1);
+	paper_doubleColumn->SetOptStat("emrou");
+	paper_doubleColumn->SetStatBorderSize(1);
+	paper_doubleColumn->SetStatColor(kWhite);
+	paper_doubleColumn->SetStatFont(font);
+	paper_doubleColumn->SetStatFontSize(fontSize_small_px);
+	paper_doubleColumn->SetStatY(1 - margin_small);
+	paper_doubleColumn->SetStatX(1 - margin_small);
+	paper_doubleColumn->SetStatW(0.2);
+	paper_doubleColumn->SetStatH(0.1);
 
-	//gStyle->SetNdivisions(10, "xyz");
-	gStyle->SetNdivisions(510, "xyz"); // show sub-ticks
-	gStyle->SetTickLength(-10.0/canvasHeight_px, "x");
-	gStyle->SetTickLength(-10.0/canvasWidth_px, "y");
-	gStyle->SetTickLength(-10.0/canvasWidth_px, "z");
+	//paper_doubleColumn->SetNdivisions(10, "xyz");
+	paper_doubleColumn->SetNdivisions(510, "xyz"); // show sub-ticks
+	paper_doubleColumn->SetTickLength(-10.0/canvasHeight_px, "x");
+	paper_doubleColumn->SetTickLength(-10.0/canvasWidth_px, "y");
+	paper_doubleColumn->SetTickLength(-10.0/canvasWidth_px, "z");
+
+	// Legend.
+	paper_doubleColumn->SetLegendBorderSize(1);
+	paper_doubleColumn->SetLegendFillColor(0);
+	paper_doubleColumn->SetLegendFont(font);
 
 	TGaxis::SetMaxDigits(3);
 
@@ -96,4 +116,6 @@
 	////pa->GetAxis()->SetTitle("Titlegy [unit]");
     //hist2.GetZaxis()->SetTitle("Titlegy [unit]");
     //hist2.GetZaxis()->SetTitleOffset(-0.3);
+
+	gROOT->SetStyle("paper_doubleColumn");
 }

@@ -298,7 +298,7 @@ axes.titlesize      : 8   # fontsize of the axes title
 #axes.labelsize      : medium  # fontsize of the x any y labels
 axes.labelsize      : 8  # fontsize of the x any y labels
 #axes.labelpad       : 4.0     # space between label and axis
-axes.labelpad       : 0.0     # space between label and axis
+axes.labelpad       : 2.5     # space between label and axis
 #axes.labelweight    : normal  # weight of the x and y labels
 #axes.labelcolor     : black
 #axes.axisbelow      : 'line'  # draw axis gridlines and ticks below
