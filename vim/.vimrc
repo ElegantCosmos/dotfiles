@@ -1,7 +1,8 @@
 set nocompatible " Necesary for lots of cool vim things set nocompatible
 
 """ Pathogen VIM plugin runtime path manager """
-call pathogen#infect()
+"call pathogen#infect()
+execute pathogen#infect()
 
 syntax on
 filetype plugin indent on
