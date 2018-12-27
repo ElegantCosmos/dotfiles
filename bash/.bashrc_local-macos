@@ -1,0 +1,7 @@
+### Colored terminal settings ###
+alias ls='ls -Gh'
+export CLICOLOR=1
+export LSCOLORS=GxFxCxDxBxegedabagaced
+
+### ROOT settings ###
+source /usr/local/bin/thisroot.sh
