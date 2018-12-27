@@ -1,8 +1,8 @@
 set nocompatible " Necesary for lots of cool vim things set nocompatible
 
 """ Pathogen VIM plugin runtime path manager """
-"call pathogen#infect()
-execute pathogen#infect()
+call pathogen#infect()
+"execute pathogen#infect()
 
 syntax on
 filetype plugin indent on
@@ -220,11 +220,11 @@ colorscheme desert
 """ Transparent background.
 highlight Normal cterm=none ctermbg=none
 highlight Search cterm=bold ctermfg=White ctermbg=DarkMagenta
-"highlight DiffAdd cterm=none ctermfg=White ctermbg=LightBlue
-"highlight DiffDelete cterm=none ctermfg=White ctermbg=LightBlue
-"highlight DiffChange cterm=none ctermfg=White ctermbg=Magenta
-"highlight DiffText cterm=none ctermfg=White ctermbg=DarkRed
-highlight DiffAdd cterm=none ctermbg=LightBlue
-highlight DiffDelete cterm=none ctermbg=DarkGray
-highlight DiffChange cterm=none ctermfg=White ctermbg=DarkGray
-highlight DiffText cterm=bold ctermfg=White ctermbg=DarkRed
+highlight DiffAdd cterm=none ctermfg=White ctermbg=LightBlue
+highlight DiffDelete cterm=none ctermfg=White ctermbg=LightBlue
+highlight DiffChange cterm=none ctermfg=White ctermbg=Magenta
+highlight DiffText cterm=none ctermfg=White ctermbg=DarkRed
+"highlight DiffAdd cterm=none ctermbg=LightBlue
+"highlight DiffDelete cterm=none ctermbg=DarkGray
+"highlight DiffChange cterm=none ctermfg=White ctermbg=DarkGray
+"highlight DiffText cterm=bold ctermfg=White ctermbg=DarkRed
