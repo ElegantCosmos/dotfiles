@@ -64,7 +64,6 @@ let mapleader = ","
 set cindent
 "set tw=80
 set pastetoggle=<F4>
-"set autoindent
 "set nu
 set smarttab
 set complete-=i
@@ -92,11 +91,22 @@ nnoremap <F5> :GundoToggle<CR>
 
 "tab settings
 "set tabstop=2 softtabstop=2 shiftwidth=2 expandtab "default tab setting
+"set tabstop=2 softtabstop=2 shiftwidth=2 noexpandtab "default tab setting
 set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab "default tab setting
+"set tabstop=4 softtabstop=4 shiftwidth=4 expandtab "default tab setting
 noremap <leader>T :set tabstop=4 softtabstop=4 shiftwidth=4<CR>
 noremap <leader>t :set tabstop=2 softtabstop=2 shiftwidth=2<CR>
 noremap <leader>e :set expandtab<CR>
 noremap <leader>E :set noexpandtab<CR>
+
+" Python file indentation commands
+augroup python_files
+autocmd!
+autocmd FileType python setlocal noexpandtab
+autocmd FileType python set tabstop=4
+autocmd FileType python set shiftwidth=4
+augroup END
+
 set cino+=N-s
 set cino+=(0 "Indent align for function variables on more than one line.
 set cino+=:0 "Indent 0 for switch case labes.
