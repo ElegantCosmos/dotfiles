@@ -1,0 +1,22 @@
+# ls command
+alias ls='ls -Gh'
+
+# tmux related settings
+alias tmux='tmux -2' # Force tmux to assume the terminal supports 256 colours.
+if [[ -z "$TMUX" ]]; then
+	if [ -f "$HOME/.tmux.completion.bash" ]; then
+		source $HOME/.tmux.completion.bash
+	fi
+fi
+
+if [[ "$OSTYPE" == "linux-gnu" ]]; then # Linux
+	# Custom installation area
+	export PATH=$HOME/.opt/bin${PATH:+:$PATH}
+
+	### ROOT settings ###
+	#source /usr/local/bin/thisroot.sh
+elif [[ "$OSTYPE" == "darwin"* ]]; then # MacOS
+	### Colored terminal settings ###
+	export CLICOLOR=1
+	export LSCOLORS=GxFxCxDxBxegedabagaced
+fi

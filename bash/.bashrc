@@ -1,9 +1,4 @@
-# .bashrc
-
-# Source global definitions
-if [ -f /etc/bashrc ]; then
-	source /etc/bashrc
-fi
+# Local .bashrc file
 
 export PS1='\[\e[0;37m\]\u@\h:\w\$ \[\e[m\]'
 
