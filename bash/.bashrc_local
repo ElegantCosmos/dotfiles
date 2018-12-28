@@ -21,16 +21,12 @@ if [ -f "$HOME/.dircolors.256" ]; then
 	eval "$(dircolors $HOME/.dircolors.256)"
 fi
 
-### libevent libraries
-if [[ -z "$TMUX" ]]; then
-	LD_LIBRARY_PATH=${LD_LIBRARY_PATH:+$LD_LIBRARY_PATH:}/global/homes/m/mich/.opt/libevent/libevent-2.1.8-stable/lib
-fi
-
 if [[ "$OSTYPE" == "linux-gnu" ]]; then # Linux
 	### PATH to local scripts
 	if [[ -z "$TMUX" ]]; then
-		if [ -d "$HOME/.opt/bin" ]; then
-			export PATH=$HOME/.opt/bin${PATH:+:$PATH}
+		PATH_NEW=$HOME/.opt/bin
+		if [ -d "$PATH_NEW" ]; then
+			export PATH=$PATH_NEW${PATH:+:$PATH}
 		fi
 	fi
 
@@ -60,7 +56,62 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then # Linux
 
 		### manually installed modules in Mich's home
 		#module use /global/homes/m/mich/.opt/modulefiles
+
+		### libevent libraries
+		if [[ -z "$TMUX" ]]; then
+			LD_LIBRARY_PATH_NEW=$HOME/.opt/libevent/libevent-2.1.8-stable/lib
+			if [[ -d "$LD_LIBRARY_PATH_NEW" ]]; then
+				export LD_LIBRARY_PATH=${LD_LIBRARY_PATH:+$LD_LIBRARY_PATH:}
+			fi
+		fi
+
+	elif [[ "$(hostname)" == "nino" ]]; then
+		### Command prompt
+		export PS1='\[\e[0;36m\]\u@\h:\w\$ \[\e[m\]'
+
+		# enable color support of ls and also add handy aliases
+		if [ -x /usr/bin/dircolors ]; then
+			test -r $HOME/.dircolors.256 && eval "$(dircolors -b $HOME/.dircolors.256)" || eval "$(dircolors -b)"
+			alias ls='ls --color=auto'
+			alias dir='dir --color=auto'
+			alias vdir='vdir --color=auto'
+
+			alias grep='grep --color=auto'
+			alias fgrep='fgrep --color=auto'
+			alias egrep='egrep --color=auto'
+		fi
+
+		# some more ls aliases
+		alias ll='ls -alF'
+		alias la='ls -A'
+		alias l='ls -CF'
+
+		function compile-with-root {
+			local filename=$(basename "${@: -1}")
+			local executable=${filename%.*}
+			g++ -std=c++11 -Wall -Wextra -pedantic -o ${executable} $(root-config --cflags) "$@" $(root-config --libs)
+		}
+		function compile-with-rat {
+			local filename=$(basename "${@: -1}")
+			local executable=${filename%.*}
+			g++ -std=c++11 -Wall -Wextra -pedantic -o ${executable} -I${RATROOT}/include $(root-config --cflags) "$@" -L${RATROOT}/lib -lRATEvent $(root-config --libs)
+		}
+
+		### libevent libraries
+		if [[ -z $TMUX ]]; then
+			LD_LIBRARY_PATH_NEW=$HOME/.opt/libevent/libevent-2.1.8-stable/lib
+			if [[ -d "$LD_LIBRARY_PATH_NEW" ]]; then
+				export LD_LIBRARY_PATH=${LD_LIBRARY_PATH:+$LD_LIBRARY_PATH:}
+			fi
+		fi
+
+		### gvfs-trash command variables
+		if [[ -z $TMUX ]]; then
+			export XDG_DATA_HOME=${XDG_DATA_HOME:="$HOME/.local/share"}
+		fi
+		alias trash='gvfs-trash'
 	fi
+
 elif [[ "$OSTYPE" == "darwin"* ]]; then # MacOS
 	### Colored terminal settings ###
 	export CLICOLOR=1
