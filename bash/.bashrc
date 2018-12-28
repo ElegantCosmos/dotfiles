@@ -1,4 +1,5 @@
 # Local .bashrc file
+echo bashrc
 
 export PS1='\[\e[0;37m\]\u@\h:\w\$ \[\e[m\]'
 
