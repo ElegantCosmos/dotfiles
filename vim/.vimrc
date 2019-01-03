@@ -238,3 +238,5 @@ highlight DiffText cterm=none ctermfg=White ctermbg=DarkRed
 "highlight DiffDelete cterm=none ctermbg=DarkGray
 "highlight DiffChange cterm=none ctermfg=White ctermbg=DarkGray
 "highlight DiffText cterm=bold ctermfg=White ctermbg=DarkRed
+
+cnoremap w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
