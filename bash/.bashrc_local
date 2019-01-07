@@ -1,5 +1,5 @@
 ### User additions to .bashrc go in this file.
-echo bashrc_local
+#echo bashrc_local
 
 # ls command
 alias ls='ls -Gh'

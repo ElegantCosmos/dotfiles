@@ -1,5 +1,5 @@
 # Local .bash_profile file
-echo bash_profile
+#echo bash_profile
 
 export PS1='\[\e[0;37m\]\u@\h:\w\$ \[\e[m\]'
 
