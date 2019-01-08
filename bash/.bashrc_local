@@ -21,6 +21,23 @@ if [ -f "$HOME/.dircolors.256" ]; then
 fi
 
 if [[ "$OSTYPE" == "linux-gnu" ]]; then # Linux
+	# enable color support of ls and also add handy aliases
+	if [ -x /usr/bin/dircolors ]; then
+		test -r $HOME/.dircolors.256 && eval "$(dircolors -b $HOME/.dircolors.256)" || eval "$(dircolors -b)"
+		alias ls='ls --color=auto'
+		alias dir='dir --color=auto'
+		alias vdir='vdir --color=auto'
+
+		alias grep='grep --color=auto'
+		alias fgrep='fgrep --color=auto'
+		alias egrep='egrep --color=auto'
+	fi
+
+	# some more ls aliases
+	alias ll='ls -alF'
+	alias la='ls -A'
+	alias l='ls -CF'
+
 	### PATH to local scripts
 	PATH_NEW=$HOME/.opt/bin
 	if [ -d "$PATH_NEW" ]; then
@@ -63,23 +80,6 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then # Linux
 	elif [[ "$(hostname)" == "nino" ]]; then
 		### Command prompt
 		export PS1='\[\e[0;36m\]\u@\h:\w\$ \[\e[m\]'
-
-		# enable color support of ls and also add handy aliases
-		if [ -x /usr/bin/dircolors ]; then
-			test -r $HOME/.dircolors.256 && eval "$(dircolors -b $HOME/.dircolors.256)" || eval "$(dircolors -b)"
-			alias ls='ls --color=auto'
-			alias dir='dir --color=auto'
-			alias vdir='vdir --color=auto'
-
-			alias grep='grep --color=auto'
-			alias fgrep='fgrep --color=auto'
-			alias egrep='egrep --color=auto'
-		fi
-
-		# some more ls aliases
-		alias ll='ls -alF'
-		alias la='ls -A'
-		alias l='ls -CF'
 
 		function compile-with-root {
 			local filename=$(basename "${@: -1}")
