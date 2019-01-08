@@ -57,7 +57,7 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then # Linux
 		### libevent libraries
 		LD_LIBRARY_PATH_NEW=$HOME/.opt/libevent/libevent-2.1.8-stable/lib
 		if [[ -d "$LD_LIBRARY_PATH_NEW" ]]; then
-			export LD_LIBRARY_PATH=${LD_LIBRARY_PATH:+$LD_LIBRARY_PATH:}
+			export LD_LIBRARY_PATH=$LD_LIBRARY_PATH_NEW${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}
 		fi
 
 	elif [[ "$(hostname)" == "nino" ]]; then
@@ -95,7 +95,7 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then # Linux
 		### libevent libraries
 		LD_LIBRARY_PATH_NEW=$HOME/.opt/libevent/libevent-2.1.8-stable/lib
 		if [[ -d "$LD_LIBRARY_PATH_NEW" ]]; then
-			export LD_LIBRARY_PATH=${LD_LIBRARY_PATH:+$LD_LIBRARY_PATH:}
+			export LD_LIBRARY_PATH=$LD_LIBRARY_PATH_NEW${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}
 		fi
 
 		### gvfs-trash command variables
