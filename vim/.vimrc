@@ -75,11 +75,11 @@ let g:airline_theme='minimalist'
 "let g:airline_solarized_bg='dark' # for 'solarized' airline_theme
 let g:tmuxline_powerline_separators = 0
 let g:tmuxline_separators = {
-    \ 'left' : '',
-    \ 'left_alt': '',
-    \ 'right' : '',
-    \ 'right_alt' : '',
-    \ 'space' : ' '}
+			\ 'left' : '',
+			\ 'left_alt': '',
+			\ 'right' : '',
+			\ 'right_alt' : '',
+			\ 'space' : ' '}
 
 " Start interactive EasyAlign in visual mode (e.g. vipga)
 xmap ga <Plug>(EasyAlign)
@@ -166,16 +166,16 @@ nnoremap <silent> <leader>l :wincmd l<CR>
 
 """ Function to create necessary parent directories upon file save """
 function! s:MkNonExDir(file, buf)
-    if empty(getbufvar(a:buf, '&buftype')) && a:file!~#'\v^\w+\:\/'
-        let dir=fnamemodify(a:file, ':h')
-        if !isdirectory(dir)
-            call mkdir(dir, 'p')
-        endif
-    endif
+	if empty(getbufvar(a:buf, '&buftype')) && a:file!~#'\v^\w+\:\/'
+		let dir=fnamemodify(a:file, ':h')
+		if !isdirectory(dir)
+			call mkdir(dir, 'p')
+		endif
+	endif
 endfunction
 augroup BWCCreateDir
-    autocmd!
-    autocmd BufWritePre * :call s:MkNonExDir(expand('<afile>'), +expand('<abuf>'))
+	autocmd!
+	autocmd BufWritePre * :call s:MkNonExDir(expand('<afile>'), +expand('<abuf>'))
 augroup END
 
 """ Call printer prompt at :print commant
