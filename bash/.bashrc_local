@@ -1,6 +1,8 @@
 ### User additions to .bashrc go in this file.
 #echo bashrc_local
 
+export EDITOR=vim
+
 # ls command
 alias ls='ls -Gh'
 
@@ -39,9 +41,11 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then # Linux
 	alias l='ls -CF'
 
 	### PATH to local scripts
-	PATH_NEW=$HOME/.opt/bin
-	if [ -d "$PATH_NEW" ]; then
-		export PATH=$PATH_NEW${PATH:+:$PATH}
+	if [[ -z "$TMUX" ]]; then
+		PATH_NEW=$HOME/.opt/bin
+		if [ -d "$PATH_NEW" ]; then
+			export PATH=$PATH_NEW${PATH:+:$PATH}
+		fi
 	fi
 
 	if [[ "$NERSC_HOST" == "pdsf"* ]]; then
