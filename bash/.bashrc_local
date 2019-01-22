@@ -1,14 +1,13 @@
 ### User additions to .bashrc go in this file.
+#echo bashrc_local
 
 # ls command
 alias ls='ls -Gh'
 
 # tmux related settings
 alias tmux='tmux -2' # Force tmux to assume the terminal supports 256 colours.
-if [[ -n "$TMUX" ]]; then
-	if [ -f "$HOME/.tmux.completion.bash" ]; then
-		source $HOME/.tmux.completion.bash
-	fi
+if [ -f "$HOME/.tmux.completion.bash" ]; then
+	source $HOME/.tmux.completion.bash
 fi
 
 ### bash tab-completion scripts
@@ -22,12 +21,27 @@ if [ -f "$HOME/.dircolors.256" ]; then
 fi
 
 if [[ "$OSTYPE" == "linux-gnu" ]]; then # Linux
+	# enable color support of ls and also add handy aliases
+	if [ -x /usr/bin/dircolors ]; then
+		test -r $HOME/.dircolors.256 && eval "$(dircolors -b $HOME/.dircolors.256)" || eval "$(dircolors -b)"
+		alias ls='ls --color=auto'
+		alias dir='dir --color=auto'
+		alias vdir='vdir --color=auto'
+
+		alias grep='grep --color=auto'
+		alias fgrep='fgrep --color=auto'
+		alias egrep='egrep --color=auto'
+	fi
+
+	# some more ls aliases
+	alias ll='ls -alF'
+	alias la='ls -A'
+	alias l='ls -CF'
+
 	### PATH to local scripts
-	if [[ -z "$TMUX" ]]; then
-		PATH_NEW=$HOME/.opt/bin
-		if [ -d "$PATH_NEW" ]; then
-			export PATH=$PATH_NEW${PATH:+:$PATH}
-		fi
+	PATH_NEW=$HOME/.opt/bin
+	if [ -d "$PATH_NEW" ]; then
+		export PATH=$PATH_NEW${PATH:+:$PATH}
 	fi
 
 	if [[ "$NERSC_HOST" == "pdsf"* ]]; then
@@ -69,23 +83,6 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then # Linux
 		### Command prompt
 		export PS1='\[\e[0;36m\]\u@\h:\w\$ \[\e[m\]'
 
-		# enable color support of ls and also add handy aliases
-		if [ -x /usr/bin/dircolors ]; then
-			test -r $HOME/.dircolors.256 && eval "$(dircolors -b $HOME/.dircolors.256)" || eval "$(dircolors -b)"
-			alias ls='ls --color=auto'
-			alias dir='dir --color=auto'
-			alias vdir='vdir --color=auto'
-
-			alias grep='grep --color=auto'
-			alias fgrep='fgrep --color=auto'
-			alias egrep='egrep --color=auto'
-		fi
-
-		# some more ls aliases
-		alias ll='ls -alF'
-		alias la='ls -A'
-		alias l='ls -CF'
-
 		function compile-with-root {
 			local filename=$(basename "${@: -1}")
 			local executable=${filename%.*}
@@ -106,9 +103,7 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then # Linux
 		fi
 
 		### gvfs-trash command variables
-		if [[ -z $TMUX ]]; then
-			export XDG_DATA_HOME=${XDG_DATA_HOME:="$HOME/.local/share"}
-		fi
+		export XDG_DATA_HOME=${XDG_DATA_HOME:="$HOME/.local/share"}
 		alias trash='gvfs-trash'
 	fi
 

@@ -64,7 +64,6 @@ let mapleader = ","
 set cindent
 "set tw=80
 set pastetoggle=<F4>
-"set autoindent
 "set nu
 set smarttab
 set complete-=i
@@ -76,11 +75,11 @@ let g:airline_theme='minimalist'
 "let g:airline_solarized_bg='dark' # for 'solarized' airline_theme
 let g:tmuxline_powerline_separators = 0
 let g:tmuxline_separators = {
-    \ 'left' : '',
-    \ 'left_alt': '',
-    \ 'right' : '',
-    \ 'right_alt' : '',
-    \ 'space' : ' '}
+			\ 'left' : '',
+			\ 'left_alt': '',
+			\ 'right' : '',
+			\ 'right_alt' : '',
+			\ 'space' : ' '}
 
 " Start interactive EasyAlign in visual mode (e.g. vipga)
 xmap ga <Plug>(EasyAlign)
@@ -92,11 +91,22 @@ nnoremap <F5> :GundoToggle<CR>
 
 "tab settings
 "set tabstop=2 softtabstop=2 shiftwidth=2 expandtab "default tab setting
+"set tabstop=2 softtabstop=2 shiftwidth=2 noexpandtab "default tab setting
 set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab "default tab setting
+"set tabstop=4 softtabstop=4 shiftwidth=4 expandtab "default tab setting
 noremap <leader>T :set tabstop=4 softtabstop=4 shiftwidth=4<CR>
 noremap <leader>t :set tabstop=2 softtabstop=2 shiftwidth=2<CR>
 noremap <leader>e :set expandtab<CR>
 noremap <leader>E :set noexpandtab<CR>
+
+" Python file indentation commands
+augroup python_files
+autocmd!
+autocmd FileType python setlocal noexpandtab
+autocmd FileType python set tabstop=4
+autocmd FileType python set shiftwidth=4
+augroup END
+
 set cino+=N-s
 set cino+=(0 "Indent align for function variables on more than one line.
 set cino+=:0 "Indent 0 for switch case labes.
@@ -156,16 +166,16 @@ nnoremap <silent> <leader>l :wincmd l<CR>
 
 """ Function to create necessary parent directories upon file save """
 function! s:MkNonExDir(file, buf)
-    if empty(getbufvar(a:buf, '&buftype')) && a:file!~#'\v^\w+\:\/'
-        let dir=fnamemodify(a:file, ':h')
-        if !isdirectory(dir)
-            call mkdir(dir, 'p')
-        endif
-    endif
+	if empty(getbufvar(a:buf, '&buftype')) && a:file!~#'\v^\w+\:\/'
+		let dir=fnamemodify(a:file, ':h')
+		if !isdirectory(dir)
+			call mkdir(dir, 'p')
+		endif
+	endif
 endfunction
 augroup BWCCreateDir
-    autocmd!
-    autocmd BufWritePre * :call s:MkNonExDir(expand('<afile>'), +expand('<abuf>'))
+	autocmd!
+	autocmd BufWritePre * :call s:MkNonExDir(expand('<afile>'), +expand('<abuf>'))
 augroup END
 
 """ Call printer prompt at :print commant
@@ -228,3 +238,5 @@ highlight DiffText cterm=none ctermfg=White ctermbg=DarkRed
 "highlight DiffDelete cterm=none ctermbg=DarkGray
 "highlight DiffChange cterm=none ctermfg=White ctermbg=DarkGray
 "highlight DiffText cterm=bold ctermfg=White ctermbg=DarkRed
+
+cnoremap w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
