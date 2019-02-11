@@ -107,4 +107,10 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then # MacOS
 	### Colored terminal settings ###
 	export CLICOLOR=1
 	export LSCOLORS=GxFxCxDxBxegedabagaced
+
+	### PATH to local scripts
+	PATH_NEW=$HOME/.opt/bin
+	if [ -d "$PATH_NEW" ]; then
+		export PATH=$PATH_NEW${PATH:+:$PATH}
+	fi
 fi
