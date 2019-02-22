@@ -12,11 +12,6 @@ if [ -f "$HOME/.tmux.completion.bash" ]; then
 	source $HOME/.tmux.completion.bash
 fi
 
-### bash tab-completion scripts
-if [ -f "$HOME/.git-completion.bash" ]; then
-	source $HOME/.git-completion.bash
-fi
-
 ### ls colors
 if [ -f "$HOME/.dircolors.256" ]; then
 	eval "$(dircolors $HOME/.dircolors.256)"
@@ -46,6 +41,11 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then # Linux
 		if [ -d "$PATH_NEW" ]; then
 			export PATH=$PATH_NEW${PATH:+:$PATH}
 		fi
+	fi
+
+	### bash tab-completion scripts
+	if [ -f "$HOME/.git-completion.bash" ]; then
+		source $HOME/.git-completion.bash
 	fi
 
 	if [[ "$NERSC_HOST" == "pdsf"* ]]; then
@@ -112,9 +112,18 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then # Linux
 	fi
 
 elif [[ "$OSTYPE" == "darwin"* ]]; then # MacOS
+	### Command prompt
+	export PS1='\u@\h:\w\$ '
+
+	### Matplotlib
+	export MATPLOTLIBRC=$HOME/.config/matplotlib
+
 	### Colored terminal settings ###
 	export CLICOLOR=1
 	export LSCOLORS=GxFxCxDxBxegedabagaced
+
+	### bash tab-completion scripts
+	[[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
 
 	### PATH to local scripts
 	PATH_NEW=$HOME/.opt/bin
