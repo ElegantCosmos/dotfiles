@@ -39,7 +39,7 @@
 # If you omit this parameter, it will always default to "Agg", which is a
 # non-interactive backend.
 #backend      : qt5agg
-backend      : MacOSX
+#backend      : MacOSX
 
 # Note that this can be overridden by the environment variable
 # QT_API used by Enthought Tool Suite (ETS); valid values are
@@ -342,10 +342,10 @@ axes.labelpad       : 2.5     # space between label and axis
 #axes.autolimit_mode : data # How to scale axes limits to the data.
                             # Use "data" to use data limits, plus some margin
                             # Use "round_number" move to the nearest "round" number
-#axes.xmargin        : .05  # x margin.  See `axes.Axes.margins`
-axes.xmargin        : .00  # x margin.  See `axes.Axes.margins`
-#axes.ymargin        : .05  # y margin See `axes.Axes.margins`
-axes.ymargin        : .10  # y margin See `axes.Axes.margins`
+axes.xmargin        : .05  # x margin.  See `axes.Axes.margins`
+#axes.xmargin        : .00  # x margin.  See `axes.Axes.margins`
+axes.ymargin        : .05  # y margin See `axes.Axes.margins`
+#axes.ymargin        : .10  # y margin See `axes.Axes.margins`
 
 #polaraxes.grid      : True    # display grid on polar axes
 #axes3d.grid         : True    # display grid on 3d axes
@@ -423,7 +423,9 @@ ytick.direction      : out    # direction: in, out, or inout
 #grid.color       :   b0b0b0    # grid color
 #grid.linestyle   :   -         # solid
 #grid.linewidth   :   0.8       # in points
+grid.linewidth   :   0.5       # in points
 #grid.alpha       :   1.0       # transparency, between 0.0 and 1.0
+grid.alpha       :   0.5       # transparency, between 0.0 and 1.0
 
 ### Legend
 #legend.loc           : best
@@ -438,7 +440,7 @@ ytick.direction      : out    # direction: in, out, or inout
 #legend.scatterpoints : 1        # number of scatter points
 #legend.markerscale   : 1.0      # the relative size of legend markers vs. original
 #legend.fontsize      : medium
-legend.fontsize      : 3
+legend.fontsize      : 5
 # Dimensions as fraction of fontsize:
 #legend.borderpad     : 0.4      # border whitespace
 #legend.labelspacing  : 0.5      # the vertical space between the legend entries
