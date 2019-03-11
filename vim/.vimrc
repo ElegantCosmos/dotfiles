@@ -71,6 +71,8 @@ set backspace=indent,eol,start
 set nojoinspaces
 set laststatus=2
 set formatoptions=cqt
+"set shellcmdflag=ic
+set shell=bash\ -l
 let g:airline_theme='minimalist'
 "let g:airline_solarized_bg='dark' # for 'solarized' airline_theme
 let g:tmuxline_powerline_separators = 0
@@ -112,8 +114,17 @@ set cino+=(0 "Indent align for function variables on more than one line.
 set cino+=:0 "Indent 0 for switch case labes.
 set cino+=g0 "Indent 0 for scope declaration of class members.
 
-"make
+
+""" Shortcuts for compilation and execution
 noremap <leader>m :!make<CR>
+noremap <leader>x :!source setup.sh; python3 %<CR>
+noremap <leader>xx :!source setup.sh; python3 %; openlatest<CR>
+noremap <leader>x1 :!source setup.sh; python3 %; openlatest 1<CR>
+noremap <leader>x2 :!source setup.sh; python3 %; openlatest 2<CR>
+noremap <leader>x3 :!source setup.sh; python3 %; openlatest 3<CR>
+noremap <leader>x4 :!source setup.sh; python3 %; openlatest 4<CR>
+noremap <leader>x5 :!source setup.sh; python3 %; openlatest 5<CR>
+
 
 """"""fortran
 "set tabstop=6 softtabstop=6 shiftwidth=6 expandtab
