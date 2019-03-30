@@ -90,12 +90,12 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then # Linux
 		function compile-with-root {
 			local filename=$(basename "${@: -1}")
 			local executable=${filename%.*}
-			g++ -std=c++11 -Wall -Wextra -pedantic -o ${executable} $(root-config --cflags) "$@" $(root-config --libs)
+			g++ -std=c++11 -O2 -Wall -Wextra -pedantic -o ${executable} $(root-config --cflags) "$@" $(root-config --libs)
 		}
 		function compile-with-rat {
 			local filename=$(basename "${@: -1}")
 			local executable=${filename%.*}
-			g++ -std=c++11 -Wall -Wextra -pedantic -o ${executable} -I${RATROOT}/include $(root-config --cflags) "$@" -L${RATROOT}/lib -lRATEvent $(root-config --libs)
+			g++ -std=c++11 -O2 -Wall -Wextra -pedantic -o ${executable} -I${RATROOT}/include $(root-config --cflags) "$@" -L${RATROOT}/lib -lRATEvent $(root-config --libs)
 		}
 
 		### libevent libraries
