@@ -22,8 +22,8 @@ void SaveOpen(const std::string file = "plot.pdf", int nFiles = 1) // Draw and c
 	const std::string file_C = file_base + ".C";
 	gPad->SaveAs(file_C.c_str()); // save plot as script
 
-	const std::string file_ROOT = file_base + ".root";
-	gPad->SaveAs(file_ROOT.c_str()); // save plot in ROOT file
+	//const std::string file_ROOT = file_base + ".root";
+	//gPad->SaveAs(file_ROOT.c_str()); // save plot in ROOT file
 
 	// Open PDF plots locally.
 	assert(nFiles > 0);
