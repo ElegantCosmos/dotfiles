@@ -245,6 +245,7 @@ text.usetex         : True  # use latex for all text handling. The following fon
                             # beware of package collisions: color, geometry, graphicx,
                             # type1cm, textcomp. Adobe Postscript (PSSNFS) font packages
                             # may also be loaded, depending on your font settings
+text.latex.preamble : \usepackage{siunitx}
 #text.hinting : auto   # May be one of the following:
                        #   'none': Perform no hinting
                        #   'auto': Use FreeType's autohinter
@@ -307,7 +308,7 @@ axes.labelpad       : 2.5     # space between label and axis
                                # patches (True); above patches but below
                                # lines ('line'); or above all (False)
 
-#axes.formatter.limits : -7, 7 # use scientific notation if log10
+axes.formatter.limits : -3, 3 # use scientific notation if log10
                                # of the axis range is smaller than the
                                # first or larger than the second
 #axes.formatter.use_locale : False # When True, format tick labels
@@ -440,7 +441,7 @@ grid.alpha       :   0.5       # transparency, between 0.0 and 1.0
 #legend.scatterpoints : 1        # number of scatter points
 #legend.markerscale   : 1.0      # the relative size of legend markers vs. original
 #legend.fontsize      : medium
-legend.fontsize      : 5
+legend.fontsize      : 4
 # Dimensions as fraction of fontsize:
 #legend.borderpad     : 0.4      # border whitespace
 #legend.labelspacing  : 0.5      # the vertical space between the legend entries
