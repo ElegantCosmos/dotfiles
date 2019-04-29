@@ -138,4 +138,10 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then # MacOS
 	if [ -d "$PATH_NEW" ]; then
 		export PATH=$PATH_NEW${PATH:+:$PATH}
 	fi
+
+	### Source thisroot.sh if exists
+	THIS_ROOT=/usr/local/bin/thisroot.sh
+	if [ -f "$THIS_ROOT" ]; then
+		source "$THIS_ROOT"
+	fi
 fi
