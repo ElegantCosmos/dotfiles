@@ -1,9 +1,9 @@
-#!/bin/sh
+#!/bin/bash
 
-nargs=$(($#-1))
-if (( nargs == 0 )); then
+N_ARGS=$#
+if [ $N_ARGS -le 1 ]; then
 	echo "Must have more than one argument. One specifying the resulting pdf file, and at least one more to specify the pdf files to be combined."
 	exit
 fi
 
-gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -sOutputFile=${@: -1} ${@:1:$nargs}
+gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -sOutputFile=${@: -1} ${@:1:$(($N_ARGS - 1))}

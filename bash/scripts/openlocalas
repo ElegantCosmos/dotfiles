@@ -1,0 +1,27 @@
+#!/bin/bash
+
+OUTPUT_DIR=/tmp
+
+N_ARGS=$#
+
+if [ $N_ARGS -lt 1 ]; then
+	echo Must provide at least 1 file argument to scp to local.
+	exit
+fi
+
+for ARG_LAST in $@; do :; done
+FILE=$(basename $ARG_LAST) # strip path
+if [ $N_ARGS -gt 2 ]; then
+	combinepdfs $@
+	scplocal "$ARG_LAST"
+	ssh michsakai@localhost -p 33333 'open '"${OUTPUT_DIR}"'/'"${FILE}"''
+elif [ $N_ARGS -ge 2 ]; then
+	cp "$1" "$ARG_LAST"
+	scplocal "$ARG_LAST"
+	ssh michsakai@localhost -p 33333 'open '"${OUTPUT_DIR}"'/'"${FILE}"''
+else
+	scplocal "$ARG_LAST"
+	ssh michsakai@localhost -p 33333 'open '"${OUTPUT_DIR}"'/'"${FILE}"''
+fi
+
+exit
