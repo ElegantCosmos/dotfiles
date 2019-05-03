@@ -242,9 +242,9 @@ colorscheme desert
 highlight Normal cterm=none ctermbg=none
 highlight Search cterm=bold ctermfg=White ctermbg=DarkMagenta
 highlight DiffAdd cterm=none ctermfg=White ctermbg=LightBlue
-highlight DiffDelete cterm=none ctermfg=White ctermbg=LightBlue
-highlight DiffChange cterm=none ctermfg=White ctermbg=Magenta
-highlight DiffText cterm=none ctermfg=White ctermbg=DarkRed
+highlight DiffDelete cterm=none ctermfg=White ctermbg=Blue
+highlight DiffChange cterm=none ctermfg=White ctermbg=DarkRed
+highlight DiffText cterm=none ctermfg=White ctermbg=Red
 "highlight DiffAdd cterm=none ctermbg=LightBlue
 "highlight DiffDelete cterm=none ctermbg=DarkGray
 "highlight DiffChange cterm=none ctermfg=White ctermbg=DarkGray
