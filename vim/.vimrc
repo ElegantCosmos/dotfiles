@@ -75,7 +75,7 @@ set formatoptions=cqt
 set shell=bash\ -l
 let g:airline_theme='tender'
 "let g:airline_theme='minimalist'
-"let g:airline_solarized_bg='dark' # for 'solarized' airline_theme
+"let g:airline_solarized_bg='dark' " for 'solarized' airline_theme
 let g:tmuxline_powerline_separators = 0
 let g:tmuxline_separators = {
 			\ 'left' : '',
@@ -239,24 +239,24 @@ endfunction
 """ Color scheme
 "set background=dark
 "colorscheme default
-"colorscheme desert
+colorscheme desert
 
-""" Tender color scheme
-" If you have vim >=8.0 or Neovim >= 0.1.5
-if (has("termguicolors"))
-	set termguicolors
-endif
-
-" For Neovim 0.1.3 and 0.1.4
-let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-
+"""" Tender color scheme
+"" If you have vim >=8.0 or Neovim >= 0.1.5
+"if (has("termguicolors"))
+"	set termguicolors
+"endif
+"
+"" For Neovim 0.1.3 and 0.1.4
+"let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+"
 " Theme
 syntax enable
 colorscheme tender
 
 """ Transparent background.
 highlight Normal cterm=none ctermbg=none
-highlight Search cterm=bold ctermfg=White ctermbg=DarkMagenta
+highlight Search cterm=bold ctermfg=White ctermbg=Yellow
 highlight DiffAdd cterm=none ctermfg=White ctermbg=LightBlue
 highlight DiffDelete cterm=none ctermfg=White ctermbg=DarkGray
 highlight DiffChange cterm=none ctermfg=White ctermbg=DarkYellow
@@ -265,5 +265,8 @@ highlight DiffText cterm=bold ctermfg=White ctermbg=Red
 "highlight DiffDelete cterm=none ctermbg=DarkGray
 "highlight DiffChange cterm=none ctermfg=White ctermbg=DarkGray
 "highlight DiffText cterm=bold ctermfg=White ctermbg=DarkRed
+
+""" Selection highlight color
+hi Visual  term=reverse cterm=reverse gui=none
 
 cnoremap w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
