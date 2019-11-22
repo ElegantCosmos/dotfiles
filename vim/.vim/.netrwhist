@@ -1,5 +1,5 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =7
+let g:netrw_dirhist_cnt =8
 let g:netrw_dirhist_1='/mnt/datadisk/work/kamland/dissertation/phd_thesis/kamland/detector_calibration_and_event_reconstruction'
 let g:netrw_dirhist_2='/mnt/datadisk/work/kamland/dissertation/phd_thesis/kamland'
 let g:netrw_dirhist_3='/mnt/datadisk/work/kamland/dissertation/phd_thesis/kamland/figures'
@@ -7,3 +7,4 @@ let g:netrw_dirhist_4='/mnt/datadisk/work/kamland/dissertation/phd_thesis/kamlan
 let g:netrw_dirhist_5='/Users/mich/.config'
 let g:netrw_dirhist_6='/data/snoplus/home/michsakai/.opt/rat/rat_miniclean-fromChrisBenson-Geant4.9.5.p01-OpenGL'
 let g:netrw_dirhist_7='/Users/michsakai/.config'
+let g:netrw_dirhist_8='/data/snoplus/home/michsakai/data/work/topics/vuv/simulations/VUV_simulation-beam_profile_systematics/VUV_simulation/simulation_analysis_code'

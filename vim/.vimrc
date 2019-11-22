@@ -240,10 +240,15 @@ endfunction
 "set background=dark
 "colorscheme default
 "colorscheme desert
+
+""" Tender color scheme
 " If you have vim >=8.0 or Neovim >= 0.1.5
 if (has("termguicolors"))
 	set termguicolors
 endif
+
+" For Neovim 0.1.3 and 0.1.4
+let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 
 " Theme
 syntax enable
@@ -253,9 +258,9 @@ colorscheme tender
 highlight Normal cterm=none ctermbg=none
 highlight Search cterm=bold ctermfg=White ctermbg=DarkMagenta
 highlight DiffAdd cterm=none ctermfg=White ctermbg=LightBlue
-highlight DiffDelete cterm=none ctermfg=White ctermbg=Blue
-highlight DiffChange cterm=none ctermfg=White ctermbg=DarkRed
-highlight DiffText cterm=none ctermfg=White ctermbg=Red
+highlight DiffDelete cterm=none ctermfg=White ctermbg=DarkGray
+highlight DiffChange cterm=none ctermfg=White ctermbg=DarkYellow
+highlight DiffText cterm=bold ctermfg=White ctermbg=Red
 "highlight DiffAdd cterm=none ctermbg=LightBlue
 "highlight DiffDelete cterm=none ctermbg=DarkGray
 "highlight DiffChange cterm=none ctermfg=White ctermbg=DarkGray
