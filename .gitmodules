@@ -42,6 +42,9 @@
 [submodule "vim/.vim/bundle/tmuxline.vim"]
 	path = vim/.vim/bundle/tmuxline.vim
 	url = git@github.com:edkolev/tmuxline.vim.git
+[submodule "vim/.vim/bundle/tender.vim"]
+	path = vim/.vim/bundle/tender.vim
+	url = git@github.com:jacoborus/tender.vim.git
 
 ### TMux
 [submodule "tmux/.tmux/plugins/tpm"]

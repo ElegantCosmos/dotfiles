@@ -73,7 +73,8 @@ set laststatus=2
 set formatoptions=cqt
 "set shellcmdflag=ic
 set shell=bash\ -l
-let g:airline_theme='minimalist'
+let g:airline_theme='tender'
+"let g:airline_theme='minimalist'
 "let g:airline_solarized_bg='dark' # for 'solarized' airline_theme
 let g:tmuxline_powerline_separators = 0
 let g:tmuxline_separators = {
@@ -235,9 +236,19 @@ function s:MaybeMiddle()
 	endif
 endfunction
 
+""" Color scheme
 "set background=dark
 "colorscheme default
-colorscheme desert
+"colorscheme desert
+" If you have vim >=8.0 or Neovim >= 0.1.5
+if (has("termguicolors"))
+	set termguicolors
+endif
+
+" Theme
+syntax enable
+colorscheme tender
+
 """ Transparent background.
 highlight Normal cterm=none ctermbg=none
 highlight Search cterm=bold ctermfg=White ctermbg=DarkMagenta
