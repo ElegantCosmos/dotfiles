@@ -256,7 +256,7 @@ colorscheme tender
 
 """ Transparent background.
 highlight Normal cterm=none ctermbg=none
-highlight Search cterm=bold ctermfg=White ctermbg=Yellow
+highlight Search cterm=bold ctermfg=White ctermbg=Magenta
 highlight DiffAdd cterm=none ctermfg=White ctermbg=LightBlue
 highlight DiffDelete cterm=none ctermfg=White ctermbg=DarkGray
 highlight DiffChange cterm=none ctermfg=White ctermbg=DarkYellow
