@@ -1,6 +1,10 @@
 {
 	gROOT->SetStyle("Modern");
 
+	TGaxis::SetMaxDigits(3);
+
+	//// Constants
+
 	// Get window manager decoration height and width
 	TCanvas* canvas_tmp = new TCanvas("canvas_tmp", "canvas_tmp", 500, 500);
 	unsigned int decorationWidth = 500 - canvas_tmp->GetWw();
@@ -13,9 +17,9 @@
 	int ppi = 227; // pixels per inch
 	double goldenRatio = 0.5*(1 + sqrt(5));
 
-	Int_t font = 133; // Time New Roman (size specified in pixels)
-	Double_t fontSize_pt = 9; // default font size
-	Double_t fontSize_small_pt = 4; // small font size
+	int font = 133; // Time New Roman (size specified in pixels)
+	double fontSize_pt = 9; // default font size
+	double fontSize_small_pt = 4; // small font size
 	double ptToInch = 3.0/8.0/27;
 	double fontSize_px = ppi*ptToInch*fontSize_pt;
 	double fontSize_small_px = ppi*ptToInch*fontSize_small_pt;
@@ -31,8 +35,13 @@
 	int canvasHeight_px = int(ppi*canvasHeight_in + 0.5);
 	//cout << "canvasHeight_px" << canvasHeight_px << endl;
 
-	//// Canvas properties.
-	TStyle * paper_doubleColumn= new TStyle("paper_doubleColumn","Double Column Paper");
+	double margin = 0.15; // common pad margin
+	double margin_small = 0.6*margin;
+
+	//// Plotting styles
+
+	//// Style compatible with new ROOT 6
+	TStyle* paper_doubleColumn= new TStyle("paper_doubleColumn","Double Column Paper");
 	paper_doubleColumn->SetFrameBorderMode(0);
 	paper_doubleColumn->SetFrameBorderSize(0);
 	paper_doubleColumn->SetFrameFillStyle(0);
@@ -47,8 +56,6 @@
 	paper_doubleColumn->SetPadBorderMode(0);
 	paper_doubleColumn->SetPadBorderSize(0);
 	paper_doubleColumn->SetPadColor(kWhite);
-	Double_t margin = 0.15; // common pad margin
-	double margin_small = 0.6*margin;
 	//paper_doubleColumn->SetPadTopMargin(margin_small);
 	paper_doubleColumn->SetPadTopMargin(margin);
 	paper_doubleColumn->SetPadBottomMargin(margin);
@@ -60,8 +67,9 @@
 	paper_doubleColumn->SetCanvasDefW(canvasWidth_px + decorationWidth); // (canvas width + 2 px) = window width)
 	//paper_doubleColumn->SetCanvasDefW(500); // (canvas width + 2 px) = window width)
 
-	paper_doubleColumn->SetOptTitle(0);
+	//paper_doubleColumn->SetOptTitle(0);
 	paper_doubleColumn->SetTitleFillColor(0);
+	paper_doubleColumn->SetTitleBorderSize(0);
 	paper_doubleColumn->SetTitleFont(font, "t"); // doesn't work in current ROOT 5.34/23
 	paper_doubleColumn->SetTitleSize(fontSize_px, "t"); // doesn't work in current ROOT 5.34/23
 
@@ -98,7 +106,74 @@
 	paper_doubleColumn->SetLegendFillColor(0);
 	paper_doubleColumn->SetLegendFont(font);
 
-	TGaxis::SetMaxDigits(3);
+	//// Style compatible with ROOT 5.34/07 on Nino because it does not have some of the newer(?) features
+	TStyle* paper_doubleColumn_nino = new TStyle("paper_doubleColumn_nino", "paper_doubleColumn_nino");
+	paper_doubleColumn_nino->SetFrameBorderMode(0);
+	paper_doubleColumn_nino->SetFrameBorderSize(0);
+	paper_doubleColumn_nino->SetFrameFillStyle(0);
+	paper_doubleColumn_nino->SetFrameFillColor(kWhite);
+	//paper_doubleColumn_nino->SetHistFillStyle(0);
+	//paper_doubleColumn_nino->SetHistFillColor(kWhite);
+	paper_doubleColumn_nino->SetFillStyle(0);
+	paper_doubleColumn_nino->SetFillColor(kWhite);
+	paper_doubleColumn_nino->SetCanvasBorderMode(0);
+	paper_doubleColumn_nino->SetCanvasBorderSize(0);
+	paper_doubleColumn_nino->SetCanvasColor(kWhite);
+	paper_doubleColumn_nino->SetPadBorderMode(0);
+	paper_doubleColumn_nino->SetPadBorderSize(0);
+	paper_doubleColumn_nino->SetPadColor(kWhite);
+	//paper_doubleColumn_nino->SetPadTopMargin(margin_small);
+	paper_doubleColumn_nino->SetPadTopMargin(margin);
+	paper_doubleColumn_nino->SetPadBottomMargin(margin);
+	//paper_doubleColumn_nino->SetPadRightMargin(margin_small);
+	paper_doubleColumn_nino->SetPadRightMargin(margin);
+	paper_doubleColumn_nino->SetPadLeftMargin(margin);
+	paper_doubleColumn_nino->SetCanvasDefH(canvasHeight_px + decorationHeight); // (canvas height + 25 px) = window height)
+	//paper_doubleColumn_nino->SetCanvasDefH(500); // (canvas height + 25 px) = window height)
+	paper_doubleColumn_nino->SetCanvasDefW(canvasWidth_px + decorationWidth); // (canvas width + 2 px) = window width)
+	//paper_doubleColumn_nino->SetCanvasDefW(500); // (canvas width + 2 px) = window width)
+
+	//paper_doubleColumn_nino->SetOptTitle(0);
+	paper_doubleColumn_nino->SetTitleFillColor(0);
+	paper_doubleColumn_nino->SetTitleBorderSize(0);
+	////paper_doubleColumn_nino->SetTitleFont(font, "t"); // doesn't work in current ROOT 5.34/23
+	//paper_doubleColumn_nino->SetTitleSize(fontSize_px, "t"); // doesn't work in current ROOT 5.34/23
+
+	//paper_doubleColumn_nino->SetTitleFont(font, "xyz");
+	//paper_doubleColumn_nino->SetTitleSize(fontSize_px, "xyz");
+	//paper_doubleColumn_nino->SetTitleOffset(1.15, "x");
+	//paper_doubleColumn_nino->SetTitleOffset(1.29, "y");
+	////paper_doubleColumn_nino->SetTitleOffset(-0.35, "z"); // doesn't work in current ROOT 5.34/23
+
+	//paper_doubleColumn_nino->SetLabelFont(font, "xyz");
+	//paper_doubleColumn_nino->SetLabelSize(fontSize_px, "xyz");
+	//paper_doubleColumn_nino->SetLabelOffset(0.015, "x");
+	//paper_doubleColumn_nino->SetLabelOffset(0.015, "y");
+	//paper_doubleColumn_nino->SetLabelOffset(0.015, "z");
+
+	//paper_doubleColumn_nino->SetOptStat("emrou");
+	//paper_doubleColumn_nino->SetStatBorderSize(1);
+	//paper_doubleColumn_nino->SetStatColor(kWhite);
+	//paper_doubleColumn_nino->SetStatFont(font);
+	//paper_doubleColumn_nino->SetStatFontSize(fontSize_small_px);
+	//paper_doubleColumn_nino->SetStatY(1 - margin_small);
+	//paper_doubleColumn_nino->SetStatX(1 - margin_small);
+	//paper_doubleColumn_nino->SetStatW(0.2);
+	//paper_doubleColumn_nino->SetStatH(0.1);
+
+	////paper_doubleColumn_nino->SetNdivisions(10, "xyz");
+	//paper_doubleColumn_nino->SetNdivisions(510, "xyz"); // show sub-ticks
+	//paper_doubleColumn_nino->SetTickLength(-10.0/canvasHeight_px, "x");
+	//paper_doubleColumn_nino->SetTickLength(-10.0/canvasWidth_px, "y");
+	//paper_doubleColumn_nino->SetTickLength(-10.0/canvasWidth_px, "z");
+
+	// Legend.
+	paper_doubleColumn_nino->SetLegendBorderSize(1);
+	paper_doubleColumn_nino->SetLegendFillColor(0);
+	//paper_doubleColumn_nino->SetLegendFont(font);
+
+
+
 
 	//// Example of how to make palette axis neat
 	//TH2F hist2("hist2", "hist2", 100, 0, 10000, 100, 0, 10000);
@@ -116,6 +191,4 @@
 	////pa->GetAxis()->SetTitle("Titlegy [unit]");
     //hist2.GetZaxis()->SetTitle("Titlegy [unit]");
     //hist2.GetZaxis()->SetTitleOffset(-0.3);
-
-	gROOT->SetStyle("paper_doubleColumn");
 }
