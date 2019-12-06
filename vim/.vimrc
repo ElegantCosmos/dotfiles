@@ -133,19 +133,8 @@ noremap <leader>x5 :!source setup.sh; python3 %; openlatest 5<CR>
 """"""bash script
 "set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
 
-""" fold method
-set foldmethod=indent
-set foldopen-=search "Do not open fold during search
-highlight Folded ctermbg=Black
-au BufRead * normal zR
-
 """"""mapping
 map! jk <Esc>
-
-"let g:indent_guides_auto_colors = 0
-"highlight IndentGuidesOdd ctermbg=none
-"highlight IndentGuidesEven ctermbg=Black
-"highlight IndentGuidesEven ctermbg=White
 
 " Go to tab by number.
 noremap <leader>1 1gt
@@ -239,7 +228,7 @@ endfunction
 """ Color scheme
 "set background=dark
 "colorscheme default
-colorscheme desert
+"colorscheme desert
 
 """" Tender color scheme
 "" If you have vim >=8.0 or Neovim >= 0.1.5
@@ -254,19 +243,43 @@ colorscheme desert
 syntax enable
 colorscheme tender
 
+""" Highlighting for spelling
+highlight clear SpellBad
+highlight SpellBad cterm=underline ctermfg=Red
+highlight SpellRare cterm=underline
+highlight SpellCap cterm=underline
+highlight SpellLocal cterm=underline
+highlight SpellBad gui=undercurl " Set style for gVim
+
 """ Transparent background.
 highlight Normal cterm=none ctermbg=none
 highlight Search cterm=bold ctermfg=White ctermbg=Magenta
-highlight DiffAdd cterm=none ctermfg=White ctermbg=LightBlue
+highlight DiffAdd cterm=none ctermfg=White ctermbg=LightGreen
 highlight DiffDelete cterm=none ctermfg=White ctermbg=DarkGray
-highlight DiffChange cterm=none ctermfg=White ctermbg=DarkYellow
+highlight DiffChange cterm=none ctermfg=White ctermbg=LightRed
 highlight DiffText cterm=bold ctermfg=White ctermbg=Red
 "highlight DiffAdd cterm=none ctermbg=LightBlue
 "highlight DiffDelete cterm=none ctermbg=DarkGray
 "highlight DiffChange cterm=none ctermfg=White ctermbg=DarkGray
 "highlight DiffText cterm=bold ctermfg=White ctermbg=DarkRed
 
+""" Indent guides
+let g:indent_guides_auto_colors = 0
+let g:indent_guides_enable_on_vim_startup=1
+"let g:indent_guides_start_level = 2
+"let g:indent_guides_guide_size = 1
+"highlight IndentGuidesEven ctermbg=238
+"highlight IndentGuidesOdd ctermbg=236
+highlight IndentGuidesEven ctermbg=DarkGray
+highlight IndentGuidesOdd ctermbg=None
+
 """ Selection highlight color
 hi Visual  term=reverse cterm=reverse gui=none
+
+""" fold method
+set foldmethod=indent
+set foldopen-=search "Do not open fold during search
+highlight Folded ctermbg=Black
+au BufRead * normal zR
 
 cnoremap w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
