@@ -120,7 +120,7 @@ if [[ "$OSTYPE" == "linux"* ]]; then # Linux
 
 		### gvfs-trash command variables
 		export XDG_DATA_HOME=${XDG_DATA_HOME:="$HOME/.local/share"}
-		alias trash='gio trash'
+		alias trash='gvfs-trash'
 	fi
 
 elif [[ "$OSTYPE" == "darwin"* ]]; then # MacOS
