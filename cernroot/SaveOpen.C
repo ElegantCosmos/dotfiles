@@ -9,18 +9,16 @@ void SaveOpen(const std::string file = "plot.pdf", int nFiles = 1) // Draw and c
 	std::string file_base;
 	{
 		size_t dotPos = file.find_last_of(".");
-		std::string file_base = file.substr(0, dotPos);
+		file_base = file.substr(0, dotPos);
 		const std::string plotStr = "plot";
 		if (file_base.substr(file_base.length() - plotStr.length(), plotStr.length()) != plotStr) {
 			file_base += std::string("_") + plotStr;
 		}
 	}
 
-	std::cout << "file_base" << file_base << ";" << std::endl;
 	const std::string file_pdf = file_base + ".pdf";
 	gPad->SaveAs(file_pdf.c_str()); // save plot as PDF
 
-	std::cout << "file_base" << file_base << ";" << std::endl;
 	const std::string file_C = file_base + ".C";
 	gPad->SaveAs(file_C.c_str()); // save plot as script
 
