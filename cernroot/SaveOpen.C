@@ -16,9 +16,11 @@ void SaveOpen(const std::string file = "plot.pdf", int nFiles = 1) // Draw and c
 		}
 	}
 
+	std::cout << "file_base" << file_base << ";" << std::endl;
 	const std::string file_pdf = file_base + ".pdf";
 	gPad->SaveAs(file_pdf.c_str()); // save plot as PDF
 
+	std::cout << "file_base" << file_base << ";" << std::endl;
 	const std::string file_C = file_base + ".C";
 	gPad->SaveAs(file_C.c_str()); // save plot as script
 

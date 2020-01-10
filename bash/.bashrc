@@ -72,6 +72,8 @@ if [[ "$OSTYPE" == "linux"* ]]; then # Linux
 		module load vim
 		module load cmake
 		module load git
+		module load python3/3.7-anaconda-2019.07
+		module load root/6.18.00-py3
 
 		#if [[ "$NERSC_HOST" == "cori"* ]]; then
 		#	LD_LIBRARY_PATH_NEW=$HOME/.opt/openssl/openssl-1.1.1/lib # libraries needed specifically for tmux
