@@ -1,7 +1,7 @@
 {
 	gROOT->SetStyle("Modern");
 
-	TGaxis::SetMaxDigits(3);
+	TGaxis::SetMaxDigits(4);
 
 	//// Constants
 
@@ -18,7 +18,7 @@
 	double goldenRatio = 0.5*(1 + sqrt(5));
 
 	int font = 133; // Time New Roman (size specified in pixels)
-	double fontSize_pt = 9; // default font size
+	double fontSize_pt = 8; // default font size
 	double fontSize_small_pt = 4; // small font size
 	double ptToInch = 3.0/8.0/27;
 	double fontSize_px = ppi*ptToInch*fontSize_pt;
@@ -35,7 +35,7 @@
 	int canvasHeight_px = int(ppi*canvasHeight_in + 0.5);
 	//cout << "canvasHeight_px" << canvasHeight_px << endl;
 
-	double margin = 0.12; // common pad margin
+	double margin = 0.13; // common pad margin
 	double margin_small = 0.6*margin;
 
 	//// Plotting styles
@@ -79,8 +79,8 @@
 
 	paper_doubleColumn->SetTitleFont(font, "xyz");
 	paper_doubleColumn->SetTitleSize(fontSize_px, "xyz");
-	paper_doubleColumn->SetTitleOffset(0.98, "x");
-	paper_doubleColumn->SetTitleOffset(1.00, "y");
+	paper_doubleColumn->SetTitleOffset(1.09, "x");
+	paper_doubleColumn->SetTitleOffset(1.25, "y");
 	paper_doubleColumn->SetTitleOffset(-0.35, "z"); // doesn't work in current ROOT 5.34/23
 
 	paper_doubleColumn->SetLabelFont(font, "xyz");
