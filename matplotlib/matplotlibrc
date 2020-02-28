@@ -298,10 +298,11 @@ axes.linewidth      : 0.5     # edge linewidth
 #axes.titlesize      : large   # fontsize of the axes title
 axes.titlesize      : 8   # fontsize of the axes title
 #axes.titlepad       : 6.0     # pad between axes and title in points
+axes.titlepad       : 12.0     # pad between axes and title in points
 #axes.labelsize      : medium  # fontsize of the x any y labels
 axes.labelsize      : 8  # fontsize of the x any y labels
 #axes.labelpad       : 4.0     # space between label and axis
-axes.labelpad       : 2.5     # space between label and axis
+axes.labelpad       : 1.0     # space between label and axis
 #axes.labelweight    : normal  # weight of the x and y labels
 #axes.labelcolor     : black
 #axes.axisbelow      : 'line'  # draw axis gridlines and ticks below
@@ -381,7 +382,7 @@ xtick.major.width    : 0.5    # major tick width in points
 #xtick.minor.width    : 0.6    # minor tick width in points
 xtick.minor.width    : 0.3    # minor tick width in points
 #xtick.major.pad      : 3.5      # distance to major tick label in points
-xtick.major.pad      : 2.0      # distance to major tick label in points
+xtick.major.pad      : 1.5      # distance to major tick label in points
 #xtick.minor.pad      : 3.4      # distance to the minor tick label in points
 #xtick.color          : k      # color of the tick labels
 #xtick.labelsize      : medium # fontsize of the tick labels
@@ -406,7 +407,7 @@ ytick.major.width    : 0.5    # major tick width in points
 #ytick.minor.width    : 0.6    # minor tick width in points
 ytick.minor.width    : 0.3    # minor tick width in points
 #ytick.major.pad      : 3.5      # distance to major tick label in points
-ytick.major.pad      : 2.0      # distance to major tick label in points
+ytick.major.pad      : 1.5      # distance to major tick label in points
 #ytick.minor.pad      : 3.4      # distance to the minor tick label in points
 #ytick.color          : k      # color of the tick labels
 #ytick.labelsize      : medium # fontsize of the tick labels
@@ -476,13 +477,13 @@ figure.dpi       : 227      # figure dots per inch
 
 # The figure subplot parameters.  All dimensions are a fraction of the
 #figure.subplot.left    : 0.125  # the left side of the subplots of the figure
-figure.subplot.left    : 0.15  # the left side of the subplots of the figure
+figure.subplot.left    : 0.13  # the left side of the subplots of the figure
 #figure.subplot.right   : 0.9    # the right side of the subplots of the figure
-figure.subplot.right   : 0.85    # the right side of the subplots of the figure
+figure.subplot.right   : 0.87    # the right side of the subplots of the figure
 #figure.subplot.bottom  : 0.11    # the bottom of the subplots of the figure
-figure.subplot.bottom  : 0.15    # the bottom of the subplots of the figure
+figure.subplot.bottom  : 0.13    # the bottom of the subplots of the figure
 #figure.subplot.top     : 0.88    # the top of the subplots of the figure
-figure.subplot.top     : 0.85    # the top of the subplots of the figure
+figure.subplot.top     : 0.87    # the top of the subplots of the figure
 #figure.subplot.wspace  : 0.2    # the amount of width reserved for space between subplots,
                                  # expressed as a fraction of the average axis width
 #figure.subplot.hspace  : 0.2    # the amount of height reserved for space between subplots,

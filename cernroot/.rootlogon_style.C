@@ -35,7 +35,7 @@
 	int canvasHeight_px = int(ppi*canvasHeight_in + 0.5);
 	//cout << "canvasHeight_px" << canvasHeight_px << endl;
 
-	double margin = 0.15; // common pad margin
+	double margin = 0.12; // common pad margin
 	double margin_small = 0.6*margin;
 
 	//// Plotting styles
@@ -68,6 +68,10 @@
 	//paper_doubleColumn->SetCanvasDefW(500); // (canvas width + 2 px) = window width)
 
 	//paper_doubleColumn->SetOptTitle(0);
+	paper_doubleColumn->SetFrameLineWidth(1);
+	paper_doubleColumn->SetLineWidth(1);
+	paper_doubleColumn->SetTitleX(0.5);
+	paper_doubleColumn->SetTitleAlign(23);
 	paper_doubleColumn->SetTitleFillColor(0);
 	paper_doubleColumn->SetTitleBorderSize(0);
 	paper_doubleColumn->SetTitleFont(font, "t"); // doesn't work in current ROOT 5.34/23
@@ -75,15 +79,15 @@
 
 	paper_doubleColumn->SetTitleFont(font, "xyz");
 	paper_doubleColumn->SetTitleSize(fontSize_px, "xyz");
-	paper_doubleColumn->SetTitleOffset(1.15, "x");
-	paper_doubleColumn->SetTitleOffset(1.29, "y");
+	paper_doubleColumn->SetTitleOffset(0.98, "x");
+	paper_doubleColumn->SetTitleOffset(1.00, "y");
 	paper_doubleColumn->SetTitleOffset(-0.35, "z"); // doesn't work in current ROOT 5.34/23
 
 	paper_doubleColumn->SetLabelFont(font, "xyz");
 	paper_doubleColumn->SetLabelSize(fontSize_px, "xyz");
-	paper_doubleColumn->SetLabelOffset(0.015, "x");
-	paper_doubleColumn->SetLabelOffset(0.015, "y");
-	paper_doubleColumn->SetLabelOffset(0.015, "z");
+	paper_doubleColumn->SetLabelOffset(0.0125, "x");
+	paper_doubleColumn->SetLabelOffset(0.0125, "y");
+	paper_doubleColumn->SetLabelOffset(0.0125, "z");
 
 	paper_doubleColumn->SetOptStat("emrou");
 	paper_doubleColumn->SetStatBorderSize(1);
@@ -97,9 +101,9 @@
 
 	//paper_doubleColumn->SetNdivisions(10, "xyz");
 	paper_doubleColumn->SetNdivisions(510, "xyz"); // show sub-ticks
-	paper_doubleColumn->SetTickLength(-10.0/canvasHeight_px, "x");
-	paper_doubleColumn->SetTickLength(-10.0/canvasWidth_px, "y");
-	paper_doubleColumn->SetTickLength(-10.0/canvasWidth_px, "z");
+	paper_doubleColumn->SetTickLength(-8.0/canvasHeight_px, "x");
+	paper_doubleColumn->SetTickLength(-8.0/canvasWidth_px, "y");
+	paper_doubleColumn->SetTickLength(-8.0/canvasWidth_px, "z");
 
 	// Legend.
 	paper_doubleColumn->SetLegendBorderSize(1);
