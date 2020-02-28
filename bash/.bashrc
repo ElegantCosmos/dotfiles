@@ -126,6 +126,9 @@ if [[ "$OSTYPE" == "linux"* ]]; then # Linux
 	fi
 
 elif [[ "$OSTYPE" == "darwin"* ]]; then # MacOS
+	### Alias for Docker
+	alias doc_cuoresw='docker run -it --rm --mount type=bind,source="$HOME",destination=/root/michsakai,consistency=delegated -w="/root/michsakai" --entrypoint /bin/bash charstnut/docker-cuoreswbase /root/michsakai/Soft/docker_dev/cupid_mo_docker/entrypoint.sh'
+
 	### Add brew related scripts into PATH
 	export PATH=/usr/local/bin${PATH:+:$PATH}
 	
