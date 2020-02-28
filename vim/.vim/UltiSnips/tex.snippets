@@ -364,3 +364,28 @@ endsnippet
 snippet enx "\engtext" i
 \engtext
 endsnippet
+
+snippet cols2 "\begin{columns}" b
+\begin{columns}[onlytextwidth]
+	\begin{column}{0.5\linewidth}
+		${1}
+	\end{column}
+	\begin{column}{0.5\linewidth}
+		${0}
+	\end{column}
+\end{columns}
+endsnippet
+
+snippet cols3 "\begin{columns}" b
+\begin{columns}[onlytextwidth]
+	\begin{column}{0.33\linewidth}
+		${0}
+	\end{column}
+	\begin{column}{0.33\linewidth}
+		${1}
+	\end{column}
+	\begin{column}{0.33\linewidth}
+		${2}
+	\end{column}
+\end{columns}
+endsnippet
