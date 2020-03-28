@@ -135,6 +135,9 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then # MacOS
 	### Command prompt
 	export PS1='\[\e[0;93m\]\u@\h:\w\$ \[\e[m\]'
 
+	### grep options
+	export GREP_OPTIONS='--color=auto'
+
 	### Matplotlib
 	export MATPLOTLIBRC=$HOME/.config/matplotlib
 
