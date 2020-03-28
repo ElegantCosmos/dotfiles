@@ -56,6 +56,8 @@
 	paper_doubleColumn->SetPadBorderMode(0);
 	paper_doubleColumn->SetPadBorderSize(0);
 	paper_doubleColumn->SetPadColor(kWhite);
+
+	paper_doubleColumn->SetPaperSize(TStyle::kUSLetter);
 	//paper_doubleColumn->SetPadTopMargin(margin_small);
 	paper_doubleColumn->SetPadTopMargin(margin);
 	paper_doubleColumn->SetPadBottomMargin(margin);
