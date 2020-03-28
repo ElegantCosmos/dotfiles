@@ -18,8 +18,12 @@ snippet sc "\textsc{}" w
 \textsc{${1:${VISUAL}}}
 endsnippet
 
-snippet href "\href{}{}" i
-\href{${1:${VISUAL}}}{\nolinkurl{${1:${VISUAL}}}
+snippet href "\href{}{}" w
+\href{${1:${VISUAL}}}{\nolinkurl{${1:${VISUAL}}}}
+endsnippet
+
+snippet hhref "\href{}{}" w
+\href{${1:${VISUAL}}}{${2:${VISUAL}}}
 endsnippet
 
 snippet footnote "\footnote{}" i
@@ -62,12 +66,12 @@ snippet cite "~\cite{}" i
 ~\cite{${1:${VISUAL}}}
 endsnippet
 
-snippet ref "~\ref{}" i
+snippet rref "~\ref{}" i
 ~\ref{${1:${VISUAL}}}
 endsnippet
 
-snippet cref "\cref{}" i
-\cref{${1:${VISUAL}}}
+snippet cref "~\cref{}" i
+~\cref{${1:${VISUAL}}}
 endsnippet
 
 snippet subref "\protect\subref{}" i
@@ -84,12 +88,10 @@ snippet figure "\begin{figure}" b
 \begin{figure}$1
 	\centering
 	\includegraphics[width=\linewidth]{$2}
-	\caption[
-		$3
-	]
-	{
+	\caption[$3]%
+	{%
 		$4
-	}
+	}%
 	\label{fig:$5}
 \end{figure}
 endsnippet
@@ -97,22 +99,22 @@ endsnippet
 snippet figures "\begin{figure}" b
 \begin{figure}$1
 	\centering
-	\begin{subfigure}{\linewidth}
+	\begin{subfigure}{0.5\linewidth}
 		\centering
-		\includegraphics[width=0.5\linewidth]{$2}
+		\includegraphics[width=\linewidth]{$2}
 		\subcaption{$3}
 		\label{sub:$4}
 	\end{subfigure}%
-	\begin{subfigure}{\linewidth}
+	\begin{subfigure}{0.5\linewidth}
 		\centering
-		\includegraphics[width=0.5\linewidth]{$5}
+		\includegraphics[width=\linewidth]{$5}
 		\subcaption{$6}
 		\label{sub:$7}
 	\end{subfigure}
-	\caption[$8]
-	{
+	\caption[$8]%
+	{%
 		$9\protect\subref{sub:$4}$10\protect\subref{sub:$7}${11}
-	}
+	}%
 	\label{fig:${12}}
 \end{figure}
 endsnippet
@@ -315,6 +317,10 @@ endsnippet
 
 snippet ce "\ce{}" w
 \ce{${1:${VISUAL}}}
+endsnippet
+
+snippet n "\nth{}" w
+\nth{${1:${VISUAL}}}
 endsnippet
 
 snippet color "\color{}" w
