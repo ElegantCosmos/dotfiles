@@ -18,15 +18,19 @@ snippet sc "\textsc{}" w
 \textsc{${1:${VISUAL}}}
 endsnippet
 
-snippet href "\href{}{}" w
+snippet url "\url{}" w
+\url{${1:${VISUAL}}}
+endsnippet
+
+snippet uref "\href{}{}" w
 \href{${1:${VISUAL}}}{\nolinkurl{${1:${VISUAL}}}}
 endsnippet
 
-snippet hhref "\href{}{}" w
+snippet href "\href{}{}" w
 \href{${1:${VISUAL}}}{${2:${VISUAL}}}
 endsnippet
 
-snippet footnote "\footnote{}" i
+snippet foot "\footnote{}" i
 \footnote{${1:${VISUAL}}}
 endsnippet
 
@@ -117,6 +121,42 @@ snippet figures "\begin{figure}" b
 	}%
 	\label{fig:${12}}
 \end{figure}
+endsnippet
+
+snippet table "\tabular" w
+\begin{table}[tbp]
+	\centering
+	\caption[]%
+	{%
+		$6
+	}%
+	\begin{tabular}{@{}lc@{}}
+		\toprule%
+		\textbf{$1} & \textbf{$2} \\
+		\midrule%
+		$3 & $4 \\
+		\bottomrule%
+	\end{tabular}
+	\label{tab:$5}
+\end{table}
+endsnippet
+
+snippet tablex "\tabularx" w
+\begin{table}[tbp]
+	\centering
+	\caption[]%
+	{%
+		$6
+	}%
+	\begin{tabularx}{\linewidth}{@{}p{0.5\linewidth}X@{}}
+		\toprule%
+		\textbf{$1} & \textbf{$2} \\
+		\midrule%
+		$3 & $4 \\
+		\bottomrule%
+	\end{tabularx}
+	\label{tab:$5}
+\end{table}
 endsnippet
 
 snippet ra "\rightarrow"
