@@ -131,6 +131,10 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then # MacOS
 
 	### Add brew related scripts into PATH
 	export PATH=/usr/local/bin${PATH:+:$PATH}
+
+	### Java environment manager
+	export PATH="$HOME/.jenv/bin:$PATH"
+	eval "$(jenv init -)"
 	
 	### Command prompt
 	export PS1='\[\e[0;93m\]\u@\h:\w\$ \[\e[m\]'
