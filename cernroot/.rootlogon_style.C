@@ -35,7 +35,7 @@
 	double fontSize_px = ppi*ptToInch*fontSize_pt;
 	double fontSize_small_px = ppi*ptToInch*fontSize_small_pt;
 
-	double canvasWidth_in = 3.404; // inch, typical width of single column for double column paper
+	double canvasWidth_in = 3.5; // inch, typical width of single column for double column paper
 	//cout << "canvasWidth_in" << canvasWidth_in << endl;
 	double canvasHeight_in = canvasWidth_in/goldenRatio; // inch
 	//cout << "canvasHeight_in" << canvasHeight_in << endl;
