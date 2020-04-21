@@ -109,7 +109,7 @@
 	paper_doubleColumn->SetStatFontSize(fontSize_small_px);
 	paper_doubleColumn->SetStatY(1 - margin_small);
 	paper_doubleColumn->SetStatX(1 - margin_small);
-	paper_doubleColumn->SetStatW(0.2);
+	paper_doubleColumn->SetStatW(0.15);
 	paper_doubleColumn->SetStatH(0.1);
 
 	//paper_doubleColumn->SetNdivisions(10, "xyz");
