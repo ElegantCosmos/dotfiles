@@ -61,7 +61,7 @@ set nrformats-=octal
 if $TMUX == '' " don't use unnamed register when using tmux
 	set clipboard=unnamed
 endif
-let mapleader = ","
+let mapleader = ' ' 
 "set tw=80
 set pastetoggle=<F4>
 "set nu
@@ -250,6 +250,7 @@ highlight SpellRare cterm=underline
 highlight SpellCap cterm=underline
 highlight SpellLocal cterm=underline
 highlight SpellBad gui=undercurl " Set style for gVim
+syn match myExCapitalWords +\<\w*[_0-9A-Z-]\w*\>+ contains=@NoSpell " don't check words that include '_', numbers, capital letters
 
 """ Transparent background.
 highlight Normal cterm=none ctermbg=none
