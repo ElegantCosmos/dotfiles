@@ -159,7 +159,7 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then # MacOS
 	fi
 
 	### Source thisroot.sh if exists
-	THIS_ROOT=/usr/local/bin/thisroot.sh
+	THIS_ROOT=$(brew --prefix)/bin/thisroot.sh
 	if [ -f "$THIS_ROOT" ]; then
 		source "$THIS_ROOT"
 		function compile-with-root {
