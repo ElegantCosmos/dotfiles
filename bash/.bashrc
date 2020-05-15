@@ -55,6 +55,7 @@ if [[ "$OSTYPE" == "linux"* ]]; then # Linux
 		### Useful directories
 		export SCRATCH=/project/projectdirs/cuore/scratch/michsakai
 		export SIMULATION_CUORE=/project/projectdirs/cuore/syncData/CUORE_simulation
+		export DATA_CUORE=/global/projecta/projectdirs/cuore/syncData
 
 		### Functions
 		function g++-diana {
@@ -68,12 +69,12 @@ if [[ "$OSTYPE" == "linux"* ]]; then # Linux
 			g++ -std=c++11 -O2 -Wall -Wextra -Wshadow -I${BOOST_ROOT}/include -L${BOOST_ROOT}/lib -lboost_regex $(root-config --cflags --glibs) -lRooFit -lMinuit2 -I${BOOST_ROOT}/include -o ${executable} "$@"
 		}
 
-		### System installed software
-		module load vim
-		module load cmake
-		module load git
-		module load python3/3.7-anaconda-2019.07
-		module load root/6.18.00-py3
+		#### System installed software
+		#module load vim
+		#module load cmake
+		#module load git
+		#module load python3/3.7-anaconda-2019.07
+		#module load root/6.18.00-py3
 
 		#if [[ "$NERSC_HOST" == "cori"* ]]; then
 		#	LD_LIBRARY_PATH_NEW=$HOME/.opt/openssl/openssl-1.1.1/lib # libraries needed specifically for tmux
@@ -92,6 +93,9 @@ if [[ "$OSTYPE" == "linux"* ]]; then # Linux
 		#		export LD_LIBRARY_PATH=$LD_LIBRARY_PATH_NEW${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}
 		#	fi
 		#fi
+
+		### Aliases for shifterimg
+		alias shifter_cuoresw='shifter --image=michsakai/docker-cuoreswbase-geant4.9.6.p04'
 
 		### gvfs-trash command variables
 		export XDG_DATA_HOME=${XDG_DATA_HOME:="$HOME/.local/share"}
