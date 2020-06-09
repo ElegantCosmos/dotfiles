@@ -12,11 +12,6 @@ if [ -f "$HOME/.tmux.completion.bash" ]; then
 	source $HOME/.tmux.completion.bash
 fi
 
-### ls colors
-if [ -f "$HOME/.dircolors.256" ]; then
-	eval "$(dircolors $HOME/.dircolors.256)"
-fi
-
 if [[ "$OSTYPE" == "linux"* ]]; then # Linux
 	# enable color support of ls and also add handy aliases
 	if [ -x /usr/bin/dircolors ]; then
