@@ -122,7 +122,7 @@
 	paper_doubleColumn->SetLegendBorderSize(0);
 	paper_doubleColumn->SetLegendFillColor(0);
 	paper_doubleColumn->SetLegendFont(font);
-	paper_doubleColumn->SetLegendTextSize(fontSize_small_px);
+	//paper_doubleColumn->SetLegendTextSize(fontSize_small_px);
 
 	//// Style compatible with ROOT 5.34/07 on Nino because it does not have some of the newer(?) features
 	TStyle* paper_doubleColumn_nino = new TStyle("paper_doubleColumn_nino", "paper_doubleColumn_nino");
