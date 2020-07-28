@@ -254,7 +254,7 @@ syn match myExCapitalWords +\<\w*[_0-9A-Z-]\w*\>+ contains=@NoSpell " don't chec
 
 """ Transparent background.
 highlight Normal cterm=none ctermbg=none
-highlight Search cterm=bold ctermfg=White ctermbg=Magenta
+highlight Search cterm=bold ctermfg=White ctermbg=DarkMagenta
 highlight DiffAdd cterm=none ctermfg=White ctermbg=LightGreen
 highlight DiffDelete cterm=none ctermfg=White ctermbg=DarkGray
 highlight DiffChange cterm=none ctermfg=White ctermbg=LightRed
