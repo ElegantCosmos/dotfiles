@@ -39,8 +39,8 @@ if [[ "$OSTYPE" == "linux"* ]]; then # Linux
 	fi
 
 	### bash tab-completion scripts
-	if [ -f "$HOME/.git-completion.bash" ]; then
-		source $HOME/.git-completion.bash
+	if [ -f "$HOME/.git.completion.bash" ]; then
+		source $HOME/.git.completion.bash
 	fi
 
 	if [[ "$NERSC_HOST" == "pdsf"* ]] || [[ "$NERSC_HOST" == "cori"* ]]; then
@@ -167,6 +167,14 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then # MacOS
 			g++ -std=c++11 -O2 -Wall -Wextra -pedantic -o ${executable} $(root-config --cflags) "$@" $(root-config --libs)
 		}
 	fi
+
+	### bash tab-completion scripts
+	if [ -f "$HOME/.git.completion.bash" ]; then
+		source $HOME/.git.completion.bash
+	fi
+
+	### python environment
+	eval "$(pyenv init -)"
 fi
 
 # Source local definitions
