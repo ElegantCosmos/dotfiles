@@ -1,0 +1,2 @@
+### Mount UDRIVE for APLclound VM
+//isilonshares.jhuapl.edu/aplhome$ /mnt/udrive cifs rw,credentials=/home/sakaim1/.aplhome_credentials,uid=sakaim1,gid=sakaim1,sec=ntlmssp,vers=3.0 0 0
