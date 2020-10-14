@@ -1,14 +1,3 @@
-//const int blue_tableau = TColor::GetColor("#1f77b4");
-//const int orange_tableau = TColor::GetColor("#ff7f0e");
-//const int green_tableau = TColor::GetColor("#2ca02c");
-//const int red_tableau = TColor::GetColor("#d62728");
-//const int purple_tableau = TColor::GetColor("#9467bd");
-//const int brown_tableau = TColor::GetColor("#8c564b");
-//const int pink_tableau = TColor::GetColor("#e377c2");
-//const int gray_tableau = TColor::GetColor("#8f7f7f");
-//const int olive_tableau = TColor::GetColor("#bcbd22");
-//const int cyan_tableau = TColor::GetColor("#17becf");
-//
 {
 	gROOT->SetStyle("Modern");
 
@@ -191,6 +180,17 @@
 	//paper_doubleColumn_nino->SetLegendFont(font);
 
 
+	// Define Tableau colors
+	static const int blue_tableau = TColor::GetColor("#1f77b4");
+	static const int orange_tableau = TColor::GetColor("#ff7f0e");
+	static const int green_tableau = TColor::GetColor("#2ca02c");
+	static const int red_tableau = TColor::GetColor("#d62728");
+	static const int purple_tableau = TColor::GetColor("#9467bd");
+	static const int brown_tableau = TColor::GetColor("#8c564b");
+	static const int pink_tableau = TColor::GetColor("#e377c2");
+	static const int gray_tableau = TColor::GetColor("#8f7f7f");
+	static const int olive_tableau = TColor::GetColor("#bcbd22");
+	static const int cyan_tableau = TColor::GetColor("#17becf");
 
 
 	//// Example of how to make palette axis neat
