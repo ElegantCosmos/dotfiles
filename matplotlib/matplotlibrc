@@ -382,11 +382,11 @@ axes.ymargin        : .05  # y margin See `axes.Axes.margins`
 #xtick.major.size     : 3.5      # major tick size in points
 xtick.major.size     : 2.0      # major tick size in points
 #xtick.minor.size     : 2      # minor tick size in points
-xtick.minor.size     : 1.5      # minor tick size in points
+xtick.minor.size     : 1.0      # minor tick size in points
 #xtick.major.width    : 0.8    # major tick width in points
 xtick.major.width    : 0.5    # major tick width in points
 #xtick.minor.width    : 0.6    # minor tick width in points
-xtick.minor.width    : 0.3    # minor tick width in points
+xtick.minor.width    : 0.5    # minor tick width in points
 #xtick.major.pad      : 3.5      # distance to major tick label in points
 xtick.major.pad      : 1.5      # distance to major tick label in points
 #xtick.minor.pad      : 3.4      # distance to the minor tick label in points
