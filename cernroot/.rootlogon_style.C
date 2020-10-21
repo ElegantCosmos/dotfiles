@@ -77,7 +77,7 @@
 	paper_doubleColumn->SetTitleFillColor(0);
 	paper_doubleColumn->SetTitleBorderSize(0);
 	paper_doubleColumn->SetTitleFont(font, "t"); // doesn't work in current ROOT 5.34/23
-	paper_doubleColumn->SetTitleSize(fontSize_px, "t"); // doesn't work in current ROOT 5.34/23
+	paper_doubleColumn->SetTitleSize(fontSize_small_px, "t"); // doesn't work in current ROOT 5.34/23
 
 	paper_doubleColumn->SetTitleFont(font, "xyz");
 	paper_doubleColumn->SetTitleSize(fontSize_px, "xyz");
