@@ -20,11 +20,11 @@
 	int font = 133; // Time New Roman (size specified in pixels)
 	double fontSize_pt = 8; // default font size
 	double fontSize_small_pt = 4; // small font size
-	double ptToInch = 3.0/8.0/27;
+	double ptToInch = 1.0/72.0; // as defined by Adobe and in matplotlib
 	double fontSize_px = ppi*ptToInch*fontSize_pt;
 	double fontSize_small_px = ppi*ptToInch*fontSize_small_pt;
 
-	double canvasWidth_in = 3.5; // inch, typical width of single column for double column paper
+	double canvasWidth_in = 3.54; // inch, typical width of single column for double column paper
 	//cout << "canvasWidth_in" << canvasWidth_in << endl;
 	double canvasHeight_in = canvasWidth_in/goldenRatio; // inch
 	//cout << "canvasHeight_in" << canvasHeight_in << endl;
