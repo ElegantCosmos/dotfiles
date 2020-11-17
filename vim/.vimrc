@@ -5,6 +5,7 @@ call pathogen#infect()
 "execute pathogen#infect()
 
 syntax on
+set synmaxcol=9999
 filetype plugin on
 filetype indent on
 
@@ -93,9 +94,9 @@ nmap ga <Plug>(EasyAlign)
 nnoremap <F5> :GundoToggle<CR>
 
 "tab settings
-"set tabstop=2 softtabstop=2 shiftwidth=2 expandtab "default tab setting
+set tabstop=2 softtabstop=2 shiftwidth=2 expandtab "default tab setting
 "set tabstop=2 softtabstop=2 shiftwidth=2 noexpandtab "default tab setting
-set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab "default tab setting
+"set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab "default tab setting
 "set tabstop=4 softtabstop=4 shiftwidth=4 expandtab "default tab setting
 noremap <leader>T :set tabstop=4 softtabstop=4 shiftwidth=4<CR>
 noremap <leader>t :set tabstop=2 softtabstop=2 shiftwidth=2<CR>
@@ -257,8 +258,8 @@ highlight Normal cterm=none ctermbg=none
 highlight Search cterm=bold ctermfg=White ctermbg=DarkMagenta
 highlight DiffAdd cterm=none ctermfg=White ctermbg=DarkGreen
 highlight DiffDelete cterm=none ctermfg=White ctermbg=DarkGray
-highlight DiffChange cterm=none ctermfg=White ctermbg=LightRed
-highlight DiffText cterm=bold ctermfg=White ctermbg=Red
+highlight DiffChange cterm=none ctermfg=White ctermbg=Red
+highlight DiffText cterm=bold ctermfg=White ctermbg=DarkRed
 "highlight DiffAdd cterm=none ctermbg=LightBlue
 "highlight DiffDelete cterm=none ctermbg=DarkGray
 "highlight DiffChange cterm=none ctermfg=White ctermbg=DarkGray
