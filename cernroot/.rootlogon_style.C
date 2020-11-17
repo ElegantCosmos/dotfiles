@@ -81,15 +81,15 @@
 
 	paper_doubleColumn->SetTitleFont(font, "xyz");
 	paper_doubleColumn->SetTitleSize(fontSize_px, "xyz");
-	paper_doubleColumn->SetTitleOffset(1.09, "x");
-	paper_doubleColumn->SetTitleOffset(1.25, "y");
+	paper_doubleColumn->SetTitleOffset(1.3, "x");
+	paper_doubleColumn->SetTitleOffset(1.3, "y");
 	paper_doubleColumn->SetTitleOffset(-0.35, "z"); // doesn't work in current ROOT 5.34/23
 
 	paper_doubleColumn->SetLabelFont(font, "xyz");
 	paper_doubleColumn->SetLabelSize(fontSize_px, "xyz");
-	paper_doubleColumn->SetLabelOffset(0.0125, "x");
-	paper_doubleColumn->SetLabelOffset(0.0125, "y");
-	paper_doubleColumn->SetLabelOffset(0.0125, "z");
+	paper_doubleColumn->SetLabelOffset(0.008, "x");
+	paper_doubleColumn->SetLabelOffset(0.008, "y");
+	paper_doubleColumn->SetLabelOffset(0.008, "z");
 
 	paper_doubleColumn->SetOptStat("emrou");
 	paper_doubleColumn->SetStatBorderSize(1);
