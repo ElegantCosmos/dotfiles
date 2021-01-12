@@ -49,7 +49,7 @@
 	paper_doubleColumn->SetHistFillStyle(0);
 	paper_doubleColumn->SetHistFillColor(kWhite);
 	paper_doubleColumn->SetFillStyle(0);
-	paper_doubleColumn->SetFillColor(kWhite);
+	//paper_doubleColumn->SetFillColor(kWhite); // Makes 2D hist colz fill color white. Do not use.
 	paper_doubleColumn->SetCanvasBorderMode(0);
 	paper_doubleColumn->SetCanvasBorderSize(0);
 	paper_doubleColumn->SetCanvasColor(kWhite);
