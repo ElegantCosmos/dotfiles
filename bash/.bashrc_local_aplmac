@@ -1,0 +1,10 @@
+# .bashrc local file for APL MacBook
+
+# Environment variable for UDRIVE
+for FILE in /Volumes/aplhome*; do
+	export UDRIVE=${FILE} # assign first dir found of aplhome*
+	break
+done
+
+# Environment variable for Box
+export BOX=~/Box

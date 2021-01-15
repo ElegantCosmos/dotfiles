@@ -132,8 +132,12 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then # MacOS
 	export PATH=/usr/local/bin${PATH:+:$PATH}
 
 	### Java environment manager
-	export PATH="$HOME/.jenv/bin:$PATH"
-	eval "$(jenv init -)"
+	if [ -d $HOME/.jenv/bin ]; then
+		export PATH=$HOME/.jenv/bin${PATH:+:$PATH}
+		if command -v jenv &> /dev/null; then
+			eval "$(jenv init -)"
+		fi
+	fi
 	
 	### Command prompt
 	export PS1='\[\e[0;93m\]\u@\h:\w\$ \[\e[m\]'
@@ -174,7 +178,9 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then # MacOS
 	fi
 
 	### python environment
-	eval "$(pyenv init -)"
+	if command -v pyenv &> /dev/null; then
+		eval "$(pyenv init -)"
+	fi
 fi
 
 # Source local definitions
