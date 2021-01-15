@@ -3,6 +3,7 @@
 	email = michsakai@gmail.com
 [core]
 	editor = vim
+	excludesfile = /home/sakaim1/.gitignore_global
 [push]
 	default = simple
 [diff]

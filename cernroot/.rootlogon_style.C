@@ -1,14 +1,3 @@
-//const int blue_tableau = TColor::GetColor("#1f77b4");
-//const int orange_tableau = TColor::GetColor("#ff7f0e");
-//const int green_tableau = TColor::GetColor("#2ca02c");
-//const int red_tableau = TColor::GetColor("#d62728");
-//const int purple_tableau = TColor::GetColor("#9467bd");
-//const int brown_tableau = TColor::GetColor("#8c564b");
-//const int pink_tableau = TColor::GetColor("#e377c2");
-//const int gray_tableau = TColor::GetColor("#8f7f7f");
-//const int olive_tableau = TColor::GetColor("#bcbd22");
-//const int cyan_tableau = TColor::GetColor("#17becf");
-//
 {
 	gROOT->SetStyle("Modern");
 
@@ -31,11 +20,11 @@
 	int font = 133; // Time New Roman (size specified in pixels)
 	double fontSize_pt = 8; // default font size
 	double fontSize_small_pt = 4; // small font size
-	double ptToInch = 3.0/8.0/27;
+	double ptToInch = 1.0/72.0; // as defined by Adobe and in matplotlib
 	double fontSize_px = ppi*ptToInch*fontSize_pt;
 	double fontSize_small_px = ppi*ptToInch*fontSize_small_pt;
 
-	double canvasWidth_in = 3.5; // inch, typical width of single column for double column paper
+	double canvasWidth_in = 3.54; // inch, typical width of single column for double column paper
 	//cout << "canvasWidth_in" << canvasWidth_in << endl;
 	double canvasHeight_in = canvasWidth_in/goldenRatio; // inch
 	//cout << "canvasHeight_in" << canvasHeight_in << endl;
@@ -60,7 +49,7 @@
 	paper_doubleColumn->SetHistFillStyle(0);
 	paper_doubleColumn->SetHistFillColor(kWhite);
 	paper_doubleColumn->SetFillStyle(0);
-	paper_doubleColumn->SetFillColor(kWhite);
+	//paper_doubleColumn->SetFillColor(kWhite); // Makes 2D hist colz fill color white. Do not use.
 	paper_doubleColumn->SetCanvasBorderMode(0);
 	paper_doubleColumn->SetCanvasBorderSize(0);
 	paper_doubleColumn->SetCanvasColor(kWhite);
@@ -88,12 +77,12 @@
 	paper_doubleColumn->SetTitleFillColor(0);
 	paper_doubleColumn->SetTitleBorderSize(0);
 	paper_doubleColumn->SetTitleFont(font, "t"); // doesn't work in current ROOT 5.34/23
-	paper_doubleColumn->SetTitleSize(fontSize_px, "t"); // doesn't work in current ROOT 5.34/23
+	paper_doubleColumn->SetTitleSize(fontSize_small_px, "t"); // doesn't work in current ROOT 5.34/23
 
 	paper_doubleColumn->SetTitleFont(font, "xyz");
 	paper_doubleColumn->SetTitleSize(fontSize_px, "xyz");
-	paper_doubleColumn->SetTitleOffset(1.09, "x");
-	paper_doubleColumn->SetTitleOffset(1.25, "y");
+	paper_doubleColumn->SetTitleOffset(1.3, "x");
+	paper_doubleColumn->SetTitleOffset(1.3, "y");
 	paper_doubleColumn->SetTitleOffset(-0.35, "z"); // doesn't work in current ROOT 5.34/23
 
 	paper_doubleColumn->SetLabelFont(font, "xyz");
@@ -107,10 +96,10 @@
 	paper_doubleColumn->SetStatColor(kWhite);
 	paper_doubleColumn->SetStatFont(font);
 	paper_doubleColumn->SetStatFontSize(fontSize_small_px);
-	paper_doubleColumn->SetStatY(1 - margin_small);
-	paper_doubleColumn->SetStatX(1 - margin_small);
-	paper_doubleColumn->SetStatW(0.15);
-	paper_doubleColumn->SetStatH(0.1);
+	paper_doubleColumn->SetStatY(1);
+	paper_doubleColumn->SetStatX(1);
+	paper_doubleColumn->SetStatW(1.5*margin);
+	paper_doubleColumn->SetStatH(0.8*margin);
 
 	//paper_doubleColumn->SetNdivisions(10, "xyz");
 	paper_doubleColumn->SetNdivisions(510, "xyz"); // show sub-ticks
@@ -191,6 +180,17 @@
 	//paper_doubleColumn_nino->SetLegendFont(font);
 
 
+	// Define Tableau colors
+	static const int blue_tableau = TColor::GetColor("#1f77b4");
+	static const int orange_tableau = TColor::GetColor("#ff7f0e");
+	static const int green_tableau = TColor::GetColor("#2ca02c");
+	static const int red_tableau = TColor::GetColor("#d62728");
+	static const int purple_tableau = TColor::GetColor("#9467bd");
+	static const int brown_tableau = TColor::GetColor("#8c564b");
+	static const int pink_tableau = TColor::GetColor("#e377c2");
+	static const int gray_tableau = TColor::GetColor("#8f7f7f");
+	static const int olive_tableau = TColor::GetColor("#bcbd22");
+	static const int cyan_tableau = TColor::GetColor("#17becf");
 
 
 	//// Example of how to make palette axis neat
