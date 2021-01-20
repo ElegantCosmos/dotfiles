@@ -3,8 +3,6 @@
 
 	gROOT->SetStyle("Modern");
 
-  gStyle->SetLineWidth(5);
-
 	TGaxis::SetMaxDigits(4);
 
 	//// Constants
@@ -15,21 +13,21 @@
 	//cout << "decorationWidth" << decorationWidth << endl;
 	unsigned int decorationHeight = canvas_tmp->GetWindowHeight() - canvas_tmp->GetWh();
 	//cout << "decorationHeight" << decorationHeight << endl;
-	delete canvas_tmp;
+	delete canvas_tmp; // don't need this anymore
 	canvas_tmp = NULL;
 
-	//int ppi = 227; // pixels per inch
-	int ppi = 600; // pixels per inch
+	//const int ppi = 227; // pixels per inch for Mac Retina display
+	const int ppi = 600; // pixels per inch suggested by random websites
 	const double goldenRatio = 0.5*(1 + sqrt(5));
 
-	int font = 133; // Time New Roman (size specified in pixels)
-	double fontSize_pt = 8; // default font size
-	double fontSize_small_pt = 4; // small font size
+	const int font = 133; // Time New Roman (size specified in pixels)
+	const double fontSize_pt = 8; // default font size
+	const double fontSize_small_pt = 4; // small font size
 	const double ptPerInch = 72.0; // as defined by Adobe and in matplotlib
-	double fontSize_px = ppi*fontSize_pt/ptPerInch;
-	double fontSize_small_px = ppi*fontSize_small_pt/ptPerInch;
+	const double fontSize_px = ppi*fontSize_pt/ptPerInch;
+	const double fontSize_small_px = ppi*fontSize_small_pt/ptPerInch;
 
-  double canvasWidth_mm = 90.0; // mm, typical width of single column for double column paper
+  const double canvasWidth_mm = 90.0; // mm, typical width of single column for double column paper
   const double mmPerInch = 25.4;
 	double canvasWidth_in = canvasWidth_mm/mmPerInch; // inch, typical width of single column for double column paper
 	//cout << "canvasWidth_in" << canvasWidth_in << endl;
@@ -44,7 +42,7 @@
   double canvasWidth_pt = canvasWidth_in*ptPerInch;
   double canvasHeight_pt = canvasHeight_in*ptPerInch;
 
-	double margin = 0.13; // common pad margin
+	const double margin = 0.13; // common pad margin
 
 	//// Plotting styles
 

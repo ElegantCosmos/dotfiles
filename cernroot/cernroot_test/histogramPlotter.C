@@ -3,6 +3,7 @@
   hist.Fill(0);
   hist.Fill(4, 10);
   hist.Fill(1000000000000, 1e30);
+  hist.SetLineColor(orange_tableau);
   hist.Draw("Hist");
   hist.GetXaxis()->SetTitle("10^{10} Log_{10} #sqrt{2} E_{pqyg} [cm]");
   hist.GetYaxis()->SetTitle("10^{10} Log_{10} #sqrt{2} E_{pqyg} [A.U.]");
