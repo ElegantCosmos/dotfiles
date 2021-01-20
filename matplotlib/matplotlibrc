@@ -464,7 +464,7 @@ legend.fontsize      : small
 figure.titlesize : xx-small      # size of the figure title (Figure.suptitle())
 #figure.titleweight : normal   # weight of the figure title
 #figure.figsize   : 6.4, 4.8   # figure size in inches
-figure.figsize   : 3.54, 2.19  # figure size in inches # golden ratio
+figure.figsize   : 3.543307, 2.189884 # figure size in inches # golden ratio
 #figure.dpi       : 100      # figure dots per inch
 figure.dpi       : 600      # figure dots per inch
 #figure.facecolor : white   # figure facecolor; 0.75 is scalar gray

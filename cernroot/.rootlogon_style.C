@@ -1,5 +1,9 @@
 {
+  gROOT->SetBatch(kTRUE);
+
 	gROOT->SetStyle("Modern");
+
+  gStyle->SetLineWidth(5);
 
 	TGaxis::SetMaxDigits(4);
 
@@ -16,16 +20,18 @@
 
 	//int ppi = 227; // pixels per inch
 	int ppi = 600; // pixels per inch
-	double goldenRatio = 0.5*(1 + sqrt(5));
+	const double goldenRatio = 0.5*(1 + sqrt(5));
 
 	int font = 133; // Time New Roman (size specified in pixels)
 	double fontSize_pt = 8; // default font size
 	double fontSize_small_pt = 4; // small font size
-	double ptPerInch = 72.0; // as defined by Adobe and in matplotlib
+	const double ptPerInch = 72.0; // as defined by Adobe and in matplotlib
 	double fontSize_px = ppi*fontSize_pt/ptPerInch;
 	double fontSize_small_px = ppi*fontSize_small_pt/ptPerInch;
 
-	double canvasWidth_in = 3.54; // inch, typical width of single column for double column paper
+  double canvasWidth_mm = 90.0; // mm, typical width of single column for double column paper
+  const double mmPerInch = 25.4;
+	double canvasWidth_in = canvasWidth_mm/mmPerInch; // inch, typical width of single column for double column paper
 	//cout << "canvasWidth_in" << canvasWidth_in << endl;
 	double canvasHeight_in = canvasWidth_in/goldenRatio; // inch
 	//cout << "canvasHeight_in" << canvasHeight_in << endl;
