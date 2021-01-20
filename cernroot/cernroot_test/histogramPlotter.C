@@ -32,7 +32,7 @@
     hist2.GetZaxis()->SetTitle("10^{10} Log_{10} [unit]");
     hist2.GetZaxis()->SetTitleOffset(-0.42);
     gPad->Modified();
-	//gPad->SaveAs("histogram2D_plot.pdf");
-	gPad->SaveAs("histogram2D_plot.png");
+	gPad->SaveAs("histogram2D_plot.pdf");
+	//gPad->SaveAs("histogram2D_plot.png");
 	//gPad->SaveAs("histogram2D_plot.tex");
 }
