@@ -7,22 +7,23 @@
 
 	// Get window manager decoration height and width
 	TCanvas* canvas_tmp = new TCanvas("canvas_tmp", "canvas_tmp", 500, 500);
-	unsigned int decorationWidth = 500 - canvas_tmp->GetWw();
+	unsigned int decorationWidth = canvas_tmp->GetWindowWidth() - canvas_tmp->GetWw();
 	//cout << "decorationWidth" << decorationWidth << endl;
-	unsigned int decorationHeight = 500 - canvas_tmp->GetWh();
+	unsigned int decorationHeight = canvas_tmp->GetWindowHeight() - canvas_tmp->GetWh();
 	//cout << "decorationHeight" << decorationHeight << endl;
 	delete canvas_tmp;
 	canvas_tmp = NULL;
 
-	int ppi = 227; // pixels per inch
+	//int ppi = 227; // pixels per inch
+	int ppi = 600; // pixels per inch
 	double goldenRatio = 0.5*(1 + sqrt(5));
 
 	int font = 133; // Time New Roman (size specified in pixels)
 	double fontSize_pt = 8; // default font size
 	double fontSize_small_pt = 4; // small font size
-	double ptToInch = 1.0/72.0; // as defined by Adobe and in matplotlib
-	double fontSize_px = ppi*ptToInch*fontSize_pt;
-	double fontSize_small_px = ppi*ptToInch*fontSize_small_pt;
+	double ptPerInch = 72.0; // as defined by Adobe and in matplotlib
+	double fontSize_px = ppi*fontSize_pt/ptPerInch;
+	double fontSize_small_px = ppi*fontSize_small_pt/ptPerInch;
 
 	double canvasWidth_in = 3.54; // inch, typical width of single column for double column paper
 	//cout << "canvasWidth_in" << canvasWidth_in << endl;
@@ -34,9 +35,10 @@
 	//cout << "canvasWidth_px" << canvasWidth_px << endl;
 	int canvasHeight_px = int(ppi*canvasHeight_in + 0.5);
 	//cout << "canvasHeight_px" << canvasHeight_px << endl;
+  double canvasWidth_pt = canvasWidth_in*ptPerInch;
+  double canvasHeight_pt = canvasHeight_in*ptPerInch;
 
 	double margin = 0.13; // common pad margin
-	double margin_small = 0.6*margin;
 
 	//// Plotting styles
 
@@ -58,10 +60,8 @@
 	paper_doubleColumn->SetPadColor(kWhite);
 
 	paper_doubleColumn->SetPaperSize(TStyle::kUSLetter);
-	//paper_doubleColumn->SetPadTopMargin(margin_small);
 	paper_doubleColumn->SetPadTopMargin(margin);
 	paper_doubleColumn->SetPadBottomMargin(margin);
-	//paper_doubleColumn->SetPadRightMargin(margin_small);
 	paper_doubleColumn->SetPadRightMargin(margin);
 	paper_doubleColumn->SetPadLeftMargin(margin);
 	paper_doubleColumn->SetCanvasDefH(canvasHeight_px + decorationHeight); // (canvas height + 25 px) = window height)
@@ -76,20 +76,20 @@
 	paper_doubleColumn->SetTitleAlign(23);
 	paper_doubleColumn->SetTitleFillColor(0);
 	paper_doubleColumn->SetTitleBorderSize(0);
-	paper_doubleColumn->SetTitleFont(font, "t"); // doesn't work in current ROOT 5.34/23
-	paper_doubleColumn->SetTitleSize(fontSize_small_px, "t"); // doesn't work in current ROOT 5.34/23
+	paper_doubleColumn->SetTitleFont(font, "t"); // doesn't work in ROOT 5.34/23
+	paper_doubleColumn->SetTitleSize(fontSize_small_px, "t"); // doesn't work in ROOT 5.34/23
 
 	paper_doubleColumn->SetTitleFont(font, "xyz");
 	paper_doubleColumn->SetTitleSize(fontSize_px, "xyz");
-	paper_doubleColumn->SetTitleOffset(1.3, "x");
-	paper_doubleColumn->SetTitleOffset(1.3, "y");
-	paper_doubleColumn->SetTitleOffset(-0.35, "z"); // doesn't work in current ROOT 5.34/23
+	paper_doubleColumn->SetTitleOffset(1.15, "x");
+	paper_doubleColumn->SetTitleOffset(1.30, "y");
+	paper_doubleColumn->SetTitleOffset(-0.35, "z"); // doesn't work in ROOT 5.34/23
 
 	paper_doubleColumn->SetLabelFont(font, "xyz");
 	paper_doubleColumn->SetLabelSize(fontSize_px, "xyz");
-	paper_doubleColumn->SetLabelOffset(0.0125, "x");
-	paper_doubleColumn->SetLabelOffset(0.0125, "y");
-	paper_doubleColumn->SetLabelOffset(0.0125, "z");
+	paper_doubleColumn->SetLabelOffset(2.0/canvasWidth_pt, "x");
+	paper_doubleColumn->SetLabelOffset(2.0/canvasHeight_pt, "y");
+	paper_doubleColumn->SetLabelOffset(3.0/canvasWidth_pt, "z");
 
 	paper_doubleColumn->SetOptStat("emrou");
 	paper_doubleColumn->SetStatBorderSize(1);
@@ -103,9 +103,9 @@
 
 	//paper_doubleColumn->SetNdivisions(10, "xyz");
 	paper_doubleColumn->SetNdivisions(510, "xyz"); // show sub-ticks
-	paper_doubleColumn->SetTickLength(-8.0/canvasHeight_px, "x");
-	paper_doubleColumn->SetTickLength(-8.0/canvasWidth_px, "y");
-	paper_doubleColumn->SetTickLength(-8.0/canvasWidth_px, "z");
+	paper_doubleColumn->SetTickLength(-2.0/canvasHeight_pt, "x"); // number in pt
+	paper_doubleColumn->SetTickLength(-2.0/canvasWidth_pt, "y"); // number in pt
+	paper_doubleColumn->SetTickLength(-2.0/canvasWidth_pt, "z"); // number in pt
 
 	// Legend.
 	paper_doubleColumn->SetLegendBorderSize(0);
@@ -129,10 +129,8 @@
 	paper_doubleColumn_nino->SetPadBorderMode(0);
 	paper_doubleColumn_nino->SetPadBorderSize(0);
 	paper_doubleColumn_nino->SetPadColor(kWhite);
-	//paper_doubleColumn_nino->SetPadTopMargin(margin_small);
 	paper_doubleColumn_nino->SetPadTopMargin(margin);
 	paper_doubleColumn_nino->SetPadBottomMargin(margin);
-	//paper_doubleColumn_nino->SetPadRightMargin(margin_small);
 	paper_doubleColumn_nino->SetPadRightMargin(margin);
 	paper_doubleColumn_nino->SetPadLeftMargin(margin);
 	paper_doubleColumn_nino->SetCanvasDefH(canvasHeight_px + decorationHeight); // (canvas height + 25 px) = window height)
@@ -143,14 +141,14 @@
 	//paper_doubleColumn_nino->SetOptTitle(0);
 	paper_doubleColumn_nino->SetTitleFillColor(0);
 	paper_doubleColumn_nino->SetTitleBorderSize(0);
-	////paper_doubleColumn_nino->SetTitleFont(font, "t"); // doesn't work in current ROOT 5.34/23
-	//paper_doubleColumn_nino->SetTitleSize(fontSize_px, "t"); // doesn't work in current ROOT 5.34/23
+	////paper_doubleColumn_nino->SetTitleFont(font, "t"); // doesn't work in ROOT 5.34/23
+	//paper_doubleColumn_nino->SetTitleSize(fontSize_px, "t"); // doesn't work in ROOT 5.34/23
 
 	//paper_doubleColumn_nino->SetTitleFont(font, "xyz");
 	//paper_doubleColumn_nino->SetTitleSize(fontSize_px, "xyz");
 	//paper_doubleColumn_nino->SetTitleOffset(1.15, "x");
 	//paper_doubleColumn_nino->SetTitleOffset(1.29, "y");
-	////paper_doubleColumn_nino->SetTitleOffset(-0.35, "z"); // doesn't work in current ROOT 5.34/23
+	////paper_doubleColumn_nino->SetTitleOffset(-0.35, "z"); // doesn't work in ROOT 5.34/23
 
 	//paper_doubleColumn_nino->SetLabelFont(font, "xyz");
 	//paper_doubleColumn_nino->SetLabelSize(fontSize_px, "xyz");
@@ -163,8 +161,6 @@
 	//paper_doubleColumn_nino->SetStatColor(kWhite);
 	//paper_doubleColumn_nino->SetStatFont(font);
 	//paper_doubleColumn_nino->SetStatFontSize(fontSize_small_px);
-	//paper_doubleColumn_nino->SetStatY(1 - margin_small);
-	//paper_doubleColumn_nino->SetStatX(1 - margin_small);
 	//paper_doubleColumn_nino->SetStatW(0.2);
 	//paper_doubleColumn_nino->SetStatH(0.1);
 

@@ -315,9 +315,10 @@ axes.labelpad       : 1.0     # space between label and axis
                                # patches (True); above patches but below
                                # lines ('line'); or above all (False)
 
-axes.formatter.limits : -1, 4 # use scientific notation if log10
+#axes.formatter.limits : -1, 4 # use scientific notation if log10
                                # of the axis range is smaller than the
                                # first or larger than the second
+axes.formatter.limits : -2, 3 # use scientific notation if log10
 #axes.formatter.use_locale : False # When True, format tick labels
                                    # according to the user's locale.
                                    # For example, use ',' as a decimal
@@ -382,13 +383,13 @@ axes.ymargin        : .05  # y margin See `axes.Axes.margins`
 #xtick.major.size     : 3.5      # major tick size in points
 xtick.major.size     : 2.0      # major tick size in points
 #xtick.minor.size     : 2      # minor tick size in points
-xtick.minor.size     : 1.0      # minor tick size in points
+xtick.minor.size     : 1.5      # minor tick size in points
 #xtick.major.width    : 0.8    # major tick width in points
 xtick.major.width    : 0.5    # major tick width in points
 #xtick.minor.width    : 0.6    # minor tick width in points
 xtick.minor.width    : 0.5    # minor tick width in points
 #xtick.major.pad      : 3.5      # distance to major tick label in points
-xtick.major.pad      : 1.5      # distance to major tick label in points
+xtick.major.pad      : 1.0      # distance to major tick label in points
 #xtick.minor.pad      : 3.4      # distance to the minor tick label in points
 #xtick.color          : k      # color of the tick labels
 xtick.labelsize      : medium # fontsize of the tick labels
@@ -410,9 +411,9 @@ ytick.minor.size     : 1.5      # minor tick size in points
 #ytick.major.width    : 0.8    # major tick width in points
 ytick.major.width    : 0.5    # major tick width in points
 #ytick.minor.width    : 0.6    # minor tick width in points
-ytick.minor.width    : 0.3    # minor tick width in points
+ytick.minor.width    : 0.5    # minor tick width in points
 #ytick.major.pad      : 3.5      # distance to major tick label in points
-ytick.major.pad      : 1.5      # distance to major tick label in points
+ytick.major.pad      : 1.0      # distance to major tick label in points
 #ytick.minor.pad      : 3.4      # distance to the minor tick label in points
 #ytick.color          : k      # color of the tick labels
 ytick.labelsize      : medium # fontsize of the tick labels
@@ -465,7 +466,7 @@ figure.titlesize : xx-small      # size of the figure title (Figure.suptitle())
 #figure.figsize   : 6.4, 4.8   # figure size in inches
 figure.figsize   : 3.54, 2.19  # figure size in inches # golden ratio
 #figure.dpi       : 100      # figure dots per inch
-figure.dpi       : 227      # figure dots per inch
+figure.dpi       : 600      # figure dots per inch
 #figure.facecolor : white   # figure facecolor; 0.75 is scalar gray
 #figure.edgecolor : white   # figure edgecolor
 #figure.autolayout : False  # When True, automatically adjust subplot
