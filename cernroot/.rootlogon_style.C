@@ -5,7 +5,12 @@
 
 	TGaxis::SetMaxDigits(4);
 
-	//// Constants
+
+	//*****************************************************************************
+	//
+	// Constants
+	//
+	//*****************************************************************************
 
 	// Get window manager decoration height and width
 	TCanvas* canvas_tmp = new TCanvas("canvas_tmp", "canvas_tmp", 500, 500);
@@ -44,7 +49,12 @@
 
 	const double margin = 0.13; // common pad margin
 
-	//// Plotting styles
+
+  //*****************************************************************************
+  //
+  // Plotting style
+  //
+  //*****************************************************************************
 
 	//// Style compatible with new ROOT 6
 	TStyle* paper_doubleColumn= new TStyle("paper_doubleColumn","Double Column Paper");
@@ -180,20 +190,31 @@
 	//paper_doubleColumn_nino->SetLegendFont(font);
 
 
+	//*****************************************************************************
+	//
 	// Define Tableau colors
-	static const int blue_tableau = TColor::GetColor("#1f77b4");
-	static const int orange_tableau = TColor::GetColor("#ff7f0e");
-	static const int green_tableau = TColor::GetColor("#2ca02c");
-	static const int red_tableau = TColor::GetColor("#d62728");
-	static const int purple_tableau = TColor::GetColor("#9467bd");
-	static const int brown_tableau = TColor::GetColor("#8c564b");
-	static const int pink_tableau = TColor::GetColor("#e377c2");
-	static const int gray_tableau = TColor::GetColor("#8f7f7f");
-	static const int olive_tableau = TColor::GetColor("#bcbd22");
-	static const int cyan_tableau = TColor::GetColor("#17becf");
+	//
+	//*****************************************************************************
+
+	// Define Tableau colors
+	static const TColor blue_tableau = TColor::GetColor("#1f77b4");
+	static const TColor orange_tableau = TColor::GetColor("#ff7f0e");
+	static const TColor green_tableau = TColor::GetColor("#2ca02c");
+	static const TColor red_tableau = TColor::GetColor("#d62728");
+	static const TColor purple_tableau = TColor::GetColor("#9467bd");
+	static const TColor brown_tableau = TColor::GetColor("#8c564b");
+	static const TColor pink_tableau = TColor::GetColor("#e377c2");
+	static const TColor gray_tableau = TColor::GetColor("#8f7f7f");
+	static const TColor olive_tableau = TColor::GetColor("#bcbd22");
+	static const TColor cyan_tableau = TColor::GetColor("#17becf");
 
 
-	//// Example of how to make palette axis neat
+	//*****************************************************************************
+	//
+	// Example of how to make palette axis neat
+	//
+	//*****************************************************************************
+
 	//TH2F hist2("hist2", "hist2", 100, 0, 10000, 100, 0, 10000);
 	//hist2.Fill(0.0, 0.0, 10);
 	//hist2.Fill(0.0, 100.0, 100);

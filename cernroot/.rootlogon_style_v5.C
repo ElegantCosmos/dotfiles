@@ -128,6 +128,7 @@
   // Palette.
   paper_doubleColumn->SetPalette(55, 0); // rainbow palette for drawing with "Colz" option
 
+
 	//*****************************************************************************
 	//
 	// Define Tableau colors
