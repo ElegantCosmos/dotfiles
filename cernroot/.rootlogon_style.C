@@ -1,5 +1,5 @@
 {
-  gROOT->SetBatch(kTRUE);
+	gROOT->SetBatch(kTRUE);
 
 	gROOT->SetStyle("Modern");
 
@@ -101,7 +101,7 @@
 
 	paper_doubleColumn->SetLabelFont(font, "xyz");
 	paper_doubleColumn->SetLabelSize(fontSize_px, "xyz");
-	paper_doubleColumn->SetLabelOffset(2.0/canvasHeight_pt, "x");
+	paper_doubleColumn->SetLabelOffset(1.5/canvasHeight_pt, "x");
 	paper_doubleColumn->SetLabelOffset(3.0/canvasWidth_pt, "y");
 	paper_doubleColumn->SetLabelOffset(3.0/canvasWidth_pt, "z");
 
@@ -127,67 +127,67 @@
 	paper_doubleColumn->SetLegendFont(font);
 	//paper_doubleColumn->SetLegendTextSize(fontSize_small_px);
 
-	//// Style compatible with ROOT 5.34/07 on Nino because it does not have some of the newer(?) features
-	TStyle* paper_doubleColumn_nino = new TStyle("paper_doubleColumn_nino", "paper_doubleColumn_nino");
-	paper_doubleColumn_nino->SetFrameBorderMode(0);
-	paper_doubleColumn_nino->SetFrameBorderSize(0);
-	paper_doubleColumn_nino->SetFrameFillStyle(0);
-	paper_doubleColumn_nino->SetFrameFillColor(kWhite);
-	//paper_doubleColumn_nino->SetHistFillStyle(0);
-	//paper_doubleColumn_nino->SetHistFillColor(kWhite);
-	paper_doubleColumn_nino->SetFillStyle(0);
-	paper_doubleColumn_nino->SetFillColor(kWhite);
-	paper_doubleColumn_nino->SetCanvasBorderMode(0);
-	paper_doubleColumn_nino->SetCanvasBorderSize(0);
-	paper_doubleColumn_nino->SetCanvasColor(kWhite);
-	paper_doubleColumn_nino->SetPadBorderMode(0);
-	paper_doubleColumn_nino->SetPadBorderSize(0);
-	paper_doubleColumn_nino->SetPadColor(kWhite);
-	paper_doubleColumn_nino->SetPadTopMargin(margin);
-	paper_doubleColumn_nino->SetPadBottomMargin(margin);
-	paper_doubleColumn_nino->SetPadRightMargin(margin);
-	paper_doubleColumn_nino->SetPadLeftMargin(margin);
-	paper_doubleColumn_nino->SetCanvasDefH(canvasHeight_px + decorationHeight); // (canvas height + 25 px) = window height)
-	//paper_doubleColumn_nino->SetCanvasDefH(500); // (canvas height + 25 px) = window height)
-	paper_doubleColumn_nino->SetCanvasDefW(canvasWidth_px + decorationWidth); // (canvas width + 2 px) = window width)
-	//paper_doubleColumn_nino->SetCanvasDefW(500); // (canvas width + 2 px) = window width)
+	////// Style compatible with ROOT 5.34/07 on Nino because it does not have some of the newer(?) features
+	//TStyle* paper_doubleColumn_nino = new TStyle("paper_doubleColumn_nino", "paper_doubleColumn_nino");
+	//paper_doubleColumn_nino->SetFrameBorderMode(0);
+	//paper_doubleColumn_nino->SetFrameBorderSize(0);
+	//paper_doubleColumn_nino->SetFrameFillStyle(0);
+	//paper_doubleColumn_nino->SetFrameFillColor(kWhite);
+	////paper_doubleColumn_nino->SetHistFillStyle(0);
+	////paper_doubleColumn_nino->SetHistFillColor(kWhite);
+	//paper_doubleColumn_nino->SetFillStyle(0);
+	//paper_doubleColumn_nino->SetFillColor(kWhite);
+	//paper_doubleColumn_nino->SetCanvasBorderMode(0);
+	//paper_doubleColumn_nino->SetCanvasBorderSize(0);
+	//paper_doubleColumn_nino->SetCanvasColor(kWhite);
+	//paper_doubleColumn_nino->SetPadBorderMode(0);
+	//paper_doubleColumn_nino->SetPadBorderSize(0);
+	//paper_doubleColumn_nino->SetPadColor(kWhite);
+	//paper_doubleColumn_nino->SetPadTopMargin(margin);
+	//paper_doubleColumn_nino->SetPadBottomMargin(margin);
+	//paper_doubleColumn_nino->SetPadRightMargin(margin);
+	//paper_doubleColumn_nino->SetPadLeftMargin(margin);
+	//paper_doubleColumn_nino->SetCanvasDefH(canvasHeight_px + decorationHeight); // (canvas height + 25 px) = window height)
+	////paper_doubleColumn_nino->SetCanvasDefH(500); // (canvas height + 25 px) = window height)
+	//paper_doubleColumn_nino->SetCanvasDefW(canvasWidth_px + decorationWidth); // (canvas width + 2 px) = window width)
+	////paper_doubleColumn_nino->SetCanvasDefW(500); // (canvas width + 2 px) = window width)
 
-	//paper_doubleColumn_nino->SetOptTitle(0);
-	paper_doubleColumn_nino->SetTitleFillColor(0);
-	paper_doubleColumn_nino->SetTitleBorderSize(0);
-	////paper_doubleColumn_nino->SetTitleFont(font, "t"); // doesn't work in ROOT 5.34/23
-	//paper_doubleColumn_nino->SetTitleSize(fontSize_px, "t"); // doesn't work in ROOT 5.34/23
+	////paper_doubleColumn_nino->SetOptTitle(0);
+	//paper_doubleColumn_nino->SetTitleFillColor(0);
+	//paper_doubleColumn_nino->SetTitleBorderSize(0);
+	//////paper_doubleColumn_nino->SetTitleFont(font, "t"); // doesn't work in ROOT 5.34/23
+	////paper_doubleColumn_nino->SetTitleSize(fontSize_px, "t"); // doesn't work in ROOT 5.34/23
 
-	//paper_doubleColumn_nino->SetTitleFont(font, "xyz");
-	//paper_doubleColumn_nino->SetTitleSize(fontSize_px, "xyz");
-	//paper_doubleColumn_nino->SetTitleOffset(1.15, "x");
-	//paper_doubleColumn_nino->SetTitleOffset(1.29, "y");
-	////paper_doubleColumn_nino->SetTitleOffset(-0.35, "z"); // doesn't work in ROOT 5.34/23
+	////paper_doubleColumn_nino->SetTitleFont(font, "xyz");
+	////paper_doubleColumn_nino->SetTitleSize(fontSize_px, "xyz");
+	////paper_doubleColumn_nino->SetTitleOffset(1.15, "x");
+	////paper_doubleColumn_nino->SetTitleOffset(1.29, "y");
+	//////paper_doubleColumn_nino->SetTitleOffset(-0.35, "z"); // doesn't work in ROOT 5.34/23
 
-	//paper_doubleColumn_nino->SetLabelFont(font, "xyz");
-	//paper_doubleColumn_nino->SetLabelSize(fontSize_px, "xyz");
-	//paper_doubleColumn_nino->SetLabelOffset(0.015, "x");
-	//paper_doubleColumn_nino->SetLabelOffset(0.015, "y");
-	//paper_doubleColumn_nino->SetLabelOffset(0.015, "z");
+	////paper_doubleColumn_nino->SetLabelFont(font, "xyz");
+	////paper_doubleColumn_nino->SetLabelSize(fontSize_px, "xyz");
+	////paper_doubleColumn_nino->SetLabelOffset(0.015, "x");
+	////paper_doubleColumn_nino->SetLabelOffset(0.015, "y");
+	////paper_doubleColumn_nino->SetLabelOffset(0.015, "z");
 
-	//paper_doubleColumn_nino->SetOptStat("emrou");
-	//paper_doubleColumn_nino->SetStatBorderSize(1);
-	//paper_doubleColumn_nino->SetStatColor(kWhite);
-	//paper_doubleColumn_nino->SetStatFont(font);
-	//paper_doubleColumn_nino->SetStatFontSize(fontSize_small_px);
-	//paper_doubleColumn_nino->SetStatW(0.2);
-	//paper_doubleColumn_nino->SetStatH(0.1);
+	////paper_doubleColumn_nino->SetOptStat("emrou");
+	////paper_doubleColumn_nino->SetStatBorderSize(1);
+	////paper_doubleColumn_nino->SetStatColor(kWhite);
+	////paper_doubleColumn_nino->SetStatFont(font);
+	////paper_doubleColumn_nino->SetStatFontSize(fontSize_small_px);
+	////paper_doubleColumn_nino->SetStatW(0.2);
+	////paper_doubleColumn_nino->SetStatH(0.1);
 
-	////paper_doubleColumn_nino->SetNdivisions(10, "xyz");
-	//paper_doubleColumn_nino->SetNdivisions(510, "xyz"); // show sub-ticks
-	//paper_doubleColumn_nino->SetTickLength(-10.0/canvasHeight_px, "x");
-	//paper_doubleColumn_nino->SetTickLength(-10.0/canvasWidth_px, "y");
-	//paper_doubleColumn_nino->SetTickLength(-10.0/canvasWidth_px, "z");
+	//////paper_doubleColumn_nino->SetNdivisions(10, "xyz");
+	////paper_doubleColumn_nino->SetNdivisions(510, "xyz"); // show sub-ticks
+	////paper_doubleColumn_nino->SetTickLength(-10.0/canvasHeight_px, "x");
+	////paper_doubleColumn_nino->SetTickLength(-10.0/canvasWidth_px, "y");
+	////paper_doubleColumn_nino->SetTickLength(-10.0/canvasWidth_px, "z");
 
-	// Legend.
-	paper_doubleColumn_nino->SetLegendBorderSize(0);
-	paper_doubleColumn_nino->SetLegendFillColor(0);
-	//paper_doubleColumn_nino->SetLegendFont(font);
+	//// Legend.
+	//paper_doubleColumn_nino->SetLegendBorderSize(0);
+	//paper_doubleColumn_nino->SetLegendFillColor(0);
+	////paper_doubleColumn_nino->SetLegendFont(font);
 
 
 	//*****************************************************************************
@@ -197,16 +197,16 @@
 	//*****************************************************************************
 
 	// Define Tableau colors
-	static const TColor blue_tableau = TColor::GetColor("#1f77b4");
-	static const TColor orange_tableau = TColor::GetColor("#ff7f0e");
-	static const TColor green_tableau = TColor::GetColor("#2ca02c");
-	static const TColor red_tableau = TColor::GetColor("#d62728");
-	static const TColor purple_tableau = TColor::GetColor("#9467bd");
-	static const TColor brown_tableau = TColor::GetColor("#8c564b");
-	static const TColor pink_tableau = TColor::GetColor("#e377c2");
-	static const TColor gray_tableau = TColor::GetColor("#8f7f7f");
-	static const TColor olive_tableau = TColor::GetColor("#bcbd22");
-	static const TColor cyan_tableau = TColor::GetColor("#17becf");
+	static const Int_t blue_tableau = TColor::GetColor("#1f77b4");
+	static const Int_t orange_tableau = TColor::GetColor("#ff7f0e");
+	static const Int_t green_tableau = TColor::GetColor("#2ca02c");
+	static const Int_t red_tableau = TColor::GetColor("#d62728");
+	static const Int_t purple_tableau = TColor::GetColor("#9467bd");
+	static const Int_t brown_tableau = TColor::GetColor("#8c564b");
+	static const Int_t pink_tableau = TColor::GetColor("#e377c2");
+	static const Int_t gray_tableau = TColor::GetColor("#8f7f7f");
+	static const Int_t olive_tableau = TColor::GetColor("#bcbd22");
+	static const Int_t cyan_tableau = TColor::GetColor("#17becf");
 
 
 	//*****************************************************************************
