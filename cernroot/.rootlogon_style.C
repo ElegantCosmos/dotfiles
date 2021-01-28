@@ -87,11 +87,12 @@
 	paper_doubleColumn->SetFrameLineWidth(1);
 	paper_doubleColumn->SetLineWidth(1);
 	paper_doubleColumn->SetTitleX(0.5);
+	paper_doubleColumn->SetTitleY(0.99);
 	paper_doubleColumn->SetTitleAlign(23);
 	paper_doubleColumn->SetTitleFillColor(0);
 	paper_doubleColumn->SetTitleBorderSize(0);
 	paper_doubleColumn->SetTitleFont(font, "t"); // doesn't work in ROOT 5.34/23
-	paper_doubleColumn->SetTitleSize(fontSize_small_px, "t"); // doesn't work in ROOT 5.34/23
+	paper_doubleColumn->SetTitleSize(fontSize_px, "t"); // doesn't work in ROOT 5.34/23
 
 	paper_doubleColumn->SetTitleFont(font, "xyz");
 	paper_doubleColumn->SetTitleSize(fontSize_px, "xyz");
