@@ -45,6 +45,9 @@
 [submodule "vim/.vim/bundle/tender.vim"]
 	path = vim/.vim/bundle/tender.vim
 	url = https://github.com/jacoborus/tender.vim.git
+[submodule "vim/.vim/bundle/vim-abolish"]
+  path = vim/.vim/bundle/vim-abolish
+  url = https://github.com/tpope/vim-abolish.git
 
 ### TMux
 [submodule "tmux/.tmux/plugins/tpm"]
