@@ -96,9 +96,9 @@
 
 	paper_doubleColumn->SetTitleFont(font, "xyz");
 	paper_doubleColumn->SetTitleSize(fontSize_px, "xyz");
-	paper_doubleColumn->SetTitleOffset(1.15, "x");
-	paper_doubleColumn->SetTitleOffset(1.30, "y");
-	paper_doubleColumn->SetTitleOffset(-0.35, "z"); // doesn't work in ROOT 5.34/23
+	paper_doubleColumn->SetTitleOffset(1.17, "x");
+	paper_doubleColumn->SetTitleOffset(1.32, "y");
+	paper_doubleColumn->SetTitleOffset(-0.40, "z"); // doesn't work in ROOT 5.34/23
 
 	paper_doubleColumn->SetLabelFont(font, "xyz");
 	paper_doubleColumn->SetLabelSize(fontSize_px, "xyz");
@@ -198,16 +198,16 @@
 	//*****************************************************************************
 
 	// Define Tableau colors
-	static const Int_t blue_tableau = TColor::GetColor("#1f77b4");
-	static const Int_t orange_tableau = TColor::GetColor("#ff7f0e");
-	static const Int_t green_tableau = TColor::GetColor("#2ca02c");
-	static const Int_t red_tableau = TColor::GetColor("#d62728");
-	static const Int_t purple_tableau = TColor::GetColor("#9467bd");
-	static const Int_t brown_tableau = TColor::GetColor("#8c564b");
-	static const Int_t pink_tableau = TColor::GetColor("#e377c2");
-	static const Int_t gray_tableau = TColor::GetColor("#8f7f7f");
-	static const Int_t olive_tableau = TColor::GetColor("#bcbd22");
-	static const Int_t cyan_tableau = TColor::GetColor("#17becf");
+	static const int blue_tableau = TColor::GetColor("#1f77b4");
+	static const int orange_tableau = TColor::GetColor("#ff7f0e");
+	static const int green_tableau = TColor::GetColor("#2ca02c");
+	static const int red_tableau = TColor::GetColor("#d62728");
+	static const int purple_tableau = TColor::GetColor("#9467bd");
+	static const int brown_tableau = TColor::GetColor("#8c564b");
+	static const int pink_tableau = TColor::GetColor("#e377c2");
+	static const int gray_tableau = TColor::GetColor("#8f7f7f");
+	static const int olive_tableau = TColor::GetColor("#bcbd22");
+	static const int cyan_tableau = TColor::GetColor("#17becf");
 
 
 	//*****************************************************************************
