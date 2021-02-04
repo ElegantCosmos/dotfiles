@@ -1,9 +1,24 @@
 {
 	gROOT->SetBatch(kTRUE);
 
-	gROOT->SetStyle("Modern");
 
-	TGaxis::SetMaxDigits(4);
+	//*****************************************************************************
+	//
+	// Define Tableau colors
+	//
+	//*****************************************************************************
+
+	// Define Tableau colors
+	static const int blue_tableau = TColor::GetColor("#1f77b4");
+	static const int orange_tableau = TColor::GetColor("#ff7f0e");
+	static const int green_tableau = TColor::GetColor("#2ca02c");
+	static const int red_tableau = TColor::GetColor("#d62728");
+	static const int purple_tableau = TColor::GetColor("#9467bd");
+	static const int brown_tableau = TColor::GetColor("#8c564b");
+	static const int pink_tableau = TColor::GetColor("#e377c2");
+	static const int gray_tableau = TColor::GetColor("#8f7f7f");
+	static const int olive_tableau = TColor::GetColor("#bcbd22");
+	static const int cyan_tableau = TColor::GetColor("#17becf");
 
 
 	//*****************************************************************************
@@ -11,6 +26,10 @@
 	// Constants
 	//
 	//*****************************************************************************
+
+	gROOT->SetStyle("Modern");
+
+	TGaxis::SetMaxDigits(4);
 
 	// Get window manager decoration height and width
 	TCanvas* canvas_tmp = new TCanvas("canvas_tmp", "canvas_tmp", 500, 500);
@@ -86,6 +105,8 @@
 	//paper_doubleColumn->SetOptTitle(0);
 	paper_doubleColumn->SetFrameLineWidth(1);
 	paper_doubleColumn->SetLineWidth(1);
+	paper_doubleColumn->SetHistLineColor(kBlack);
+	paper_doubleColumn->SetMarkerColor(kBlack);
 	paper_doubleColumn->SetTitleX(0.5);
 	paper_doubleColumn->SetTitleY(0.99);
 	paper_doubleColumn->SetTitleAlign(23);
@@ -189,25 +210,6 @@
 	//paper_doubleColumn_nino->SetLegendBorderSize(0);
 	//paper_doubleColumn_nino->SetLegendFillColor(0);
 	////paper_doubleColumn_nino->SetLegendFont(font);
-
-
-	//*****************************************************************************
-	//
-	// Define Tableau colors
-	//
-	//*****************************************************************************
-
-	// Define Tableau colors
-	static const int blue_tableau = TColor::GetColor("#1f77b4");
-	static const int orange_tableau = TColor::GetColor("#ff7f0e");
-	static const int green_tableau = TColor::GetColor("#2ca02c");
-	static const int red_tableau = TColor::GetColor("#d62728");
-	static const int purple_tableau = TColor::GetColor("#9467bd");
-	static const int brown_tableau = TColor::GetColor("#8c564b");
-	static const int pink_tableau = TColor::GetColor("#e377c2");
-	static const int gray_tableau = TColor::GetColor("#8f7f7f");
-	static const int olive_tableau = TColor::GetColor("#bcbd22");
-	static const int cyan_tableau = TColor::GetColor("#17becf");
 
 
 	//*****************************************************************************
