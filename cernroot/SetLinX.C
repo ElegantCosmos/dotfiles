@@ -1,0 +1,12 @@
+void SetLinX(const bool flag = true) // Set linear x-axis scale, and other aesthetic settings
+{
+  if (flag) {
+    gStyle->SetLabelOffset(2.0/canvasHeight_pt, "x");
+  } else {
+    gStyle->SetLabelOffset(-0.8/canvasHeight_pt, "x");
+  }
+  gPad->UseCurrentStyle();
+  gPad->SetLogx(int(!flag));
+  gPad->Modified();
+  gPad->Update();
+}

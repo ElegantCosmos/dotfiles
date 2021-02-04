@@ -117,9 +117,8 @@
 
 	paper_doubleColumn->SetTitleFont(font, "xyz");
 	paper_doubleColumn->SetTitleSize(fontSize_px, "xyz");
-	//paper_doubleColumn->SetTitleOffset(1.17, "x"); // use with log_{10} subscript
-	paper_doubleColumn->SetTitleOffset(1.25, "x"); // use when no log_{10} subscript
-	paper_doubleColumn->SetTitleOffset(1.32, "y");
+	paper_doubleColumn->SetTitleOffset(1.17, "x"); // lowest part of log_{10} is barely on the pad; I think log_{10} has the lowest reaching text
+	paper_doubleColumn->SetTitleOffset(1.32, "y"); // highest part of sqrt(2) is barely on the pad; I think sqrt(2) has the highest reaching text
 	paper_doubleColumn->SetTitleOffset(-0.40, "z"); // doesn't work in ROOT 5.34/23
 
 	paper_doubleColumn->SetLabelFont(font, "xyz");
