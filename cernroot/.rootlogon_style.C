@@ -117,7 +117,8 @@
 
 	paper_doubleColumn->SetTitleFont(font, "xyz");
 	paper_doubleColumn->SetTitleSize(fontSize_px, "xyz");
-	paper_doubleColumn->SetTitleOffset(1.17, "x");
+	//paper_doubleColumn->SetTitleOffset(1.17, "x"); // use with log_{10} subscript
+	paper_doubleColumn->SetTitleOffset(1.25, "x"); // use when no log_{10} subscript
 	paper_doubleColumn->SetTitleOffset(1.32, "y");
 	paper_doubleColumn->SetTitleOffset(-0.40, "z"); // doesn't work in ROOT 5.34/23
 

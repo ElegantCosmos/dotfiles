@@ -14,7 +14,7 @@
   gPad->SaveAs("histogram_plot.pdf");
 
   gStyle->SetOptStat("");
-  TH2F hist2("hist2", "hist2", 100, -800000, 800000, 100, -800000, 800000);
+  TH2F hist2("hist2", "hist2", 100, 1, 800000, 100, 1, 800000);
   hist2.Fill(10, 200, 0);
   hist2.Fill(-100, 600, 100);
   hist2.Fill(100.0, 100.0, 750000);
