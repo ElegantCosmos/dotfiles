@@ -7,7 +7,7 @@
   hist.GetXaxis()->SetTitle("A_{g}^{T}  Log_{10} #sqrt{2} E_{pqyg} [cm]");
   hist.GetYaxis()->SetTitle("A_{g}^{T}  Log_{10} #sqrt{2} E_{pqyg} [A.U.]");
   hist.Draw("Hist");
-  SetLogY();
+  //SetLogY();
   SetLogX();
   //cout << "gPad->GetWw()" << gPad->GetWw() << endl;
   //cout << "gPad->GetWh()" << gPad->GetWh() << endl;
@@ -17,12 +17,12 @@
   TH2F hist2("hist2", "hist2", 100, 1, 800000, 100, 1, 8000);
   hist2.Fill(10, 200, 0);
   hist2.Fill(-100, 600, 100);
-  hist2.Fill(100.0, 100.0, 75000);
+  hist2.Fill(100.0, 100.0, 750000000);
   hist2.GetXaxis()->SetTitle("A_{g}^{T}  Log_{10} #sqrt{2} E_{pqyg} [cm]");
   hist2.GetYaxis()->SetTitle("A_{g}^{T}  Log_{10} #sqrt{2} E_{pqyg} [A.U.]");
   hist2.Draw("Colz");
-  SetLogY();
-  SetLogX();
+  SetLogY(false);
+  //SetLogX();
 
   SetPaletteAxis(hist2);
   //gPad->Modified();

@@ -6,7 +6,11 @@ void SetLogX(const bool flag = true) // Set logarithmic x-axis scale, and other 
     gStyle->SetLabelOffset(2.0/canvasHeight_pt, "x");
   }
   gPad->UseCurrentStyle();
+  gPad->SetLogy(yAxisIsLog);
   gPad->SetLogx(int(flag));
+
   gPad->Modified();
   gPad->Update();
+
+  xAxisIsLog = flag;
 }

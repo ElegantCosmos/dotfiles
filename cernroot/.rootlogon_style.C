@@ -2,11 +2,11 @@
 	gROOT->SetBatch(kTRUE);
 
 
-	//*****************************************************************************
+	//****************************************************************************
 	//
 	// Define Tableau colors
 	//
-	//*****************************************************************************
+	//****************************************************************************
 
 	// Define Tableau colors
 	static const int blue_tableau = TColor::GetColor("#1f77b4");
@@ -21,11 +21,11 @@
 	static const int cyan_tableau = TColor::GetColor("#17becf");
 
 
-	//*****************************************************************************
+	//****************************************************************************
 	//
 	// Constants
 	//
-	//*****************************************************************************
+	//****************************************************************************
 
 	gROOT->SetStyle("Modern");
 
@@ -46,10 +46,14 @@
 
 	const int font = 133; // Time New Roman (size specified in pixels)
 	const double fontSize_pt = 8; // default font size
-	const double fontSize_small_pt = 4; // small font size
+	const double fontSize_small_pt = 7; // small font size
+	const double fontSize_xsmall_pt = 5; // small font size
+	const double fontSize_xxsmall_pt = 4; // small font size
 	const double ptPerInch = 72.0; // as defined by Adobe and in matplotlib
 	const double fontSize_px = ppi*fontSize_pt/ptPerInch;
 	const double fontSize_small_px = ppi*fontSize_small_pt/ptPerInch;
+	const double fontSize_xsmall_px = ppi*fontSize_xsmall_pt/ptPerInch;
+	const double fontSize_xxsmall_px = ppi*fontSize_xxsmall_pt/ptPerInch;
 
   const double canvasWidth_mm = 90.0; // mm, typical width of single column for double column paper
   const double mmPerInch = 25.4;
@@ -69,11 +73,11 @@
 	const double margin = 0.13; // common pad margin
 
 
-  //*****************************************************************************
+  //****************************************************************************
   //
   // Plotting style
   //
-  //*****************************************************************************
+  //****************************************************************************
 
 	//// Style compatible with new ROOT 6
 	TStyle* paper_doubleColumn= new TStyle("paper_doubleColumn","Double Column Paper");
@@ -108,12 +112,12 @@
 	paper_doubleColumn->SetHistLineColor(kBlack);
 	paper_doubleColumn->SetMarkerColor(kBlack);
 	paper_doubleColumn->SetTitleX(0.5);
-	paper_doubleColumn->SetTitleY(0.99);
+	paper_doubleColumn->SetTitleY(0.995);
 	paper_doubleColumn->SetTitleAlign(23);
 	paper_doubleColumn->SetTitleFillColor(0);
 	paper_doubleColumn->SetTitleBorderSize(0);
 	paper_doubleColumn->SetTitleFont(font, "t"); // doesn't work in ROOT 5.34/23
-	paper_doubleColumn->SetTitleSize(fontSize_px, "t"); // doesn't work in ROOT 5.34/23
+	paper_doubleColumn->SetTitleSize(fontSize_xsmall_px, "t"); // doesn't work in ROOT 5.34/23
 
 	paper_doubleColumn->SetTitleFont(font, "xyz");
 	paper_doubleColumn->SetTitleSize(fontSize_px, "xyz");
@@ -123,7 +127,7 @@
 
 	paper_doubleColumn->SetLabelFont(font, "xyz");
 	paper_doubleColumn->SetLabelSize(fontSize_px, "xyz");
-	paper_doubleColumn->SetLabelOffset(1.5/canvasHeight_pt, "x");
+	paper_doubleColumn->SetLabelOffset(2.0/canvasHeight_pt, "x");
 	paper_doubleColumn->SetLabelOffset(3.0/canvasWidth_pt, "y");
 	paper_doubleColumn->SetLabelOffset(3.0/canvasWidth_pt, "z");
 
@@ -131,11 +135,11 @@
 	paper_doubleColumn->SetStatBorderSize(1);
 	paper_doubleColumn->SetStatColor(kWhite);
 	paper_doubleColumn->SetStatFont(font);
-	paper_doubleColumn->SetStatFontSize(fontSize_small_px);
+	paper_doubleColumn->SetStatFontSize(fontSize_xxsmall_px);
 	paper_doubleColumn->SetStatY(1);
 	paper_doubleColumn->SetStatX(1);
-	paper_doubleColumn->SetStatW(1.5*margin);
-	paper_doubleColumn->SetStatH(0.8*margin);
+	paper_doubleColumn->SetStatW(margin);
+	paper_doubleColumn->SetStatH(3*margin);
 
 	//paper_doubleColumn->SetNdivisions(10, "xyz");
 	paper_doubleColumn->SetNdivisions(510, "xyz"); // show sub-ticks
@@ -212,11 +216,11 @@
 	////paper_doubleColumn_nino->SetLegendFont(font);
 
 
-	//*****************************************************************************
+	//****************************************************************************
 	//
 	// Example of how to make palette axis neat
 	//
-	//*****************************************************************************
+	//****************************************************************************
 
 	//TH2F hist2("hist2", "hist2", 100, 0, 10000, 100, 0, 10000);
 	//hist2.Fill(0.0, 0.0, 10);
@@ -233,4 +237,13 @@
 	////pa->GetAxis()->SetTitle("Titlegy [unit]");
     //hist2.GetZaxis()->SetTitle("Titlegy [unit]");
     //hist2.GetZaxis()->SetTitleOffset(-0.3);
+
+	//****************************************************************************
+  //
+  // Flags signaling whether plot axes are log-scale
+  //
+	//****************************************************************************
+
+  bool xAxisIsLog = false;
+  bool yAxisIsLog = false;
 }
