@@ -79,8 +79,8 @@ void SetLinX(const bool flag = true)
 // Set logarithmic y-axis scale, and other aesthetic settings.
 void SetLogY(const bool flag = true)
 {
-  gPad->UseCurrentStyle();
-  gPad->SetLogx(xAxisIsLog);
+  //gPad->UseCurrentStyle(); // something strange happens with this
+  //gPad->SetLogx(xAxisIsLog);
   gPad->SetLogy(int(flag));
 
   gPad->Modified();
@@ -92,8 +92,8 @@ void SetLogY(const bool flag = true)
 // Set linear y-axis scale, and other aesthetic settings.
 void SetLinY(const bool flag = true)
 {
-  gPad->UseCurrentStyle();
-  gPad->SetLogx(xAxisIsLog);
+  //gPad->UseCurrentStyle(); // something strange happens with this
+  //gPad->SetLogx(xAxisIsLog);
   gPad->SetLogy(int(!flag));
 
   gPad->Modified();

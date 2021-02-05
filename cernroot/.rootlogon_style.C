@@ -84,9 +84,9 @@
 	paper_doubleColumn->SetFrameBorderMode(0);
 	paper_doubleColumn->SetFrameBorderSize(0);
 	paper_doubleColumn->SetFrameFillStyle(0);
-	paper_doubleColumn->SetFrameFillColor(kWhite);
+	paper_doubleColumn->SetFrameFillColor(blue_tableau);
 	paper_doubleColumn->SetHistFillStyle(0);
-	paper_doubleColumn->SetHistFillColor(kWhite);
+	paper_doubleColumn->SetHistFillColor(blue_tableau);
 	paper_doubleColumn->SetFillStyle(0);
 	//paper_doubleColumn->SetFillColor(kWhite); // Makes 2D hist colz fill color white. Do not use.
 	paper_doubleColumn->SetCanvasBorderMode(0);
@@ -109,8 +109,11 @@
 	//paper_doubleColumn->SetOptTitle(0);
 	paper_doubleColumn->SetFrameLineWidth(1);
 	paper_doubleColumn->SetLineWidth(1);
-	paper_doubleColumn->SetHistLineColor(kBlack);
-	paper_doubleColumn->SetMarkerColor(kBlack);
+	paper_doubleColumn->SetHistLineColor(blue_tableau);
+	paper_doubleColumn->SetHistLineWidth(1);
+	paper_doubleColumn->SetMarkerColor(blue_tableau);
+	paper_doubleColumn->SetMarkerStyle(8);
+	paper_doubleColumn->SetMarkerSize(2);
 	paper_doubleColumn->SetTitleX(0.5);
 	paper_doubleColumn->SetTitleY(0.995);
 	paper_doubleColumn->SetTitleAlign(23);
