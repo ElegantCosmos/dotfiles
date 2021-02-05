@@ -117,26 +117,40 @@ void SetPaletteAxis(TH1& hist, const TString& title = "A_{g}^{T} Log_{10} #sqrt{
   gPad->Update();
 }
 
-std::map<std::string, int> colors;
-colors["blue_tableau"]   = TColor::GetColor("#1f77b4"); // Blue
-colors["orange_tableau"] = TColor::GetColor("#ff7f0e"); // Orange
-colors["green_tableau"]  = TColor::GetColor("#2ca02c"); // Green
-colors["red_tableau"]    = TColor::GetColor("#d62728"); // Red
-colors["purple_tableau"] = TColor::GetColor("#9467bd"); // Purple
-colors["brown_tableau"]  = TColor::GetColor("#8c564b"); // Brown
-colors["pink_tableau"]   = TColor::GetColor("#e377c2"); // Pink
-colors["gray_tableau"]   = TColor::GetColor("#8f7f7f"); // Gray
-colors["olive_tableau"]  = TColor::GetColor("#bcbd22"); // Olive
-colors["cyan_tableau"]   = TColor::GetColor("#17becf"); // Cyan
-int GetColor(int num = 0)
-{
-  int i_color = 0;
-  for (std::map<std::string, int>::const_iterator color = colors.begin(); color != colors.end(); ++color) {
-    if ((i_color % colors.size()) == num) return color->second;
+class Colors {
+public:
+  Colors()
+  {
+    colors["blue_tableau"]   = TColor::GetColor("#1f77b4"); // Blue
+    colors["orange_tableau"] = TColor::GetColor("#ff7f0e"); // Orange
+    colors["green_tableau"]  = TColor::GetColor("#2ca02c"); // Green
+    colors["red_tableau"]    = TColor::GetColor("#d62728"); // Red
+    colors["purple_tableau"] = TColor::GetColor("#9467bd"); // Purple
+    colors["brown_tableau"]  = TColor::GetColor("#8c564b"); // Brown
+    colors["pink_tableau"]   = TColor::GetColor("#e377c2"); // Pink
+    colors["gray_tableau"]   = TColor::GetColor("#8f7f7f"); // Gray
+    colors["olive_tableau"]  = TColor::GetColor("#bcbd22"); // Olive
+    colors["cyan_tableau"]   = TColor::GetColor("#17becf"); // Cyan
   }
-}
 int GetColor(const std::string& name)
 {
   return colors.at(name);
 }
+int GetColor(int id = 0)
+{
+  int color = 0;
+  int colorID = 0;
+  for (std::map<std::string, int>::const_iterator i_color = colors.begin(); i_color != colors.end(); ++i_color) {
+    if ((colorID % colors.size()) == id) {
+      color = i_color->second;
+      break;
+    }
+    ++colorID;
+  }
+  return color;
+}
+
+private:
+  std::map<std::string, int> colors;
+};
 }
