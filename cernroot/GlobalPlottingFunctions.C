@@ -41,80 +41,62 @@ void SaveOpen(const std::string file = "plot.pdf", int nFiles = 1)
 }
 
 // Set logarithmic x-axis scale, and other aesthetic settings.
-void SetLogX(const bool flag = true)
+//void SetLogX(TObject* obj = nullptr, const bool flag = true) // Seems like a better implementation than to change the entire TStyle, but not used for now
+//{
+//  // Get label offset value depending on whether axis is log scale.
+//  double offset;
+//  if (flag) {
+//    offset = -0.5/canvasHeight_pt;
+//  } else {
+//    offset = 2.0/canvasHeight_pt;
+//  }
+//  std::cout << "offset" << offset << ";" << std::endl;
+//
+//  // Set offset on appropriate object: TH1, TGraph.
+//  TH1* hist = dynamic_cast<TH1*>(obj);
+//  if (hist) {
+//    hist->GetXaxis()->SetLabelOffset(offset);
+//  }
+//  TGraph* graph = dynamic_cast<TGraph*>(obj);
+//  if (graph) {
+//    graph->GetXaxis()->SetLabelOffset(offset);
+//  }
+//
+//  // Apply log scale if applicable.
+//  gPad->SetLogx(flag);
+//}
+void SetLogX(const bool flag = true) // Use this for now
 {
   if (flag) {
-    gStyle->SetLabelOffset(-0.8/canvasHeight_pt, "x");
+    gStyle->SetLabelOffset(-0.5/canvasHeight_pt, "x");
   } else {
     gStyle->SetLabelOffset(2.0/canvasHeight_pt, "x");
   }
+  gStyle->SetOptLogx(flag);
   gPad->UseCurrentStyle();
-  gPad->SetLogy(yAxisIsLog);
-  gPad->SetLogx(int(flag));
-
-  gPad->Modified();
-  gPad->Update();
-
-  xAxisIsLog = flag;
-}
-
-// Set linear x-axis scale, and other aesthetic settings.
-void SetLinX(const bool flag = true)
-{
-  if (flag) {
-    gStyle->SetLabelOffset(2.0/canvasHeight_pt, "x");
-  } else {
-    gStyle->SetLabelOffset(-0.8/canvasHeight_pt, "x");
-  }
-  gPad->UseCurrentStyle();
-  gPad->SetLogy(yAxisIsLog);
-  gPad->SetLogx(int(!flag));
-
-  gPad->Modified();
-  gPad->Update();
-
-  xAxisIsLog = !flag;
 }
 
 // Set logarithmic y-axis scale, and other aesthetic settings.
-void SetLogY(const bool flag = true)
+//void SetLogY(TObject* obj = nullptr, const bool flag = true)
+//{ // Seems like a better implementation than to change the entire TStyle, but not used for now
+//  gPad->SetLogy(flag);
+//}
+void SetLogY(const bool flag = true) // Use this for now
 {
-  //gPad->UseCurrentStyle(); // something strange happens with this
-  //gPad->SetLogx(xAxisIsLog);
-  gPad->SetLogy(int(flag));
-
-  gPad->Modified();
-  gPad->Update();
-
-  yAxisIsLog = flag;
+  gStyle->SetOptLogy(flag);
+  gPad->UseCurrentStyle();
 }
 
-// Set linear y-axis scale, and other aesthetic settings.
-void SetLinY(const bool flag = true)
-{
-  //gPad->UseCurrentStyle(); // something strange happens with this
-  //gPad->SetLogx(xAxisIsLog);
-  gPad->SetLogy(int(!flag));
-
-  gPad->Modified();
-  gPad->Update();
-
-  yAxisIsLog = !flag;
-}
-
-void SetPaletteAxis(TH1& hist, const TString& title = "A_{g}^{T} Log_{10} #sqrt{2} E_{pqyg} [unit]")
+void SetPaletteAxis(TH1* hist, const TString& title = "A_{g}^{T} Log_{10} #sqrt{2} E_{pqyg} [unit]")
 {
   gPad->Modified();
   gPad->Update();
 
-  TPaletteAxis* axis = dynamic_cast<TPaletteAxis*>(hist.GetListOfFunctions()->FindObject("palette"));
+  TPaletteAxis* axis = dynamic_cast<TPaletteAxis*>(hist->GetListOfFunctions()->FindObject("palette"));
   axis->SetX1NDC(0.935); axis->SetX2NDC(0.945);
-  hist.GetZaxis()->SetTitleOffset(-0.40);
-  hist.GetZaxis()->SetTitle(title);
+  hist->GetZaxis()->SetTitleOffset(-0.40);
+  hist->GetZaxis()->SetTitle(title);
   gPad->SetFrameLineWidth(10);
-
-  gPad->Modified();
-  gPad->Update();
 }
 
 class Colors {

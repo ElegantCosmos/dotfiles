@@ -84,7 +84,7 @@
 	paper_doubleColumn->SetFrameBorderMode(0);
 	paper_doubleColumn->SetFrameBorderSize(0);
 	paper_doubleColumn->SetFrameFillStyle(0);
-	paper_doubleColumn->SetFrameFillColor(blue_tableau);
+	paper_doubleColumn->SetFrameFillColor(kBlack);
 	paper_doubleColumn->SetHistFillStyle(0);
 	paper_doubleColumn->SetHistFillColor(blue_tableau);
 	paper_doubleColumn->SetFillStyle(0);
@@ -109,11 +109,12 @@
 	//paper_doubleColumn->SetOptTitle(0);
 	paper_doubleColumn->SetFrameLineWidth(1);
 	paper_doubleColumn->SetLineWidth(1);
-	paper_doubleColumn->SetHistLineColor(blue_tableau);
+	paper_doubleColumn->SetLineColor(kBlack);
 	paper_doubleColumn->SetHistLineWidth(1);
-	paper_doubleColumn->SetMarkerColor(blue_tableau);
+	paper_doubleColumn->SetHistLineColor(blue_tableau);
 	paper_doubleColumn->SetMarkerStyle(8);
 	paper_doubleColumn->SetMarkerSize(2);
+	paper_doubleColumn->SetMarkerColor(blue_tableau);
 	paper_doubleColumn->SetTitleX(0.5);
 	paper_doubleColumn->SetTitleY(0.995);
 	paper_doubleColumn->SetTitleAlign(23);
@@ -142,7 +143,7 @@
 	paper_doubleColumn->SetStatY(1);
 	paper_doubleColumn->SetStatX(1);
 	paper_doubleColumn->SetStatW(margin);
-	paper_doubleColumn->SetStatH(3*margin);
+	paper_doubleColumn->SetStatH(margin);
 
 	//paper_doubleColumn->SetNdivisions(10, "xyz");
 	paper_doubleColumn->SetNdivisions(510, "xyz"); // show sub-ticks
