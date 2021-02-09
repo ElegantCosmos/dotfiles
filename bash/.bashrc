@@ -122,6 +122,13 @@ if [[ "$OSTYPE" == "linux"* ]]; then # Linux
 		### gvfs-trash command variables
 		export XDG_DATA_HOME=${XDG_DATA_HOME:="$HOME/.local/share"}
 		alias trash='gvfs-trash'
+
+	elif [[ "$(hostname)" == "vmUbuntuG4" ]] || [[ "$(hostname)" == "kahr" ]]; then
+		function compile-with-root {
+			local filename=$(basename "${@: -1}")
+			local executable=${filename%.*}
+			g++ -std=c++11 -O2 -Wall -Wextra -pedantic -o ${executable} $(root-config --cflags) "$@" $(root-config --libs)
+		}
 	fi
 
 elif [[ "$OSTYPE" == "darwin"* ]]; then # MacOS
