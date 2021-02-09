@@ -108,8 +108,12 @@
 
 	//paper_doubleColumn->SetOptTitle(0);
 	paper_doubleColumn->SetFrameLineWidth(1);
+	paper_doubleColumn->SetFrameLineColor(kBlack);
+	paper_doubleColumn->SetAxisColor(kBlack, "x");
+	paper_doubleColumn->SetAxisColor(kBlack, "y");
+	paper_doubleColumn->SetAxisColor(kBlack, "z");
 	paper_doubleColumn->SetLineWidth(1);
-	paper_doubleColumn->SetLineColor(kBlack);
+	paper_doubleColumn->SetLineColor(blue_tableau);
 	paper_doubleColumn->SetHistLineWidth(1);
 	paper_doubleColumn->SetHistLineColor(blue_tableau);
 	paper_doubleColumn->SetMarkerStyle(8);
@@ -140,7 +144,7 @@
 	paper_doubleColumn->SetStatColor(kWhite);
 	paper_doubleColumn->SetStatFont(font);
 	paper_doubleColumn->SetStatFontSize(fontSize_xxsmall_px);
-	paper_doubleColumn->SetStatY(1);
+	paper_doubleColumn->SetStatY(1 - margin);
 	paper_doubleColumn->SetStatX(1);
 	paper_doubleColumn->SetStatW(margin);
 	paper_doubleColumn->SetStatH(margin);
