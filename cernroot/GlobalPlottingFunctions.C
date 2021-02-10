@@ -43,98 +43,100 @@ void SaveOpen(const std::string file = "plot.pdf", int nFiles = 1)
 // Set logarithmic x-axis scale, and other aesthetic settings.
 void SetLogX(TObject* obj = nullptr, const bool flag = true) // Seems like a better implementation than to change the entire TStyle, but not used for now
 {
-  // Get label offset value depending on whether axis is log scale.
-  double offset;
-  if (flag) {
-    offset = -0.5/canvasHeight_pt;
-  } else {
-    offset = 2.0/canvasHeight_pt;
-  }
-  std::cout << "offset" << offset << ";" << std::endl;
+	// Get label offset value depending on whether axis is log scale.
+	double offset;
+	if (flag) {
+		offset = -0.5/canvasHeight_pt;
+	} else {
+		offset = 2.0/canvasHeight_pt;
+	}
+	std::cout << "offset" << offset << ";" << std::endl;
 
-  // Set offset on appropriate object: TH1, TGraph.
-  TH1* hist = dynamic_cast<TH1*>(obj);
-  if (hist) {
-    hist->GetXaxis()->SetLabelOffset(offset);
-  }
-  TGraph* graph = dynamic_cast<TGraph*>(obj);
-  if (graph) {
-    graph->GetXaxis()->SetLabelOffset(offset);
-  }
+	// Set offset on appropriate object: TH1, TGraph.
+	TH1* hist = dynamic_cast<TH1*>(obj);
+	if (hist) {
+		hist->GetXaxis()->SetLabelOffset(offset);
+	}
+	TGraph* graph = dynamic_cast<TGraph*>(obj);
+	if (graph) {
+		graph->GetXaxis()->SetLabelOffset(offset);
+	}
 
-  // Apply log scale if applicable.
-  gPad->SetLogx(flag);
+	// Apply log scale if applicable.
+	gPad->SetLogx(flag);
 }
 
-void SetLogX(const bool flag = true) // Use this for now
-{
-  if (flag) {
-    gStyle->SetLabelOffset(-0.5/canvasHeight_pt, "x");
-  } else {
-    gStyle->SetLabelOffset(2.0/canvasHeight_pt, "x");
-  }
-  gStyle->SetOptLogx(flag);
-  gPad->UseCurrentStyle();
-}
+//void SetLogX(const bool flag = true) // Use this for now
+//{
+//  if (flag) {
+//    gStyle->SetLabelOffset(-0.5/canvasHeight_pt, "x");
+//  } else {
+//    gStyle->SetLabelOffset(2.0/canvasHeight_pt, "x");
+//  }
+//  gStyle->SetOptLogx(flag);
+//  gPad->UseCurrentStyle();
+//}
 
 // Set logarithmic y-axis scale, and other aesthetic settings.
 void SetLogY(TObject* obj = nullptr, const bool flag = true)
 { // Seems like a better implementation than to change the entire TStyle, but not used for now
-  gPad->SetLogy(flag);
+	gPad->SetLogy(flag);
 }
 
-void SetLogY(const bool flag = true) // Use this for now
-{
-  gStyle->SetOptLogy(flag);
-  gPad->UseCurrentStyle();
-}
+//void SetLogY(const bool flag = true) // Use this for now
+//{
+//  gStyle->SetOptLogy(flag);
+//  gPad->UseCurrentStyle();
+//}
 
 void SetPaletteAxis(TH1* hist, const TString& title = "A_{g}^{T} Log_{10} #sqrt{2} E_{pqyg} [unit]")
 {
-  gPad->Modified();
-  gPad->Update();
+	gPad->Modified();
+	gPad->Update();
 
-  TPaletteAxis* axis = dynamic_cast<TPaletteAxis*>(hist->GetListOfFunctions()->FindObject("palette"));
-  axis->SetX1NDC(0.935); axis->SetX2NDC(0.945);
-  hist->GetZaxis()->SetTitleOffset(-0.40);
-  hist->GetZaxis()->SetTitle(title);
-  gPad->SetFrameLineWidth(10);
+	TPaletteAxis* axis = dynamic_cast<TPaletteAxis*>(hist->GetListOfFunctions()->FindObject("palette"));
+	axis->SetX1NDC(0.935); axis->SetX2NDC(0.945);
+	hist->GetZaxis()->SetTitleOffset(-0.40);
+	hist->GetZaxis()->SetTitle(title);
+	gPad->SetFrameLineWidth(10);
 }
 
 class Colors {
 public:
-  Colors()
-  {
-    colors["blue_tableau"]   = TColor::GetColor("#1f77b4"); // Blue
-    colors["orange_tableau"] = TColor::GetColor("#ff7f0e"); // Orange
-    colors["green_tableau"]  = TColor::GetColor("#2ca02c"); // Green
-    colors["red_tableau"]    = TColor::GetColor("#d62728"); // Red
-    colors["purple_tableau"] = TColor::GetColor("#9467bd"); // Purple
-    colors["brown_tableau"]  = TColor::GetColor("#8c564b"); // Brown
-    colors["pink_tableau"]   = TColor::GetColor("#e377c2"); // Pink
-    colors["gray_tableau"]   = TColor::GetColor("#8f7f7f"); // Gray
-    colors["olive_tableau"]  = TColor::GetColor("#bcbd22"); // Olive
-    colors["cyan_tableau"]   = TColor::GetColor("#17becf"); // Cyan
-  }
-int GetColor(const std::string& name)
-{
-  return colors.at(name);
-}
-int GetColor(int id = 0)
-{
-  int color = 0;
-  int colorID = 0;
-  for (std::map<std::string, int>::const_iterator i_color = colors.begin(); i_color != colors.end(); ++i_color) {
-    if ((colorID % colors.size()) == id) {
-      color = i_color->second;
-      break;
-    }
-    ++colorID;
-  }
-  return color;
-}
+	Colors(std::string paletteName = "tableau")
+	{
+		if (paletteName == "tableau") {
+			colors["blue_tableau"]   = TColor::GetColor("#1f77b4"); // Blue
+			colors["orange_tableau"] = TColor::GetColor("#ff7f0e"); // Orange
+			colors["green_tableau"]  = TColor::GetColor("#2ca02c"); // Green
+			colors["red_tableau"]    = TColor::GetColor("#d62728"); // Red
+			colors["purple_tableau"] = TColor::GetColor("#9467bd"); // Purple
+			colors["brown_tableau"]  = TColor::GetColor("#8c564b"); // Brown
+			colors["pink_tableau"]   = TColor::GetColor("#e377c2"); // Pink
+			colors["gray_tableau"]   = TColor::GetColor("#8f7f7f"); // Gray
+			colors["olive_tableau"]  = TColor::GetColor("#bcbd22"); // Olive
+			colors["cyan_tableau"]   = TColor::GetColor("#17becf"); // Cyan
+		}
+	}
+	int GetColor(const std::string& name)
+	{
+		return colors.at(name);
+	}
+	int GetColor(int id = 0)
+	{
+		int color = 0;
+		int colorID = 0;
+		for (std::map<std::string, int>::const_iterator i_color = colors.begin(); i_color != colors.end(); ++i_color) {
+			if ((colorID % colors.size()) == id) {
+				color = i_color->second;
+				break;
+			}
+			++colorID;
+		}
+		return color;
+	}
 
 private:
-  std::map<std::string, int> colors;
+	std::map<std::string, int> colors;
 };
 }
