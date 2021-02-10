@@ -41,30 +41,31 @@ void SaveOpen(const std::string file = "plot.pdf", int nFiles = 1)
 }
 
 // Set logarithmic x-axis scale, and other aesthetic settings.
-//void SetLogX(TObject* obj = nullptr, const bool flag = true) // Seems like a better implementation than to change the entire TStyle, but not used for now
-//{
-//  // Get label offset value depending on whether axis is log scale.
-//  double offset;
-//  if (flag) {
-//    offset = -0.5/canvasHeight_pt;
-//  } else {
-//    offset = 2.0/canvasHeight_pt;
-//  }
-//  std::cout << "offset" << offset << ";" << std::endl;
-//
-//  // Set offset on appropriate object: TH1, TGraph.
-//  TH1* hist = dynamic_cast<TH1*>(obj);
-//  if (hist) {
-//    hist->GetXaxis()->SetLabelOffset(offset);
-//  }
-//  TGraph* graph = dynamic_cast<TGraph*>(obj);
-//  if (graph) {
-//    graph->GetXaxis()->SetLabelOffset(offset);
-//  }
-//
-//  // Apply log scale if applicable.
-//  gPad->SetLogx(flag);
-//}
+void SetLogX(TObject* obj = nullptr, const bool flag = true) // Seems like a better implementation than to change the entire TStyle, but not used for now
+{
+  // Get label offset value depending on whether axis is log scale.
+  double offset;
+  if (flag) {
+    offset = -0.5/canvasHeight_pt;
+  } else {
+    offset = 2.0/canvasHeight_pt;
+  }
+  std::cout << "offset" << offset << ";" << std::endl;
+
+  // Set offset on appropriate object: TH1, TGraph.
+  TH1* hist = dynamic_cast<TH1*>(obj);
+  if (hist) {
+    hist->GetXaxis()->SetLabelOffset(offset);
+  }
+  TGraph* graph = dynamic_cast<TGraph*>(obj);
+  if (graph) {
+    graph->GetXaxis()->SetLabelOffset(offset);
+  }
+
+  // Apply log scale if applicable.
+  gPad->SetLogx(flag);
+}
+
 void SetLogX(const bool flag = true) // Use this for now
 {
   if (flag) {
@@ -77,10 +78,11 @@ void SetLogX(const bool flag = true) // Use this for now
 }
 
 // Set logarithmic y-axis scale, and other aesthetic settings.
-//void SetLogY(TObject* obj = nullptr, const bool flag = true)
-//{ // Seems like a better implementation than to change the entire TStyle, but not used for now
-//  gPad->SetLogy(flag);
-//}
+void SetLogY(TObject* obj = nullptr, const bool flag = true)
+{ // Seems like a better implementation than to change the entire TStyle, but not used for now
+  gPad->SetLogy(flag);
+}
+
 void SetLogY(const bool flag = true) // Use this for now
 {
   gStyle->SetOptLogy(flag);
