@@ -4,25 +4,6 @@
 
 	//**********************************************************
 	//
-	// Define Tableau palette
-	//
-	//**********************************************************
-
-	// Define Tableau colors
-	static const int blue_tableau = TColor::GetColor("#1f77b4");
-	static const int orange_tableau = TColor::GetColor("#ff7f0e");
-	static const int green_tableau = TColor::GetColor("#2ca02c");
-	static const int red_tableau = TColor::GetColor("#d62728");
-	static const int purple_tableau = TColor::GetColor("#9467bd");
-	static const int brown_tableau = TColor::GetColor("#8c564b");
-	static const int pink_tableau = TColor::GetColor("#e377c2");
-	static const int gray_tableau = TColor::GetColor("#8f7f7f");
-	static const int olive_tableau = TColor::GetColor("#bcbd22");
-	static const int cyan_tableau = TColor::GetColor("#17becf");
-
-
-	//**********************************************************
-	//
 	// Constants
 	//
 	//**********************************************************
@@ -86,7 +67,7 @@
 	paper_doubleColumn->SetFrameFillStyle(0);
 	paper_doubleColumn->SetFrameFillColor(kBlack);
 	paper_doubleColumn->SetHistFillStyle(0);
-	paper_doubleColumn->SetHistFillColor(blue_tableau);
+	paper_doubleColumn->SetHistFillColor(kBlack);
 	paper_doubleColumn->SetFillStyle(0);
 	//paper_doubleColumn->SetFillColor(kWhite); // Makes 2D hist colz fill color white. Do not use.
 	paper_doubleColumn->SetCanvasBorderMode(0);
@@ -113,12 +94,12 @@
 	paper_doubleColumn->SetAxisColor(kBlack, "y");
 	paper_doubleColumn->SetAxisColor(kBlack, "z");
 	paper_doubleColumn->SetLineWidth(1);
-	paper_doubleColumn->SetLineColor(blue_tableau);
+	paper_doubleColumn->SetLineColor(kBlack);
 	paper_doubleColumn->SetHistLineWidth(1);
-	paper_doubleColumn->SetHistLineColor(blue_tableau);
+	paper_doubleColumn->SetHistLineColor(kBlack);
 	paper_doubleColumn->SetMarkerStyle(8);
 	paper_doubleColumn->SetMarkerSize(2);
-	paper_doubleColumn->SetMarkerColor(blue_tableau);
+	paper_doubleColumn->SetMarkerColor(kBlack);
 	paper_doubleColumn->SetTitleX(0.5);
 	paper_doubleColumn->SetTitleY(0.995);
 	paper_doubleColumn->SetTitleAlign(23);
@@ -245,4 +226,23 @@
 	////pa->GetAxis()->SetTitle("Titlegy [unit]");
     //hist2.GetZaxis()->SetTitle("Titlegy [unit]");
     //hist2.GetZaxis()->SetTitleOffset(-0.3);
+
+
+	//**********************************************************
+	//
+	// Define Tableau palette
+	//
+	//**********************************************************
+
+	// Define Tableau colors
+	static const int blue_tableau = TColor::GetColor("#1f77b4");
+	static const int orange_tableau = TColor::GetColor("#ff7f0e");
+	static const int green_tableau = TColor::GetColor("#2ca02c");
+	static const int red_tableau = TColor::GetColor("#d62728");
+	static const int purple_tableau = TColor::GetColor("#9467bd");
+	static const int brown_tableau = TColor::GetColor("#8c564b");
+	static const int pink_tableau = TColor::GetColor("#e377c2");
+	static const int gray_tableau = TColor::GetColor("#8f7f7f");
+	static const int olive_tableau = TColor::GetColor("#bcbd22");
+	static const int cyan_tableau = TColor::GetColor("#17becf");
 }

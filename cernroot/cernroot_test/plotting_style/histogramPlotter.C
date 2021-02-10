@@ -43,6 +43,8 @@
   std::vector<double> ys = {0, 1, 1};
   TGraph graph(xs.size(), &xs[0], &ys[0]);
   graph.Draw("ALP");
+  graph.SetLineColor(blue_tableau);
+  graph.SetMarkerColor(blue_tableau);
   //graph.GetXaxis()->SetLimits(0, 5);
   //graph.GetYaxis()->SetRangeUser(-1, 5); // also works
   //graph.SetMaximum(5);
