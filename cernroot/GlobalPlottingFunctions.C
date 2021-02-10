@@ -53,13 +53,26 @@ void SetLogX(TObject* obj = nullptr, const bool flag = true) // Seems like a bet
 	std::cout << "offset" << offset << ";" << std::endl;
 
 	// Set offset on appropriate object: TH1, TGraph.
-	TH1* hist = dynamic_cast<TH1*>(obj);
-	if (hist) {
-		hist->GetXaxis()->SetLabelOffset(offset);
-	}
-	TGraph* graph = dynamic_cast<TGraph*>(obj);
-	if (graph) {
-		graph->GetXaxis()->SetLabelOffset(offset);
+	if (obj) {
+		TH1* hist = dynamic_cast<TH1*>(obj);
+		if (hist) {
+			hist->GetXaxis()->SetLabelOffset(offset);
+		}
+
+		TGraph* graph = dynamic_cast<TGraph*>(obj);
+		if (graph) {
+			graph->GetXaxis()->SetLabelOffset(offset);
+		}
+
+		TMultiGraph* graphs = dynamic_cast<TMultiGraph*>(obj);
+		if (graphs) {
+			graphs->GetXaxis()->SetLabelOffset(offset);
+		}
+
+		THStack* hstack = dynamic_cast<THStack*>(obj);
+		if (hstack) {
+			hstack->GetXaxis()->SetLabelOffset(offset);
+		}
 	}
 
 	// Apply log scale if applicable.
