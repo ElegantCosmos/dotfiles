@@ -101,9 +101,9 @@ void SetPaletteAxis(TH1* hist, const TString& title = "A_{g}^{T} Log_{10} #sqrt{
 	gPad->SetFrameLineWidth(10);
 }
 
-class Colors {
+class Palette {
 public:
-	Colors(std::string paletteName = "tableau")
+	Palette(std::string paletteName = "tableau")
 	{
 		if (paletteName == "tableau") {
 			colors["blue_tableau"]   = TColor::GetColor("#1f77b4"); // Blue
@@ -118,6 +118,7 @@ public:
 			colors["cyan_tableau"]   = TColor::GetColor("#17becf"); // Cyan
 		}
 	}
+
 	int GetColor(const std::string& name)
 	{
 		return colors.at(name);
