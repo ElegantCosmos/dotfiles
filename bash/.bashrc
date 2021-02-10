@@ -30,6 +30,9 @@ if [[ "$OSTYPE" == "linux"* ]]; then # Linux
 	alias la='ls -A'
 	alias l='ls -CF'
 
+	# more aliases
+	alias open='xdg-open'
+
 	### PATH to local scripts
 	if [[ -z "$TMUX" ]]; then
 		PATH_NEW=$HOME/.opt/bin
