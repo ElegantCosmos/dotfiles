@@ -50,7 +50,6 @@ void SetLogX(TObject* obj = nullptr, const bool flag = true) // Seems like a bet
 	} else {
 		offset = 2.0/canvasHeight_pt;
 	}
-	std::cout << "offset" << offset << ";" << std::endl;
 
 	// Set offset on appropriate object: TH1, TGraph.
 	if (obj) {
