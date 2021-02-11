@@ -13,3 +13,5 @@
 	prompt = false
 [pager]
 	show = vim -R -
+[pull]
+	rebase = false
