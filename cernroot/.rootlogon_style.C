@@ -126,8 +126,8 @@
 	paper_doubleColumn->SetStatFont(font);
 	paper_doubleColumn->SetStatFontSize(fontSize_xxsmall_px);
 	paper_doubleColumn->SetStatY(1 - margin);
-	paper_doubleColumn->SetStatX(1);
-	paper_doubleColumn->SetStatW(margin);
+	paper_doubleColumn->SetStatX(1 - 0.5*0.005);
+	paper_doubleColumn->SetStatW(margin - 0.005);
 	paper_doubleColumn->SetStatH(margin);
 
 	//paper_doubleColumn->SetNdivisions(10, "xyz");
