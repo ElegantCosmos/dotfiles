@@ -36,8 +36,8 @@
 	const double fontSize_xsmall_px = ppi*fontSize_xsmall_pt/ptPerInch;
 	const double fontSize_xxsmall_px = ppi*fontSize_xxsmall_pt/ptPerInch;
 
-  const double canvasWidth_mm = 90.0; // mm, typical width of single column for double column paper
-  const double mmPerInch = 25.4;
+	const double canvasWidth_mm = 90.0; // mm, typical width of single column for double column paper
+	const double mmPerInch = 25.4;
 	double canvasWidth_in = canvasWidth_mm/mmPerInch; // inch, typical width of single column for double column paper
 	//cout << "canvasWidth_in" << canvasWidth_in << endl;
 	double canvasHeight_in = canvasWidth_in/goldenRatio; // inch
@@ -48,8 +48,8 @@
 	//cout << "canvasWidth_px" << canvasWidth_px << endl;
 	int canvasHeight_px = int(ppi*canvasHeight_in + 0.5);
 	//cout << "canvasHeight_px" << canvasHeight_px << endl;
-  double canvasWidth_pt = canvasWidth_in*ptPerInch;
-  double canvasHeight_pt = canvasHeight_in*ptPerInch;
+	double canvasWidth_pt = canvasWidth_in*ptPerInch;
+	double canvasHeight_pt = canvasHeight_in*ptPerInch;
 
 	const double margin = 0.13; // common pad margin
 
@@ -140,7 +140,7 @@
 	paper_doubleColumn->SetLegendBorderSize(0);
 	paper_doubleColumn->SetLegendFillColor(0);
 	paper_doubleColumn->SetLegendFont(font);
-	//paper_doubleColumn->SetLegendTextSize(fontSize_small_px);
+	paper_doubleColumn->SetLegendTextSize(fontSize_small_px);
 
 	////// Style compatible with ROOT 5.34/07 on Nino because it does not have some of the newer(?) features
 	//TStyle* paper_doubleColumn_nino = new TStyle("paper_doubleColumn_nino", "paper_doubleColumn_nino");
@@ -218,14 +218,14 @@
 	//hist2.Draw("Colz");
 	//hist2.GetXaxis()->SetTitle("gpqy-axis [cm]");
 	//hist2.GetYaxis()->SetTitle("gpqy-axis [A.U.]");
-    ////gPad->Modified();
-    //gPad->Update();
+	////gPad->Modified();
+	//gPad->Update();
 	//TPaletteAxis* pa = dynamic_cast<TPaletteAxis*>(hist2.GetListOfFunctions()->FindObject("palette"));
 	//pa->SetX1NDC(0.90); pa->SetX2NDC(0.91);
 	////pa->GetAxis()->SetTitleOffset(0);
 	////pa->GetAxis()->SetTitle("Titlegy [unit]");
-    //hist2.GetZaxis()->SetTitle("Titlegy [unit]");
-    //hist2.GetZaxis()->SetTitleOffset(-0.3);
+	//hist2.GetZaxis()->SetTitle("Titlegy [unit]");
+	//hist2.GetZaxis()->SetTitleOffset(-0.3);
 
 
 	//**********************************************************
