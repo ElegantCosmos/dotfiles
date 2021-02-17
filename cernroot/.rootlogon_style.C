@@ -38,20 +38,20 @@
 
 	const double canvasWidth_mm = 90.0; // mm, typical width of single column for double column paper
 	const double mmPerInch = 25.4;
-	double canvasWidth_in = canvasWidth_mm/mmPerInch; // inch, typical width of single column for double column paper
+	static const double canvasWidth_in = canvasWidth_mm/mmPerInch; // inch, typical width of single column for double column paper
 	//cout << "canvasWidth_in" << canvasWidth_in << endl;
-	double canvasHeight_in = canvasWidth_in/goldenRatio; // inch
+	static const double canvasHeight_in = canvasWidth_in/goldenRatio; // inch
 	//cout << "canvasHeight_in" << canvasHeight_in << endl;
 
 	//// Apply zoom factor for confortable viewing in high DPI screens.
-	int canvasWidth_px = int(ppi*canvasWidth_in + 0.5);
+	static const int canvasWidth_px = int(ppi*canvasWidth_in + 0.5);
 	//cout << "canvasWidth_px" << canvasWidth_px << endl;
-	int canvasHeight_px = int(ppi*canvasHeight_in + 0.5);
+	static const int canvasHeight_px = int(ppi*canvasHeight_in + 0.5);
 	//cout << "canvasHeight_px" << canvasHeight_px << endl;
-	double canvasWidth_pt = canvasWidth_in*ptPerInch;
-	double canvasHeight_pt = canvasHeight_in*ptPerInch;
+	static const double canvasWidth_pt = canvasWidth_in*ptPerInch;
+	static const double canvasHeight_pt = canvasHeight_in*ptPerInch;
 
-	const double margin = 0.13; // common pad margin
+	static const double margin = 0.13; // common pad margin
 
 
 	//**********************************************************
