@@ -15,3 +15,5 @@
 	show = vim -R -
 [pull]
 	rebase = false
+[credential]
+	helper = store
