@@ -1,0 +1,8 @@
+#!/bin/sh
+
+if [ $# -ne 1 ]; then
+	echo "Error: Number of arguments is not correct."
+	echo "Usage: gettex <directory_to_clone_to>"
+	exit 1
+fi
+git clone https://github.com/ElegantCosmos/tex_files.git "$@"
