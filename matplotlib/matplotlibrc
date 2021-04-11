@@ -514,8 +514,8 @@ figure.subplot.top     : 0.87    # the top of the subplots of the figure
 #contour.corner_mask        : True   # True | False | legacy
 
 ### ERRORBAR PLOTS
-#errorbar.capsize : 0             # length of end cap on error bars in pixels
-errorbar.capsize : 2             # length of end cap on error bars in pixels
+errorbar.capsize : 0             # length of end cap on error bars in pixels
+#errorbar.capsize : 2             # length of end cap on error bars in pixels
 
 ### HISTOGRAM PLOTS
 #hist.bins : 10                   # The default number of histogram bins.
