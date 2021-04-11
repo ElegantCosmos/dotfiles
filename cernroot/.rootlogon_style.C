@@ -23,7 +23,7 @@
 
 	//const int ppi = 227; // pixels per inch for Mac Retina display
 	const int ppi = 600; // pixels per inch suggested by random websites
-	const double goldenRatio = 0.5*(1 + sqrt(5));
+	static const double goldenRatio = 0.5*(1 + sqrt(5));
 
 	const int font = 133; // Time New Roman (size specified in pixels)
 	const double fontSize_pt = 8; // default font size
@@ -94,6 +94,7 @@
 	paper_doubleColumn->SetAxisColor(kBlack, "y");
 	paper_doubleColumn->SetAxisColor(kBlack, "z");
 	paper_doubleColumn->SetLineWidth(1);
+	paper_doubleColumn->SetEndErrorSize(0);
 	paper_doubleColumn->SetLineColor(kBlack);
 	paper_doubleColumn->SetHistLineWidth(1);
 	paper_doubleColumn->SetHistLineColor(kBlack);
