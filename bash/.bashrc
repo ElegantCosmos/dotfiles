@@ -135,6 +135,17 @@ if [[ "$OSTYPE" == "linux"* ]]; then # Linux
 	fi
 
 elif [[ "$OSTYPE" == "darwin"* ]]; then # MacOS
+	if [ -x /usr/bin/dircolors ]; then
+		test -r $HOME/.dircolors.256 && eval "$(dircolors -b $HOME/.dircolors.256)" || eval "$(dircolors -b)"
+		#alias ls='ls --color=auto'
+		#alias dir='dir --color=auto'
+		#alias vdir='vdir --color=auto'
+
+		#alias grep='grep --color=auto'
+		#alias fgrep='fgrep --color=auto'
+		#alias egrep='egrep --color=auto'
+	fi
+
 	### Alias for Docker
 	alias doc_cuoresw='docker run -it --rm --mount type=bind,source="$HOME",destination=/root/michsakai,consistency=delegated -w="/root/michsakai" --entrypoint /bin/bash charstnut/docker-cuoreswbase /root/michsakai/Soft/docker_dev/cupid_mo_docker/entrypoint.sh'
 
