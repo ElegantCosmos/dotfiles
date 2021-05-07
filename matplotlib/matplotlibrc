@@ -448,7 +448,7 @@ grid.alpha       :   0.5       # transparency, between 0.0 and 1.0
 #legend.scatterpoints : 1        # number of scatter points
 #legend.markerscale   : 1.0      # the relative size of legend markers vs. original
 #legend.fontsize      : medium
-legend.fontsize      : small
+legend.fontsize      : x-small
 # Dimensions as fraction of fontsize:
 #legend.borderpad     : 0.4      # border whitespace
 #legend.labelspacing  : 0.5      # the vertical space between the legend entries
@@ -501,6 +501,7 @@ figure.subplot.top     : 0.87    # the top of the subplots of the figure
 #image.aspect : equal             # equal | auto | a number
 #image.interpolation  : nearest   # see help(imshow) for options
 #image.cmap   : viridis           # A colormap name, gray etc...
+image.cmap   : jet           # A colormap name, gray etc...
 #image.lut    : 256               # the size of the colormap lookup table
 #image.origin : upper             # lower | upper
 #image.resample  : True
