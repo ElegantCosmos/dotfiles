@@ -1,5 +1,4 @@
-# Local .bashrc file
-#echo bashrc
+# General .bashrc file that can be used on any Linux-like system
 
 export EDITOR=vim
 
@@ -202,9 +201,4 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then # MacOS
 	if command -v pyenv &> /dev/null; then
 		eval "$(pyenv init -)"
 	fi
-fi
-
-# Source local definitions
-if [ -f $HOME/.bashrc_local ]; then
-    source $HOME/.bashrc_local
 fi

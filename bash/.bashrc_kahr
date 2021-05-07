@@ -133,3 +133,8 @@ unset __conda_setup
 
 # UDrive mount point
 export UDRIVE=/mnt/udrive
+
+# Source local definitions
+if [ -f $HOME/.bashrc_general ]; then
+    source $HOME/.bashrc_general
+fi
