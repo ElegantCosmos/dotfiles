@@ -8,3 +8,8 @@ done
 
 # Environment variable for Box
 export BOX=~/Box
+
+# Source general definitions
+if [ -f $HOME/.bashrc_general ]; then
+	source $HOME/.bashrc_general
+fi
