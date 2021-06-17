@@ -1,6 +1,6 @@
 [user]
-	name = Michinari Sakai
-	email = michsakai@gmail.com
+	name = Sakai, Mich
+	email = Mich.Sakai@jhuapl.edu
 [core]
 	editor = vim
 	excludesfile = /home/sakaim1/.gitignore_global
@@ -16,4 +16,4 @@
 [pull]
 	rebase = false
 [credential]
-	helper = store
+	helper = cache

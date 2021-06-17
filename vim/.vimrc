@@ -63,7 +63,7 @@ if $TMUX == '' " don't use unnamed register when using tmux
 	set clipboard=unnamed
 endif
 let mapleader = ' ' 
-"set tw=80
+set textwidth=80
 set pastetoggle=<F4>
 "set nu
 set smarttab
