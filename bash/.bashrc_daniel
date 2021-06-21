@@ -118,7 +118,7 @@ fi
  
 ##### MCNP 620
 if [[ -z "$TMUX" ]]; then
-	PATH_NEW="$HOME/.opt/mcnp/mcnp6.2/MCNP_CODE/bin${PATH:+:$PATH}"
+	PATH_NEW="$HOME/.opt/mcnp/mcnp6.2/MCNP_CODE/bin"
 	if [ -d "$PATH_NEW" ]; then
 		export PATH=$PATH_NEW${PATH:+:$PATH}
 	fi
