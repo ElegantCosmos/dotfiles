@@ -148,9 +148,6 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then # MacOS
 	### Alias for Docker
 	alias doc_cuoresw='docker run -it --rm --mount type=bind,source="$HOME",destination=/root/michsakai,consistency=delegated -w="/root/michsakai" --entrypoint /bin/bash charstnut/docker-cuoreswbase /root/michsakai/Soft/docker_dev/cupid_mo_docker/entrypoint.sh'
 
-	### Add brew related scripts into PATH
-	export PATH=/usr/local/bin${PATH:+:$PATH}
-
 	### Java environment manager
 	if [ -d $HOME/.jenv/bin ]; then
 		export PATH=$HOME/.jenv/bin${PATH:+:$PATH}
@@ -176,20 +173,24 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then # MacOS
 	[[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
 
 	### PATH to local scripts
-	PATH_NEW=$HOME/.opt/bin
-	if [ -d "$PATH_NEW" ]; then
-		export PATH=$PATH_NEW${PATH:+:$PATH}
+	if [[ -z "$TMUX" ]]; then
+		PATH_NEW=$HOME/.opt/bin
+		if [ -d "$PATH_NEW" ]; then
+			export PATH=$PATH_NEW${PATH:+:$PATH}
+		fi
 	fi
 
 	### Source thisroot.sh if exists
-	THIS_ROOT=$(brew --prefix)/bin/thisroot.sh
-	if [ -f "$THIS_ROOT" ]; then
-		source "$THIS_ROOT"
-		function compile-with-root {
+	if [[ -z "$TMUX" ]]; then
+		THIS_ROOT=$(brew --prefix)/bin/thisroot.sh
+		if [ -f "$THIS_ROOT" ]; then
+			source "$THIS_ROOT"
+			function compile-with-root {
 			local filename=$(basename "${@: -1}")
 			local executable=${filename%.*}
 			g++ -std=c++11 -O2 -Wall -Wextra -pedantic -o ${executable} $(root-config --cflags) "$@" $(root-config --libs)
 		}
+		fi
 	fi
 
 	### bash tab-completion scripts

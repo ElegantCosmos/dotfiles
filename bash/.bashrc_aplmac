@@ -7,7 +7,7 @@ for FILE in /Volumes/aplhome*; do
 done
 
 # Environment variable for Box
-export BOX=~/Box
+export BOX=$HOME/Box
 
 # Source general definitions
 if [ -f $HOME/.bashrc_general ]; then
