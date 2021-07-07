@@ -283,5 +283,9 @@ set foldmethod=indent
 set foldopen-=search "Do not open fold during search
 highlight Folded ctermbg=Black
 au BufRead * normal zR
+inoremap <F9> <C-O>za
+nnoremap <F9> za
+onoremap <F9> <C-C>za
+vnoremap <F9> zf
 
 cnoremap w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
