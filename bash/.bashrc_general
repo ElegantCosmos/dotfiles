@@ -12,6 +12,9 @@ if [ -f "$HOME/.tmux.completion.bash" ]; then
 fi
 
 if [[ "$OSTYPE" == "linux"* ]]; then # Linux
+	# expand variables
+	shopt -s direxpand
+
 	# enable color support of ls and also add handy aliases
 	if [ -x /usr/bin/dircolors ]; then
 		test -r $HOME/.dircolors.256 && eval "$(dircolors -b $HOME/.dircolors.256)" || eval "$(dircolors -b)"

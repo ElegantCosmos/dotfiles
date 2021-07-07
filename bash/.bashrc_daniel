@@ -136,6 +136,15 @@ ISCDATA="/home/sakaim1/.opt/mcnp/mcnp6.2/MCNP_CODE/MCNP620/Utilities/ISC/data"
 ulimit -s unlimited
 ##### end MCNP 620
 
+### Additional bin directory
+PATH_NEW="$HOME/.local/bin"
+if [ -d "$PATH_NEW" ]; then
+	export PATH=$PATH_NEW${PATH:+:$PATH}
+fi
+
+# UDrive mount point
+export UDRIVE=/mnt/udrive
+
 # Source general definitions
 if [ -f $HOME/.bashrc_general ]; then
     source $HOME/.bashrc_general
