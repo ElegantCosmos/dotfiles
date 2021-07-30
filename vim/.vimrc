@@ -50,6 +50,10 @@ let g:UltiSnipsEditSplit = "horizontal"
 
 autocmd FileType * setlocal formatoptions=cqt
 
+"" File type dependent syntax highlighting
+autocmd BufNewFile,BufRead *.i set filetype=mcnp
+autocmd BufNewFile,BufRead *.inp set filetype=fortran
+
 set wildmode=longest,list,full " BASH-like tab completion in file search
 set wildmenu " list menu in file search
 set spelllang=en_us
