@@ -1,13 +1,13 @@
 # Fdb version 3
-["bibtex apssamp"] 1628397009 "apssamp.aux" "apssamp.bbl" "apssamp" 1628428377
+["bibtex apssamp"] 1628397009 "apssamp.aux" "apssamp.bbl" "apssamp" 1628453394
   "/usr/share/texlive/texmf-dist/bibtex/bst/revtex/apsrev4-2.bst" 1547851249 69612 d43c8740409d8c756864ce4e3d57a214 ""
-  "apssamp.aux" 1628428377 8610 a54173660bc832425fef0c6a1147c398 "pdflatex"
+  "apssamp.aux" 1628453394 8610 a54173660bc832425fef0c6a1147c398 "pdflatex"
   "apssamp.bib" 1628386850 13050 2ca1760567648a5bc4744e3a792261b9 ""
-  "apssampNotes.bib" 1628428377 245 38c84e0bd1de4c8f2036faf1a79bf581 "pdflatex"
+  "apssampNotes.bib" 1628453394 245 38c84e0bd1de4c8f2036faf1a79bf581 "pdflatex"
   (generated)
   "apssamp.blg"
   "apssamp.bbl"
-["pdflatex"] 1628428377 "apssamp.tex" "apssamp.pdf" "apssamp" 1628428377
+["pdflatex"] 1628453394 "apssamp.tex" "apssamp.pdf" "apssamp" 1628453394
   "/etc/texmf/web2c/texmf.cnf" 1628213563 475 c0e671620eb5563b2130f56340a5fde8 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy5.tfm" 1246382020 1120 1e8878807317373affa7f7bba4cf2f6a ""
@@ -125,16 +125,16 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1581979058 38841 ce3692aa899bb693b90b87eaa5d4d84e ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1628213611 4770781 1ed1abab22da9c3e2cc82e4db562318b ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1628213624 8256364 b32c2ae425970e11de7ac69325dfed3c ""
-  "apssamp.aux" 1628428377 8610 a54173660bc832425fef0c6a1147c398 "pdflatex"
+  "apssamp.aux" 1628453394 8610 a54173660bc832425fef0c6a1147c398 "pdflatex"
   "apssamp.bbl" 1628397009 25993 e153f1dfff262a9b429b1a11de7dcc81 "bibtex apssamp"
   "apssamp.tex" 1628392113 32000 e281000c9c3bdc715b07c484ab40bf6f ""
   "fig_2.eps" 1628386850 190 2b558e0aa12761bb215c5436ef2e7247 ""
-  "matplotlib_plots/test.pdf" 1628428345 215669 f0599cdb2ddb9e95101a22c1c18460c1 ""
-  "matplotlib_plots/test2.pdf" 1628428360 263556 83cdb8a47dc06859dd3eeff5e83bf75d ""
+  "matplotlib_plots/test.pdf" 1628453368 215670 a179980763dd7dc12cb26b83d246ddff ""
+  "matplotlib_plots/test2.pdf" 1628453333 263555 54948f51b2549636e951e40cc9880df6 ""
   "vid_1a.eps" 1628386850 194 029a122576152b859b964653a186541c ""
   "vid_1b.eps" 1628386850 194 363d221d6f9c18bbcc46efd95af8199d ""
   (generated)
   "apssampNotes.bib"
-  "apssamp.aux"
-  "apssamp.pdf"
   "apssamp.log"
+  "apssamp.pdf"
+  "apssamp.aux"
