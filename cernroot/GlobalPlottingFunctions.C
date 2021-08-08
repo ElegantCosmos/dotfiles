@@ -46,7 +46,7 @@ void SetLogX(TObject* obj = nullptr, const bool flag = true) // Seems like a bet
 	// Get label offset value depending on whether axis is log scale.
 	double offset;
 	if (flag) {
-		offset = -0.5/canvasHeight_pt;
+		offset = -1.0/canvasHeight_pt;
 	} else {
 		offset = 2.0/canvasHeight_pt;
 	}
@@ -107,7 +107,7 @@ void SetPaletteAxis(TH1* hist, const TString& title = "A_{g}^{T} Log_{10} #sqrt{
 	gPad->Update();
 
 	TPaletteAxis* axis = dynamic_cast<TPaletteAxis*>(hist->GetListOfFunctions()->FindObject("palette"));
-	axis->SetX1NDC(0.935); axis->SetX2NDC(0.945);
+	axis->SetX1NDC(0.925); axis->SetX2NDC(0.935);
 	hist->GetZaxis()->SetTitleOffset(-0.40);
 	hist->GetZaxis()->SetTitle(title);
 	gPad->SetFrameLineWidth(10);

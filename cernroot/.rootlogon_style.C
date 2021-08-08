@@ -26,21 +26,21 @@
 	static const double goldenRatio = 0.5*(1 + sqrt(5));
 
 	const int font = 133; // Time New Roman (size specified in pixels)
-	const double fontSize_pt = 8; // default font size
-	const double fontSize_small_pt = 7; // small font size
-	const double fontSize_xsmall_pt = 5; // small font size
-	const double fontSize_xxsmall_pt = 4; // small font size
-	const double ptPerInch = 72.0; // as defined by Adobe and in matplotlib
+	const double fontSize_pt = 9; // default font size
+	const double fontSize_small_pt = 8; // small font size
+	const double fontSize_xsmall_pt = 6; // small font size
+	const double fontSize_xxsmall_pt = 5; // small font size
+	const double ptPerInch = 72.27; // as defined by Adobe and in matplotlib
 	const double fontSize_px = ppi*fontSize_pt/ptPerInch;
 	const double fontSize_small_px = ppi*fontSize_small_pt/ptPerInch;
 	const double fontSize_xsmall_px = ppi*fontSize_xsmall_pt/ptPerInch;
 	const double fontSize_xxsmall_px = ppi*fontSize_xxsmall_pt/ptPerInch;
 
-	const double canvasWidth_mm = 90.0; // mm, typical width of single column for double column paper
-	const double mmPerInch = 25.4;
-	static const double canvasWidth_in = canvasWidth_mm/mmPerInch; // inch, typical width of single column for double column paper
+	const double canvasWidth_pt = 246.0; // pt, typical width of single column for double column paper
+	const double canvasHeight_pt = canvasWidth_pt/goldenRatio;
+	static const double canvasWidth_in = canvasWidth_pt/ptPerInch; // inch, typical width of single column for double column paper
 	//cout << "canvasWidth_in" << canvasWidth_in << endl;
-	static const double canvasHeight_in = canvasWidth_in/goldenRatio; // inch
+	static const double canvasHeight_in = canvasWidth_in/goldenRatio;
 	//cout << "canvasHeight_in" << canvasHeight_in << endl;
 
 	//// Apply zoom factor for confortable viewing in high DPI screens.
@@ -48,10 +48,9 @@
 	//cout << "canvasWidth_px" << canvasWidth_px << endl;
 	static const int canvasHeight_px = int(ppi*canvasHeight_in + 0.5);
 	//cout << "canvasHeight_px" << canvasHeight_px << endl;
-	static const double canvasWidth_pt = canvasWidth_in*ptPerInch;
-	static const double canvasHeight_pt = canvasHeight_in*ptPerInch;
 
-	static const double margin = 0.13; // common pad margin
+	static const double margin_small = 0.10;
+	static const double margin_large = 0.15;
 
 
 	//**********************************************************
@@ -78,10 +77,10 @@
 	paper_doubleColumn->SetPadColor(kWhite);
 
 	paper_doubleColumn->SetPaperSize(TStyle::kUSLetter);
-	paper_doubleColumn->SetPadTopMargin(margin);
-	paper_doubleColumn->SetPadBottomMargin(margin);
-	paper_doubleColumn->SetPadRightMargin(margin);
-	paper_doubleColumn->SetPadLeftMargin(margin);
+	paper_doubleColumn->SetPadTopMargin(margin_small);
+	paper_doubleColumn->SetPadBottomMargin(margin_large);
+	paper_doubleColumn->SetPadRightMargin(margin_small);
+	paper_doubleColumn->SetPadLeftMargin(margin_large);
 	paper_doubleColumn->SetCanvasDefH(canvasHeight_px + decorationHeight); // (canvas height + 25 px) = window height)
 	//paper_doubleColumn->SetCanvasDefH(500); // (canvas height + 25 px) = window height)
 	paper_doubleColumn->SetCanvasDefW(canvasWidth_px + decorationWidth); // (canvas width + 2 px) = window width)
@@ -107,12 +106,12 @@
 	paper_doubleColumn->SetTitleFillColor(0);
 	paper_doubleColumn->SetTitleBorderSize(0);
 	paper_doubleColumn->SetTitleFont(font, "t"); // doesn't work in ROOT 5.34/23
-	paper_doubleColumn->SetTitleSize(fontSize_xsmall_px, "t"); // doesn't work in ROOT 5.34/23
+	paper_doubleColumn->SetTitleSize(fontSize_small_px, "t"); // doesn't work in ROOT 5.34/23
 
 	paper_doubleColumn->SetTitleFont(font, "xyz");
 	paper_doubleColumn->SetTitleSize(fontSize_px, "xyz");
-	paper_doubleColumn->SetTitleOffset(1.17, "x"); // lowest part of log_{10} is barely on the pad; I think log_{10} has the lowest reaching text
-	paper_doubleColumn->SetTitleOffset(1.32, "y"); // highest part of sqrt(2) is barely on the pad; I think sqrt(2) has the highest reaching text
+	paper_doubleColumn->SetTitleOffset(1.14, "x"); // lowest part of log_{10} is barely on the pad; I think log_{10} has the lowest reaching text
+	paper_doubleColumn->SetTitleOffset(1.29, "y"); // highest part of sqrt(2) is barely on the pad; I think sqrt(2) has the highest reaching text
 	paper_doubleColumn->SetTitleOffset(-0.40, "z"); // doesn't work in ROOT 5.34/23
 
 	paper_doubleColumn->SetLabelFont(font, "xyz");
@@ -126,10 +125,10 @@
 	paper_doubleColumn->SetStatColor(kWhite);
 	paper_doubleColumn->SetStatFont(font);
 	paper_doubleColumn->SetStatFontSize(fontSize_xxsmall_px);
-	paper_doubleColumn->SetStatY(1 - margin);
+	paper_doubleColumn->SetStatY(1 - margin_small);
 	paper_doubleColumn->SetStatX(1 - 0.5*0.005);
-	paper_doubleColumn->SetStatW(margin - 0.005);
-	paper_doubleColumn->SetStatH(margin);
+	paper_doubleColumn->SetStatW(margin_small - 0.005);
+	paper_doubleColumn->SetStatH(margin_large);
 
 	//paper_doubleColumn->SetNdivisions(10, "xyz");
 	paper_doubleColumn->SetNdivisions(510, "xyz"); // show sub-ticks
