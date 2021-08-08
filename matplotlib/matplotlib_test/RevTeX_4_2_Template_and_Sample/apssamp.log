@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2021.8.5)  8 AUG 2021 00:30
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2021.8.5)  8 AUG 2021 09:12
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -463,10 +463,10 @@ ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb></usr/share/texlive/texm
 f-dist/fonts/type1/public/amsfonts/euler/eufm10.pfb></usr/share/texlive/texmf-d
 ist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/share/texlive/texmf-di
 st/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on apssamp.pdf (8 pages, 555507 bytes).
+Output written on apssamp.pdf (8 pages, 554802 bytes).
 PDF statistics:
- 227 PDF objects out of 1000 (max. 8388607)
- 175 compressed objects within 2 object streams
+ 230 PDF objects out of 1000 (max. 8388607)
+ 178 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  26 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -1,14 +1,13 @@
 #!/usr/bin/env python
 import numpy as np
-import matplotlib.mlab as mlab
 import matplotlib.pyplot as plt
 
-mu, sigma = 1000, 150
-x = mu + sigma*np.random.randn(10000)
+xs = np.array([0.1, 1, 10, 100, 1000])
+ys = np.array([6, 2, 8, 10, 3])
 
 # the histogram of the data
 fig, ax = plt.subplots()
-n, bins, patches = ax.hist(x, 50, density=True, facecolor='green', alpha=0.75)
+ax.plot(xs, ys)
 
 plt.title(r'$\mathrm{Histogram\ of\ IQ:}\ \mu=100,\ \sigma=15$')
 
@@ -16,10 +15,9 @@ plt.title(r'$\mathrm{Histogram\ of\ IQ:}\ \mu=100,\ \sigma=15$')
 #y = mlab.normpdf( bins, mu, sigma)
 #l = plt.plot(bins, bins, 'r--')
 
-ax.set_xlabel(r'Smarts')
-ax.set_ylabel(r'Probability')
-#ax.set_xlabel(r"$\log{10}_{10}$ $E_{gqyp}$ $10^{10^{3}}$/$\sqrt{2}$ [cm]")
-#ax.set_ylabel(r"$\log{10}_{10}$ $E_{gqyp}$ $10^{10^{3}}$/$\sqrt{2}$ [cm]")
+ax.set_xlabel(r"$\log{10}_{10}$ $E_{gqyp}$ $10^{10}$/$\sqrt{2}$ [cm]")
+ax.set_ylabel(r"$\log{10}_{10}$ $E_{gqyp}$ $10^{10}$/$\sqrt{2}$ [cm]")
+ax.set_xscale('log')
 #plt.axis([40, 160, 0, 0.03])
 #plt.grid(True)
 
