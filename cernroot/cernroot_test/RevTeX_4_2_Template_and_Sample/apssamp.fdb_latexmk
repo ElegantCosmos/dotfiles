@@ -1,13 +1,13 @@
 # Fdb version 3
-["bibtex apssamp"] 1628394053 "apssamp.aux" "apssamp.bbl" "apssamp" 1628398295
+["bibtex apssamp"] 1628394053 "apssamp.aux" "apssamp.bbl" "apssamp" 1628426578
   "/usr/share/texlive/texmf-dist/bibtex/bst/revtex/apsrev4-2.bst" 1547851249 69612 d43c8740409d8c756864ce4e3d57a214 ""
-  "apssamp.aux" 1628398295 8610 a54173660bc832425fef0c6a1147c398 "pdflatex"
+  "apssamp.aux" 1628426578 8610 a54173660bc832425fef0c6a1147c398 "pdflatex"
   "apssamp.bib" 1628394162 13050 2ca1760567648a5bc4744e3a792261b9 ""
-  "apssampNotes.bib" 1628398295 245 38c84e0bd1de4c8f2036faf1a79bf581 "pdflatex"
+  "apssampNotes.bib" 1628426578 245 38c84e0bd1de4c8f2036faf1a79bf581 "pdflatex"
   (generated)
   "apssamp.blg"
   "apssamp.bbl"
-["pdflatex"] 1628398295 "apssamp.tex" "apssamp.pdf" "apssamp" 1628398295
+["pdflatex"] 1628426578 "apssamp.tex" "apssamp.pdf" "apssamp" 1628426578
   "/etc/texmf/web2c/texmf.cnf" 1628213563 475 c0e671620eb5563b2130f56340a5fde8 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy5.tfm" 1246382020 1120 1e8878807317373affa7f7bba4cf2f6a ""
@@ -124,16 +124,16 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1581979058 38841 ce3692aa899bb693b90b87eaa5d4d84e ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1628213611 4770781 1ed1abab22da9c3e2cc82e4db562318b ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1628213624 8256364 b32c2ae425970e11de7ac69325dfed3c ""
-  "apssamp.aux" 1628398295 8610 a54173660bc832425fef0c6a1147c398 "pdflatex"
+  "apssamp.aux" 1628426578 8610 a54173660bc832425fef0c6a1147c398 "pdflatex"
   "apssamp.bbl" 1628394162 25993 e153f1dfff262a9b429b1a11de7dcc81 "bibtex apssamp"
   "apssamp.tex" 1628397535 32017 f4946d3466818b4428dfca1c8800b00c ""
-  "cernroot_plots/histogram2D_plot.pdf" 1628398293 14818 657bb5a1edbc0d146925f13744c33774 ""
-  "cernroot_plots/histogram_plot.pdf" 1628398293 13713 dd610c8ce180143217e61fcb06cec64e ""
+  "cernroot_plots/histogram2D_plot.pdf" 1628426577 14615 46a2797f0283df67337e5c29c2eed919 ""
+  "cernroot_plots/histogram_plot.pdf" 1628426577 13714 f17786097ec0aa0cc5b5617f8a78c73e ""
   "fig_2.eps" 1628394162 190 2b558e0aa12761bb215c5436ef2e7247 ""
   "vid_1a.eps" 1628394162 194 029a122576152b859b964653a186541c ""
   "vid_1b.eps" 1628394162 194 363d221d6f9c18bbcc46efd95af8199d ""
   (generated)
   "apssamp.log"
-  "apssampNotes.bib"
-  "apssamp.pdf"
   "apssamp.aux"
+  "apssamp.pdf"
+  "apssampNotes.bib"

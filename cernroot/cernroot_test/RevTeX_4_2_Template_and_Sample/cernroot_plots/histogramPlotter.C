@@ -7,8 +7,8 @@
 	hist.Draw();
 	hist.SetLineColor(orange_tableau);
 	hist.SetMarkerColor(orange_tableau);
-	hist.GetXaxis()->SetTitle("A_{g}^{T}  Log_{10} E_{pqyg} [cm] #sqrt{2}");
-	hist.GetYaxis()->SetTitle("A_{g}^{T}  Log_{10} E_{pqyg} [A.U.] #sqrt{2}");
+	hist.GetXaxis()->SetTitle("A_{g}^{T}  Log_{10}/E_{pqyg} [cm] #sqrt{2}");
+	hist.GetYaxis()->SetTitle("A_{g}^{T}  Log_{10}/E_{pqyg} [A.U.] #sqrt{2}");
 	//cout << "gPad->GetWw()" << gPad->GetWw() << endl;
 	//cout << "gPad->GetWh()" << gPad->GetWh() << endl;
 	//hist.GetXaxis()->SetRangeUser(50e27, 400e27);
@@ -23,13 +23,13 @@
 	c1.SetTopMargin(0.15);
 	c1.SetRightMargin(0.15);
 	gStyle->SetOptStat("");
-	TH2F hist2("hist2", "hist2", 10, 0, 100, 10, 0, 100);
+	TH2F hist2("hist2", "hist2", 10, -800, 800, 10, -800, 800);
 	hist2.Fill(10, 50, 0);
 	hist2.Fill(-10, 60, 100);
-	hist2.Fill(70, 70, 750000000);
+	hist2.Fill(70, 70, 750000000000000);
 	hist2.Draw("Colz");
-	hist2.GetXaxis()->SetTitle("A_{g}^{T}  Log_{10} E_{pqyg} [cm] #sqrt{2}");
-	hist2.GetYaxis()->SetTitle("A_{g}^{T}  Log_{10} E_{pqyg} [A.U.] #sqrt{2}");
+	hist2.GetXaxis()->SetTitle("A_{g}^{T}  Log_{10}/E_{pqyg} [cm] #sqrt{2}");
+	hist2.GetYaxis()->SetTitle("A_{g}^{T}  Log_{10}/E_{pqyg} [A.U.] #sqrt{2}");
 	plotting::SetPaletteAxis(&hist2);
 	//hist2.GetXaxis()->SetRangeUser(10, 90);
 	//hist2.GetYaxis()->SetRangeUser(10, 80);
@@ -41,12 +41,14 @@
 
 
 	TCanvas c2("c2", "c2");
-	std::vector<double> xs = {0, 1, 2};
-	std::vector<double> ys = {0, 1, 1};
+	std::vector<double> xs = {0, 1, 2, 10, 100};
+	std::vector<double> ys = {0, 1, 1, 2, 4};
 	TGraph graph(xs.size(), &xs[0], &ys[0]);
 	graph.Draw("ALP");
 	graph.SetLineColor(blue_tableau);
 	graph.SetMarkerColor(blue_tableau);
+	graph.GetXaxis()->SetTitle("A_{g}^{T}  Log_{10}/E_{pqyg} [cm] #sqrt{2}");
+	graph.GetYaxis()->SetTitle("A_{g}^{T}  Log_{10}/E_{pqyg} [A.U.] #sqrt{2}");
 	//graph.GetXaxis()->SetLimits(0, 5);
 	//graph.GetYaxis()->SetRangeUser(-1, 5); // also works
 	//graph.SetMaximum(5);

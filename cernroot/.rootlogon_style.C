@@ -26,12 +26,12 @@
 	static const double goldenRatio = 0.5*(1 + sqrt(5));
 
 	const int font = 133; // Time New Roman (size specified in pixels)
-	const double fontSize_pt = 9; // default font size
+	const double fontSize_medium_pt = 9; // default font size
 	const double fontSize_small_pt = 8; // small font size
 	const double fontSize_xsmall_pt = 6; // small font size
 	const double fontSize_xxsmall_pt = 5; // small font size
 	const double ptPerInch = 72.27; // as defined by Adobe and in matplotlib
-	const double fontSize_px = ppi*fontSize_pt/ptPerInch;
+	const double fontSize_medium_px = ppi*fontSize_medium_pt/ptPerInch;
 	const double fontSize_small_px = ppi*fontSize_small_pt/ptPerInch;
 	const double fontSize_xsmall_px = ppi*fontSize_xsmall_pt/ptPerInch;
 	const double fontSize_xxsmall_px = ppi*fontSize_xxsmall_pt/ptPerInch;
@@ -50,7 +50,7 @@
 	//cout << "canvasHeight_px" << canvasHeight_px << endl;
 
 	static const double margin_small = 0.10;
-	static const double margin_large = 0.15;
+	static const double margin_medium = 0.15;
 
 
 	//**********************************************************
@@ -78,9 +78,9 @@
 
 	paper_doubleColumn->SetPaperSize(TStyle::kUSLetter);
 	paper_doubleColumn->SetPadTopMargin(margin_small);
-	paper_doubleColumn->SetPadBottomMargin(margin_large);
+	paper_doubleColumn->SetPadBottomMargin(margin_medium);
 	paper_doubleColumn->SetPadRightMargin(margin_small);
-	paper_doubleColumn->SetPadLeftMargin(margin_large);
+	paper_doubleColumn->SetPadLeftMargin(margin_medium);
 	paper_doubleColumn->SetCanvasDefH(canvasHeight_px + decorationHeight); // (canvas height + 25 px) = window height)
 	//paper_doubleColumn->SetCanvasDefH(500); // (canvas height + 25 px) = window height)
 	paper_doubleColumn->SetCanvasDefW(canvasWidth_px + decorationWidth); // (canvas width + 2 px) = window width)
@@ -106,16 +106,16 @@
 	paper_doubleColumn->SetTitleFillColor(0);
 	paper_doubleColumn->SetTitleBorderSize(0);
 	paper_doubleColumn->SetTitleFont(font, "t"); // doesn't work in ROOT 5.34/23
-	paper_doubleColumn->SetTitleSize(fontSize_small_px, "t"); // doesn't work in ROOT 5.34/23
+	paper_doubleColumn->SetTitleSize(fontSize_xxsmall_px, "t"); // doesn't work in ROOT 5.34/23
 
 	paper_doubleColumn->SetTitleFont(font, "xyz");
-	paper_doubleColumn->SetTitleSize(fontSize_px, "xyz");
+	paper_doubleColumn->SetTitleSize(fontSize_medium_px, "xyz");
 	paper_doubleColumn->SetTitleOffset(1.14, "x"); // lowest part of log_{10} is barely on the pad; I think log_{10} has the lowest reaching text
 	paper_doubleColumn->SetTitleOffset(1.29, "y"); // highest part of sqrt(2) is barely on the pad; I think sqrt(2) has the highest reaching text
 	paper_doubleColumn->SetTitleOffset(-0.40, "z"); // doesn't work in ROOT 5.34/23
 
 	paper_doubleColumn->SetLabelFont(font, "xyz");
-	paper_doubleColumn->SetLabelSize(fontSize_px, "xyz");
+	paper_doubleColumn->SetLabelSize(fontSize_medium_px, "xyz");
 	paper_doubleColumn->SetLabelOffset(2.0/canvasHeight_pt, "x");
 	paper_doubleColumn->SetLabelOffset(3.0/canvasWidth_pt, "y");
 	paper_doubleColumn->SetLabelOffset(3.0/canvasWidth_pt, "z");
@@ -125,16 +125,16 @@
 	paper_doubleColumn->SetStatColor(kWhite);
 	paper_doubleColumn->SetStatFont(font);
 	paper_doubleColumn->SetStatFontSize(fontSize_xxsmall_px);
-	paper_doubleColumn->SetStatY(1 - margin_small);
-	paper_doubleColumn->SetStatX(1 - 0.5*0.005);
-	paper_doubleColumn->SetStatW(margin_small - 0.005);
-	paper_doubleColumn->SetStatH(margin_large);
+	paper_doubleColumn->SetStatY(margin_medium - 0.5*0.005);
+	paper_doubleColumn->SetStatX(margin_medium - 0.5*0.005);
+	paper_doubleColumn->SetStatW(margin_medium - 0.005);
+	paper_doubleColumn->SetStatH(margin_medium - 0.005);
 
 	//paper_doubleColumn->SetNdivisions(10, "xyz");
 	paper_doubleColumn->SetNdivisions(510, "xyz"); // show sub-ticks
-	paper_doubleColumn->SetTickLength(-2.5/canvasHeight_pt, "x"); // number in pt
-	paper_doubleColumn->SetTickLength(-2.5/canvasWidth_pt, "y"); // number in pt
-	paper_doubleColumn->SetTickLength(-2.5/canvasWidth_pt, "z"); // number in pt
+	paper_doubleColumn->SetTickLength(-2.5/canvasHeight_pt, "x"); // numerator is length in pt
+	paper_doubleColumn->SetTickLength(-2.5/canvasWidth_pt, "y"); // numerator is length in pt
+	paper_doubleColumn->SetTickLength(-2.5/canvasWidth_pt, "z"); // numerator is length in pt
 
 	// Legend.
 	paper_doubleColumn->SetLegendBorderSize(0);
@@ -171,16 +171,16 @@
 	//paper_doubleColumn_nino->SetTitleFillColor(0);
 	//paper_doubleColumn_nino->SetTitleBorderSize(0);
 	//////paper_doubleColumn_nino->SetTitleFont(font, "t"); // doesn't work in ROOT 5.34/23
-	////paper_doubleColumn_nino->SetTitleSize(fontSize_px, "t"); // doesn't work in ROOT 5.34/23
+	////paper_doubleColumn_nino->SetTitleSize(fontSize_medium_px, "t"); // doesn't work in ROOT 5.34/23
 
 	////paper_doubleColumn_nino->SetTitleFont(font, "xyz");
-	////paper_doubleColumn_nino->SetTitleSize(fontSize_px, "xyz");
+	////paper_doubleColumn_nino->SetTitleSize(fontSize_medium_px, "xyz");
 	////paper_doubleColumn_nino->SetTitleOffset(1.15, "x");
 	////paper_doubleColumn_nino->SetTitleOffset(1.29, "y");
 	//////paper_doubleColumn_nino->SetTitleOffset(-0.35, "z"); // doesn't work in ROOT 5.34/23
 
 	////paper_doubleColumn_nino->SetLabelFont(font, "xyz");
-	////paper_doubleColumn_nino->SetLabelSize(fontSize_px, "xyz");
+	////paper_doubleColumn_nino->SetLabelSize(fontSize_medium_px, "xyz");
 	////paper_doubleColumn_nino->SetLabelOffset(0.015, "x");
 	////paper_doubleColumn_nino->SetLabelOffset(0.015, "y");
 	////paper_doubleColumn_nino->SetLabelOffset(0.015, "z");
