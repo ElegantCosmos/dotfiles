@@ -149,3 +149,6 @@ export UDRIVE=/mnt/udrive
 if [ -f $HOME/.bashrc_general ]; then
     source $HOME/.bashrc_general
 fi
+
+# Python
+export PYTHONPATH=$HOME/.local/lib/python3.8/site-packages
