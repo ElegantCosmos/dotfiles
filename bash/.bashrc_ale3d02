@@ -116,25 +116,27 @@ if ! shopt -oq posix; then
   fi
 fi
 
-### OpenMPI libraries:
-OPENMPI_PATH="/opt/openmpi/openmpi-1.10.6"
-if [ -d "$OPENMPI_PATH" ]; then
-  export PATH=$OPENMPI_PATH/bin${PATH:+:$PATH}
-  export LD_LIBRARY_PATH=$OPENMPI_PATH/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}
-fi
+if [[ -z "$TMUX" ]]; then
+  ### OpenMPI libraries:
+  OPENMPI_PATH="/opt/openmpi/openmpi-1.10.6"
+  if [ -d "$OPENMPI_PATH" ]; then
+    export PATH=$OPENMPI_PATH/bin${PATH:+:$PATH}
+    export LD_LIBRARY_PATH=$OPENMPI_PATH/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}
+  fi
 
-### ALE3D:
-ALE3D_PATH="/opt/ale3d/RHEL7.8-x86-64-ib-icc19-nocheetah-openmpi"
-if [ -d "$ALE3D_PATH" ]; then
-  export PATH=$ALE3D_PATH/bin${PATH:+:$PATH}
-  export LD_LIBRARY_PATH=$ALE3D_PATH/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}
+  ### ALE3D:
+  ALE3D_PATH="/opt/ale3d/RHEL7.8-x86-64-ib-icc19-nocheetah-openmpi"
+  if [ -d "$ALE3D_PATH" ]; then
+    export PATH=$ALE3D_PATH/bin${PATH:+:$PATH}
+    export LD_LIBRARY_PATH=$ALE3D_PATH/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}
 
-  # LEOS material database:
-  export LEOS_DATAPATH="$ALE3D_PATH/data/leos"
-  
-  # KO material database:
-  export SGEOSFILE="$ALE3D_PATH/data/sgeos96.xml"
+    # LEOS material database:
+    export LEOS_DATAPATH="$ALE3D_PATH/data/leos"
 
-  # MATPROP material database:
-  export MATPROP_DBPATH="#ALE3D_PATH/data/matprop"
+    # KO material database:
+    export SGEOSFILE="$ALE3D_PATH/data/sgeos96.xml"
+
+    # MATPROP material database:
+    export MATPROP_DBPATH="$ALE3D_PATH/data/matprop"
+  fi
 fi
