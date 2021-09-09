@@ -115,42 +115,26 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
- 
-##### MCNP 620
-if [[ -z "$TMUX" ]]; then
-	PATH_NEW="$HOME/.opt/mcnp/mcnp6.2/MCNP_CODE/bin"
-	if [ -d "$PATH_NEW" ]; then
-		export PATH=$PATH_NEW${PATH:+:$PATH}
-	fi
-fi
- 
-#export DISPLAY
-#DISPLAY=":0.0"
- 
-export DATAPATH
-DATAPATH="/home/sakaim1/.opt/mcnp/mcnp6.2/MCNP_DATA"
- 
-export ISCDATA
-ISCDATA="/home/sakaim1/.opt/mcnp/mcnp6.2/MCNP_CODE/MCNP620/Utilities/ISC/data"
- 
-ulimit -s unlimited
-##### end MCNP 620
 
-### Additional bin directory
-PATH_NEW="$HOME/.local/bin"
-if [ -d "$PATH_NEW" ]; then
-	export PATH=$PATH_NEW${PATH:+:$PATH}
+### OpenMPI libraries:
+OPENMPI_PATH="/opt/openmpi/openmpi-1.10.6"
+if [ -d "$OPENMPI_PATH" ]; then
+  export PATH=$OPENMPI_PATH/bin${PATH:+:$PATH}
+  export LD_LIBRARY_PATH=$OPENMPI_PATH/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}
 fi
 
-# UDrive mount point
-export UDRIVE=/mnt/udrive
+### ALE3D:
+ALE3D_PATH="/opt/ale3d/RHEL7.8-x86-64-ib-icc19-nocheetah-openmpi"
+if [ -d "$ALE3D_PATH" ]; then
+  export PATH=$ALE3D_PATH/bin${PATH:+:$PATH}
+  export LD_LIBRARY_PATH=$ALE3D_PATH/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}
 
-# Source general definitions
-if [ -f $HOME/.bashrc_general ]; then
-    source $HOME/.bashrc_general
+  # LEOS material database:
+  export LEOS_DATAPATH="$ALE3D_PATH/data/leos"
+  
+  # KO material database:
+  export SGEOSFILE="$ALE3D_PATH/data/sgeos96.xml"
+
+  # MATPROP material database:
+  export MATPROP_DBPATH="#ALE3D_PATH/data/matprop"
 fi
-
-# Python
-export PATH="${HOME}/.pyenv/bin${PATH:+:$PATH}"
-eval "$(pyenv init --path)"
-eval "$(pyenv virtualenv-init -)"
