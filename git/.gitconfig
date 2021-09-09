@@ -16,4 +16,4 @@
 [pull]
 	rebase = false
 [credential]
-	helper = cache
+	helper = /usr/share/doc/git/contrib/credential/libsecret/git-credential-libsecret
