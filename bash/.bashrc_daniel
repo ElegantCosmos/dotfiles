@@ -151,4 +151,6 @@ if [ -f $HOME/.bashrc_general ]; then
 fi
 
 # Python
-export PYTHONPATH=$HOME/.local/lib/python3.8/site-packages
+export PATH="${HOME}/.pyenv/bin${PATH:+:$PATH}"
+eval "$(pyenv init --path)"
+eval "$(pyenv virtualenv-init -)"
