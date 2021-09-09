@@ -1,0 +1,31 @@
+# Make sure python points to python3 (temporary fix)
+sudo apt install python-is-python3
+
+# Install PyEnv
+curl https://pyenv.run | bash
+
+# Append environment settings in ~/.bashrc
+export PATH="${HOME}/.pyenv/bin${PATH:+:$PATH}"
+eval "$(pyenv init --path)"
+eval "$(pyenv virtualenv-init -)"
+
+# Re-start terminal for settings to take effect
+
+# Check python versions provided by pyenv
+pyenv versions
+
+# Install specific Python version (CONFIGURE_OPT is optional)
+CONFIGURE_OPTS=--enable-shared pyenv install 3.7.12
+
+# Switch global or local Python version
+pyenv global 3.7.12
+pyenv local 3.7.12
+
+# Switching local Python version creates local .python-version file for future
+reference
+
+# Create virtual environment with Python version and name
+pyenv virtualenv 3.7.12 ab_iges_to_cub
+
+# Install some Python package
+python -m pip install --trusted-host pypi.org --trusted-host files.pythonhosted.org pandas
