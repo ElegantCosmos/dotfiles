@@ -1,0 +1,45 @@
+# ALE3D installation performed on Ubuntu 20.04 LTS by Mich Sakai, 2021-09-21.
+
+# Get and install Intel oneAPI Base Toolkit (for Intel C++ compiler; ALE3D document recommends "intel19" which is probably not publicly available anymore, so the following is good enough?):
+wget https://registrationcenter-download.intel.com/akdlm/irc_nas/17977/l_BaseKit_p_2021.3.0.3219_offline.sh
+sudo bash l_BaseKit_p_2021.3.0.3219_offline.sh
+
+# Get and install Intel oneAPI HPC Toolkit (for Intel Fortran compiler which is probably needed):
+wget https://registrationcenter-download.intel.com/akdlm/irc_nas/17912/l_HPCKit_p_2021.3.0.3230_offline.sh
+sudo bash l_HPCKit_p_2021.3.0.3230_offline.sh
+
+# Extract ALE3D source file.
+tar xvf RHE1593ER0xLO.tar
+# One needs to follow decryption procedure explained in 1ALE3D_RHEL_Installation_Guide_v4.32.pdf.
+# Then extract encrypted ALE3D source code.
+tar xfv ALE3D_NoCheetah_Encrypted.tgz
+
+# Extract OpenMPI source doe:
+tar zxvf openmpi-1.10.6.tar.gz
+cd openmpi-1.10.6/
+
+# Install OpenMPI in common directory:
+sudo mkdir -p /opt/openmpi/openmpi-1.10.6
+# Set Intel compiler environment variables:
+source /opt/intel/oneapi/setvars.sh
+./configure --enable-static --prefix=/opt/openmpi/openmpi-1.10.6 CC=icc CXX=icpc F77=ifort FC=ifort
+sudo -- bash -c 'source /opt/intel/oneapi/setvars.sh; make all install'
+
+# Make sure OpenMPI libraries are referenced in ~/.bashrc file:
+### OpenMPI libraries:
+OPENMPI_PATH="/opt/openmpi/openmpi-1.10.6"
+if [ -d "$OPENMPI_PATH" ]; then
+  export PATH=$OPENMPI_PATH/bin${PATH:+:$PATH}
+  export LD_LIBRARY_PATH=$OPENMPI_PATH/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}
+fi
+
+# Follow 1ALE3D_RHEL_Installation_Guide_v4.32.pdf to organize libraries required by ALE3D.
+
+# Make sure ALE3D libraries are reference in ~/.bashrc file:
+### ALE3D:
+ALE3D_PATH="/opt/ale3d/RHEL7.8-x86-64-ib-icc19-nocheetah-openmpi"
+if [ -d "$ALE3D_PATH" ]; then
+  export PATH=$ALE3D_PATH/bin${PATH:+:$PATH}
+  export LD_LIBRARY_PATH=$ALE3D_PATH/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}
+fi
+
