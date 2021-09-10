@@ -1,0 +1,16 @@
+Reference:
+https://askubuntu.com/questions/773455/what-is-the-correct-way-to-use-git-with-gnome-keyring-and-https-repos/959662#959662
+
+# gnome-credential-helper is now deprecated.
+# Use libsecret instaed.
+
+# 1. Make sure libsecret and its development libraries are installed:
+sudo apt install libsecret-1-0 libsecret-1-dev
+
+# 2. Then build the credential helper from the sources shipped with libsecret's development libraries:
+sudo make --directory=/usr/share/doc/git/contrib/credential/libsecret
+
+# 3. Finally, register the freshly compiled binary as a Git credential helper:
+git config --global credential.helper /usr/share/doc/git/contrib/credential/libsecret/git-credential-libsecret
+
+More details on https://stackoverflow.com/a/40312117/2017781
