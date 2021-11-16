@@ -22,7 +22,7 @@
 	canvas_tmp = NULL;
 
 	//const int ppi = 227; // pixels per inch for Mac Retina display
-	const int ppi = 600; // pixels per inch suggested by random websites
+	const int ppi = 300; // pixels per inch suggested by random websites
 	static const double goldenRatio = 0.5*(1 + sqrt(5));
 
 	const int font = 133; // Time New Roman (size specified in pixels)
@@ -36,8 +36,8 @@
 	const double fontSize_xsmall_px = ppi*fontSize_xsmall_pt/ptPerInch;
 	const double fontSize_xxsmall_px = ppi*fontSize_xxsmall_pt/ptPerInch;
 
-	//const double canvasWidth_pt = 246.0; // pt, typical width of single column for double column paper
-	const double canvasWidth_pt = 252.945; // pt, typical width of single column for double column paper
+	//const double canvasWidth_pt = 246.0; // pt, width of single column for double column paper
+	const double canvasWidth_pt = 252.945; // 3.5 in, width of single column for double column paper
 	const double canvasHeight_pt = canvasWidth_pt/goldenRatio;
 	static const double canvasWidth_in = canvasWidth_pt/ptPerInch; // inch, typical width of single column for double column paper
 	//cout << "canvasWidth_in" << canvasWidth_in << endl;
@@ -50,7 +50,7 @@
 	static const int canvasHeight_px = int(ppi*canvasHeight_in + 0.5);
 	//cout << "canvasHeight_px" << canvasHeight_px << endl;
 
-	static const double margin_small = 0.10;
+	static const double margin_small = 0.075;
 	static const double margin_medium = 0.15;
 
 
