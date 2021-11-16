@@ -25,7 +25,7 @@ cax = fig.add_axes([0.92, 0.15, 0.01, 0.70], label="asdf")
 cbar = fig.colorbar(im, cax=cax, orientation='vertical')
 #cbar.ax.set_ylabel("y pppp [cm] ", labelpad=0)
 cax.set_ylabel(r"$E_{gqyp}$ $\log{10}_{10}$ $10^{10}$ $\sqrt{2}$ [cm]",
-		labelpad=-30)
+		labelpad=-31)
 #fig.subplot.right(0.85)
 plt.subplots_adjust(left=0.15, right=0.85, top=0.85, bottom=0.15)
 
