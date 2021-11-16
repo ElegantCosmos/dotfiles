@@ -13,3 +13,10 @@ export BOX=~/Box
 if [ -f $HOME/.bashrc_general ]; then
 	source $HOME/.bashrc_general
 fi
+
+# APL Root CA Certificate for Python
+export PIP_CERT=${HOME}/files/access/ssl_proxy_certificate/JHUAPL-MS-Root-CA-05-21-2038-B64-text.cer
+export REQUESTS_CA_BUNDLE=${HOME}/files/access/ssl_proxy_certificate/JHUAPL-MS-Root-CA-05-21-2038-B64-text.cer
+export SSL_CERT_FILE=${HOME}/files/access/ssl_proxy_certificate/JHUAPL-MS-Root-CA-05-21-2038-B64-text.cer
+
+eval "$(pyenv init -)"
