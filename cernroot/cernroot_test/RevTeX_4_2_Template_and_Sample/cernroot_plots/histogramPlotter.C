@@ -41,8 +41,8 @@
 
 
 	TCanvas c2("c2", "c2");
-	std::vector<double> xs = {0, 1, 2, 10, 100};
-	std::vector<double> ys = {0, 1, 1, 2, 4};
+	std::vector<double> xs = {1, 100, 200000, 300000000, 5000000000000};
+	std::vector<double> ys = {1, 100, 100000, 100000000, 1000000000000};
 	TGraph graph(xs.size(), &xs[0], &ys[0]);
 	graph.Draw("ALP");
 	graph.SetLineColor(blue_tableau);
@@ -53,8 +53,8 @@
 	//graph.GetYaxis()->SetRangeUser(-1, 5); // also works
 	//graph.SetMaximum(5);
 	//graph.SetMinimum(-1);
-	plotting::SetLogX(&graph);
-	plotting::SetLogY(&graph);
+	//plotting::SetLogX(&graph);
+	//plotting::SetLogY(&graph);
 	gPad->Update();
 	gPad->SaveAs("graph_plot.pdf");
 }

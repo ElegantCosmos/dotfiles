@@ -26,8 +26,8 @@
 	static const double goldenRatio = 0.5*(1 + sqrt(5));
 
 	const int font = 133; // Time New Roman (size specified in pixels)
-	const double fontSize_medium_pt = 9; // default font size
-	const double fontSize_small_pt = 8; // small font size
+	const double fontSize_medium_pt = 8; // default font size
+	const double fontSize_small_pt = 7; // small font size
 	const double fontSize_xsmall_pt = 6; // small font size
 	const double fontSize_xxsmall_pt = 5; // small font size
 	const double ptPerInch = 72.27; // as defined by Adobe and in matplotlib
@@ -50,7 +50,7 @@
 	static const int canvasHeight_px = int(ppi*canvasHeight_in + 0.5);
 	//cout << "canvasHeight_px" << canvasHeight_px << endl;
 
-	static const double margin_small = 0.075;
+	static const double margin_small = 0.07;
 	static const double margin_medium = 0.15;
 
 
@@ -111,8 +111,8 @@
 
 	paper_doubleColumn->SetTitleFont(font, "xyz");
 	paper_doubleColumn->SetTitleSize(fontSize_medium_px, "xyz");
-	paper_doubleColumn->SetTitleOffset(1.14, "x"); // lowest part of log_{10} is barely on the pad; I think log_{10} has the lowest reaching text
-	paper_doubleColumn->SetTitleOffset(1.29, "y"); // highest part of sqrt(2) is barely on the pad; I think sqrt(2) has the highest reaching text
+	paper_doubleColumn->SetTitleOffset(1.39, "x"); // lowest part of log_{10} is barely on the pad; I think log_{10} has the lowest reaching text
+	paper_doubleColumn->SetTitleOffset(1.54, "y"); // highest part of sqrt(2) is barely on the pad; I think sqrt(2) has the highest reaching text
 	paper_doubleColumn->SetTitleOffset(-0.40, "z"); // doesn't work in ROOT 5.34/23
 
 	paper_doubleColumn->SetLabelFont(font, "xyz");

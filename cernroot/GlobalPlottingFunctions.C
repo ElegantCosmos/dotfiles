@@ -46,7 +46,7 @@ void SetLogX(TObject* obj = nullptr, const bool flag = true) // Seems like a bet
 	// Get label offset value depending on whether axis is log scale.
 	double offset;
 	if (flag) {
-		offset = -1.0/canvasHeight_pt;
+		offset = -0.5/canvasHeight_pt;
 	} else {
 		offset = 2.0/canvasHeight_pt;
 	}
