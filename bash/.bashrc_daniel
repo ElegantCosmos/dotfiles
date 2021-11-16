@@ -151,7 +151,11 @@ if [ -f $HOME/.bashrc_general ]; then
 fi
 
 # Python
+export PIP_CERT=/etc/ssl/certs/ca-certificates.crt
+export REQUESTS_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt
+export SSL_CERT_FILE=/etc/ssl/certs/ca-certificates.crt
+
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin${PATH:+:$PATH}"
-eval "$(pyenv init --path)"
+eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
