@@ -36,7 +36,8 @@
 	const double fontSize_xsmall_px = ppi*fontSize_xsmall_pt/ptPerInch;
 	const double fontSize_xxsmall_px = ppi*fontSize_xxsmall_pt/ptPerInch;
 
-	const double canvasWidth_pt = 246.0; // pt, typical width of single column for double column paper
+	//const double canvasWidth_pt = 246.0; // pt, typical width of single column for double column paper
+	const double canvasWidth_pt = 252.945; // pt, typical width of single column for double column paper
 	const double canvasHeight_pt = canvasWidth_pt/goldenRatio;
 	static const double canvasWidth_in = canvasWidth_pt/ptPerInch; // inch, typical width of single column for double column paper
 	//cout << "canvasWidth_in" << canvasWidth_in << endl;
