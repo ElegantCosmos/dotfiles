@@ -19,11 +19,13 @@ ys_xray
 
 
 
-errorbar(xs_tmp, ys_gamma+ys_xray, ((yfracerrs_gamma.*ys_gamma).^2 + (yfracerrs_xray.*ys_xray).^2).^(0.5), '.');
+errorbar(xs_tmp, ys_gamma+ys_xray, ...
+((yfracerrs_gamma.*ys_gamma).^2 + (yfracerrs_xray.*ys_xray).^2).^(0.5), ...
+'o', 'MarkerSize', 3);
 hold on;
-errorbar(xs_tmp, ys_xray, yfracerrs_xray.*ys_xray, '.');
+errorbar(xs_tmp, ys_xray, yfracerrs_xray.*ys_xray, 'o', 'MarkerSize', 3);
 hold on;
-errorbar(xs_tmp, ys_gamma, yfracerrs_gamma.*ys_gamma, '.');
+errorbar(xs_tmp, ys_gamma, yfracerrs_gamma.*ys_gamma, 'o', 'MarkerSize', 3);
 hold off;
 
 legend({"Total", "X-ray", "Gamma"}, ...
