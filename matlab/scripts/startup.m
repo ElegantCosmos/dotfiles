@@ -1,56 +1,49 @@
-figure
+% Start-up script to set plot graphics settings for MatLAB
 
-set(groot,'defaultAxesTickLabelInterpreter','latex');
-set(groot,'defaultTextInterpreter','latex');
-set(groot,'defaultLegendInterpreter','latex');
+% Use LaTeX for type setting:
+set(groot,'defaultAxesTickLabelInterpreter', 'latex');
+set(groot,'defaultTextInterpreter', 'latex');
+set(groot,'defaultLegendInterpreter', 'latex');
+set(groot, 'defaultAxesTickLabelInterpreter', 'latex'); % use LaTex interpreter for tick labels
 
 set(groot, 'defaultAxesFontName', 'Times'); % kind of fonts of labels % [Times | Courier | ]
 set(groot, 'defaultTextFontName', 'Times'); % kind of fonts of labels % [Times | Courier | ]
 
+% Set the units of the measures used throughout the file.
+% Options: [ inches | centimeters | normalized | points | {pixels} | characters ]
+set(groot, 'defaultFigureUnits', 'inches');
+set(groot, 'defaultFigurePaperUnits', 'inches');
+set(groot, 'defaultAxesUnits', 'inches');
+
+% Calculate overall figure size based on double column paper with 3.5 in
+% column width. Use golden ratio to get figure height.
+figwidth_in = 3.5; % inch
+goldenratio = 0.5*(1 + sqrt(5)); % golden ratio constant
+figheight_in = figwidth_in/goldenratio; % inch
+
+% Figure position and width/height used for *.eps plots
+% [left bottom width height]:
+set(groot, 'defaultFigurePosition', [0 0 figwidth_in figheight_in]);
+
+% Figure width/height used for *.pdf plots:
+set(groot, 'defaultFigurePaperSize', [figwidth_in figheight_in]);
+set(groot, 'defaultFigurePaperSizeMode', 'manual');
+set(groot, 'defaultFigurePaperType', '<custom>')
+set(groot, 'defaultFigurePaperTypeMode', 'manual');
+
+% Positioning of figure inside overall plot paper:
+set(groot, 'defaultFigurePaperPosition', [0 0 figwidth_in figheight_in]);
 % we link the dimension of the figure ON THE PAPER in such a way that
 % it is equal to the dimension on the screen
 %
 % ATTENTION: if PaperPositionMode is not 'auto' the saved file
 % could have different dimensions from the one shown on the screen!
-%set(groot, 'defaultFigurePaperPositionMode', 'manual');
-set(groot, 'DefaultFigurePaperPositionMode', 'auto');
+set(groot, 'DefaultFigurePaperPositionMode', 'auto'); % recommended by documentation
 
-% we set the units of the measures used through the file
-%
-% [ inches | centimeters | normalized | points | {pixels} | characters ]
-set(groot, 'defaultFigureUnits', 'inches'); % [ inches | centimeters | normalized | points | {pixels} | characters ]
-set(groot, 'defaultAxesUnits', 'inches'); % [ inches | centimeters | normalized | points | {pixels} | characters ]
-
-figwidth_in = 3.5;
-goldenratio = 0.5*(1 + sqrt(5));
-figheight_in = figwidth_in/goldenratio;
-pbaspect([figwidth_in, figheight_in, 1]);
-
-afFigurePosition = 1*[1 1 [figwidth_in figheight_in]]; % [pos_x pos_y width_x width_y]
-set(gcf, 'Units', 'inches', 'Position', afFigurePosition); % [left bottom width height]
-% set(groot, 'defaultFigureUnits', 'inches', ...
-%     'defaultFigurePosition', afFigurePosition); % [left bottom width height]
-
-set(gcf, 'PaperSize', [figwidth_in figheight_in]);
-% set(groot, 'defaultFigurePaperUnits', 'inches');
-% set(groot, 'defaultFigurePaperUnitsMode', 'manual');
-% set(groot, 'defaultFigurePaperSize', [figwidth_in figheight_in]);
-% set(groot, 'defaultFigurePaperSizeMode', 'manual');
-% set(groot, 'defaultFigurePaperSize', [figwidth_in figheight_in]);
-% set(groot, 'defaultFigureUnits', 'inches', ...
-%     'defaultFigurePaperSize', [figwidth_in figheight_in]);
-
-set(gcf, 'PaperPosition', [0 0 figwidth_in figheight_in]);
-%set(groot, 'defautFigureOuterPosition', [0 0 1 1]);
-
-% % in order to make matlab to do not "cut" latex-interpreted axes labels
-% set(gca, 'Units', 'normalized', ... %
-% 'Position',[0.15 0.15 0.79 0.79]);
-% % in order to make matlab to do not "cut" latex-interpreted axes labels
-set(gca, 'Units', 'normalized', ... %
-    'Position',[0.15 0.17 0.76 0.76]);
-% set(groot, 'defaultAxesUnits', 'normalized', ... %
-%      'defaultAxesPosition',[0.15 0.17 0.76 0.76]);
+% Control positions and size of axes in order to prevent MatLAB from
+% cutting LaTeX-interpreted axes labels:
+set(groot, 'defaultAxesUnits', 'normalized', ... %
+     'defaultAxesPosition',[0.15 0.17 0.76 0.76]);
 
 % General properties:
 set(groot, 'defaultAxesFontUnits', 'points'); % units of the size of fonts % [{points} | normalized | inches | centimeters | pixels]
@@ -69,10 +62,11 @@ set(groot, 'defaultAxesTickLength', [.01 .01]); % length of the ticks
 set(groot, 'defaultAxesTitleFontSizeMultiplier', 0.5); % title font size multiplier factor
 set(groot, 'defaultAxesLabelFontSizeMultiplier', 1); % label font size multiplier factor
 % ...
-%set(gca, 'TickLabelInterpreter', 'latex'); % use LaTex interpreter for tick labels
 
-% % Code to turn off ticks on right and upper axes:
-% % get handle to current axes
+% % Code to turn off ticks on right and upper axes (not currently cleanly
+% % possible in MatLAB)
+%
+% % Get handle to current axes:
 % ax = gca;
 % % set box property to off and remove background color
 % set(ax, 'box', 'off', 'color', 'none')
@@ -83,11 +77,7 @@ set(groot, 'defaultAxesLabelFontSizeMultiplier', 1); % label font size multiplie
 % % link axes in case of zooming
 % linkaxes([ax ax_b])
 
-%get(groot, 'default')
-%groot
-
-% set(gcf, 'visible', 'off');
-
+% Clear any residual variables:
 clear all;
 
 % Message for user:
