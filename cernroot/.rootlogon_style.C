@@ -116,9 +116,9 @@
 
 	paper_doubleColumn->SetLabelFont(font, "xyz");
 	paper_doubleColumn->SetLabelSize(fontSize_medium_px, "xyz");
-	paper_doubleColumn->SetLabelOffset(3.0/canvasHeight_pt, "x");
-	paper_doubleColumn->SetLabelOffset(4.0/canvasWidth_pt, "y");
-	paper_doubleColumn->SetLabelOffset(4.0/canvasWidth_pt, "z");
+	paper_doubleColumn->SetLabelOffset(4.0/canvasHeight_pt, "x");
+	paper_doubleColumn->SetLabelOffset(5.0/canvasWidth_pt, "y");
+	paper_doubleColumn->SetLabelOffset(5.0/canvasWidth_pt, "z");
 
 	paper_doubleColumn->SetOptStat("emrou");
 	paper_doubleColumn->SetStatBorderSize(1);
@@ -132,9 +132,9 @@
 
 	//paper_doubleColumn->SetNdivisions(10, "xyz");
 	paper_doubleColumn->SetNdivisions(510, "xyz"); // show sub-ticks
-	paper_doubleColumn->SetTickLength(-2.5/canvasHeight_pt, "x"); // numerator is length in pt
-	paper_doubleColumn->SetTickLength(-2.5/canvasWidth_pt, "y"); // numerator is length in pt
-	paper_doubleColumn->SetTickLength(-2.5/canvasWidth_pt, "z"); // numerator is length in pt
+	paper_doubleColumn->SetTickLength(-4.0/canvasHeight_pt, "x"); // numerator is length in pt
+	paper_doubleColumn->SetTickLength(-4.0/canvasWidth_pt, "y"); // numerator is length in pt
+	paper_doubleColumn->SetTickLength(-4.0/canvasWidth_pt, "z"); // numerator is length in pt
 
 	// Legend.
 	paper_doubleColumn->SetLegendBorderSize(0);

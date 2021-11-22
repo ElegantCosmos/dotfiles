@@ -57,7 +57,7 @@ set(groot, 'defaultAxesXMinorTick', 'on'); % [on | {off}]
 set(groot, 'defaultAxesYMinorTick', 'on');  % [on | {off}]
 set(groot, 'defaultAxesTickDir', 'out');    % [{in} | out] inside or outside (for 2D)
 set(groot, 'defaultAxesTickDirMode', 'manual');
-set(groot, 'defaultAxesTickLength', [.01 .01]); % length of the ticks
+set(groot, 'defaultAxesTickLength', [.014 .014]); % length of the ticks
 % ...
 set(groot, 'defaultAxesTitleFontSizeMultiplier', 0.5); % title font size multiplier factor
 set(groot, 'defaultAxesLabelFontSizeMultiplier', 1); % label font size multiplier factor
