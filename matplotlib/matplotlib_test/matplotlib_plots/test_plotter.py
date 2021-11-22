@@ -3,11 +3,13 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 xs = np.array([0.1, 10, 1000, 100000, 100000000])
-ys = np.array([6, 20, 800, 10000, 30000])
+ys = np.array([6, 20, 2000, 100, 300])
 
 # the histogram of the data
 fig, ax = plt.subplots()
 ax.plot(xs, ys)
+#ax.get_yaxis().get_major_formatter().set_scientific(False)
+ax.ticklabel_format(style='sci', axis='both', scilimits=(-1000,1000), useOffset=False)
 
 plt.title(r'$\mathrm{Histogram\ of\ IQ:}\ \mu=100,\ \sigma=15$')
 

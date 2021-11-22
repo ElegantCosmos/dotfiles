@@ -107,8 +107,9 @@ void SetPaletteAxis(TH1* hist, const TString& title = "A_{g}^{T} Log_{10} #sqrt{
 	gPad->Update();
 
 	TPaletteAxis* axis = dynamic_cast<TPaletteAxis*>(hist->GetListOfFunctions()->FindObject("palette"));
-	axis->SetX1NDC(0.915); axis->SetX2NDC(0.925);
-	hist->GetZaxis()->SetTitleOffset(-0.40);
+	const double pos = 0.925;
+	axis->SetX1NDC(pos); axis->SetX2NDC(pos + 0.010);
+	//hist->GetZaxis()->SetTitleOffset(-0.40);
 	hist->GetZaxis()->SetTitle(title);
 	gPad->SetFrameLineWidth(10);
 }

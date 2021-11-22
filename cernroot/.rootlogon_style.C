@@ -77,10 +77,13 @@
 	paper_doubleColumn->SetPadColor(kWhite);
 
 	paper_doubleColumn->SetPaperSize(TStyle::kUSLetter);
-	paper_doubleColumn->SetPadTopMargin(margin_medium);
-	paper_doubleColumn->SetPadBottomMargin(margin_medium);
-	paper_doubleColumn->SetPadRightMargin(margin_medium);
-	paper_doubleColumn->SetPadLeftMargin(margin_medium);
+
+	const double figure_size = 0.75;
+	const double bottom_margin = 0.172;
+	paper_doubleColumn->SetPadTopMargin(1 - (bottom_margin + figure_size));
+	paper_doubleColumn->SetPadBottomMargin(bottom_margin);
+	paper_doubleColumn->SetPadRightMargin(0.5*(1 - figure_size));
+	paper_doubleColumn->SetPadLeftMargin(0.5*(1 - figure_size));
 	paper_doubleColumn->SetCanvasDefH(canvasHeight_px + decorationHeight); // (canvas height + 25 px) = window height)
 	//paper_doubleColumn->SetCanvasDefH(500); // (canvas height + 25 px) = window height)
 	paper_doubleColumn->SetCanvasDefW(canvasWidth_px + decorationWidth); // (canvas width + 2 px) = window width)
@@ -110,14 +113,14 @@
 
 	paper_doubleColumn->SetTitleFont(font, "xyz");
 	paper_doubleColumn->SetTitleSize(fontSize_medium_px, "xyz");
-	paper_doubleColumn->SetTitleOffset(1.39, "x"); // lowest part of log_{10} is barely on the pad; I think log_{10} has the lowest reaching text
-	paper_doubleColumn->SetTitleOffset(1.54, "y"); // highest part of sqrt(2) is barely on the pad; I think sqrt(2) has the highest reaching text
-	paper_doubleColumn->SetTitleOffset(-0.40, "z"); // doesn't work in ROOT 5.34/23
+	paper_doubleColumn->SetTitleOffset(1.60, "x"); // lowest part of log_{10} is barely on the pad; I think log_{10} has the lowest reaching text
+	paper_doubleColumn->SetTitleOffset(1.22, "y"); // highest part of sqrt(2) is barely on the pad; I think sqrt(2) has the highest reaching text
+	paper_doubleColumn->SetTitleOffset(-0.41, "z"); // doesn't work in ROOT 5.34/23
 
 	paper_doubleColumn->SetLabelFont(font, "xyz");
 	paper_doubleColumn->SetLabelSize(fontSize_medium_px, "xyz");
 	paper_doubleColumn->SetLabelOffset(4.0/canvasHeight_pt, "x");
-	paper_doubleColumn->SetLabelOffset(5.0/canvasWidth_pt, "y");
+	paper_doubleColumn->SetLabelOffset(4.0/canvasWidth_pt, "y");
 	paper_doubleColumn->SetLabelOffset(5.0/canvasWidth_pt, "z");
 
 	paper_doubleColumn->SetOptStat("emrou");
@@ -125,10 +128,13 @@
 	paper_doubleColumn->SetStatColor(kWhite);
 	paper_doubleColumn->SetStatFont(font);
 	paper_doubleColumn->SetStatFontSize(fontSize_xxsmall_px);
-	paper_doubleColumn->SetStatY(margin_medium - 0.5*0.005);
-	paper_doubleColumn->SetStatX(margin_medium - 0.5*0.005);
-	paper_doubleColumn->SetStatW(margin_medium - 0.005);
-	paper_doubleColumn->SetStatH(margin_medium - 0.005);
+
+	const double statbox_height = 0.13;
+	const double statbox_width = 0.2;
+	paper_doubleColumn->SetStatY(1 - 1.0/canvasHeight_pt);
+	paper_doubleColumn->SetStatX(1 - 1.0/canvasWidth_pt);
+	paper_doubleColumn->SetStatW(statbox_width);
+	paper_doubleColumn->SetStatH(statbox_height);
 
 	//paper_doubleColumn->SetNdivisions(10, "xyz");
 	paper_doubleColumn->SetNdivisions(510, "xyz"); // show sub-ticks

@@ -20,8 +20,6 @@
 	gPad->SaveAs("histogram_plot.pdf");
 
 	TCanvas c1("c1", "c1");
-	c1.SetTopMargin(0.15);
-	c1.SetRightMargin(0.15);
 	gStyle->SetOptStat("");
 	TH2F hist2("hist2", "hist2", 10, -800, 800, 10, -800, 800);
 	hist2.Fill(10, 50, 0);
