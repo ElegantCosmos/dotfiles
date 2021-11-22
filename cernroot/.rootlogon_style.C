@@ -50,7 +50,6 @@
 	static const int canvasHeight_px = int(ppi*canvasHeight_in + 0.5);
 	//cout << "canvasHeight_px" << canvasHeight_px << endl;
 
-	static const double margin_small = 0.07;
 	static const double margin_medium = 0.15;
 
 
@@ -78,9 +77,9 @@
 	paper_doubleColumn->SetPadColor(kWhite);
 
 	paper_doubleColumn->SetPaperSize(TStyle::kUSLetter);
-	paper_doubleColumn->SetPadTopMargin(margin_small);
+	paper_doubleColumn->SetPadTopMargin(margin_medium);
 	paper_doubleColumn->SetPadBottomMargin(margin_medium);
-	paper_doubleColumn->SetPadRightMargin(margin_small);
+	paper_doubleColumn->SetPadRightMargin(margin_medium);
 	paper_doubleColumn->SetPadLeftMargin(margin_medium);
 	paper_doubleColumn->SetCanvasDefH(canvasHeight_px + decorationHeight); // (canvas height + 25 px) = window height)
 	//paper_doubleColumn->SetCanvasDefH(500); // (canvas height + 25 px) = window height)
@@ -117,9 +116,9 @@
 
 	paper_doubleColumn->SetLabelFont(font, "xyz");
 	paper_doubleColumn->SetLabelSize(fontSize_medium_px, "xyz");
-	paper_doubleColumn->SetLabelOffset(2.0/canvasHeight_pt, "x");
-	paper_doubleColumn->SetLabelOffset(3.0/canvasWidth_pt, "y");
-	paper_doubleColumn->SetLabelOffset(3.0/canvasWidth_pt, "z");
+	paper_doubleColumn->SetLabelOffset(3.0/canvasHeight_pt, "x");
+	paper_doubleColumn->SetLabelOffset(4.0/canvasWidth_pt, "y");
+	paper_doubleColumn->SetLabelOffset(4.0/canvasWidth_pt, "z");
 
 	paper_doubleColumn->SetOptStat("emrou");
 	paper_doubleColumn->SetStatBorderSize(1);

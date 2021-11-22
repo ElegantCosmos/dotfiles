@@ -43,7 +43,7 @@ set(groot, 'DefaultFigurePaperPositionMode', 'auto'); % recommended by documenta
 % Control positions and size of axes in order to prevent MatLAB from
 % cutting LaTeX-interpreted axes labels:
 set(groot, 'defaultAxesUnits', 'normalized', ... %
-     'defaultAxesPosition',[0.15 0.17 0.76 0.76]);
+     'defaultAxesPosition',[0.15 0.17 0.70 0.70]);
 
 % General properties:
 set(groot, 'defaultAxesFontUnits', 'points'); % units of the size of fonts % [{points} | normalized | inches | centimeters | pixels]
