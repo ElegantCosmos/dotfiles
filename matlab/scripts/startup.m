@@ -43,7 +43,7 @@ set(groot, 'DefaultFigurePaperPositionMode', 'auto'); % recommended by documenta
 % Control positions and size of axes in order to prevent MatLAB from
 % cutting LaTeX-interpreted axes labels:
 set(groot, 'defaultAxesUnits', 'normalized', ... %
-     'defaultAxesPosition',[0.125 0.172 0.75 0.75]);
+    'defaultAxesPosition',[0.125 0.172 0.75 0.75]);
 
 % General properties:
 set(groot, 'defaultAxesFontUnits', 'points'); % units of the size of fonts % [{points} | normalized | inches | centimeters | pixels]
@@ -77,11 +77,53 @@ set(groot, 'defaultAxesLabelFontSizeMultiplier', 1); % label font size multiplie
 % % link axes in case of zooming
 % linkaxes([ax ax_b])
 
+% Set default color order.
+% Classic Tableau 10:
+colors_tableau_classic_10 = [...
+    031, 119, 180;
+    255, 127, 014;
+    044, 160, 044;
+    214, 039, 040;
+    148, 103, 189;
+    140, 086, 075;
+    227, 119, 194;
+    127, 127, 127;
+    188, 189, 034;
+    023, 190, 207;]./255.0;
+set(groot, 'defaultAxesColorOrder', colors_tableau_classic_10);
+
+% Classic Tableau 20:
+colors_tableau_classic_20 = [...
+    031, 119, 180;
+    174, 199, 232;
+    255, 127, 014;
+    255, 187, 120;
+    044, 160, 044;
+    152, 223, 138;
+    214, 039, 040;
+    255, 152, 150;
+    148, 103, 189;
+    197, 176, 213;
+    140, 086, 075;
+    196, 156, 148;
+    227, 119, 194;
+    247, 182, 210;
+    127, 127, 127;
+    199, 199, 199;
+    188, 189, 034;
+    219, 219, 141;
+    023, 190, 207;
+    158, 218, 229;]./255.0;
+% set(groot, 'defaultAxesColorOrder', colors_tableau_classic_20);
+
 % Clear any residual variables:
 clear all;
 
 % Message for user:
 disp("Start-up script executed.")
+
+% % For debugging:
+% get(groot, 'factory')
 
 % Settings for axes when they are created with a plot:
 set(groot, 'defaultAxesCreateFcn', @axisDefaultCreateFcn);
