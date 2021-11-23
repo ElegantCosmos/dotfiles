@@ -89,9 +89,5 @@ function axisDefaultCreateFcn(~, ~)
  ax = gca;
  ax.XRuler.TickLabelGapOffset = -1;
  ax.YRuler.TickLabelGapOffset = 0;
-%  vec_pos = get(get(ax, 'YLabel'), 'Position')
-%  vec_pos + [0, 0.5, 0.5]
-%  set(get(ax, 'YLabel'), 'Position', vec_pos + [0, 0.5, 0.5]);
- %set(groot, 'defaultAxesYLabelPosition', [0 0 0]);
 end
 
