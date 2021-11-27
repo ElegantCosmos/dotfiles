@@ -195,7 +195,7 @@ endfunc
 " Use an undo file
 set undofile
 " Set directory to store the undo history
-set undodir=~/.vim/.undo//
+set undodir=~/.vim/.undo//,.
 " set creation of backup files and designate common directory them
 set backup
 set backupdir=~/.vim/.backup//,.
