@@ -17,7 +17,7 @@ print -painters -dpdf -loose test_hist.pdf
 % 2-D histogram:
 figure(4);
 
-bin_counts = [0, 100, 200; 400, 30, 600; 300, 10, 8e90];
+bin_counts = [0, 0, 0; 0, 30, 600; 0, 10, 8e90];
 x_edges = [1, 2, 3, 4];
 y_edges = [4, 5, 6, 7];
 histogram2('XBinEdges', x_edges, 'YBinEdges', y_edges, 'BinCounts', bin_counts, 'DisplayStyle', 'tile', 'LineStyle', 'none');
