@@ -116,10 +116,10 @@ colors_tableau_classic_20 = [...
 clear all;
 
 % Message for user:
-disp("Start-up script executed.")
+disp("Start-up script executed.");
 
 % % For debugging:
-% get(groot, 'factory')
+% get(groot, 'factory');
 
 % Settings for axes when they are created with a plot:
 set(groot, 'defaultAxesCreateFcn', @axesCreateFcn);
