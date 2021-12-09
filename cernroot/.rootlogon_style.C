@@ -36,6 +36,12 @@
 	const double fontSize_xsmall_px = ppi*fontSize_xsmall_pt/ptPerInch;
 	const double fontSize_xxsmall_px = ppi*fontSize_xxsmall_pt/ptPerInch;
 
+
+	// Tick properties:
+	const double tickSize_pt = fontSize_medium_pt/3.0;
+
+
+	// Canvas propertie:
 	//const double canvasWidth_pt = 246.0; // pt, width of single column for double column paper
 	const double canvasWidth_pt = 252.945; // 3.5 in, width of single column for double column paper
 	const double canvasHeight_pt = canvasWidth_pt/goldenRatio;
@@ -89,6 +95,12 @@
 	paper_doubleColumn->SetCanvasDefW(canvasWidth_px + decorationWidth); // (canvas width + 2 px) = window width)
 	//paper_doubleColumn->SetCanvasDefW(500); // (canvas width + 2 px) = window width)
 
+
+	// Plot area size:
+	const double plotArea_width_pt = figure_size*canvasWidth_pt;
+	const double plotArea_height_pt = figure_size*canvasHeight_pt;
+
+
 	//paper_doubleColumn->SetOptTitle(0);
 	paper_doubleColumn->SetFrameLineWidth(1);
 	paper_doubleColumn->SetFrameLineColor(kBlack);
@@ -138,9 +150,9 @@
 
 	//paper_doubleColumn->SetNdivisions(10, "xyz");
 	paper_doubleColumn->SetNdivisions(510, "xyz"); // show sub-ticks
-	paper_doubleColumn->SetTickLength(-4.0/canvasHeight_pt, "x"); // numerator is length in pt
-	paper_doubleColumn->SetTickLength(-4.0/canvasWidth_pt, "y"); // numerator is length in pt
-	paper_doubleColumn->SetTickLength(-4.0/canvasWidth_pt, "z"); // numerator is length in pt
+	paper_doubleColumn->SetTickLength(-tickSize_pt/plotArea_height_pt, "x");
+	paper_doubleColumn->SetTickLength(-tickSize_pt/plotArea_width_pt, "y");
+	paper_doubleColumn->SetTickLength(-tickSize_pt/plotArea_width_pt, "z");
 
 	// Legend.
 	paper_doubleColumn->SetLegendBorderSize(0);
