@@ -30,7 +30,7 @@
 	const double fontSize_small_pt = 7; // small font size
 	const double fontSize_xsmall_pt = 6; // small font size
 	const double fontSize_xxsmall_pt = 5; // small font size
-	const double ptPerInch = 72.27; // as defined by Adobe and in matplotlib
+	const double ptPerInch = 72;
 	const double fontSize_medium_px = ppi*fontSize_medium_pt/ptPerInch;
 	const double fontSize_small_px = ppi*fontSize_small_pt/ptPerInch;
 	const double fontSize_xsmall_px = ppi*fontSize_xsmall_pt/ptPerInch;
