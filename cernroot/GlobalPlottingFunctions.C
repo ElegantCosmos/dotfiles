@@ -46,12 +46,14 @@ void SetLogX(TObject* obj = nullptr, const bool flag = true) // Seems like a bet
 	// Get label offset value depending on whether axis is log scale.
 	double offset;
 	if (flag) {
-		offset = -0.5/canvasHeight_pt;
-	} else {
-		offset = 2.0/canvasHeight_pt;
+		offset = tickSize_pt/canvasWidth_pt;
+cout << "canvasWidth_px" << canvasWidth_px << endl;
 	}
 
 	// Set offset on appropriate object: TH1, TGraph.
+	// Set distance between the axis and the labels.
+	// The distance is expressed in per cent of the pad width. A negative value
+	// allow to draw the label on the other side of the axis.
 	if (obj) {
 		TH1* hist = dynamic_cast<TH1*>(obj);
 		if (hist) {
