@@ -32,25 +32,7 @@ ax.YAxis.Exponent = 1;
 
 % Color bar
 cb = colorbar();
-cb.Ruler.FontSize = 8;
-cb.Label.Interpreter = "latex";
 cb.Label.String = "$\log_{10}{10} E_{gqyp} 10^{10}/\sqrt{2}$ [cm]";
-cb.Label.Position(1) = -4;
-cb.Position = [0.925, 0.172, 0.01, 0.75];
-cb.Ruler.TickLabelGapOffset = 0;
-
-% Manually move exponent of color bar if it doesn't fit on print page
-exp_cb = cb.Ruler.Exponent; % get exponent
-cb.Ruler.TickLabelMode = 'manual'; % turn off tick labels
-exp_str = annotation('textbox', [0.9, 0.902, 0, 0], ... % write exponent
-    'String', ['$\times 10^{', num2str(exp_cb), '}$'], ...
-    'Interpreter', 'latex', ...
-    'FontUnits', 'points', ...
-    'FontSize', 8, ...
-    'EdgeColor', 'none', ...
-    'HorizontalAlignment', 'left', ...
-    'VerticalAlignment', 'bottom');
-cb_ticks = [0, 200, 400, 600, 800] % manually set color bar axis ticks
-cb.Ruler.TickLabel = cb_ticks;
+format_colorbar(cb);
 
 print -painters -dpdf -loose test_hist2d.pdf % -painters needed for hi-res
