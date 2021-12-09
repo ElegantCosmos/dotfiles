@@ -1,5 +1,8 @@
 % Start-up script to set plot graphics settings for MatLAB
 
+% % For debugging:
+% get(groot, 'factory') % show default factory values of plot properties
+
 % Use LaTeX for type setting:
 set(groot, 'defaultAxesTickLabelInterpreter', 'latex'); % use LaTex interpreter for tick labels
 set(groot, 'defaultTextInterpreter', 'latex');
@@ -21,6 +24,10 @@ set(groot, 'defaultAxesUnits', 'inches');
 figwidth_in = 3.5; % inch
 goldenratio = 0.5*(1 + sqrt(5)); % golden ratio constant
 figheight_in = figwidth_in/goldenratio; % inch
+fontsize_pt = 8;
+points_per_inch = 72.0;
+ticklength_pt = fontsize_pt/3;
+ticklength_norm = ticklength_pt/points_per_inch/figwidth_in;
 
 % Figure position and width/height used for *.eps plots
 % [left bottom width height]:
@@ -47,7 +54,7 @@ set(groot, 'defaultFigureColormap', jet);
 set(groot, 'defaultAxesUnits', 'normalized', ... % positions and size of axes
     'defaultAxesPosition',[0.125 0.172 0.75 0.75]);
 set(groot, 'defaultAxesFontUnits', 'points'); % units of the size of fonts % [{points} | normalized | inches | centimeters | pixels]
-set(groot, 'defaultAxesFontSize', 8); % size of fonts of labels
+set(groot, 'defaultAxesFontSize', fontsize_pt); % size of fonts of labels
 set(groot, 'defaultAxesFontSizeMode', 'manual');
 set(groot, 'defaultAxesFontWeight', 'normal'); % weight of fonts of labels % [light | {normal} | demi | bold]
 set(groot, 'defaultAxesTitleFontWeight', 'normal'); % weight of font of title % [light | {normal} | demi | bold]
@@ -57,7 +64,7 @@ set(groot, 'defaultAxesXMinorTick', 'on'); % [on | {off}]
 set(groot, 'defaultAxesYMinorTick', 'on');  % [on | {off}]
 set(groot, 'defaultAxesTickDir', 'out');    % [{in} | out] inside or outside (for 2D)
 set(groot, 'defaultAxesTickDirMode', 'manual');
-set(groot, 'defaultAxesTickLength', [.012 .012]); % length of the ticks
+set(groot, 'defaultAxesTickLength', [ticklength_norm ticklength_norm]); % length of the ticks
 % ...
 set(groot, 'defaultAxesTitleFontSizeMultiplier', 0.5); % title font size multiplier factor
 set(groot, 'defaultAxesLabelFontSizeMultiplier', 1); % label font size multiplier factor
@@ -71,7 +78,7 @@ set(groot, 'defaultColorbarAxisLocationMode', 'manual');
 set(groot, 'defaultColorbarTickDirection', 'out');
 set(groot, 'defaultColorbarCreateFcn', @colorBarCreateFcn);
 set(groot, 'defaultColorbarBox', 'off');
-set(groot, 'defaultColorbarTickLength', 0.014);
+set(groot, 'defaultColorbarTickLength', ticklength_norm);
 
 % Set default color order.
 % Classic Tableau 10:
@@ -117,9 +124,6 @@ clear all;
 
 % Message for user:
 disp("Start-up script executed.");
-
-% % For debugging:
-% get(groot, 'factory');
 
 % Settings for axes when they are created with a plot:
 set(groot, 'defaultAxesCreateFcn', @axesCreateFcn);
