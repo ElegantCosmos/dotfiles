@@ -27,7 +27,7 @@ figheight_in = figwidth_in/goldenratio; % inch
 fontsize_pt = 8;
 points_per_inch = 72.0;
 ticklength_pt = fontsize_pt/3;
-ticklength_norm = ticklength_pt/points_per_inch/figwidth_in;
+ticklength_norm = ticklength_pt/points_per_inch/max(figwidth_in, figheight_in);
 
 % Figure position and width/height used for *.eps plots
 % [left bottom width height]:
@@ -51,8 +51,12 @@ set(groot, 'DefaultFigurePaperPositionMode', 'auto'); % recommended by documenta
 set(groot, 'defaultFigureColormap', jet);
 
 % Axes properties:
+margin_left = 0.125;
+margin_bottom = 0.172;
+plot_width = 0.75;
+plot_height = 0.75;
 set(groot, 'defaultAxesUnits', 'normalized', ... % positions and size of axes
-    'defaultAxesPosition',[0.125 0.172 0.75 0.75]);
+    'defaultAxesPosition',[margin_left margin_bottom plot_width plot_height]);
 set(groot, 'defaultAxesFontUnits', 'points'); % units of the size of fonts % [{points} | normalized | inches | centimeters | pixels]
 set(groot, 'defaultAxesFontSize', fontsize_pt); % size of fonts of labels
 set(groot, 'defaultAxesFontSizeMode', 'manual');
@@ -71,7 +75,6 @@ set(groot, 'defaultAxesLabelFontSizeMultiplier', 1); % label font size multiplie
 % ...
 
 % 2-D histogram color bar properties:
-set(groot, 'defaultColorbarPosition', [0.925, 0.172, 0.01, 0.75]);
 set(groot, 'defaultColorbarPositionMode', 'manual');
 set(groot, 'defaultColorbarAxisLocation', 'out');
 set(groot, 'defaultColorbarAxisLocationMode', 'manual');
