@@ -36,7 +36,7 @@ function format_colorbar(cb)
 %     cb.TickLength = 1 - 0.5*(0.5/points_per_inch/(figwidth_in*0.75))
     
     % Manually move exponent of color bar if it doesn't fit on print page
-    if cb.Ruler.Scale ~= 'log' % ignore if colorbar scale is log
+    if strcmp(cb.Ruler.Scale, 'log') == logical(false) % ignore if colorbar scale is log
         exp_cb = cb.Ruler.Exponent; % get exponent
         cb.Ruler.TickLabelMode = 'manual'; % turn off tick labels
         if exp_cb ~= 0 % if exponent exists
