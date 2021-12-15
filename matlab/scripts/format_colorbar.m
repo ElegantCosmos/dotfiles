@@ -21,20 +21,22 @@ function format_colorbar(cb)
     ticklength_pt = fontsize_pt/3;
     
     % Position and shape of colorbar:
-    cb_pos_x = 0.92;
+    cb_pos_x = 0.917;
     cb_pos_y = 0.172;
     cb_width = 0.01;
     cb_height = 0.75;
     cb.Position = [cb_pos_x, cb_pos_y, cb_width, cb_height];
-    cb.TickLength = (ticklength_pt - 1)/(points_per_inch*cb_height*figheight_in); % FIXME "-1" is approximate but wrong
+    cb.TickLength = (ticklength_pt - 0.5)/(points_per_inch*max(cb_width*figwidth_in, cb_height*figheight_in)); % FIXME "-1" is approximate but wrong
+    %cb.Box = 'off'
 
 %     cb_pos_x = 0.125;
 %     cb_pos_y = 0.05;
 %     cb_width = 0.75;
 %     cb_height = 0.1;
 %     cb.Position = [cb_pos_x, cb_pos_y, cb_width, cb_height];
-%     cb.TickLength = 1 - 0.5*(0.5/points_per_inch/(figwidth_in*0.75))
-    
+%     cb.TickLength = 1 - 0.5*(0.5/points_per_inch/max(cb_width*figwidth_in, cb_height*figheight_in))
+%     %cb.Box = 'off'
+
     % Manually move exponent of color bar if it doesn't fit on print page
     if strcmp(cb.Ruler.Scale, 'log') == logical(false) % ignore if colorbar scale is log
         exp_cb = cb.Ruler.Exponent; % get exponent

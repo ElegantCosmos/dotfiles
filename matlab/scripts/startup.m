@@ -136,21 +136,6 @@ function axesCreateFcn(~, ~)
     ax.XRuler.TickLabelGapOffset = -1;
     ax.YRuler.TickLabelGapOffset = 0;
     % ax.ZRuler.TickLabelGapOffset = 0; % don't know best number yet
-    
-%     % % Code below does not work; FIXME
-%     % Code to turn off ticks on right and upper axes (not currently cleanly
-%     % possible in MatLAB)
-% 
-%     % Get handle to current axes:
-%     ax = gca;
-%     % set box property to off and remove background color
-%     set(ax, 'box', 'off', 'color', 'none')
-%     % create new, empty axes with box but without ticks
-%     ax_b = axes('Position', get(ax ,'Position'), 'box', 'on', 'xtick', [], 'ytick', []);
-%     % set original axes as active
-%     axes(ax)
-%     % link axes in case of zooming
-%     linkaxes([ax ax_b])
 end
 
 function colorbarCreateFcn(~, ~)
