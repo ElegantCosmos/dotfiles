@@ -24,7 +24,7 @@
 	TH2F hist2("hist2", "hist2", 10, -800, 800, 10, -800, 800);
 	hist2.Fill(10, 50, 0);
 	hist2.Fill(-10, 60, 100);
-	hist2.Fill(70, 70, 750000000000000);
+	hist2.Fill(70, 70, 750);
 	hist2.Draw("Colz");
 	hist2.GetXaxis()->SetTitle("A_{g}^{T}  Log_{10}/E_{pqyg} [cm] #sqrt{2}");
 	hist2.GetYaxis()->SetTitle("A_{g}^{T}  Log_{10}/E_{pqyg} [A.U.] #sqrt{2}");
@@ -33,6 +33,7 @@
 	//hist2.GetYaxis()->SetRangeUser(10, 80);
 	//plotting::SetLogY(&hist2);
 	//plotting::SetLogX(&hist2);
+	gPad->SetLogz();
 	gPad->SaveAs("histogram2D_plot.pdf");
 	//gPad->SaveAs("histogram2D_plot.png");
 	//gPad->SaveAs("histogram2D_plot.tex");

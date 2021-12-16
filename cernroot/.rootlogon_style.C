@@ -30,7 +30,7 @@
 	const double fontSize_small_pt = 7; // small font size
 	const double fontSize_xsmall_pt = 6; // small font size
 	const double fontSize_xxsmall_pt = 5; // small font size
-	const double ptPerInch = 72;
+	const double ptPerInch = 72.0;
 	const double fontSize_medium_px = ppi*fontSize_medium_pt/ptPerInch;
 	const double fontSize_small_px = ppi*fontSize_small_pt/ptPerInch;
 	const double fontSize_xsmall_px = ppi*fontSize_xsmall_pt/ptPerInch;
@@ -38,25 +38,20 @@
 
 
 	// Tick properties:
-	const double tickSize_pt = fontSize_medium_pt/3.0;
+	const double tickSize_pt = fontSize_medium_pt/4.0;
 
 
 	// Canvas propertie:
-	//const double canvasWidth_pt = 246.0; // pt, width of single column for double column paper
-	const double canvasWidth_pt = 252.945; // 3.5 in, width of single column for double column paper
-	const double canvasHeight_pt = canvasWidth_pt/goldenRatio;
-	static const double canvasWidth_in = canvasWidth_pt/ptPerInch; // inch, typical width of single column for double column paper
-	//cout << "canvasWidth_in" << canvasWidth_in << endl;
+	static const double canvasWidth_in = 3.5; // 3.5 in, width of single column for double column paper
 	static const double canvasHeight_in = canvasWidth_in/goldenRatio;
-	//cout << "canvasHeight_in" << canvasHeight_in << endl;
+	const double canvasWidth_pt = canvasWidth_in*ptPerInch;
+	const double canvasHeight_pt = canvasWidth_pt/goldenRatio;
 
 	//// Apply zoom factor for confortable viewing in high DPI screens.
 	static const int canvasWidth_px = int(ppi*canvasWidth_in + 0.5);
 	//cout << "canvasWidth_px" << canvasWidth_px << endl;
 	static const int canvasHeight_px = int(ppi*canvasHeight_in + 0.5);
 	//cout << "canvasHeight_px" << canvasHeight_px << endl;
-
-	static const double margin_medium = 0.15;
 
 
 	//**********************************************************
@@ -84,7 +79,7 @@
 
 	paper_doubleColumn->SetPaperSize(TStyle::kUSLetter);
 
-	const double figure_size = 0.75;
+	const double figure_size = 0.74;
 	const double bottom_margin = 0.172;
 	paper_doubleColumn->SetPadTopMargin(1 - (bottom_margin + figure_size));
 	paper_doubleColumn->SetPadBottomMargin(bottom_margin);
@@ -133,7 +128,7 @@
 	paper_doubleColumn->SetLabelSize(fontSize_medium_px, "xyz");
 	paper_doubleColumn->SetLabelOffset(4.0/canvasHeight_pt, "x");
 	paper_doubleColumn->SetLabelOffset(4.0/canvasWidth_pt, "y");
-	paper_doubleColumn->SetLabelOffset(5.0/canvasWidth_pt, "z");
+	paper_doubleColumn->SetLabelOffset(1.0/canvasWidth_pt, "z");
 
 	paper_doubleColumn->SetOptStat("emrou");
 	paper_doubleColumn->SetStatBorderSize(1);
