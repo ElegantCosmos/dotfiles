@@ -24,4 +24,4 @@ ax.set_ylabel(r"$\log{10}_{10}$ $E_{gqyp}$ $10^{10}$/$\sqrt{2}$ [cm]")
 #plt.grid(True)
 
 #plt.show()
-plt.savefig("test2.pdf")
+plt.savefig("test_graph.pdf")
