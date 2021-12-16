@@ -11,23 +11,24 @@ def colorbar(mappable):
     return fig.colorbar(mappable, cax=cax)
 
 # normal distribution center at x=0 and y=0
-x = 200*np.random.randn(100000)
-y = 200*np.random.randn(100000)
-w = np.array([-1]*100000)
+bin_edges_x = (0, 1, 2, 3)
+bin_edges_y = (10, 11, 12, 13)
+xs = [0.5, 1.5, 2.5]
+ys = [11.5, 12.5, 12.5]
+ws = [0.1, 1e-7, 100]
 
 fig, ax = plt.subplots()
-hist, _, _, im = ax.hist2d(x, y, bins=40, vmin=0, vmax=850, weights=w)
+hist, xedges, yedges, image = ax.hist2d(xs, ys, bins=(bin_edges_x, bin_edges_y), weights=ws, norm=LogNorm()); label_pad_cb = -31.5
+#hist, _, _, image = ax.hist2d(xs, ys, bins=(bin_edges_x, bin_edges_y), weights=ws, vmin=0, cmin=0.01); label_pad_cb = -28.5
 plt.title("Sample title")
-ax.set_xlabel(r"$\log{10}_{10}$ $E_{gqyp}$ $10^{10}$/$\sqrt{2}$ [cm]")
-ax.set_ylabel(r"$\log{10}_{10}$ $E_{gqyp}$ $10^{10}$/$\sqrt{2}$ [cm]")
+ax.set_xlabel(r"$\log{10}_{10}$ $E_{gqyp}$ $10^{10}$/$\sqrt{2}$ [cm]", labelpad=None)
+ax.set_ylabel(r"$\log{10}_{10}$ $E_{gqyp}$ $10^{10}$/$\sqrt{2}$ [cm]", labelpad=None)
 
-cax = fig.add_axes([0.92, 0.15, 0.01, 0.70], label="asdf")
-cbar = fig.colorbar(im, cax=cax, orientation='vertical')
-#cbar.ax.set_ylabel("y pppp [cm] ", labelpad=0)
+cax = fig.add_axes([0.912, 0.172, 0.01, 0.74])
+cbar = fig.colorbar(image, cax=cax, orientation='vertical')
 cax.set_ylabel(r"$E_{gqyp}$ $\log{10}_{10}$ $10^{10}$ $\sqrt{2}$ [cm]",
-		labelpad=-31)
-#fig.subplot.right(0.85)
-plt.subplots_adjust(left=0.15, right=0.85, top=0.85, bottom=0.15)
+		labelpad=label_pad_cb)
+cax.tick_params(pad=-0.5)
 
 #plt.show()
-plt.savefig("test.pdf")
+plt.savefig("test_2dhist.pdf")
