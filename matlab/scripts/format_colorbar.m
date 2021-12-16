@@ -21,10 +21,10 @@ function format_colorbar(cb)
     ticklength_pt = fontsize_pt/3;
     
     % Position and shape of colorbar:
-    cb_pos_x = 0.917;
+    cb_pos_x = 0.912;
     cb_pos_y = 0.172;
     cb_width = 0.01;
-    cb_height = 0.75;
+    cb_height = 0.74;
     cb.Position = [cb_pos_x, cb_pos_y, cb_width, cb_height];
     cb.TickLength = (ticklength_pt - 0.5)/(points_per_inch*max(cb_width*figwidth_in, cb_height*figheight_in)); % FIXME "-1" is approximate but wrong
     %cb.Box = 'off'

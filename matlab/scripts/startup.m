@@ -51,10 +51,10 @@ set(groot, 'DefaultFigurePaperPositionMode', 'auto'); % recommended by documenta
 set(groot, 'defaultFigureColormap', jet);
 
 % Axes properties:
-margin_left = 0.125;
+margin_left = 0.13;
 margin_bottom = 0.172;
-plot_width = 0.75;
-plot_height = 0.75;
+plot_width = 0.74;
+plot_height = 0.74;
 set(groot, 'defaultAxesUnits', 'normalized', ... % positions and size of axes
     'defaultAxesPosition',[margin_left margin_bottom plot_width plot_height]);
 set(groot, 'defaultAxesFontUnits', 'points'); % units of the size of fonts % [{points} | normalized | inches | centimeters | pixels]
