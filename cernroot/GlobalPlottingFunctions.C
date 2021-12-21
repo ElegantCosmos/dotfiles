@@ -108,11 +108,13 @@ void SetPaletteAxis(TH1* hist, const TString& title = "A_{g}^{T} Log_{10} #sqrt{
 	gPad->Modified();
 	gPad->Update();
 
+	gStyle->SetPalette(kRainBow, 0);
 	TPaletteAxis* axis = dynamic_cast<TPaletteAxis*>(hist->GetListOfFunctions()->FindObject("palette"));
-	const double pos = 0.925;
+	const double pos = 0.92;
 	axis->SetX1NDC(pos); axis->SetX2NDC(pos + 0.010);
 	//hist->GetZaxis()->SetTitleOffset(-0.40);
 	hist->GetZaxis()->SetTitle(title);
+	hist->SetContour(255); // resolution of palette
 	gPad->SetFrameLineWidth(10);
 }
 
