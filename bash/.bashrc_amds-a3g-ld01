@@ -15,9 +15,39 @@ if [ -f $HOME/.bashrc_general ]; then
 	source $HOME/.bashrc_general
 fi
 
-if shopt -q login_shell; then 
-	export PYENV_ROOT="$HOME/.pyenv"
-	export PATH="$PYENV_ROOT/bin${PATH:+:$PATH}"
-	eval "$(pyenv init --path)"
-	eval "$(pyenv virtualenv-init -)"
+### libevent libraries
+if [[ -z $TMUX ]]; then
+	LD_LIBRARY_PATH_NEW=$HOME/.opt/libevent/libevent-2.1.12/lib
+	if [[ -d "$LD_LIBRARY_PATH_NEW" ]]; then
+		export LD_LIBRARY_PATH=$LD_LIBRARY_PATH_NEW${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}
+	fi
+
+	LD_LIBRARY_PATH_NEW=$HOME/.opt/ncurses/ncurses-6.2/lib
+	if [[ -d "$LD_LIBRARY_PATH_NEW" ]]; then
+		export LD_LIBRARY_PATH=$LD_LIBRARY_PATH_NEW${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}
+	fi
+fi
+
+#### Root CA Certificate with Python
+#export PIP_CERT=/etc/pki/ca-trust/extracted/openssl/ca-bundle.trust.crt
+#export REQUESTS_CA_BUNDLE=etc/pki/ca-trust/extracted/openssl/ca-bundle.trust.crt
+#export SSL_CERT_FILE=etc/pki/ca-trust/extracted/openssl/ca-bundle.trust.crt
+
+### Using Anaconda instead of pyenv
+#if shopt -q login_shell; then 
+#	export PYENV_ROOT="$HOME/.pyenv"
+#	export PATH="$PYENV_ROOT/bin${PATH:+:$PATH}"
+#	eval "$(pyenv init --path)"
+#	eval "$(pyenv virtualenv-init -)"
+#fi
+
+### Anaconda
+# source /opt/anaconda3/bin/activate
+
+if [[ -z "$TMUX" ]]; then
+	### Cubit
+	PATH_CUBIT="$HOME/.opt/cubit/Cubit-15.7"
+	if [ -d "$PATH_CUBIT" ]; then
+		export PATH=$PATH_CUBIT/bin${PATH:+:$PATH}
+	fi
 fi
