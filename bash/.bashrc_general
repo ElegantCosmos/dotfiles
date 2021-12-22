@@ -163,7 +163,7 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then # MacOS
 	fi
 	
 	### Command prompt
-	export PS1='\[\e[0;93m\]\u@\h:\w\$ \[\e[m\]'
+	export PS1='\[\e[2;37m\]\u@\h:\w\$ \[\e[m\]'
 
 	### grep options
 	export GREP_OPTIONS='--color=auto'
