@@ -5,7 +5,7 @@ OUTPUT_DIR=/tmp
 scplocal "$@"
 for file in "$@"; do
 	file=$(basename ${file}) # strip path
-	ssh sakaim1@bravo.jhuapl.edu 'open '"${OUTPUT_DIR}"'/'"${file}"''
+	ssh sakaim1@michaplmac.jhuapl.edu 'open '"${OUTPUT_DIR}"'/'"${file}"''
 done
 
 exit

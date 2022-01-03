@@ -3,6 +3,6 @@
 OUTPUT_DIR=/tmp
 
 #scp -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -P 33333 "$@" mich@localhost:/tmp/
-scp "$@" sakaim1@bravo.jhuapl.edu:${OUTPUT_DIR}
+scp "$@" sakaim1@michaplmac.jhuapl.edu:${OUTPUT_DIR}
 
 exit
