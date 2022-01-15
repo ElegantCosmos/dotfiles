@@ -20,6 +20,9 @@ if [[ "$OSTYPE" == "linux"* ]]; then
 	## or
 	#source /usr/share/bash-completion/completions/git
 
+	# Expand environment variables
+	shopt -s direxpand
+
 	# enable color support of ls and also add related handy aliases
 	if [ -x /usr/bin/dircolors ]; then
 		test -r $HOME/.dircolors.256 && eval "$(dircolors -b $HOME/.dircolors.256)" || eval "$(dircolors -b)"
