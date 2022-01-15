@@ -1,21 +1,26 @@
-# General .bashrc file that can be used on any Linux-like system
+# General .bashrc file that can be used on any Linux-like system or macOS.
 
 export EDITOR=vim
 
-# ls command
-alias ls='ls -Gh'
-
-# tmux related settings
+# tmux related settings.
 alias tmux='tmux -2' # Force tmux to assume the terminal supports 256 colours.
-if [ -f "$HOME/.tmux.completion.bash" ]; then
-	source $HOME/.tmux.completion.bash
+
+### Modify PATH for user-specific scripts.
+if [[ -z "$TMUX" ]]; then
+	PATH_NEW=$HOME/.opt/bin
+	if [ -d "$PATH_NEW" ]; then
+		export PATH=$PATH_NEW${PATH:+:$PATH}
+	fi
 fi
 
-if [[ "$OSTYPE" == "linux"* ]]; then # Linux
-	# expand variables
-	shopt -s direxpand
+# Linux-specific settings.
+if [[ "$OSTYPE" == "linux"* ]]; then
+	### bash tab-completion scripts (may require: sudo apt-get install git-core bash-completion)
+	source /etc/bash_completion.d/git
+	## or
+	#source /usr/share/bash-completion/completions/git
 
-	# enable color support of ls and also add handy aliases
+	# enable color support of ls and also add related handy aliases
 	if [ -x /usr/bin/dircolors ]; then
 		test -r $HOME/.dircolors.256 && eval "$(dircolors -b $HOME/.dircolors.256)" || eval "$(dircolors -b)"
 		alias ls='ls --color=auto'
@@ -27,26 +32,8 @@ if [[ "$OSTYPE" == "linux"* ]]; then # Linux
 		alias egrep='egrep --color=auto'
 	fi
 
-	# some more ls aliases
-	alias ll='ls -alF'
-	alias la='ls -A'
-	alias l='ls -CF'
-
 	# more aliases
 	alias open='xdg-open'
-
-	### PATH to local scripts
-	if [[ -z "$TMUX" ]]; then
-		PATH_NEW=$HOME/.opt/bin
-		if [ -d "$PATH_NEW" ]; then
-			export PATH=$PATH_NEW${PATH:+:$PATH}
-		fi
-	fi
-
-	### bash tab-completion scripts
-	if [ -f "$HOME/.git.completion.bash" ]; then
-		source $HOME/.git.completion.bash
-	fi
 
 	if [[ "$NERSC_HOST" == "pdsf"* ]] || [[ "$NERSC_HOST" == "cori"* ]]; then
 		### Command prompt
@@ -136,17 +123,10 @@ if [[ "$OSTYPE" == "linux"* ]]; then # Linux
 		}
 	fi
 
-elif [[ "$OSTYPE" == "darwin"* ]]; then # MacOS
-	if [ -x /usr/bin/dircolors ]; then
-		test -r $HOME/.dircolors.256 && eval "$(dircolors -b $HOME/.dircolors.256)" || eval "$(dircolors -b)"
-		#alias ls='ls --color=auto'
-		#alias dir='dir --color=auto'
-		#alias vdir='vdir --color=auto'
-
-		#alias grep='grep --color=auto'
-		#alias fgrep='fgrep --color=auto'
-		#alias egrep='egrep --color=auto'
-	fi
+# MacOS-specific settings.
+elif [[ "$OSTYPE" == "darwin"* ]]; then
+	### bash tab-completion scripts (requires: brew install bash-completion)
+	[[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
 
 	### Alias for Docker
 	alias doc_cuoresw='docker run -it --rm --mount type=bind,source="$HOME",destination=/root/michsakai,consistency=delegated -w="/root/michsakai" --entrypoint /bin/bash charstnut/docker-cuoreswbase /root/michsakai/Soft/docker_dev/cupid_mo_docker/entrypoint.sh'
@@ -175,15 +155,6 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then # MacOS
 	export CLICOLOR=1
 	export LSCOLORS=GxFxCxDxBxegedabagaced
 
-	### bash tab-completion scripts
-	[[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
-
-	### PATH to local scripts
-	PATH_NEW=$HOME/.opt/bin
-	if [ -d "$PATH_NEW" ]; then
-		export PATH=$PATH_NEW${PATH:+:$PATH}
-	fi
-
 	### Source thisroot.sh if exists
 	THIS_ROOT=$(brew --prefix)/bin/thisroot.sh
 	if [ -f "$THIS_ROOT" ]; then
@@ -193,11 +164,6 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then # MacOS
 			local executable=${filename%.*}
 			g++ -std=c++11 -O2 -Wall -Wextra -pedantic -o ${executable} $(root-config --cflags) "$@" $(root-config --libs)
 		}
-	fi
-
-	### bash tab-completion scripts
-	if [ -f "$HOME/.git.completion.bash" ]; then
-		source $HOME/.git.completion.bash
 	fi
 
 	### python environment
