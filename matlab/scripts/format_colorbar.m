@@ -1,9 +1,11 @@
 function format_colorbar(cb)
     %%% Format colorbar properties
     
-    figwidth_in = 3.5; % inch
-    goldenratio = 0.5*(1 + sqrt(5)); % golden ratio constant
-    figheight_in = figwidth_in/goldenratio; % inch
+    [textcolwidth_in, ...
+        figwidth_in, figheight_in, ...
+        margin_left_frac, margin_bottom_frac, ...
+        plot_width_frac, plot_height_frac] = ...
+        get_figure_dimensions();
 
     % Label properties:
     cb.Label.Interpreter = 'latex';
@@ -14,28 +16,24 @@ function format_colorbar(cb)
     % Ruler properties:
     cb.Ruler.FontSize = 8;
     cb.Ruler.TickLabelGapOffset = -1.2;
-
-    % Colorbar tick length:
-    fontsize_pt = 8;
-    points_per_inch = 72.0;
-    ticklength_pt = fontsize_pt/3;
     
     % Position and shape of colorbar:
     cb_pos_x = 0.912;
     cb_pos_y = 0.172;
     cb_width = 0.01;
     cb_height = 0.74;
+    
+    cb_pos_x = (figwidth_in - textcolwidth_in*(1 - cb_pos_x))/figwidth_in; % scale with plot width
+    cb_width = cb_width*(textcolwidth_in/figwidth_in); % scale with plot width
+    
     cb.Position = [cb_pos_x, cb_pos_y, cb_width, cb_height];
-    cb.TickLength = (ticklength_pt - 0.5)/(points_per_inch*max(cb_width*figwidth_in, cb_height*figheight_in)); % FIXME "-1" is approximate but wrong
-    %cb.Box = 'off'
 
-%     cb_pos_x = 0.125;
-%     cb_pos_y = 0.05;
-%     cb_width = 0.75;
-%     cb_height = 0.1;
-%     cb.Position = [cb_pos_x, cb_pos_y, cb_width, cb_height];
-%     cb.TickLength = 1 - 0.5*(0.5/points_per_inch/max(cb_width*figwidth_in, cb_height*figheight_in))
-%     %cb.Box = 'off'
+    % % For debugging:
+    % cb_pos_x = 0.13;
+    % cb_pos_y = 0.05;
+    % cb_width = 0.74;
+    % cb_height = 0.1;
+    % cb.Position = [cb_pos_x, cb_pos_y, cb_width, cb_height];
 
     % Manually move exponent of color bar if it doesn't fit on print page
     if strcmp(cb.Ruler.Scale, 'log') == logical(false) % ignore if colorbar scale is log

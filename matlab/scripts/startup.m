@@ -19,15 +19,18 @@ set(groot, 'defaultFigureUnits', 'inches');
 set(groot, 'defaultFigurePaperUnits', 'inches');
 set(groot, 'defaultAxesUnits', 'inches');
 
-% Calculate overall figure size based on double column paper with 3.5 in
-% column width. Use golden ratio to get figure height.
-figwidth_in = 3.5; % inch
-goldenratio = 0.5*(1 + sqrt(5)); % golden ratio constant
-figheight_in = figwidth_in/goldenratio; % inch
+[textcolumnwidth_in, ...
+    figwidth_in, figheight_in, ...
+    margin_left_frac, margin_bottom_frac, ...
+    plot_width_frac, plot_height_frac] = ...
+    get_figure_dimensions();
+
+% Other dimensions:
 fontsize_pt = 8;
-points_per_inch = 72.0;
-ticklength_pt = fontsize_pt/3;
-ticklength_norm = ticklength_pt/points_per_inch/max(figwidth_in, figheight_in);
+pt_per_in = 72.0;
+ticklength_in = fontsize_pt/3/pt_per_in;
+ticklength_norm = ticklength_in/max(plot_width_frac*figwidth_in, plot_height_frac*figheight_in);
+ticklength_cb_norm = ticklength_in/(plot_height_frac*figheight_in);
 
 % Figure position and width/height used for *.eps plots
 % [left bottom width height]:
@@ -51,12 +54,8 @@ set(groot, 'DefaultFigurePaperPositionMode', 'auto'); % recommended by documenta
 set(groot, 'defaultFigureColormap', jet);
 
 % Axes properties:
-margin_left = 0.13;
-margin_bottom = 0.172;
-plot_width = 0.74;
-plot_height = 0.74;
 set(groot, 'defaultAxesUnits', 'normalized', ... % positions and size of axes
-    'defaultAxesPosition',[margin_left margin_bottom plot_width plot_height]);
+    'defaultAxesPosition',[margin_left_frac margin_bottom_frac plot_width_frac plot_height_frac]);
 set(groot, 'defaultAxesFontUnits', 'points'); % units of the size of fonts % [{points} | normalized | inches | centimeters | pixels]
 set(groot, 'defaultAxesFontSize', fontsize_pt); % size of fonts of labels
 set(groot, 'defaultAxesFontSizeMode', 'manual');
@@ -81,7 +80,7 @@ set(groot, 'defaultColorbarAxisLocationMode', 'manual');
 set(groot, 'defaultColorbarTickDirection', 'out');
 set(groot, 'defaultColorbarCreateFcn', @colorBarCreateFcn);
 set(groot, 'defaultColorbarBox', 'off');
-set(groot, 'defaultColorbarTickLength', ticklength_norm);
+set(groot, 'defaultColorbarTickLength', ticklength_cb_norm);
 
 % Set default color order.
 % Classic Tableau 10:
