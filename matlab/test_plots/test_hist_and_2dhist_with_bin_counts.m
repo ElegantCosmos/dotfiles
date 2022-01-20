@@ -1,4 +1,4 @@
-clear all;
+clear variables;
 close all;
 
 %%% 1-D histogram:

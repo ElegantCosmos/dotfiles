@@ -1,11 +1,10 @@
 function format_colorbar(cb)
     %%% Format colorbar properties
-    
-    [textcolwidth_in, ...
-        figwidth_in, figheight_in, ...
-        margin_left_frac, margin_bottom_frac, ...
-        plot_width_frac, plot_height_frac] = ...
-        get_figure_dimensions();
+
+    % Get global variables for figure dimensions:
+    global twocolumnarticle_columnwidth_in;
+    global figurepaperwidth_in;
+    global figurepaperheight_in;
 
     % Label properties:
     cb.Label.Interpreter = 'latex';
@@ -23,8 +22,8 @@ function format_colorbar(cb)
     cb_width = 0.01;
     cb_height = 0.74;
     
-    cb_pos_x = (figwidth_in - textcolwidth_in*(1 - cb_pos_x))/figwidth_in; % scale with plot width
-    cb_width = cb_width*(textcolwidth_in/figwidth_in); % scale with plot width
+    cb_pos_x = (figurepaperwidth_in - twocolumnarticle_columnwidth_in*(1 - cb_pos_x))/figurepaperwidth_in; % scale with plot width
+    cb_width = cb_width*(twocolumnarticle_columnwidth_in/figurepaperwidth_in); % scale with plot width
     
     cb.Position = [cb_pos_x, cb_pos_y, cb_width, cb_height];
 

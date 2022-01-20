@@ -19,32 +19,62 @@ set(groot, 'defaultFigureUnits', 'inches');
 set(groot, 'defaultFigurePaperUnits', 'inches');
 set(groot, 'defaultAxesUnits', 'inches');
 
-[textcolumnwidth_in, ...
-    figwidth_in, figheight_in, ...
-    margin_left_frac, margin_bottom_frac, ...
-    plot_width_frac, plot_height_frac] = ...
-    get_figure_dimensions();
+%%% Calculate overall figure paper dimensions based on the width of a single text column of a two-column article.
+
+goldenratio = 0.5*(1 + sqrt(5)); % golden ratio constant
+mm_per_in = 25.4;
+
+% Paper text body dimensions:
+textcolumnwidth_mm = 90;
+
+% Common figure dimensions:
+margin_left_frac = 0.13;
+margin_bottom_frac = 0.172;
+plot_width_frac = 0.74;
+plot_height_frac = 0.74;
+
+% Global dimensions for formatting figure size:
+global twocolumnarticle_columnwidth_in;
+global figurepaperwidth_in;
+global figurepaperheight_in;
+
+twocolumnarticle_columnwidth_in = textcolumnwidth_mm/mm_per_in;
+
+% % Dimensions for figure with width = 90 mm and equal axes lengths
+% figurepaperwidth_in = textcolumnwidth_mm/mm_per_in;
+% figurepaperheight_in = figurepaperwidth_in;
+
+% Dimensions for figure with width = 90 mm and golden ratio axes lengths
+figurepaperwidth_in = textcolumnwidth_mm/mm_per_in;
+figurepaperheight_in = figurepaperwidth_in/goldenratio; % golden ratio for figure height
+
+% % Dimensions for figure with width = 190 mm and fixed vertical axis length
+% textcolumnspacing_mm = 10;
+% figurepaperwidth_in = (2*textcolumnwidth_mm + textcolumnspacing_mm)/mm_per_in;
+% figurepaperheight_in = textcolumnwidth_mm/mm_per_in/goldenratio;
+% margin_left_frac = margin_left_frac*textcolumnwidth_mm/mm_per_in/figurepaperwidth_in;
+% plot_width_frac = 1 - 2*margin_left_frac;
 
 % Other dimensions:
 fontsize_pt = 8;
 pt_per_in = 72.0;
-ticklength_in = fontsize_pt/3/pt_per_in;
-ticklength_norm = ticklength_in/max(plot_width_frac*figwidth_in, plot_height_frac*figheight_in);
-ticklength_cb_norm = ticklength_in/(plot_height_frac*figheight_in);
+ticklength_in = fontsize_pt/3.0/pt_per_in;
+ticklength_norm = ticklength_in/max(plot_width_frac*figurepaperwidth_in, plot_height_frac*figurepaperheight_in);
+ticklength_cb_norm = ticklength_in/(plot_height_frac*figurepaperheight_in);
 
 % Figure position and width/height used for *.eps plots
 % [left bottom width height]:
-set(groot, 'defaultFigurePosition', [0 0 figwidth_in figheight_in]);
+set(groot, 'defaultFigurePosition', [0 0 figurepaperwidth_in figurepaperheight_in]);
 
 % Figure width/height used for *.pdf plots:
-set(groot, 'defaultFigurePaperSize', [figwidth_in figheight_in]);
+set(groot, 'defaultFigurePaperSize', [figurepaperwidth_in figurepaperheight_in]);
 set(groot, 'defaultFigurePaperSizeMode', 'manual');
 set(groot, 'defaultFigurePaperType', '<custom>')
 set(groot, 'defaultFigurePaperTypeMode', 'manual');
 
 % Figure properties
 % Positioning of figure inside overall plot paper:
-set(groot, 'defaultFigurePaperPosition', [0 0 figwidth_in figheight_in]);
+set(groot, 'defaultFigurePaperPosition', [0 0 figurepaperwidth_in figurepaperheight_in]);
 % we link the dimension of the figure ON THE PAPER in such a way that
 % it is equal to the dimension on the screen
 %
@@ -122,7 +152,7 @@ colors_tableau_classic_20 = [...
 % set(groot, 'defaultAxesColorOrder', colors_tableau_classic_20);
 
 % Clear any residual variables:
-clear all;
+clear variables;
 
 % Message for user:
 disp("Start-up script executed.");
