@@ -46,7 +46,7 @@ void SetLogX(TObject* obj = nullptr, const bool flag = true) // Seems like a bet
 	// Get label offset value depending on whether axis is log scale.
 	double offset;
 	if (flag) {
-		offset = tickSize_pt/canvasWidth_pt;
+		offset = tickLength_pt/canvasWidth_pt;
 cout << "canvasWidth_px" << canvasWidth_px << endl;
 	}
 
@@ -110,8 +110,8 @@ void SetPaletteAxis(TH1* hist, const TString& title = "A_{g}^{T} Log_{10} #sqrt{
 
 	gStyle->SetPalette(kRainBow, 0);
 	TPaletteAxis* axis = dynamic_cast<TPaletteAxis*>(hist->GetListOfFunctions()->FindObject("palette"));
-	const double pos = 0.92;
-	axis->SetX1NDC(pos); axis->SetX2NDC(pos + 0.010);
+	const double pos_x = 0.92;
+	axis->SetX1NDC(pos_x); axis->SetX2NDC(pos_x + 0.010);
 	//hist->GetZaxis()->SetTitleOffset(-0.40);
 	hist->GetZaxis()->SetTitle(title);
 	hist->SetContour(255); // resolution of palette

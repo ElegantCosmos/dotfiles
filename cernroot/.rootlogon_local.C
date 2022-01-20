@@ -1,3 +1,3 @@
 {
-	gROOT->SetStyle("paper_doubleColumn");
+	gROOT->SetStyle("article_twoColumn");
 }
