@@ -14,21 +14,20 @@
 
 
 	// Get window manager decoration height and width:
-	TCanvas* canvas_tmp = new TCanvas("canvas_tmp", "canvas_tmp", 500, 500);
-	const unsigned int decorationWidth = canvas_tmp->GetWindowWidth() - canvas_tmp->GetWw();
-	const unsigned int decorationHeight = canvas_tmp->GetWindowHeight() - canvas_tmp->GetWh();
+	TCanvas* canvas_tmp = new TCanvas("canvas_tmp", "canvas_tmp", 500, 500); // temporary canvas
+	const unsigned int decorationWidth_px = canvas_tmp->GetWindowWidth() - canvas_tmp->GetWw(); // get window decoration size
+	const unsigned int decorationHeight_px = canvas_tmp->GetWindowHeight() - canvas_tmp->GetWh(); // get window decoration size
 	delete canvas_tmp; // don't need this anymore
 	canvas_tmp = NULL;
 
 
 	// Commonly used constants:
-	const int ppi = 227; // pixels per inch for Mac Retina display
-	//const int ppi = 600; // pixels per inch suggested by random websites
-	const double ptPerInch = 72.0;
+	const int ppi = 300; // pixels per inch
+	const double ptPerInch = 72.0; // definition for international Pt (not US Pt)
 	const double mmPerInch = 25.4;
 	const double goldenRatio = 0.5*(1 + sqrt(5));
 
-	const int font = 133; // Time New Roman (size specified in pixels)
+	const int font = 133; // Time New Roman (precision 3: font size specified in pixels)
 	const double fontSize_medium_pt = 8; // default font size
 	const double fontSize_small_pt = 7; // small font size
 	const double fontSize_xsmall_pt = 6; // small font size
@@ -40,34 +39,38 @@
 
 
 	// Tick properties:
-	static const double tickLength_pt = fontSize_medium_pt/3.0;
+	static const double tickLength_mm = fontSize_medium_pt/3.0*(mmPerInch/ptPerInch);
 
-	// Canvas properties:
+
+	// Canvas/plot dimensions:
 	const double text_column_width_mm = 90; // 90 mm, width of single column for double column paper
+	double figureWidth_frac = 0.74;
+	double figureHeight_frac = 0.74;
+	double margin_bottom_frac = 0.172;
+	double margin_top_frac = 1 - (figureHeight_frac + margin_bottom_frac);
+	double margin_right_frac = 0.5*(1 - figureWidth_frac);
+	double margin_left_frac = 0.5*(1 - figureWidth_frac);
 
-	//// Dimensions for figure with width = 90 mm and equal axes lengths
-	//const double canvasWidth_mm = text_column_width_mm;
-	//const double canvasHeight_mm = canvasWidth_mm;
+	//// Dimensions for figure with width = 90 mm and equal axes lengths.
+	//static const double canvasWidth_mm = text_column_width_mm;
+	//static const double canvasHeight_mm = canvasWidth_mm;
 
-	// Dimensions for figure with width = 90 mm and golden ratio axes lengths
-	const double canvasWidth_mm = text_column_width_mm;
-	const double canvasHeight_mm = canvasWidth_mm/goldenRatio;
+	// Dimensions for figure with width = 90 mm and golden ratio axes lengths.
+	static const double canvasWidth_mm = text_column_width_mm;
+	static const double canvasHeight_mm = canvasWidth_mm/goldenRatio;
 	
-	//// Dimensions for figure with width = 190 mm and fixed vertical axis length
+	//// Dimensions for figure with width = 190 mm and fixed vertical axis length.
 	//const double text_column_spacing_mm = 10;
-	//const double canvasWidth_mm = 2*text_column_width_mm + text_column_spacing_mm;
-	//const double canvasHeight_mm = text_column_width_mm/goldenRatio;
+	//static const double canvasWidth_mm = 2*text_column_width_mm + text_column_spacing_mm;
+	//static const double canvasHeight_mm = text_column_width_mm/goldenRatio;
+	//margin_right_frac = margin_right_frac*text_column_width_mm/canvasWidth_mm;
+	//margin_left_frac = margin_left_frac*text_column_width_mm/canvasWidth_mm;
+	//figureWidth_frac = 1 - (margin_right_frac + margin_left_frac);
 
-	const double canvasWidth_in = canvasWidth_mm/mmPerInch;
-	const double canvasHeight_in = canvasHeight_mm/mmPerInch;
-	const double canvasWidth_pt = canvasWidth_in*ptPerInch;
-	const double canvasHeight_pt = canvasHeight_in*ptPerInch;
 
-	//// Apply zoom factor for confortable viewing in high DPI screens.
-	static const int canvasWidth_px = int(ppi*canvasWidth_in + 0.5);
-	//cout << "canvasWidth_px" << canvasWidth_px << endl;
-	static const int canvasHeight_px = int(ppi*canvasHeight_in + 0.5);
-	//cout << "canvasHeight_px" << canvasHeight_px << endl;
+	// Canvas dimensions:
+	const int canvasWidth_px = int(canvasWidth_mm*(ppi/mmPerInch) + 0.5);
+	const int canvasHeight_px = int(canvasHeight_mm*(ppi/mmPerInch) + 0.5);
 
 
 	//**********************************************************
@@ -83,32 +86,33 @@
 	article_twoColumn->SetPaperSize(TStyle::kUSLetter);
 
 	// Figure paper dimensions:
-	const double figure_size_frac = 0.74;
-	const double bottom_margin_frac = 0.172;
-	article_twoColumn->SetPadTopMargin(1 - (bottom_margin_frac + figure_size_frac));
-	article_twoColumn->SetPadBottomMargin(bottom_margin_frac);
-	article_twoColumn->SetPadRightMargin(0.5*(1 - figure_size_frac));
-	article_twoColumn->SetPadLeftMargin(0.5*(1 - figure_size_frac));
-	article_twoColumn->SetCanvasDefH(canvasHeight_px + decorationHeight); // (canvas height + 25 px) = window height)
-	//article_twoColumn->SetCanvasDefH(500); // (canvas height + 25 px) = window height)
-	article_twoColumn->SetCanvasDefW(canvasWidth_px + decorationWidth); // (canvas width + 2 px) = window width)
-	//article_twoColumn->SetCanvasDefW(500); // (canvas width + 2 px) = window width)
+	article_twoColumn->SetPadTopMargin(margin_top_frac);
+	article_twoColumn->SetPadBottomMargin(margin_bottom_frac);
+	article_twoColumn->SetPadRightMargin(margin_right_frac);
+	article_twoColumn->SetPadLeftMargin(margin_left_frac);
+	article_twoColumn->SetCanvasDefW(canvasWidth_px + decorationWidth_px); // canvas_width_px + decoration_width_px = window_width_px
+	article_twoColumn->SetCanvasDefH(canvasHeight_px + decorationHeight_px); // canvas_height_px + decoration_height px = window_height_px
+	//article_twoColumn->SetCanvasDefW(500 + decorationWidth_px); // canvas_width_px + decoration_width_px = window_width_px // for debug
+	//article_twoColumn->SetCanvasDefH(500 + decorationHeight_px); // canvas_height_px + decoration_height px = window_height_px // for debug
 	// Canvas and pad:
 	//article_twoColumn->SetHistFillStyle(0);
 	//article_twoColumn->SetHistFillColor(kBlack);
 	//article_twoColumn->SetFillStyle(0);
 	//article_twoColumn->SetFillColor(kWhite); // Makes 2D hist colz fill color white. Do not use.
 	article_twoColumn->SetCanvasBorderMode(0);
-	article_twoColumn->SetCanvasColor(kWhite);
 	article_twoColumn->SetPadBorderMode(0);
-	article_twoColumn->SetPadColor(kWhite);
+	article_twoColumn->SetCanvasColor(0);
+	article_twoColumn->SetPadColor(0);
 
 	// Frame:
 	article_twoColumn->SetFrameBorderMode(0);
+	article_twoColumn->SetFrameLineWidth(1);
+	article_twoColumn->SetFrameLineColor(kBlack);
 
 	// Lines and markers:
-	article_twoColumn->SetEndErrorSize(0);
+	article_twoColumn->SetLineWidth(1);
 	article_twoColumn->SetLineColor(kBlack);
+	article_twoColumn->SetEndErrorSize(0);
 
 	article_twoColumn->SetHistLineWidth(1);
 	article_twoColumn->SetHistLineColor(kBlack);
@@ -118,52 +122,64 @@
 	article_twoColumn->SetMarkerColor(kBlack);
 
 	// Title text:
+	article_twoColumn->SetTitleColor(kBlack);
 	article_twoColumn->SetTitleX(0.5);
 	article_twoColumn->SetTitleY(0.995);
 	article_twoColumn->SetTitleAlign(23);
 	article_twoColumn->SetTitleFillColor(0);
 	article_twoColumn->SetTitleBorderSize(0);
 	article_twoColumn->SetTitleFont(font, "t"); // doesn't work in ROOT 5.34/23
-	article_twoColumn->SetTitleSize(fontSize_xxsmall_px, "t"); // doesn't work in ROOT 5.34/23
+	article_twoColumn->SetTitleSize(fontSize_xxsmall_px, "t"); // use pixels
 
 	// Axes title text:
 	article_twoColumn->SetTitleFont(font, "xyz");
-	article_twoColumn->SetTitleSize(fontSize_medium_px, "xyz");
+	article_twoColumn->SetTitleSize(fontSize_medium_px, "xyz"); // use pixels
+
+	//// Dimensions for figure with width = 90 mm and equal axes lengths
+	//article_twoColumn->SetTitleOffset(1.65, "x"); // lowest part of log_{10} is barely on the pad; I think log_{10} has the lowest reaching text
+	//article_twoColumn->SetTitleOffset(2.10, "y"); // highest part of sqrt(2) is barely on the pad; I think sqrt(2) has the highest reaching text
+	//article_twoColumn->SetTitleOffset(-0.68, "z"); // doesn't work in ROOT 5.34/23
+
+	// Dimensions for figure with width = 90 mm and golden ratio axes lengths
 	article_twoColumn->SetTitleOffset(1.65, "x"); // lowest part of log_{10} is barely on the pad; I think log_{10} has the lowest reaching text
 	article_twoColumn->SetTitleOffset(1.30, "y"); // highest part of sqrt(2) is barely on the pad; I think sqrt(2) has the highest reaching text
 	article_twoColumn->SetTitleOffset(-0.41, "z"); // doesn't work in ROOT 5.34/23
+	
+	//// Dimensions for figure with width = 190 mm and fixed vertical axis length
+	//article_twoColumn->SetTitleOffset(1.65, "x"); // lowest part of log_{10} is barely on the pad; I think log_{10} has the lowest reaching text
+	//article_twoColumn->SetTitleOffset(0.60, "y"); // highest part of sqrt(2) is barely on the pad; I think sqrt(2) has the highest reaching text
+	//article_twoColumn->SetTitleOffset(-0.20, "z"); // doesn't work in ROOT 5.34/23
 	// Axes label text:
 	article_twoColumn->SetLabelFont(font, "xyz");
-	article_twoColumn->SetLabelSize(fontSize_medium_px, "xyz");
-	article_twoColumn->SetLabelOffset(4.0/canvasHeight_pt, "x");
-	article_twoColumn->SetLabelOffset(4.0/canvasWidth_pt, "y");
-	article_twoColumn->SetLabelOffset(1.0/canvasWidth_pt, "z");
+	article_twoColumn->SetLabelSize(fontSize_medium_px, "xyz"); // use pixels
+	article_twoColumn->SetLabelOffset(1.5/canvasHeight_mm, "x");
+	article_twoColumn->SetLabelOffset(1.5/canvasWidth_mm, "y");
+	article_twoColumn->SetLabelOffset(0.5/canvasWidth_mm, "z");
 
 	// Axis ticks:
 	// Set length of axis ticks. The tick length is in fraction of
 	// perpendicular axis length (e.g. tick length of x-axis is in fraction of
 	// y-axis length).
-	const double plotArea_width_pt = figure_size_frac*canvasWidth_pt;
-	const double plotArea_height_pt = figure_size_frac*canvasHeight_pt;
-	article_twoColumn->SetTickLength(-tickLength_pt/plotArea_height_pt, "x");
-	article_twoColumn->SetTickLength(-tickLength_pt/plotArea_width_pt, "y");
-	article_twoColumn->SetTickLength(-tickLength_pt/plotArea_width_pt, "z");
+	const double plotAreaWidth_mm = figureWidth_frac*canvasWidth_mm;
+	const double plotAreaHeight_mm = figureHeight_frac*canvasHeight_mm;
+	article_twoColumn->SetTickLength(-(tickLength_mm/plotAreaHeight_mm)*(figureHeight_frac/figureWidth_frac), "x");
+	article_twoColumn->SetTickLength(-(tickLength_mm/plotAreaWidth_mm)*(figureWidth_frac/figureHeight_frac), "y");
+	article_twoColumn->SetTickLength(-(tickLength_mm/plotAreaWidth_mm)*(figureWidth_frac/figureHeight_frac), "z");
 	//article_twoColumn->SetNdivisions(10, "xyz");
 	article_twoColumn->SetNdivisions(510, "xyz"); // show sub-ticks
 
 	// Statistics display:
 	//article_twoColumn->SetOptTitle(0);
-	article_twoColumn->SetLineWidth(1);
 	article_twoColumn->SetOptStat("emrou");
 	article_twoColumn->SetStatFont(font);
-	article_twoColumn->SetStatColor(kWhite);
+	article_twoColumn->SetStatColor(0);
 	article_twoColumn->SetStatBorderSize(1);
 	article_twoColumn->SetStatFontSize(fontSize_xxsmall_px);
 
 	const double statbox_height = 0.13;
 	const double statbox_width = 0.2;
-	article_twoColumn->SetStatY(1 - 1.0/canvasHeight_pt);
-	article_twoColumn->SetStatX(1 - 1.0/canvasWidth_pt);
+	article_twoColumn->SetStatY(1 - 1.0/canvasHeight_mm);
+	article_twoColumn->SetStatX(1 - 1.0/canvasWidth_mm);
 	article_twoColumn->SetStatW(statbox_width);
 	article_twoColumn->SetStatH(statbox_height);
 
@@ -195,23 +211,4 @@
 	////pa->GetAxis()->SetTitle("Titlegy [unit]");
 	//hist2.GetZaxis()->SetTitle("Titlegy [unit]");
 	//hist2.GetZaxis()->SetTitleOffset(-0.3);
-
-
-	//**********************************************************
-	//
-	// Define Tableau palette
-	//
-	//**********************************************************
-
-	// Define Tableau colors
-	static const int blue_tableau = TColor::GetColor("#1f77b4");
-	static const int orange_tableau = TColor::GetColor("#ff7f0e");
-	static const int green_tableau = TColor::GetColor("#2ca02c");
-	static const int red_tableau = TColor::GetColor("#d62728");
-	static const int purple_tableau = TColor::GetColor("#9467bd");
-	static const int brown_tableau = TColor::GetColor("#8c564b");
-	static const int pink_tableau = TColor::GetColor("#e377c2");
-	static const int gray_tableau = TColor::GetColor("#8f7f7f");
-	static const int olive_tableau = TColor::GetColor("#bcbd22");
-	static const int cyan_tableau = TColor::GetColor("#17becf");
 }

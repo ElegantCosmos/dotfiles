@@ -46,8 +46,7 @@ void SetLogX(TObject* obj = nullptr, const bool flag = true) // Seems like a bet
 	// Get label offset value depending on whether axis is log scale.
 	double offset;
 	if (flag) {
-		offset = tickLength_pt/canvasWidth_pt;
-cout << "canvasWidth_px" << canvasWidth_px << endl;
+		offset = tickLength_mm/canvasWidth_mm;
 	}
 
 	// Set offset on appropriate object: TH1, TGraph.
@@ -83,9 +82,9 @@ cout << "canvasWidth_px" << canvasWidth_px << endl;
 //void SetLogX(const bool flag = true) // Use this for now
 //{
 //  if (flag) {
-//    gStyle->SetLabelOffset(-0.5/canvasHeight_pt, "x");
+//    gStyle->SetLabelOffset(-0.5/canvasHeight_mm, "x");
 //  } else {
-//    gStyle->SetLabelOffset(2.0/canvasHeight_pt, "x");
+//    gStyle->SetLabelOffset(2.0/canvasHeight_mm, "x");
 //  }
 //  gStyle->SetOptLogx(flag);
 //  gPad->UseCurrentStyle();
@@ -110,8 +109,11 @@ void SetPaletteAxis(TH1* hist, const TString& title = "A_{g}^{T} Log_{10} #sqrt{
 
 	gStyle->SetPalette(kRainBow, 0);
 	TPaletteAxis* axis = dynamic_cast<TPaletteAxis*>(hist->GetListOfFunctions()->FindObject("palette"));
-	const double pos_x = 0.92;
-	axis->SetX1NDC(pos_x); axis->SetX2NDC(pos_x + 0.010);
+	double x_col = 0.92;
+	double width_col = 0.01;
+    x_col = (canvasWidth_mm - text_column_width_mm*(1 - x_col))/canvasWidth_mm; // scale with plot width
+    width_col = width_col*(text_column_width_mm/canvasWidth_mm); // scale with plot width
+	axis->SetX1NDC(x_col); axis->SetX2NDC(x_col + width_col);
 	//hist->GetZaxis()->SetTitleOffset(-0.40);
 	hist->GetZaxis()->SetTitle(title);
 	hist->SetContour(255); // resolution of palette
@@ -123,16 +125,16 @@ public:
 	Palette(std::string paletteName = "tableau")
 	{
 		if (paletteName == "tableau") {
-			colors["blue_tableau"]   = TColor::GetColor("#1f77b4"); // Blue
-			colors["orange_tableau"] = TColor::GetColor("#ff7f0e"); // Orange
-			colors["green_tableau"]  = TColor::GetColor("#2ca02c"); // Green
-			colors["red_tableau"]    = TColor::GetColor("#d62728"); // Red
-			colors["purple_tableau"] = TColor::GetColor("#9467bd"); // Purple
-			colors["brown_tableau"]  = TColor::GetColor("#8c564b"); // Brown
-			colors["pink_tableau"]   = TColor::GetColor("#e377c2"); // Pink
-			colors["gray_tableau"]   = TColor::GetColor("#8f7f7f"); // Gray
-			colors["olive_tableau"]  = TColor::GetColor("#bcbd22"); // Olive
-			colors["cyan_tableau"]   = TColor::GetColor("#17becf"); // Cyan
+			colors["blue"]   = TColor::GetColor("#1f77b4"); // Blue
+			colors["orange"] = TColor::GetColor("#ff7f0e"); // Orange
+			colors["green"]  = TColor::GetColor("#2ca02c"); // Green
+			colors["red"]    = TColor::GetColor("#d62728"); // Red
+			colors["purple"] = TColor::GetColor("#9467bd"); // Purple
+			colors["brown"]  = TColor::GetColor("#8c564b"); // Brown
+			colors["pink"]   = TColor::GetColor("#e377c2"); // Pink
+			colors["gray"]   = TColor::GetColor("#8f7f7f"); // Gray
+			colors["olive"]  = TColor::GetColor("#bcbd22"); // Olive
+			colors["cyan"]   = TColor::GetColor("#17becf"); // Cyan
 		}
 	}
 
