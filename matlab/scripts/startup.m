@@ -30,8 +30,8 @@ textcolumnwidth_mm = 90;
 % Common figure dimensions:
 margin_left_frac = 0.13;
 margin_bottom_frac = 0.172;
-plot_width_frac = 0.74;
-plot_height_frac = 0.74;
+figurewidth_frac = 0.74;
+figureheight_frac = 0.74;
 
 % Global dimensions for formatting figure size:
 global twocolumnarticle_columnwidth_in;
@@ -53,14 +53,14 @@ figurepaperheight_in = figurepaperwidth_in/goldenratio; % golden ratio for figur
 % figurepaperwidth_in = (2*textcolumnwidth_mm + textcolumnspacing_mm)/mm_per_in;
 % figurepaperheight_in = textcolumnwidth_mm/mm_per_in/goldenratio;
 % margin_left_frac = margin_left_frac*textcolumnwidth_mm/mm_per_in/figurepaperwidth_in;
-% plot_width_frac = 1 - 2*margin_left_frac;
+% figurewidth_frac = 1 - 2*margin_left_frac;
 
 % Other dimensions:
 fontsize_pt = 8;
 pt_per_in = 72.0;
 ticklength_in = fontsize_pt/3.0/pt_per_in;
-ticklength_norm = ticklength_in/max(plot_width_frac*figurepaperwidth_in, plot_height_frac*figurepaperheight_in);
-ticklength_cb_norm = ticklength_in/(plot_height_frac*figurepaperheight_in);
+ticklength_norm = ticklength_in/max(figurewidth_frac*figurepaperwidth_in, figureheight_frac*figurepaperheight_in);
+ticklength_cb_norm = ticklength_in/(figureheight_frac*figurepaperheight_in);
 
 % Figure position and width/height used for *.eps plots
 % [left bottom width height]:
@@ -85,7 +85,7 @@ set(groot, 'defaultFigureColormap', jet);
 
 % Axes properties:
 set(groot, 'defaultAxesUnits', 'normalized', ... % positions and size of axes
-    'defaultAxesPosition',[margin_left_frac margin_bottom_frac plot_width_frac plot_height_frac]);
+    'defaultAxesPosition',[margin_left_frac margin_bottom_frac figurewidth_frac figureheight_frac]);
 set(groot, 'defaultAxesFontUnits', 'points'); % units of the size of fonts % [{points} | normalized | inches | centimeters | pixels]
 set(groot, 'defaultAxesFontSize', fontsize_pt); % size of fonts of labels
 set(groot, 'defaultAxesFontSizeMode', 'manual');
