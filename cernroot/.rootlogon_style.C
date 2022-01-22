@@ -162,9 +162,9 @@
 	// y-axis length).
 	const double plotAreaWidth_mm = figureWidth_frac*canvasWidth_mm;
 	const double plotAreaHeight_mm = figureHeight_frac*canvasHeight_mm;
-	article_twoColumn->SetTickLength(-(tickLength_mm/plotAreaHeight_mm)*(figureHeight_frac/figureWidth_frac), "x");
-	article_twoColumn->SetTickLength(-(tickLength_mm/plotAreaWidth_mm)*(figureWidth_frac/figureHeight_frac), "y");
-	article_twoColumn->SetTickLength(-(tickLength_mm/plotAreaWidth_mm)*(figureWidth_frac/figureHeight_frac), "z");
+	article_twoColumn->SetTickLength(-(tickLength_mm/plotAreaHeight_mm)*(figureHeight_frac/figureWidth_frac), "x"); // tick length argument represents the fraction of the pad dimension parallel to the ticks in units of the fraction of the length of the axis with respect to the pad dimension parallel to the axis
+	article_twoColumn->SetTickLength(-(tickLength_mm/plotAreaWidth_mm)*(figureWidth_frac/figureHeight_frac), "y"); // tick length argument represents the fraction of the pad dimension parallel to the ticks in units of the fraction of the length of the axis with respect to the pad dimension parallel to the axis
+	article_twoColumn->SetTickLength(-(tickLength_mm/plotAreaWidth_mm)*(figureWidth_frac/figureHeight_frac), "z");// tick length argument represents the fraction of the pad dimension parallel to the ticks in units of the fraction of the length of the axis with respect to the pad dimension parallel to the axis
 	//article_twoColumn->SetNdivisions(10, "xyz");
 	article_twoColumn->SetNdivisions(510, "xyz"); // show sub-ticks
 
