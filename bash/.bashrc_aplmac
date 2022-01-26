@@ -2,23 +2,24 @@
 
 export BASH_SILENCE_DEPRECATION_WARNING=1
 
+export HOMEBREW_GITHUB_API_TOKEN=your_token_here
+export HOMEBREW_GITHUB_API_TOKEN=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
+
 # Environment variable for UDRIVE
 for FILE in /Volumes/aplhome*; do
 	export UDRIVE=${FILE} # assign first dir found of aplhome*
 	break
 done
 
-# Environment variable for Box
-export BOX=~/Box
+# APL Root CA Certificate for Python
+export PIP_CERT=${HOME}/files/access/ssl_proxy_certificate/JHUAPL-MS-Root-CA-05-21-2038-B64-text.cer
+export REQUESTS_CA_BUNDLE=${HOME}/files/access/ssl_proxy_certificate/JHUAPL-MS-Root-CA-05-21-2038-B64-text.cer
+export SSL_CERT_FILE=${HOME}/files/access/ssl_proxy_certificate/JHUAPL-MS-Root-CA-05-21-2038-B64-text.cer
 
 # Source general definitions
 if [ -f $HOME/.bashrc_general ]; then
 	source $HOME/.bashrc_general
 fi
 
-# APL Root CA Certificate for Python
-export PIP_CERT=${HOME}/files/access/ssl_proxy_certificate/JHUAPL-MS-Root-CA-05-21-2038-B64-text.cer
-export REQUESTS_CA_BUNDLE=${HOME}/files/access/ssl_proxy_certificate/JHUAPL-MS-Root-CA-05-21-2038-B64-text.cer
-export SSL_CERT_FILE=${HOME}/files/access/ssl_proxy_certificate/JHUAPL-MS-Root-CA-05-21-2038-B64-text.cer
-
-eval "$(pyenv init -)"
+# Pyenv
+eval "$(pyenv init --path)"
