@@ -5,13 +5,8 @@ export EDITOR=vim
 # tmux related settings.
 alias tmux='tmux -2' # Force tmux to assume the terminal supports 256 colours.
 
-# Linux-specific settings.
+### Linux-specific settings:
 if [[ "$OSTYPE" == "linux"* ]]; then
-	### bash tab-completion scripts (may require: sudo apt-get install git-core bash-completion)
-	source /etc/bash_completion.d/git
-	## or
-	#source /usr/share/bash-completion/completions/git
-
 	# Expand environment variables
 	shopt -s direxpand
 
@@ -31,14 +26,21 @@ if [[ "$OSTYPE" == "linux"* ]]; then
 	alias open='xdg-open'
 
 	### Modify PATH for user-specific scripts.
-	if [[ -z "$TMUX" ]]; then
+	if [[ -z "$TMUX" ]]; then # ignore for TMUX because it has already been run
 		PATH_NEW=$HOME/.opt/bin
 		if [ -d "$PATH_NEW" ]; then
 			export PATH=$PATH_NEW${PATH:+:$PATH}
 		fi
 	fi
 
-	if [[ "$NERSC_HOST" == "pdsf"* ]] || [[ "$NERSC_HOST" == "cori"* ]]; then
+	### Linux system-specific settings:
+	if [[ "$(hostname)" == "daniel" ]] || [[ "$(hostname)" == "kahr" ]]; then # JHU-APL
+		function compile-with-root {
+			local filename=$(basename "${@: -1}")
+			local executable=${filename%.*}
+			g++ -std=c++11 -O2 -Wall -Wextra -pedantic -o ${executable} $(root-config --cflags) "$@" $(root-config --libs)
+		}
+	elif [[ "$NERSC_HOST" == "pdsf"* ]] || [[ "$NERSC_HOST" == "cori"* ]]; then # UC Berkeley
 		### Command prompt
 		export PS1='\[\e[0;31m\]\u@\h:\w\$ \[\e[m\]'
 
@@ -91,7 +93,7 @@ if [[ "$OSTYPE" == "linux"* ]]; then
 		export XDG_DATA_HOME=${XDG_DATA_HOME:="$HOME/.local/share"}
 		alias trash='gio trash'
 
-	elif [[ "$(hostname)" == "nino" ]]; then
+	elif [[ "$(hostname)" == "nino" ]]; then # Orebi-Gann Lab
 		### Command prompt
 		export PS1='\[\e[0;36m\]\u@\h:\w\$ \[\e[m\]'
 
@@ -117,16 +119,9 @@ if [[ "$OSTYPE" == "linux"* ]]; then
 		### gvfs-trash command variables
 		export XDG_DATA_HOME=${XDG_DATA_HOME:="$HOME/.local/share"}
 		alias trash='gvfs-trash'
-
-	elif [[ "$(hostname)" == "vmUbuntuG4" ]] || [[ "$(hostname)" == "kahr" ]]; then
-		function compile-with-root {
-			local filename=$(basename "${@: -1}")
-			local executable=${filename%.*}
-			g++ -std=c++11 -O2 -Wall -Wextra -pedantic -o ${executable} $(root-config --cflags) "$@" $(root-config --libs)
-		}
 	fi
 
-# MacOS-specific settings.
+### MacOS-specific settings:
 elif [[ "$OSTYPE" == "darwin"* ]]; then
 	### Expand environment variables.
 	### It is recommended to install modern bash using home brew. Follow the steps below:
@@ -151,10 +146,10 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
 		fi
 	fi
 
-	### Add brew related scripts into PATH
-	if [[ -n "$TMUX" ]]; then
-		export PATH=/usr/local/bin${PATH:+:$PATH}
-	fi
+	#### Add brew related scripts into PATH
+	#if [[ -n "$TMUX" ]]; then
+	#	export PATH=/usr/local/bin${PATH:+:$PATH}
+	#fi
 
 	### Modify PATH for user-specific scripts.
 	PATH_NEW=$HOME/.opt/bin

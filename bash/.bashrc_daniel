@@ -137,9 +137,11 @@ ulimit -s unlimited
 ##### end MCNP 620
 
 ### Additional bin directory
-PATH_NEW="$HOME/.local/bin"
-if [ -d "$PATH_NEW" ]; then
-	export PATH=$PATH_NEW${PATH:+:$PATH}
+if [ -z $TMUX ]; then # ignore for TMUX because it has already been run
+	PATH_NEW="$HOME/.local/bin"
+	if [ -d "$PATH_NEW" ]; then
+		export PATH=$PATH_NEW${PATH:+:$PATH}
+	fi
 fi
 
 # UDrive mount point
@@ -155,7 +157,9 @@ export PIP_CERT=/etc/ssl/certs/ca-certificates.crt
 export REQUESTS_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt
 export SSL_CERT_FILE=/etc/ssl/certs/ca-certificates.crt
 
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin${PATH:+:$PATH}"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
+if [ -z $TMUX ]; then # ignore for TMUX because it has already been run
+	export PYENV_ROOT="$HOME/.pyenv"
+	export PATH="$PYENV_ROOT/bin${PATH:+:$PATH}"
+	eval "$(pyenv init --path)"
+	eval "$(pyenv virtualenv-init -)"
+fi
