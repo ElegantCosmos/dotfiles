@@ -116,7 +116,7 @@ if ! shopt -oq posix; then
   fi
 fi
  
-##### MCNP 620
+##### MCNP 620 settings
 if [[ -z "$TMUX" ]]; then
 	PATH_NEW="$HOME/.opt/mcnp/mcnp6.2/MCNP_CODE/bin"
 	if [ -d "$PATH_NEW" ]; then
@@ -134,7 +134,7 @@ export ISCDATA
 ISCDATA="/home/sakaim1/.opt/mcnp/mcnp6.2/MCNP_CODE/MCNP620/Utilities/ISC/data"
  
 ulimit -s unlimited
-##### end MCNP 620
+##### end MCNP 620 settings
 
 ### Additional bin directory
 if [ -z $TMUX ]; then # ignore for TMUX because it has already been run
