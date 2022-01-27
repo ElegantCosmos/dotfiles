@@ -160,6 +160,6 @@ export SSL_CERT_FILE=/etc/ssl/certs/ca-certificates.crt
 if [ -z $TMUX ]; then # ignore for TMUX because it has already been run
 	export PYENV_ROOT="$HOME/.pyenv"
 	export PATH="$PYENV_ROOT/bin${PATH:+:$PATH}"
-	eval "$(pyenv init --path)"
+	eval "$(pyenv init -)"
 	eval "$(pyenv virtualenv-init -)"
 fi
