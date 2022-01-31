@@ -114,6 +114,7 @@ set(groot, 'defaultColorbarTickLength', ticklength_cb_norm);
 
 % Set default color order.
 % Classic Tableau 10:
+global colors_tableau_classic_10;
 colors_tableau_classic_10 = [...
     031, 119, 180;
     255, 127, 014;
@@ -128,6 +129,7 @@ colors_tableau_classic_10 = [...
 set(groot, 'defaultAxesColorOrder', colors_tableau_classic_10);
 
 % Classic Tableau 20:
+global colors_tableau_classic_20;
 colors_tableau_classic_20 = [...
     031, 119, 180;
     174, 199, 232;
