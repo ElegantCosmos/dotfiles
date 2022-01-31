@@ -1,0 +1,18 @@
+#!/bin/bash
+
+### Get latest Microsoft Git Credential Manager Core from webpage
+### "https://github.com/GitCredentialManager/git-credential-manager/releases".
+wget "https://github.com/GitCredentialManager/git-credential-manager/releases/download/v2.0.632/gcmcore-linux_amd64.2.0.632.34631.deb" -O /tmp/gcmcore.deb # Ubuntu
+#wget "https://github.com/GitCredentialManager/git-credential-manager/releases/download/v2.0.632/gcmcore-osx-2.0.632.34631.pkg" -O /tmp/gcmcore.deb # Mac
+#wget "https://github.com/GitCredentialManager/git-credential-manager/releases/download/v2.0.632/gcmcore-win-x86-2.0.632.34631.exe" -O /tmp/gcmcore.deb # Windows
+
+### Install.
+sudo dpkg -i /tmp/gcmcore.deb
+
+### Configure.
+git-credential-manager-core configure
+
+### Choose a credential storage option.
+### This is Git's built-in credential cache that can be used with Windows, Linux
+### platforms.
+git config --global credential.credentialStore cache

@@ -116,7 +116,7 @@ if ! shopt -oq posix; then
   fi
 fi
  
-##### MCNP 620
+##### MCNP 620 settings
 if [[ -z "$TMUX" ]]; then
 	PATH_NEW="$HOME/.opt/mcnp/mcnp6.2/MCNP_CODE/bin"
 	if [ -d "$PATH_NEW" ]; then
@@ -134,12 +134,14 @@ export ISCDATA
 ISCDATA="/home/sakaim1/.opt/mcnp/mcnp6.2/MCNP_CODE/MCNP620/Utilities/ISC/data"
  
 ulimit -s unlimited
-##### end MCNP 620
+##### end MCNP 620 settings
 
 ### Additional bin directory
-PATH_NEW="$HOME/.local/bin"
-if [ -d "$PATH_NEW" ]; then
-	export PATH=$PATH_NEW${PATH:+:$PATH}
+if [ -z $TMUX ]; then # ignore for TMUX because it has already been run
+	PATH_NEW="$HOME/.local/bin"
+	if [ -d "$PATH_NEW" ]; then
+		export PATH=$PATH_NEW${PATH:+:$PATH}
+	fi
 fi
 
 # UDrive mount point
@@ -155,6 +157,7 @@ export PIP_CERT=/etc/ssl/certs/ca-certificates.crt
 export REQUESTS_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt
 export SSL_CERT_FILE=/etc/ssl/certs/ca-certificates.crt
 
+# PyEnv
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin${PATH:+:$PATH}"
 eval "$(pyenv init -)"
