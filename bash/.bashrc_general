@@ -1,4 +1,5 @@
-# General .bashrc file that can be used on any Linux-like system or macOS.
+### General .bashrc file that can be used on any Linux-like system or macOS.
+# echo "~/.bashrc_general"
 
 export EDITOR=vim
 
@@ -135,16 +136,7 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
 	[[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
 
 	### Alias for Docker
-	alias doc_cuoresw='docker run -it --rm --mount type=bind,source="$HOME",destination=/root/michsakai,consistency=delegated -w="/root/michsakai" --entrypoint /bin/bash charstnut/docker-cuoreswbase /root/michsakai/Soft/docker_dev/cupid_mo_docker/entrypoint.sh'
-
-	# Make sure path_helper utility that is executed from /etc/profile when TMUX
-	# runs as a login shell does not disrupt PATH variable
-	if [ -n $TMUX ]; then # applicable only for TMUX
-		if [ -f /etc/profile ]; then
-			PATH="" # override effect from path_helper
-			source /etc/profile
-		fi
-	fi
+	#alias doc_cuoresw='docker run -it --rm --mount type=bind,source="$HOME",destination=/root/michsakai,consistency=delegated -w="/root/michsakai" --entrypoint /bin/bash charstnut/docker-cuoreswbase /root/michsakai/Soft/docker_dev/cupid_mo_docker/entrypoint.sh'
 
 	#### Add brew related scripts into PATH
 	#if [[ -n "$TMUX" ]]; then
@@ -181,7 +173,7 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
 	### Source thisroot.sh if exists
 	THIS_ROOT=$(brew --prefix)/bin/thisroot.sh
 	if [ -f "$THIS_ROOT" ]; then
-		source "$THIS_ROOT"
+		#source "$THIS_ROOT"
 		function compile-with-root {
 			local filename=$(basename "${@: -1}")
 			local executable=${filename%.*}

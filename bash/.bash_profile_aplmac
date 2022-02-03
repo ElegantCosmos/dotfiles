@@ -1,0 +1,23 @@
+### ~/.bash_profile for APL MacOS
+# echo "~/.bash_profile"
+
+# Make sure path_helper utility that is executed from /etc/profile when TMUX
+# runs as a login shell does not disrupt PATH variable
+if [ -n $TMUX ]; then # if length of string TMUX is non-zero
+	if [ -f /etc/profile ]; then
+		PATH="" # override effect from path_helper
+		source /etc/profile
+	fi
+fi
+
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init --path)"
+if [ -n "$PS1" -a -n "$BASH_VERSION" ]; then
+	source ~/.bashrc;
+fi
+
+## Read bashrc if it exists
+#if [ -f $HOME/.bashrc ]; then
+#	source $HOME/.bashrc
+#fi
