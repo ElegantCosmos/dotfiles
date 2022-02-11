@@ -3,8 +3,7 @@
 
 export BASH_SILENCE_DEPRECATION_WARNING=1
 
-export HOMEBREW_GITHUB_API_TOKEN=your_token_here
-export HOMEBREW_GITHUB_API_TOKEN=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
+export HOMEBREW_GITHUB_API_TOKEN=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
 
 # Environment variable for UDRIVE
 for FILE in /Volumes/aplhome*; do
@@ -13,7 +12,8 @@ for FILE in /Volumes/aplhome*; do
 done
 
 # APL Root CA Certificate for Python
-export PIP_CERT=${HOME}/files/access/ssl_proxy_certificate/JHUAPL-MS-Root-CA-05-21-2038-B64-text.cer
+#export PIP_CERT=${HOME}/files/access/ssl_proxy_certificate/JHUAPL-MS-Root-CA-05-21-2038-B64-text.cer # recommended by ITSD
+export PIP_CERT=${HOME}/files/access/ssl_proxy_certificate/ca_apl.pem # recommended by ML strategic education
 export REQUESTS_CA_BUNDLE=${HOME}/files/access/ssl_proxy_certificate/JHUAPL-MS-Root-CA-05-21-2038-B64-text.cer
 export SSL_CERT_FILE=${HOME}/files/access/ssl_proxy_certificate/JHUAPL-MS-Root-CA-05-21-2038-B64-text.cer
 
