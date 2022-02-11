@@ -4,7 +4,6 @@
 export BASH_SILENCE_DEPRECATION_WARNING=1
 
 export HOMEBREW_GITHUB_API_TOKEN=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
-export HOMEBREW_GITHUB_API_TOKEN=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
 
 # Environment variable for UDRIVE
 for FILE in /Volumes/aplhome*; do
