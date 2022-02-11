@@ -10,6 +10,8 @@ fi
 
 # User specific aliases and functions
 
+alias trash='gio trash'
+
 # Source general definitions
 if [ -f $HOME/.bashrc_general ]; then
 	source $HOME/.bashrc_general
@@ -50,4 +52,11 @@ if [[ -z "$TMUX" ]]; then
 	if [ -d "$PATH_CUBIT" ]; then
 		export PATH=$PATH_CUBIT/bin${PATH:+:$PATH}
 	fi
+
+	#### VIM 8.2
+	#PATH_VIM="$HOME/.opt/vim/vim-8.2.3877"
+	#if [ -d "$PATH_VIM" ]; then
+	#	export VIMRUNTIME=$HOME/.opt/vim/vim-8.2.3877/share/vim/vim82 # to find correct syntax file
+	#	export PATH=$PATH_VIM/bin${PATH:+:$PATH}
+	#fi
 fi
