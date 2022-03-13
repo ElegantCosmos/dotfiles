@@ -99,7 +99,7 @@ set(groot, 'defaultAxesTickDir', 'out');    % [{in} | out] inside or outside (fo
 set(groot, 'defaultAxesTickDirMode', 'manual');
 set(groot, 'defaultAxesTickLength', [ticklength_norm ticklength_norm]); % length of the ticks
 % ...
-set(groot, 'defaultAxesTitleFontSizeMultiplier', 0.5); % title font size multiplier factor
+set(groot, 'defaultAxesTitleFontSizeMultiplier', 1); % title font size multiplier factor
 set(groot, 'defaultAxesLabelFontSizeMultiplier', 1); % label font size multiplier factor
 % ...
 
