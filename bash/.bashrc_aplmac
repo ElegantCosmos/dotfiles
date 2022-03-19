@@ -1,6 +1,11 @@
 ### .bashrc local file for APL MacBook
 # echo "~/.bashrc"
 
+# Source general definitions
+if [ -f $HOME/.bashrc_general ]; then
+	source $HOME/.bashrc_general
+fi
+
 export BASH_SILENCE_DEPRECATION_WARNING=1
 
 export HOMEBREW_GITHUB_API_TOKEN=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
@@ -11,16 +16,11 @@ for FILE in /Volumes/aplhome*; do
 	break
 done
 
+# BOX cloud storage
+export BOX=${HOME}/Library/CloudStorage/Box-Box
+
 # APL Root CA Certificate for Python
 #export PIP_CERT=${HOME}/files/access/ssl_proxy_certificate/JHUAPL-MS-Root-CA-05-21-2038-B64-text.cer # recommended by ITSD
 export PIP_CERT=${HOME}/files/access/ssl_proxy_certificate/ca_apl.pem # recommended by ML strategic education
 export REQUESTS_CA_BUNDLE=${HOME}/files/access/ssl_proxy_certificate/JHUAPL-MS-Root-CA-05-21-2038-B64-text.cer
 export SSL_CERT_FILE=${HOME}/files/access/ssl_proxy_certificate/JHUAPL-MS-Root-CA-05-21-2038-B64-text.cer
-
-# Source general definitions
-if [ -f $HOME/.bashrc_general ]; then
-	source $HOME/.bashrc_general
-fi
-
-# Pyenv
-eval "$(pyenv init -)"
