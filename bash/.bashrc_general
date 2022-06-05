@@ -134,13 +134,14 @@ if [[ "$OSTYPE" == "linux"* ]]; then
 
 ### MacOS-specific settings:
 elif [[ "$OSTYPE" == "darwin"* ]]; then
+	export BASH_SILENCE_DEPRECATION_WARNING=1
+
 	### Expand environment variables.
 	### It is recommended to install modern bash using home brew. Follow the steps below:
 	### $ brew install bash
 	### $ chsh -s /usr/local/bin/bash
 	### $ sudo bash -c 'echo /usr/local/bin/bash >> /etc/shells'
 	### $ ln -s /usr/local/bin/bash /usr/local/bin/bash-terminal-app
-	shopt -s direxpand
 
 	### bash tab-completion scripts (requires: brew install bash-completion)
 	[[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
