@@ -21,6 +21,7 @@ set(groot, 'defaultAxesUnits', 'inches');
 
 %%% Calculate overall figure paper dimensions based on the width of a single text column of a two-column article.
 
+scale = 2.0; % arbitrary scale of plot
 goldenratio = 0.5*(1 + sqrt(5)); % golden ratio constant
 mm_per_in = 25.4;
 
@@ -45,8 +46,8 @@ twocolumnarticle_columnwidth_in = textcolumnwidth_mm/mm_per_in;
 % figurepaperheight_in = figurepaperwidth_in;
 
 % Dimensions for figure with width = 90 mm and golden ratio axes lengths
-figurepaperwidth_in = textcolumnwidth_mm/mm_per_in;
-figurepaperheight_in = figurepaperwidth_in/goldenratio; % golden ratio for figure height
+figurepaperwidth_in = scale*textcolumnwidth_mm/mm_per_in;
+figurepaperheight_in = scale*textcolumnwidth_mm/mm_per_in/goldenratio; % golden ratio for figure height
 
 % % Dimensions for figure with width = 190 mm and fixed vertical axis length
 % textcolumnspacing_mm = 10;
@@ -56,7 +57,7 @@ figurepaperheight_in = figurepaperwidth_in/goldenratio; % golden ratio for figur
 % figurewidth_frac = 1 - 2*margin_left_frac;
 
 % Other dimensions:
-fontsize_pt = 8;
+fontsize_pt = scale*8;
 pt_per_in = 72.0;
 ticklength_in = fontsize_pt/3.0/pt_per_in;
 ticklength_norm = ticklength_in/max(figurewidth_frac*figurepaperwidth_in, figureheight_frac*figurepaperheight_in);
@@ -64,7 +65,7 @@ ticklength_cb_norm = ticklength_in/(figureheight_frac*figurepaperheight_in);
 
 % Figure position and width/height used for *.eps plots
 % [left bottom width height]:
-set(groot, 'defaultFigurePosition', [0 0 figurepaperwidth_in figurepaperheight_in]);
+set(groot, 'defaultFigurePosition', [1 1 figurepaperwidth_in figurepaperheight_in]);
 
 % Figure width/height used for *.pdf plots:
 set(groot, 'defaultFigurePaperSize', [figurepaperwidth_in figurepaperheight_in]);

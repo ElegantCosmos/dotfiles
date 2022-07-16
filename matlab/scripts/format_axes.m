@@ -6,9 +6,9 @@ function format_axes(ax)
     % Get handle to current axes:
     %ax = gca;
     % set box property to off and remove background color
-    set(ax, 'box', 'off', 'color', 'none')
+    set(ax, 'Box', 'off', 'Color', 'none')
     % create new, empty axes with box but without ticks
-    ax_b = axes('Position', get(ax ,'Position'), 'box', 'on', 'xtick', [], 'ytick', []);
+    ax_b = axes('Parent', ax.Parent, 'Position', get(ax ,'Position'), 'Box', 'on', 'XTick', [], 'YTick', []);
     % set original axes as active
     axes(ax)
     % % link axes in case of zooming
