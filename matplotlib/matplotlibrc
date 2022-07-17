@@ -317,7 +317,7 @@ axes.labelpad       : 2.0     # space between label and axis
 #axes.formatter.limits : -1, 4 # use scientific notation if log10
                                # of the axis range is smaller than the
                                # first or larger than the second
-axes.formatter.limits : -2, 3 # use scientific notation if log10
+axes.formatter.limits : -1, 4 # use scientific notation if log10
 #axes.formatter.use_locale : False # When True, format tick labels
                                    # according to the user's locale.
                                    # For example, use ',' as a decimal
@@ -393,7 +393,7 @@ xtick.major.pad      : 2.0      # distance to major tick label in points
 #xtick.color          : k      # color of the tick labels
 xtick.labelsize      : medium # fontsize of the tick labels
 #xtick.direction      : out    # direction: in, out, or inout
-xtick.direction      : in    # direction: in, out, or inout
+xtick.direction      : out    # direction: in, out, or inout
 #xtick.minor.visible  : False  # visibility of minor ticks on x-axis
 xtick.minor.visible  : True  # visibility of minor ticks on x-axis
 #xtick.major.top      : True   # draw x axis top major ticks
@@ -417,7 +417,7 @@ ytick.major.pad      : 2.0      # distance to major tick label in points
 #ytick.color          : k      # color of the tick labels
 ytick.labelsize      : medium # fontsize of the tick labels
 #ytick.direction      : out    # direction: in, out, or inout
-ytick.direction      : in    # direction: in, out, or inout
+ytick.direction      : out    # direction: in, out, or inout
 #ytick.minor.visible  : False  # visibility of minor ticks on y-axis
 ytick.minor.visible  : True  # visibility of minor ticks on y-axis
 #ytick.major.left     : True   # draw y axis left major ticks
@@ -495,11 +495,15 @@ figure.autolayout : False  # When True, automatically adjust subplot
 
 ### Dimensions for figure with width = 90 mm and golden ratio axes lengths
 figure.figsize   : 3.543, 2.190 # figure size in inches
+figure.subplot.left    : 0.15  # the left side of the subplots of the figure
+figure.subplot.right   : 0.85  # the right side of the subplots of the figure
+figure.subplot.bottom  : 0.20  # the bottom of the subplots of the figure
+figure.subplot.top     : 0.90  # the top of the subplots of the figure
 #figure.figsize   : 3.543, 3.543 # figure size in inches
-figure.subplot.left    : 0.130  # the left side of the subplots of the figure
-figure.subplot.right   : 0.870    # the right side of the subplots of the figure
-figure.subplot.bottom  : 0.130    # the bottom of the subplots of the figure
-figure.subplot.top     : 0.870    # the top of the subplots of the figure
+#figure.subplot.left    : 0.15  # the left side of the subplots of the figure
+#figure.subplot.right   : 0.85  # the right side of the subplots of the figure
+#figure.subplot.bottom  : 0.20  # the bottom of the subplots of the figure
+#figure.subplot.top     : 0.90  # the top of the subplots of the figure
 
 ### Dimensions for figure with width = 190 mm and fixed vertical axis length
 #figure.figsize   : 7.480, 2.190 # figure size in inches; width = 140 mm
