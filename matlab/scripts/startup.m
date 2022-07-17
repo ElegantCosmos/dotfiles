@@ -21,7 +21,13 @@ set(groot, 'defaultAxesUnits', 'inches');
 
 %%% Calculate overall figure paper dimensions based on the width of a single text column of a two-column article.
 
-scale = 2.0; % arbitrary scale of plot
+% Global dimensions for formatting figure size:
+global global_figure_scale;
+global global_twocolumnarticle_columnwidth_in;
+global global_figurepaperwidth_in;
+global global_figurepaperheight_in;
+
+global_figure_scale = 2.0; % arbitrary global_figure_scale of plot
 goldenratio = 0.5*(1 + sqrt(5)); % golden ratio constant
 mm_per_in = 25.4;
 
@@ -29,53 +35,48 @@ mm_per_in = 25.4;
 textcolumnwidth_mm = 90;
 
 % Common figure dimensions:
-margin_left_frac = 0.13;
-margin_bottom_frac = 0.172;
-figurewidth_frac = 0.74;
-figureheight_frac = 0.74;
+margin_left_frac = 0.14;
+margin_bottom_frac = 0.20;
+figurewidth_frac = 0.72;
+figureheight_frac = 0.72;
 
-% Global dimensions for formatting figure size:
-global twocolumnarticle_columnwidth_in;
-global figurepaperwidth_in;
-global figurepaperheight_in;
-
-twocolumnarticle_columnwidth_in = textcolumnwidth_mm/mm_per_in;
+global_twocolumnarticle_columnwidth_in = textcolumnwidth_mm/mm_per_in;
 
 % % Dimensions for figure with width = 90 mm and equal axes lengths
-% figurepaperwidth_in = textcolumnwidth_mm/mm_per_in;
-% figurepaperheight_in = figurepaperwidth_in;
+% global_figurepaperwidth_in = textcolumnwidth_mm/mm_per_in;
+% global_figurepaperheight_in = global_figurepaperwidth_in;
 
 % Dimensions for figure with width = 90 mm and golden ratio axes lengths
-figurepaperwidth_in = scale*textcolumnwidth_mm/mm_per_in;
-figurepaperheight_in = scale*textcolumnwidth_mm/mm_per_in/goldenratio; % golden ratio for figure height
+global_figurepaperwidth_in = global_figure_scale*textcolumnwidth_mm/mm_per_in;
+global_figurepaperheight_in = global_figure_scale*textcolumnwidth_mm/mm_per_in/goldenratio; % golden ratio for figure height
 
 % % Dimensions for figure with width = 190 mm and fixed vertical axis length
 % textcolumnspacing_mm = 10;
-% figurepaperwidth_in = (2*textcolumnwidth_mm + textcolumnspacing_mm)/mm_per_in;
-% figurepaperheight_in = textcolumnwidth_mm/mm_per_in/goldenratio;
-% margin_left_frac = margin_left_frac*textcolumnwidth_mm/mm_per_in/figurepaperwidth_in;
+% global_figurepaperwidth_in = (2*textcolumnwidth_mm + textcolumnspacing_mm)/mm_per_in;
+% global_figurepaperheight_in = textcolumnwidth_mm/mm_per_in/goldenratio;
+% margin_left_frac = margin_left_frac*textcolumnwidth_mm/mm_per_in/global_figurepaperwidth_in;
 % figurewidth_frac = 1 - 2*margin_left_frac;
 
 % Other dimensions:
-fontsize_pt = scale*8;
+fontsize_pt = global_figure_scale*8;
 pt_per_in = 72.0;
 ticklength_in = fontsize_pt/3.0/pt_per_in;
-ticklength_norm = ticklength_in/max(figurewidth_frac*figurepaperwidth_in, figureheight_frac*figurepaperheight_in);
-ticklength_cb_norm = ticklength_in/(figureheight_frac*figurepaperheight_in);
+ticklength_norm = ticklength_in/max(figurewidth_frac*global_figurepaperwidth_in, figureheight_frac*global_figurepaperheight_in);
+ticklength_cb_norm = ticklength_in/(figureheight_frac*global_figurepaperheight_in);
 
 % Figure position and width/height used for *.eps plots
 % [left bottom width height]:
-set(groot, 'defaultFigurePosition', [1 1 figurepaperwidth_in figurepaperheight_in]);
+set(groot, 'defaultFigurePosition', [1 1 global_figurepaperwidth_in global_figurepaperheight_in]);
 
 % Figure width/height used for *.pdf plots:
-set(groot, 'defaultFigurePaperSize', [figurepaperwidth_in figurepaperheight_in]);
+set(groot, 'defaultFigurePaperSize', [global_figurepaperwidth_in global_figurepaperheight_in]);
 set(groot, 'defaultFigurePaperSizeMode', 'manual');
 set(groot, 'defaultFigurePaperType', '<custom>')
 set(groot, 'defaultFigurePaperTypeMode', 'manual');
 
 % Figure properties
 % Positioning of figure inside overall plot paper:
-set(groot, 'defaultFigurePaperPosition', [0 0 figurepaperwidth_in figurepaperheight_in]);
+set(groot, 'defaultFigurePaperPosition', [0 0 global_figurepaperwidth_in global_figurepaperheight_in]);
 % we link the dimension of the figure ON THE PAPER in such a way that
 % it is equal to the dimension on the screen
 %
@@ -85,6 +86,7 @@ set(groot, 'DefaultFigurePaperPositionMode', 'auto'); % recommended by documenta
 set(groot, 'defaultFigureColormap', jet);
 
 % Axes properties:
+set(groot, 'DefaultAxesLineWidth', global_figure_scale*0.5)
 set(groot, 'defaultAxesUnits', 'normalized', ... % positions and size of axes
     'defaultAxesPosition',[margin_left_frac margin_bottom_frac figurewidth_frac figureheight_frac]);
 set(groot, 'defaultAxesFontUnits', 'points'); % units of the size of fonts % [{points} | normalized | inches | centimeters | pixels]
@@ -105,6 +107,7 @@ set(groot, 'defaultAxesLabelFontSizeMultiplier', 1); % label font size multiplie
 % ...
 
 % 2-D histogram color bar properties:
+set(groot, 'defaultColorbarLineWidth', global_figure_scale*0.5)
 set(groot, 'defaultColorbarPositionMode', 'manual');
 set(groot, 'defaultColorbarAxisLocation', 'out');
 set(groot, 'defaultColorbarAxisLocationMode', 'manual');
@@ -165,9 +168,9 @@ set(groot, 'defaultAxesCreateFcn', @axesCreateFcn);
 
 function axesCreateFcn(~, ~)
     ax = gca;
-    ax.XRuler.TickLabelGapOffset = -1;
-    ax.YRuler.TickLabelGapOffset = 0;
-    % ax.ZRuler.TickLabelGapOffset = 0; % don't know best number yet
+    ax.XRuler.TickLabelGapOffset = 0;
+    ax.YRuler.TickLabelGapOffset = 2;
+    % ax.ZRuler.TickLabelGapOffset = 5; % don't know best number yet
 end
 
 function colorbarCreateFcn(~, ~)
@@ -176,6 +179,6 @@ function colorbarCreateFcn(~, ~)
     % cb = ax.Colobar;
     
     % cb.Position = [0.925, 0.172, 0.01, 0.75];
-    % cb.Ruler.TickLabelGapOffset = 0;
+    % cb.Ruler.TickLabelGapOffset = 5;
     % cb.Label.Position(1) = -5;
 end

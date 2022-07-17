@@ -25,7 +25,7 @@ figure(4);
 
 bin_counts = [0, 0.01, 0.1; 0, 0.00001, 10; 0, 1, 10];
 x_edges = [1000, 2000, 3000, 4000];
-y_edges = [4000, 5000, 6000, 7000];
+y_edges = [-600, -400, 400, 600];
 histogram2('XBinEdges', x_edges, 'YBinEdges', y_edges, 'BinCounts', bin_counts, 'DisplayStyle', 'tile', 'LineStyle', 'none');
 title('Test 2-D histogram');
 xlabel('$\log_{10}{10} E_{gqyp} 10^{10}/\sqrt{2}$ [cm]');
@@ -38,6 +38,7 @@ ax = gca; % axis parameters need to be set before format_colorbar() for some rea
 format_axes(ax);
 ax.ColorScale = 'log';
 ax.CLim = ([1e-7 10e-5]);
+% ax.YRuler.Exponent = 3;
 
 % Colorbar:
 cb = colorbar();

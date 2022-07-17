@@ -2,9 +2,10 @@ function format_colorbar(cb)
     %%% Format colorbar properties
 
     % Get global variables for figure dimensions:
-    global twocolumnarticle_columnwidth_in;
-    global figurepaperwidth_in;
-    global figurepaperheight_in;
+	global global_figure_scale;
+    global global_twocolumnarticle_columnwidth_in;
+    global global_figurepaperwidth_in;
+    global global_figurepaperheight_in;
 
     % Label properties:
     cb.Label.Interpreter = 'latex';
@@ -13,17 +14,17 @@ function format_colorbar(cb)
     % cb.Label.String = '$\log_{10}{10} E_{gqyp} 10^{10}/\sqrt{2}$ [cm]';
     
     % Ruler properties:
-    cb.Ruler.FontSize = 8;
-    cb.Ruler.TickLabelGapOffset = -1.2;
+    cb.Ruler.FontSize = global_figure_scale*8;
+    %cb.Ruler.TickLabelGapOffset = global_figure_scale*(-1.2);
     
     % Position and shape of colorbar:
-    cb_pos_x = 0.912;
-    cb_pos_y = 0.172;
+    cb_pos_x = 0.902;
+    cb_pos_y = 0.20;
     cb_width = 0.01;
-    cb_height = 0.74;
+    cb_height = 0.72;
     
-    cb_pos_x = (figurepaperwidth_in - twocolumnarticle_columnwidth_in*(1 - cb_pos_x))/figurepaperwidth_in; % scale with plot width
-    cb_width = cb_width*(twocolumnarticle_columnwidth_in/figurepaperwidth_in); % scale with plot width
+    %cb_pos_x = (global_figurepaperwidth_in - global_twocolumnarticle_columnwidth_in*(1 - cb_pos_x))/global_figurepaperwidth_in; % scale with plot width
+    %cb_width = cb_width*(global_twocolumnarticle_columnwidth_in/global_figurepaperwidth_in); % scale with plot width
     
     cb.Position = [cb_pos_x, cb_pos_y, cb_width, cb_height];
 
