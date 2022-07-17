@@ -44,9 +44,9 @@
 
 	// Canvas/plot dimensions:
 	const double text_column_width_mm = 90; // 90 mm, width of single column for double column paper
-	double figureWidth_frac = 0.74;
-	double figureHeight_frac = 0.74;
-	double margin_bottom_frac = 0.172;
+	double figureWidth_frac = 0.72;
+	double figureHeight_frac = 0.72;
+	double margin_bottom_frac = 0.20;
 	double margin_top_frac = 1 - (figureHeight_frac + margin_bottom_frac);
 	double margin_right_frac = 0.5*(1 - figureWidth_frac);
 	double margin_left_frac = 0.5*(1 - figureWidth_frac);
@@ -142,8 +142,8 @@
 
 	// Dimensions for figure with width = 90 mm and golden ratio axes lengths
 	article_twoColumn->SetTitleOffset(1.65, "x"); // lowest part of log_{10} is barely on the pad; I think log_{10} has the lowest reaching text
-	article_twoColumn->SetTitleOffset(1.30, "y"); // highest part of sqrt(2) is barely on the pad; I think sqrt(2) has the highest reaching text
-	article_twoColumn->SetTitleOffset(-0.41, "z"); // doesn't work in ROOT 5.34/23
+	article_twoColumn->SetTitleOffset(2.3, "y"); // highest part of sqrt(2) is barely on the pad; I think sqrt(2) has the highest reaching text
+	article_twoColumn->SetTitleOffset(-0.8, "z"); // doesn't work in ROOT 5.34/23
 	
 	//// Dimensions for figure with width = 190 mm and fixed vertical axis length
 	//article_twoColumn->SetTitleOffset(1.65, "x"); // lowest part of log_{10} is barely on the pad; I think log_{10} has the lowest reaching text
@@ -153,8 +153,8 @@
 	article_twoColumn->SetLabelFont(font, "xyz");
 	article_twoColumn->SetLabelSize(fontSize_medium_px, "xyz"); // use pixels
 	article_twoColumn->SetLabelOffset(1.5/canvasHeight_mm, "x");
-	article_twoColumn->SetLabelOffset(1.5/canvasWidth_mm, "y");
-	article_twoColumn->SetLabelOffset(0.5/canvasWidth_mm, "z");
+	article_twoColumn->SetLabelOffset(1.7/canvasWidth_mm, "y");
+	article_twoColumn->SetLabelOffset(0.7/canvasWidth_mm, "z");
 
 	// Axis ticks:
 	// Set length of axis ticks. The tick length is in fraction of
