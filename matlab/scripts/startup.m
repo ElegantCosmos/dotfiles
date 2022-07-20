@@ -109,8 +109,8 @@ set(groot, 'defaultAxesLabelFontSizeMultiplier', 1); % label font size multiplie
 % 2-D histogram color bar properties:
 set(groot, 'defaultColorbarLineWidth', global_figure_scale*0.5)
 set(groot, 'defaultColorbarPositionMode', 'manual');
-set(groot, 'defaultColorbarAxisLocation', 'out');
 set(groot, 'defaultColorbarAxisLocationMode', 'manual');
+set(groot, 'defaultColorbarAxisLocation', 'out');
 set(groot, 'defaultColorbarTickDirection', 'out');
 set(groot, 'defaultColorbarCreateFcn', @colorBarCreateFcn);
 set(groot, 'defaultColorbarBox', 'off');
