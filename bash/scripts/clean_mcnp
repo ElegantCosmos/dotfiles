@@ -1,1 +1,3 @@
-trash out? srct? runtp? comou? mcta? meshta?
+#!/bin/sh
+
+gio trash out? srct? runtp? comou? mcta? meshta?
