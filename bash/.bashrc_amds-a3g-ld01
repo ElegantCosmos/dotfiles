@@ -30,12 +30,12 @@ if [[ -z $TMUX ]]; then
 	fi
 fi
 
-#### Root CA Certificate with Python
-#export PIP_CERT=/etc/pki/ca-trust/extracted/openssl/ca-bundle.trust.crt
-#export REQUESTS_CA_BUNDLE=etc/pki/ca-trust/extracted/openssl/ca-bundle.trust.crt
-#export SSL_CERT_FILE=etc/pki/ca-trust/extracted/openssl/ca-bundle.trust.crt
+### Root CA Certificate with Python
+export PIP_CERT=/etc/pki/ca-trust/extracted/openssl/ca-bundle.trust.crt
+export REQUESTS_CA_BUNDLE=/etc/pki/ca-trust/extracted/openssl/ca-bundle.trust.crt
+export SSL_CERT_FILE=etc/pki/ca-trust/extracted/openssl/ca-bundle.trust.crt
 
-### Using Anaconda instead of pyenv
+### Don't use below b/c using Anaconda now instead of pyenv
 #if shopt -q login_shell; then 
 #	export PYENV_ROOT="$HOME/.pyenv"
 #	export PATH="$PYENV_ROOT/bin${PATH:+:$PATH}"
@@ -47,8 +47,26 @@ fi
 # source /opt/anaconda3/bin/activate
 
 if [[ -z "$TMUX" ]]; then
+	##### MCNP 620 settings
+	if [[ -z "$TMUX" ]]; then
+		MCNP_PATH="$HOME/.opt/mcnp/mcnp6.2/MCNP_CODE/bin"
+		if [ -d "$MCNP_PATH" ]; then
+			export PATH=$MCNP_PATH${PATH:+:$PATH}
+		fi
+	fi
+
+	#export DISPLAY
+	#DISPLAY=":0.0"
+
+	export DATAPATH="/home/sakaim1/.opt/mcnp/mcnp6.2/MCNP_DATA"
+	export ISCDATA="/home/sakaim1/.opt/mcnp/mcnp6.2/MCNP_CODE/MCNP620/Utilities/ISC/data"
+
+	ulimit -s unlimited
+	##### end MCNP 620 settings
+
 	### Cubit
-	PATH_CUBIT="$HOME/.opt/cubit/Cubit-15.7"
+	#PATH_CUBIT="$HOME/.opt/cubit/Cubit-15.7"
+	PATH_CUBIT="$HOME/.opt/cubit/Cubit-16.04"
 	if [ -d "$PATH_CUBIT" ]; then
 		export PATH=$PATH_CUBIT/bin${PATH:+:$PATH}
 	fi
@@ -59,4 +77,17 @@ if [[ -z "$TMUX" ]]; then
 	#	export VIMRUNTIME=$HOME/.opt/vim/vim-8.2.3877/share/vim/vim82 # to find correct syntax file
 	#	export PATH=$PATH_VIM/bin${PATH:+:$PATH}
 	#fi
+	
+	# Abaqus
+	ABAQUS_PATH="$HOME/.opt/abaqus/SIMULIA/EstProducts"
+	if [ -d "$ABAQUS_PATH" ]; then
+		export PATH=$ABAQUS_PATH/Commands${PATH:+:$PATH}
+		export LM_LICENSE_FILE=2700@aplvlic0
+	fi
 fi
+
+# User specific environment and startup programs
+export PATH=$HOME/.local/bin:$HOME/bin${PATH:+:$PATH}
+
+# TMux
+source "$HOME/.tmux.completion.bash"
