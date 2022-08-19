@@ -182,7 +182,7 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
 	export LSCOLORS=GxFxCxDxBxegedabagaced
 
 	### Source thisroot.sh if exists
-	THIS_ROOT=$(brew --prefix)/bin/thisroot.sh
+	THIS_ROOT=/usr/local/bin/thisroot.sh # $(brew --prefix) is /usr/local
 	if [ -f "$THIS_ROOT" ]; then
 		#source "$THIS_ROOT"
 		function compile-with-root {
