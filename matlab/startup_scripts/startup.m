@@ -83,7 +83,7 @@ set(groot, 'defaultFigurePaperPosition', [0 0 global_figurepaperwidth_in global_
 % ATTENTION: if PaperPositionMode is not 'auto' the saved file
 % could have different dimensions from the one shown on the screen!
 set(groot, 'DefaultFigurePaperPositionMode', 'auto'); % recommended by documentation
-set(groot, 'defaultFigureColormap', jet);
+%set(groot, 'defaultFigureColormap', jet);
 
 % Axes properties:
 set(groot, 'DefaultAxesLineWidth', global_figure_scale*0.5)
