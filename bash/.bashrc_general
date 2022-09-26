@@ -1,5 +1,5 @@
 ### General .bashrc file that can be used on any Linux-like system or macOS.
-# echo "~/.bashrc_general"
+#echo bashrc_general
 
 export EDITOR=vim
 
@@ -25,14 +25,6 @@ if [[ "$OSTYPE" == "linux"* ]]; then
 
 	# more aliases
 	alias open='xdg-open'
-
-	### Modify PATH for user-specific scripts.
-	if [[ -z "$TMUX" ]]; then # ignore for TMUX because it has already been run
-		PATH_NEW=$HOME/.opt/bin
-		if [ -d "$PATH_NEW" ]; then
-			export PATH=$PATH_NEW${PATH:+:$PATH}
-		fi
-	fi
 
 	### Linux system-specific settings:
 	if [[ "$(hostname)" == "daniel" ]] || [[ "$(hostname)" == "kahr" ]]; then # JHU-APL
