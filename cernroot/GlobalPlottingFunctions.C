@@ -107,7 +107,7 @@ void SetPaletteAxis(TH1* hist, const TString& title = "A_{g}^{T} Log_{10} #sqrt{
 	gPad->Modified();
 	gPad->Update();
 
-	gStyle->SetPalette(kRainBow, 0);
+	//gStyle->SetPalette(kRainBow, 0);
 	TPaletteAxis* axis = dynamic_cast<TPaletteAxis*>(hist->GetListOfFunctions()->FindObject("palette"));
 	double x_col = 0.92;
 	double width_col = 0.01;
