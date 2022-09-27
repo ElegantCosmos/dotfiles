@@ -10,7 +10,10 @@ fi
 export BASH_SILENCE_DEPRECATION_WARNING=1
 
 # Homebrew
-export HOMEBREW_GITHUB_API_TOKEN=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
+export HOMEBREW_GITHUB_API_TOKEN=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
+
+# Expand environment variables
+shopt -s direxpand
 
 # Environment variable for UDRIVE
 for FILE in /Volumes/aplhome*; do
@@ -29,3 +32,4 @@ fi
 ###export PIP_CERT=${HOME}/files/access/ssl_proxy_certificate/ca_apl.pem # recommended by ML strategic education
 #export REQUESTS_CA_BUNDLE=${HOME}/files/access/ssl_proxy_certificate/JHUAPL-MS-Root-CA-05-21-2038-B64-text.cer
 #export SSL_CERT_FILE=${HOME}/files/access/ssl_proxy_certificate/JHUAPL-MS-Root-CA-05-21-2038-B64-text.cer
+export PIP_CERT=/tmp/JHUAPL-MS-Root-CA-05-21-2038-B64-text.cer
