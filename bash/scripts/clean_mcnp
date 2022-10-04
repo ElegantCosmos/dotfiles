@@ -1,7 +1,11 @@
 #!/bin/sh
 
 if (( $# > 0 )); then # if file base to delete is specified
+	# by just touching each file type we want to be able to clean
+	touch $1o $1r $1m $1c
 	gio trash $1o $1r $1m $1c
 else
-	gio trash out? srct? runtp? comou? mcta? meshta?
+	# by just touching each file type we want to be able to clean
+	touch mctal outp srctp runtpe comout runtpe.h5 meshtal mdata
+	gio trash mcta? out? srct? runtp? comou? runtp?.g5 meshta? mdat?
 fi
