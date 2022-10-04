@@ -6,11 +6,13 @@ if [ -f $HOME/.bashrc_general ]; then
 	source $HOME/.bashrc_general
 fi
 
+# Machine specific tokens
+if [ -f $HOME/.bash_tokens ]; then
+	source $HOME/.bash_tokens
+fi
+
 # BASH
 export BASH_SILENCE_DEPRECATION_WARNING=1
-
-# Homebrew
-export HOMEBREW_GITHUB_API_TOKEN=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
 
 # Expand environment variables
 shopt -s direxpand
