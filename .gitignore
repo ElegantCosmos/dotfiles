@@ -1,3 +1,6 @@
 *.DS_Store
 vim/.vim/.netrwhist
 tmux/.tmux/resurrect
+
+# Binary VIM spell file that can be compiled.
+**.add.spl
