@@ -1,5 +1,5 @@
-%%% Function to get lower and upper vertical error bar lengths from number of counts n.
-function [lower, upper] = get_lower_upper_errors_from_count(count, confidence_level)
+%%% Function to get Poisson lower and upper vertical error bar lengths from number of counts n.
+function [lower, upper] = poisson_lower_upper_errors_from_count(count, confidence_level)
 	assert(all(count >= 0));
 	assert(confidence_level >= 0 & confidence_level <= 1);
 
