@@ -5,5 +5,5 @@ function [lower, upper] = poisson_lower_upper_errors_from_inverse_sqrt_count(inv
 
 	count = round(1./inverse_sqrt_count.^2); % get integer count n from estimated error (1/sqrt(n))
 	count(inverse_sqrt_count == 0 | inverse_sqrt_count == Inf) = 0; % whether estimated error due to n = 0 counts (1/sqrt(0)) is interpreted as 0 or Inf, make sure count n = 0
-	[lower, upper] = poisson_upper_lower_errors_from_count(count, confidence_level);
+	[lower, upper] = poisson_lower_upper_errors_from_count(count, confidence_level);
 end
