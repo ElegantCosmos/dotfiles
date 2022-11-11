@@ -45,26 +45,44 @@
 	url = https://github.com/tpope/vim-abolish.git
 
 ### TMux
+#[submodule "tmux/.tmux/plugins/tpm"]
+#	path = tmux/.tmux/plugins/tpm
+#	url = https://github.com/tmux-plugins/tpm.git
+#[submodule "tmux/.tmux/plugins/tmux-continuum"]
+#	path = tmux/.tmux/plugins/tmux-continuum
+#	url = https://github.com/tmux-plugins/tmux-continuum.git
+#[submodule "tmux/.tmux/plugins/tmux-copycat"]
+#	path = tmux/.tmux/plugins/tmux-copycat
+#	url = https://github.com/tmux-plugins/tmux-copycat.git
+#[submodule "tmux/.tmux/plugins/tmux-open"]
+#	path = tmux/.tmux/plugins/tmux-open
+#	url = https://github.com/tmux-plugins/tmux-open.git
+#[submodule "tmux/.tmux/plugins/tmux-resurrect"]
+#	path = tmux/.tmux/plugins/tmux-resurrect
+#	url = https://github.com/tmux-plugins/tmux-resurrect.git
+#[submodule "tmux/.tmux/plugins/tmux-yank"]
+#	path = tmux/.tmux/plugins/tmux-yank
+#	url = https://github.com/tmux-plugins/tmux-yank.git
+
+### BASH
+[submodule "bash-it"]
+	path = bash-it
+	url = https://github.com/Bash-it/bash-it
 [submodule "tmux/.tmux/plugins/tpm"]
 	path = tmux/.tmux/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm.git
-[submodule "tmux/.tmux/plugins/tmux-continuum"]
-	path = tmux/.tmux/plugins/tmux-continuum
-	url = https://github.com/tmux-plugins/tmux-continuum.git
-[submodule "tmux/.tmux/plugins/tmux-copycat"]
-	path = tmux/.tmux/plugins/tmux-copycat
-	url = https://github.com/tmux-plugins/tmux-copycat.git
-[submodule "tmux/.tmux/plugins/tmux-open"]
-	path = tmux/.tmux/plugins/tmux-open
-	url = https://github.com/tmux-plugins/tmux-open.git
 [submodule "tmux/.tmux/plugins/tmux-resurrect"]
 	path = tmux/.tmux/plugins/tmux-resurrect
 	url = https://github.com/tmux-plugins/tmux-resurrect.git
 [submodule "tmux/.tmux/plugins/tmux-yank"]
 	path = tmux/.tmux/plugins/tmux-yank
 	url = https://github.com/tmux-plugins/tmux-yank.git
-
-### BASH
-[submodule "bash-it"]
-	path = bash-it
-	url = https://github.com/Bash-it/bash-it
+[submodule "tmux/.tmux/plugins/tmux-open"]
+	path = tmux/.tmux/plugins/tmux-open
+	url = https://github.com/tmux-plugins/tmux-open.git
+[submodule "tmux/.tmux/plugins/tmux-continuum"]
+	path = tmux/.tmux/plugins/tmux-continuum
+	url = https://github.com/tmux-plugins/tmux-continuum.git
+[submodule "tmux/.tmux/plugins/tmux-copycat"]
+	path = tmux/.tmux/plugins/tmux-copycat
+	url = https://github.com/tmux-plugins/tmux-copycat.git
