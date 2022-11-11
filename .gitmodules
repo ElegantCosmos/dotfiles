@@ -34,12 +34,6 @@
 [submodule "vim/.vim/bundle/vim-airline-themes"]
 	path = vim/.vim/bundle/vim-airline-themes
 	url = https://github.com/vim-airline/vim-airline-themes.git
-[submodule "vim/.vim/bundle/tmuxline.vim"]
-	path = vim/.vim/bundle/tmuxline.vim
-	url = https://github.com/edkolev/tmuxline.vim.git
-[submodule "vim/.vim/bundle/tender.vim"]
-	path = vim/.vim/bundle/tender.vim
-	url = https://github.com/jacoborus/tender.vim.git
 [submodule "vim/.vim/bundle/vim-abolish"]
 	path = vim/.vim/bundle/vim-abolish
 	url = https://github.com/tpope/vim-abolish.git
