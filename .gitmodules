@@ -63,3 +63,8 @@
 [submodule "tmux/.tmux/plugins/tmux-copycat"]
 	path = tmux/.tmux/plugins/tmux-copycat
 	url = https://github.com/tmux-plugins/tmux-copycat.git
+
+### BASH
+[submodule "bash/bash-it"]
+	path = bash/bash-it
+	url = https://github.com/Bash-it/bash-it.git
