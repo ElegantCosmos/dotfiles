@@ -74,9 +74,6 @@ set laststatus=2
 set formatoptions=cqt
 "set shellcmdflag=ic
 set shell=bash\ -l
-let g:airline_theme='tender'
-"let g:airline_theme='minimalist'
-"let g:airline_solarized_bg='dark' " for 'solarized' airline_theme
 let g:tmuxline_powerline_separators = 0
 let g:tmuxline_separators = {
 			\ 'left' : '',
@@ -229,20 +226,12 @@ endfunction
 """ Color scheme
 "set background=dark
 "colorscheme default
-"colorscheme desert
+colorscheme molokai
+let g:molokai_original = 1
+let g:rehash256 = 1
 
-"""" Tender color scheme
-"" If you have vim >=8.0 or Neovim >= 0.1.5
-"if (has("termguicolors"))
-"	set termguicolors
-"endif
-"
-"" For Neovim 0.1.3 and 0.1.4
-"let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-"
 " Theme
 syntax enable
-colorscheme tender
 
 """ Highlighting for spelling
 highlight clear SpellBad
@@ -255,7 +244,7 @@ syn match myExCapitalWords +\<\w*[_0-9A-Z-]\w*\>+ contains=@NoSpell " don't chec
 
 """ Transparent background.
 highlight Normal cterm=none ctermbg=none
-highlight Search cterm=bold ctermfg=White ctermbg=DarkGreen
+highlight Search cterm=bold ctermfg=White ctermbg=DarkYellow
 highlight DiffAdd cterm=none ctermfg=White ctermbg=DarkBlue
 highlight DiffDelete cterm=none ctermfg=White ctermbg=DarkGray
 highlight DiffChange cterm=none ctermfg=White ctermbg=DarkYellow
@@ -289,3 +278,18 @@ onoremap <F9> <C-C>za
 vnoremap <F9> zf
 
 cnoremap w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
+
+""" Status line.
+set statusline=
+set statusline+=%#PmenuSel#
+set statusline+=%#Folded#
+set statusline+=\ %f
+set statusline+=%m\
+set statusline+=%=
+"set statusline+=%#StatusLine#
+set statusline+=\ %y
+set statusline+=\ %{&fileencoding?&fileencoding:&encoding}
+set statusline+=\[%{&fileformat}\]
+set statusline+=\ %p%%
+set statusline+=\ %l:%c
+set statusline+=\
