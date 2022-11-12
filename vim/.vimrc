@@ -2,7 +2,6 @@ set nocompatible " Necesary for lots of cool vim things set nocompatible
 
 """ Pathogen VIM plugin runtime path manager """
 call pathogen#infect()
-"execute pathogen#infect()
 
 syntax on
 set synmaxcol=9999
@@ -11,42 +10,15 @@ filetype indent on
 
 """ Recognize .tex files as plaintex for correct vim spell checking """
 let g:tex_flavor = "tex"
-let g:tex_comment_nospell=1
+let g:tex_comment_nospell = 1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-"" make YCM compatible with UltiSnips (using supertab)
-"let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
-"let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
-"let g:SuperTabDefaultCompletionType = '<C-n>'
-"" YCM Debugging.
-"let g:ycm_server_keep_logfiles = 1
-"let g:ycm_server_log_level = 'debug'
-"
 " better key bindings for UltiSnipsExpandTrigger
 let g:UltiSnipsExpandTrigger = "<tab>"
 let g:UltiSnipsJumpForwardTrigger = "<tab>"
 let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit = "horizontal"
-
-"" YCM work-around to select from word list using c-j and c-k.
-"function! g:JInYCM()
-"    if pumvisible()
-"        return "\<C-n>"
-"    else
-"        return "\<c-j>"
-"endfunction
-"
-"function! g:KInYCM()
-"    if pumvisible()
-"        return "\<C-p>"
-"    else
-"        return "\<c-k>"
-"endfunction
-"inoremap <c-j> <c-r>=g:JInYCM()<cr>
-"au BufEnter,BufRead * exec "inoremap <silent> " . g:UltiSnipsJumpBackwordTrigger . " <C-R>=g:KInYCM()<cr>"
-"let g:UltiSnipsJumpBackwordTrigger = "<c-k>"
-"" End of YCM work-around.
 
 autocmd FileType * setlocal formatoptions=cqt
 
@@ -60,10 +32,10 @@ set smartcase
 set incsearch
 set nrformats-=octal
 if $TMUX == '' " don't use unnamed register when using tmux
-	set clipboard=unnamed
+	set clipboard = unnamed
 endif
-let mapleader = ' ' 
-"set textwidth=80
+let mapleader=' ' 
+set textwidth=80
 set pastetoggle=<F4>
 "set nu
 set smarttab
@@ -72,7 +44,7 @@ set backspace=indent,eol,start
 set nojoinspaces
 set laststatus=2
 set formatoptions=cqt
-"set shellcmdflag=ic
+"set shellcmdflag = ic
 set shell=bash\ -l
 let g:tmuxline_powerline_separators = 0
 let g:tmuxline_separators = {
@@ -104,8 +76,8 @@ noremap <leader>E :set noexpandtab<CR>
 augroup python_files
 autocmd!
 autocmd FileType python setlocal noexpandtab
-autocmd FileType python set tabstop=4
-autocmd FileType python set shiftwidth=4
+autocmd FileType python set tabstop = 4
+autocmd FileType python set shiftwidth = 4
 augroup END
 
 set cino+=N-s
@@ -126,10 +98,10 @@ noremap <leader>x5 :!source setup.sh; python3 %; openlatest 5<CR>
 
 
 """"""fortran
-"set tabstop=6 softtabstop=6 shiftwidth=6 expandtab
+"set tabstop = 6 softtabstop = 6 shiftwidth = 6 expandtab
 
 """"""bash script
-"set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
+"set tabstop = 4 softtabstop = 4 shiftwidth = 4 noexpandtab
 
 """"""mapping
 map! jk <Esc>
@@ -166,7 +138,7 @@ nnoremap <silent> <leader>l :wincmd l<CR>
 """ Function to create necessary parent directories upon file save """
 function! s:MkNonExDir(file, buf)
 	if empty(getbufvar(a:buf, '&buftype')) && a:file!~#'\v^\w+\:\/'
-		let dir=fnamemodify(a:file, ':h')
+		let dir = fnamemodify(a:file, ':h')
 		if !isdirectory(dir)
 			call mkdir(dir, 'p')
 		endif
@@ -224,7 +196,7 @@ function s:MaybeMiddle()
 endfunction
 
 """ Color scheme
-"set background=dark
+"set background = dark
 "colorscheme default
 colorscheme molokai
 let g:molokai_original = 1
@@ -235,42 +207,41 @@ syntax enable
 
 """ Highlighting for spelling
 highlight clear SpellBad
-highlight SpellBad cterm=underline ctermfg=Red
-highlight SpellRare cterm=underline
-highlight SpellCap cterm=underline
-highlight SpellLocal cterm=underline
-highlight SpellBad gui=undercurl " Set style for gVim
-syn match myExCapitalWords +\<\w*[_0-9A-Z-]\w*\>+ contains=@NoSpell " don't check words that include '_', numbers, capital letters
+highlight SpellBad cterm = underline ctermfg = Red
+highlight SpellRare cterm = underline
+highlight SpellCap cterm = underline
+highlight SpellLocal cterm = underline
+highlight SpellBad gui = undercurl " Set style for gVim
+syn match myExCapitalWords +\<\w*[_0-9A-Z-]\w*\>+ contains = @NoSpell " don't check words that include '_', numbers, capital letters
 
 """ Transparent background.
-highlight Normal cterm=none ctermbg=none
-highlight Search cterm=bold ctermfg=White ctermbg=DarkYellow
-highlight DiffAdd cterm=none ctermfg=White ctermbg=DarkBlue
-highlight DiffDelete cterm=none ctermfg=White ctermbg=DarkGray
-highlight DiffChange cterm=none ctermfg=White ctermbg=DarkYellow
-highlight DiffText cterm=bold ctermfg=White ctermbg=DarkRed
-"highlight DiffAdd cterm=none ctermbg=LightBlue
-"highlight DiffDelete cterm=none ctermbg=DarkGray
-"highlight DiffChange cterm=none ctermfg=White ctermbg=DarkGray
-"highlight DiffText cterm=bold ctermfg=White ctermbg=DarkRed
+highlight Normal cterm = none ctermbg = none
+highlight Search cterm = bold ctermfg = White ctermbg = DarkYellow
+highlight DiffAdd cterm = none ctermfg = White ctermbg = DarkBlue
+highlight DiffDelete cterm = none ctermfg = White ctermbg = DarkGray
+highlight DiffChange cterm = none ctermfg = White ctermbg = DarkYellow
+highlight DiffText cterm = bold ctermfg = White ctermbg = DarkRed
+"highlight DiffAdd cterm = none ctermbg = LightBlue
+"highlight DiffDelete cterm = none ctermbg = DarkGray
+"highlight DiffChange cterm = none ctermfg = White ctermbg = DarkGray
+"highlight DiffText cterm = bold ctermfg = White ctermbg = DarkRed
+highlight clear LineNr
+highlight clear SignColumn
+highlight LineNr ctermfg = 237
 
 """ Indent guides
 let g:indent_guides_auto_colors = 0
-let g:indent_guides_enable_on_vim_startup=1
-"let g:indent_guides_start_level = 2
-"let g:indent_guides_guide_size = 1
-"highlight IndentGuidesEven ctermbg=238
-"highlight IndentGuidesOdd ctermbg=236
-highlight IndentGuidesEven ctermbg=DarkGray
-highlight IndentGuidesOdd ctermbg=None
+let g:indent_guides_enable_on_vim_startup = 1
+highlight IndentGuidesEven ctermbg = 235
+highlight IndentGuidesOdd ctermbg = None
 
 """ Selection highlight color
-hi Visual  term=reverse cterm=reverse gui=none
+hi Visual  term = reverse cterm = reverse gui = none
 
 """ fold method
 set foldmethod=indent
 set foldopen-=search "Do not open fold during search
-highlight Folded ctermbg=Black
+highlight Folded ctermbg=DarkGray
 au BufRead * normal zR
 inoremap <F9> <C-O>za
 nnoremap <F9> za
@@ -282,7 +253,7 @@ cnoremap w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
 """ Status line.
 set statusline=
 set statusline+=%#PmenuSel#
-set statusline+=%#Folded#
+set statusline+=%#StatusLine#
 set statusline+=\ %f
 set statusline+=%m\
 set statusline+=%=
