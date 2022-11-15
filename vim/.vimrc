@@ -31,9 +31,9 @@ set ignorecase
 set smartcase
 set incsearch
 set nrformats-=octal
-if $TMUX == '' " don't use unnamed register when using tmux
-	set clipboard = unnamed
-endif
+"if $TMUX == '' " don't use unnamed register when using tmux
+"	set clipboard = unnamed
+"endif
 let mapleader=' ' 
 set textwidth=80
 set pastetoggle=<F4>
