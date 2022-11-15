@@ -160,12 +160,12 @@ endfunc
 " Use an undo file
 set undofile
 " Set directory to store the undo history
-set undodir=~/.vim/.undo//,.
+set undodir=~/.vim/undo//,.
 " set creation of backup files and designate common directory them
 set backup
-set backupdir=~/.vim/.backup//,.
+set backupdir=~/.vim/backup//,.
 " set common directory for swap files
-set directory=~/.vim/.swp//,.
+set directory=~/.vim/swp//,.
 
 " search in normal mode while keeping search text in middle of screen
 nnoremap <silent> <F4> :call <SID>SearchMode()<CR>
