@@ -7,8 +7,12 @@ bind-key C-Space send-prefix
 unbind-key r
 bind-key r source-file ~/.tmux.conf \; display-message "Reloaded ~/.tmux.conf"
 
-# tmux mouse mode.
-set -g mouse on
+# Use mouse.
+set-window-option -g mode-mouse on
+set-option -g mouse-select-window on
+set-option -g mouse-select-pane on
+set-option -g mouse-resize-pane on
+set-option -g mouse-utf on
 
 # Increase history buffer limit.
 set-option -g history-limit 100000
@@ -25,17 +29,13 @@ set-option -g status-right '%Y %h %d %H:%M'
 unbind-key n  #DEFAULT KEY: Move to next window
 bind-key n command-prompt "rename-window '%%'"
 
-# New window default path
-unbind-key c
-bind-key c new-window -c "#{pane_current_path}"
-
 # Splitting panes.
 unbind-key '"'
 unbind-key |
-bind-key | split-window -h -c "#{pane_current_path}"
+bind-key | split-window -h
 unbind-key %
 unbind-key -
-bind-key - split-window -v -c "#{pane_current_path}"
+bind-key - split-window -v
 
 # Navigate panes.
 bind-key h select-pane -L
@@ -56,9 +56,9 @@ set-option -g status-keys vi
 set-window-option -g mode-keys vi
 
 # vi-like functionality
-bind-key -T copy-mode-vi v send-keys -X begin-selection
-bind-key -T copy-mode-vi y send-keys -X copy-selection
-bind-key -T copy-mode-vi r send-keys -X rectangle-toggle
+bind-key -t vi-copy 'v' begin-selection
+bind-key -t vi-copy 'y' copy-selection
+bind-key -t vi-copy 'r' rectangle-toggle
 
 # List of plugins
 run-shell ~/.tmux/plugins/tmux-yank/yank.tmux
