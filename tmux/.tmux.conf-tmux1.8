@@ -1,26 +1,40 @@
 # Change prefix to GNU Screen-line prefix.
 unbind-key C-b
-set-option -g prefix C-a
-bind-key C-a send-prefix
+set-option -g prefix C-Space
+bind-key C-Space send-prefix
+
+# Reload tmux configuration.
+unbind-key r
+bind-key r source-file ~/.tmux.conf \; display-message "Reloaded ~/.tmux.conf"
+
+# tmux mouse mode.
+set -g mouse on
 
 # Increase history buffer limit.
 set-option -g history-limit 100000
 
-# Make sure keyboard short-cuts inside VIM still work.
-set-window-option -g xterm on
-
 # VIM colors.
-set-option -g default-terminal "screen-256color" # Error when using on CentOS.
+set-option -g default-terminal "screen-256color"
 
 # Status bar
 set-option -g status-position bottom
 set-option -g status-left ''
-set-option -g status-right '#[fg=grey,bg=black,bold] %Y %h %d %H:%M'
+set-option -g status-right '%Y %h %d %H:%M'
+
+# Rename window.
+unbind-key n  #DEFAULT KEY: Move to next window
+bind-key n command-prompt "rename-window '%%'"
+
+# New window default path
+unbind-key c
+bind-key c new-window -c "#{pane_current_path}"
 
 # Splitting panes.
 unbind-key '"'
+unbind-key |
 bind-key | split-window -h -c "#{pane_current_path}"
 unbind-key %
+unbind-key -
 bind-key - split-window -v -c "#{pane_current_path}"
 
 # Navigate panes.
@@ -29,39 +43,38 @@ bind-key j select-pane -D
 bind-key k select-pane -U
 bind-key l select-pane -R
 
+bind-key -n C-h select-pane -L
+bind-key -n C-j select-pane -D
+bind-key -n C-k select-pane -U
+bind-key -n C-l select-pane -R
+
 # Navigate to most recent window.
-bind-key a last-window
+bind-key Space last-window
 
 # Set VI like keys.
 set-option -g status-keys vi
 set-window-option -g mode-keys vi
 
-# Set default tab operation.
-unbind-key -n Tab
-
-# reload config file (change file location to your the tmux.conf you want to use)
-bind-key r source-file ~/.tmux.conf
-
 # vi-like functionality
-bind-key -t vi-copy 'v' begin-selection
-bind-key -t vi-copy 'y' copy-selection
-bind-key -t vi-copy 'r' rectangle-toggle
+bind-key -T copy-mode-vi v send-keys -X begin-selection
+bind-key -T copy-mode-vi y send-keys -X copy-selection
+bind-key -T copy-mode-vi r send-keys -X rectangle-toggle
 
 # List of plugins
-run-shell ~/.tmux/plugins/tmux-copycat-tmux-23/copycat.tmux
 run-shell ~/.tmux/plugins/tmux-yank/yank.tmux
-#run-shell ~/.tmux/plugins/tmux-resurrect/resurrect.tmux
-#run-shell ~/.tmux/plugins/tmux-continuum/continuum.tmux
-#run-shell ~/.tmux/plugins/tmux-open/open.tmux
+run-shell ~/.tmux/plugins/tmux-resurrect/resurrect.tmux
+run-shell ~/.tmux/plugins/tmux-continuum/continuum.tmux
+run-shell ~/.tmux/plugins/tmux-copycat/copycat.tmux
+run-shell ~/.tmux/plugins/tmux-open/open.tmux
 
 # Restoring vim and neovim sessions
 # for vim
-#set-option -g @resurrect-strategy-vim 'session'
+set-option -g @resurrect-strategy-vim 'session'
 # for neovim
 #set-option -g @resurrect-strategy-nvim 'session'
 
 # Automatic tmux environment restoration
-#set-option -g @continuum-restore 'on'
+set-option -g @continuum-restore 'on'
 
 # tmux environment save interval in minutes
-#set-option -g @continuum-save-interval '60'
+set-option -g @continuum-save-interval '60'
