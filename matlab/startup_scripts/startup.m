@@ -1,5 +1,8 @@
 % Start-up script to set plot graphics settings for MatLAB
 
+% Use short decimal format
+format shortG;
+
 % % For debugging:
 % get(groot, 'factory') % show default factory values of plot properties
 
