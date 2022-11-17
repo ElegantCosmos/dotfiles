@@ -216,7 +216,6 @@ syn match myExCapitalWords +\<\w*[_0-9A-Z-]\w*\>+ contains = @NoSpell " don't ch
 
 """ Transparent background.
 highlight Normal cterm = none ctermbg = none
-highlight Search cterm = bold ctermfg = White ctermbg = DarkYellow
 highlight DiffAdd cterm = none ctermfg = White ctermbg = DarkBlue
 highlight DiffDelete cterm = none ctermfg = White ctermbg = DarkGray
 highlight DiffChange cterm = none ctermfg = White ctermbg = DarkYellow
