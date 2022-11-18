@@ -9,8 +9,11 @@ fi
 # Uncomment the following line if you don't like systemctl's auto-paging feature:
 # export SYSTEMD_PAGER=
 
-# User specific aliases and functions
+### Command prompt:
+export PS1='\[\e[0;34m\]\u@\h:\w\$ \[\e[m\]'
 
+# User specific aliases and functions
+alias open='gio open'
 alias trash='gio trash'
 
 # Source general definitions
@@ -23,16 +26,14 @@ update_path_with() { case ":${PATH:=$1}:" in *:"$1":*) ;; *) export PATH="$1:$PA
 update_ldlibrarypath_with() { case ":${LD_LIBRARY_PATH:=$1}:" in *:"$1":*) ;; *) export LD_LIBRARY_PATH="$1:$LD_LIBRARY_PATH" ;; esac; }
 
 ### libevent libraries
-if [[ -z $TMUX ]]; then # if tmux session is not active
-	LD_LIBRARY_PATH_NEW=$HOME/.opt/libevent/libevent-2.1.12/lib
-	if [[ -d "$LD_LIBRARY_PATH_NEW" ]]; then
-		update_ldlibrarypath_with "$LD_LIBRARY_PATH_NEW"
-	fi
+LD_LIBRARY_PATH_NEW=$HOME/.opt/libevent/libevent-2.1.12/lib
+if [[ -d "$LD_LIBRARY_PATH_NEW" ]]; then
+	update_ldlibrarypath_with "$LD_LIBRARY_PATH_NEW"
+fi
 
-	LD_LIBRARY_PATH_NEW=$HOME/.opt/ncurses/ncurses-6.2/lib
-	if [[ -d "$LD_LIBRARY_PATH_NEW" ]]; then
-		update_ldlibrarypath_with "$LD_LIBRARY_PATH_NEW"
-	fi
+LD_LIBRARY_PATH_NEW=$HOME/.opt/ncurses/ncurses-6.2/lib
+if [[ -d "$LD_LIBRARY_PATH_NEW" ]]; then
+	update_ldlibrarypath_with "$LD_LIBRARY_PATH_NEW"
 fi
 
 ### Root CA Certificate with Python
@@ -51,67 +52,88 @@ export SSL_CERT_FILE=etc/pki/ca-trust/extracted/openssl/ca-bundle.trust.crt
 ### Anaconda
 # source /opt/anaconda3/bin/activate
 
-if [[ -z "$TMUX" ]]; then # if tmux session is not active
-	### Modify PATH for user-specific scripts.
-	PATH_NEW=$HOME/.opt/bin
-	if [ -d "$PATH_NEW" ]; then
-		update_path_with "$PATH_NEW"
-	fi
+### Modify PATH for user-specific scripts.
+PATH_NEW=$HOME/.opt/bin
+if [ -d "$PATH_NEW" ]; then
+	update_path_with "$PATH_NEW"
+fi
 
-	# User specific environment and startup programs
-	PATH_NEW=$HOME/.local/bin
-	if [ -d "$PATH_NEW" ]; then
-		update_path_with "$PATH_NEW"
-	fi
+# User specific environment and startup programs
+PATH_NEW=$HOME/.local/bin
+if [ -d "$PATH_NEW" ]; then
+	update_path_with "$PATH_NEW"
+fi
 
-	# User specific environment and startup programs
-	PATH_NEW=$HOME/bin
-	if [ -d "$PATH_NEW" ]; then
-		update_path_with "$PATH_NEW"
-	fi
+# User specific environment and startup programs
+PATH_NEW=$HOME/bin
+if [ -d "$PATH_NEW" ]; then
+	update_path_with "$PATH_NEW"
+fi
 
-	##### MCNP 620 settings
-	MCNP_PATH="$HOME/.opt/mcnp/mcnp6.2/MCNP_CODE/bin"
-	if [ -d "$MCNP_PATH" ]; then
-		update_path_with "$MCNP_PATH"
-	fi
+##### MCNP 620 settings
+MCNP_PATH="$HOME/.opt/mcnp/mcnp6.2/MCNP_CODE/bin"
+if [ -d "$MCNP_PATH" ]; then
+	update_path_with "$MCNP_PATH"
+fi
 
-	#export DISPLAY
-	#DISPLAY=":0.0"
+#export DISPLAY
+#DISPLAY=":0.0"
 
-	export DATAPATH="/home/sakaim1/.opt/mcnp/mcnp6.2/MCNP_DATA"
-	export ISCDATA="/home/sakaim1/.opt/mcnp/mcnp6.2/MCNP_CODE/MCNP620/Utilities/ISC/data"
+export DATAPATH="/home/sakaim1/.opt/mcnp/mcnp6.2/MCNP_DATA"
+export ISCDATA="/home/sakaim1/.opt/mcnp/mcnp6.2/MCNP_CODE/MCNP620/Utilities/ISC/data"
 
-	ulimit -s unlimited
-	##### end MCNP 620 settings
+ulimit -s unlimited
+##### end MCNP 620 settings
 
-	### Cubit
-	#PATH_CUBIT="$HOME/.opt/cubit/Cubit-15.7"
-	PATH_CUBIT="$HOME/.opt/cubit/Cubit-16.04"
-	if [ -d "$PATH_CUBIT" ]; then
-		update_path_with "$PATH_CUBIT"
-	fi
+### Cubit
+#PATH_CUBIT="$HOME/.opt/cubit/Cubit-15.7"
+PATH_CUBIT="$HOME/.opt/cubit/Cubit-16.04"
+if [ -d "$PATH_CUBIT" ]; then
+	update_path_with "$PATH_CUBIT"
+fi
 
-	#### VIM 8.2
-	#PATH_VIM="$HOME/.opt/vim/vim-8.2.3877"
-	#if [ -d "$PATH_VIM" ]; then
-	#	export VIMRUNTIME=$HOME/.opt/vim/vim-8.2.3877/share/vim/vim82 # to find correct syntax file
-	#	export PATH=$PATH_VIM/bin${PATH:+:$PATH}
-	#fi
-	
-	# Abaqus
-	ABAQUS_PATH="$HOME/.opt/abaqus/SIMULIA/EstProducts"
-	if [ -d "$ABAQUS_PATH" ]; then
-		update_path_with "$ABAQUS_PATH"
-		export LM_LICENSE_FILE=2700@aplvlic0
-	fi
+#### VIM 8.2
+#PATH_VIM="$HOME/.opt/vim/vim-8.2.3877"
+#if [ -d "$PATH_VIM" ]; then
+#	export VIMRUNTIME=$HOME/.opt/vim/vim-8.2.3877/share/vim/vim82 # to find correct syntax file
+#	export PATH=$PATH_VIM/bin${PATH:+:$PATH}
+#fi
 
-	# Tex
-	LATEX_PATH="$HOME/.opt/tex/texlive/texlive_2022/bin/x86_64-linux"
-	if [ -d "$LATEX_PATH" ]; then
-		update_path_with "$LATEX_PATH"
-	fi
+# Abaqus
+ABAQUS_PATH="$HOME/.opt/abaqus/SIMULIA/EstProducts"
+if [ -d "$ABAQUS_PATH" ]; then
+	update_path_with "$ABAQUS_PATH"
+	export LM_LICENSE_FILE=2700@aplvlic0
+fi
+
+# Tex
+LATEX_PATH="$HOME/.opt/tex/texlive/texlive_2022/bin/x86_64-linux"
+if [ -d "$LATEX_PATH" ]; then
+	update_path_with "$LATEX_PATH"
 fi
 
 # TMux
 source "$HOME/.tmux.completion.bash"
+
+# User functions:
+function compile-with-root {
+	local filename=$(basename "${@: -1}")
+	local executable=${filename%.*}
+	g++ -std=c++11 -O2 -Wall -Wextra -pedantic -o ${executable} $(root-config --cflags) "$@" $(root-config --libs)
+}
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/software/anaconda3-2021.11/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/software/anaconda3-2021.11/etc/profile.d/conda.sh" ]; then
+        . "/home/software/anaconda3-2021.11/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/software/anaconda3-2021.11/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
