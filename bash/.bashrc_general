@@ -29,6 +29,7 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
 	export BASH_SILENCE_DEPRECATION_WARNING=1
 
 	# Aliases:
+	alias ls="$(which ls) ls -G" # turn on colors
 	alias grep="$(which grep) --color=always"
 	alias fgrep="$(which fgrep) --color=always"
 	alias egrep="$(which egrep) --color=always"
