@@ -1,6 +1,9 @@
 ### .bashrc local file for APL MacBook
 # echo "~/.bashrc"
 
+# Command prompt:
+export PS1='\u@\h:\w\$ ' # default text color
+
 # Source general definitions
 if [ -f $HOME/.bashrc_general ]; then
 	source $HOME/.bashrc_general
@@ -10,12 +13,6 @@ fi
 if [ -f $HOME/.bash_tokens ]; then
 	source $HOME/.bash_tokens
 fi
-
-# BASH
-export BASH_SILENCE_DEPRECATION_WARNING=1
-
-# Expand environment variables
-shopt -s direxpand
 
 # Environment variable for UDRIVE
 for FILE in /Volumes/aplhome*; do
@@ -27,6 +24,17 @@ done
 BOX_PATH=${HOME}/Library/CloudStorage/Box-Box
 if [ -d "$BOX_PATH" ]; then
 	export BOX=$BOX_PATH
+fi
+
+### Source thisroot.sh if exists
+THIS_ROOT=/usr/local/bin/thisroot.sh # $(brew --prefix) is /usr/local
+if [ -f "$THIS_ROOT" ]; then
+	#source "$THIS_ROOT"
+	function compile-with-root {
+		local filename=$(basename "${@: -1}")
+		local executable=${filename%.*}
+		g++ -std=c++11 -O2 -Wall -Wextra -pedantic -o ${executable} $(root-config --cflags) "$@" $(root-config --libs)
+	}
 fi
 
 ## APL Root CA Certificate for Python
