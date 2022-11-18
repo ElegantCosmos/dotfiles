@@ -76,8 +76,7 @@ noremap <leader>E :set noexpandtab<CR>
 augroup python_files
 autocmd!
 autocmd FileType python setlocal noexpandtab
-autocmd FileType python set tabstop = 4
-autocmd FileType python set shiftwidth = 4
+autocmd FileType python set tabstop=4 softtabstop=4 shiftwidth=4
 augroup END
 
 set cino+=N-s
