@@ -1,4 +1,4 @@
-### General .bashrc file that can be used on any Linux-like system or macOS.
+### General .bashrc file that can be used on any Linux-like system or MacOS.
 #echo bashrc_general
 
 export EDITOR=vim
@@ -6,186 +6,44 @@ export EDITOR=vim
 # tmux related settings.
 alias tmux='tmux -2' # Force tmux to assume the terminal supports 256 colours.
 
+# Expand environment variables.
+shopt -s direxpand
+
 ### Linux-specific settings:
 if [[ "$OSTYPE" == "linux"* ]]; then
-	# Expand environment variables
-	shopt -s direxpand
-
-	# enable color support of ls and also add related handy aliases
+	# Aliases:
 	if [ -x /usr/bin/dircolors ]; then
 		test -r $HOME/.dircolors && eval "$(dircolors -b $HOME/.dircolors)" || eval "$(dircolors -b)"
-		alias ls='ls --color=auto'
-		alias dir='dir --color=auto'
-		alias vdir='vdir --color=auto'
+		alias ls="$(which ls) --color=always"
+		alias dir="$(which dir) --color=always"
+		alias vdir="$(which vdir) --color=always"
 
-		alias grep='grep --color=auto'
-		alias fgrep='fgrep --color=auto'
-		alias egrep='egrep --color=auto'
-	fi
-
-	# more aliases
-	alias open='xdg-open'
-
-	### Linux system-specific settings:
-	if [[ "$(hostname)" == "daniel" ]] || [[ "$(hostname)" == "kahr" ]]; then # JHU-APL
-		function compile-with-root {
-			local filename=$(basename "${@: -1}")
-			local executable=${filename%.*}
-			g++ -std=c++11 -O2 -Wall -Wextra -pedantic -o ${executable} $(root-config --cflags) "$@" $(root-config --libs)
-		}
-	elif [[ "$NERSC_HOST" == "pdsf"* ]] || [[ "$NERSC_HOST" == "cori"* ]]; then # UC Berkeley
-		### Command prompt
-		export PS1='\[\e[0;31m\]\u@\h:\w\$ \[\e[m\]'
-
-		### Useful directories
-		export SCRATCH=/project/projectdirs/cuore/scratch/michsakai
-		export SIMULATION_CUORE=/project/projectdirs/cuore/syncData/CUORE_simulation
-		export DATA_CUORE=/global/projecta/projectdirs/cuore/syncData
-
-		### Functions
-		function g++-diana {
-			local filename=$(basename "$@")
-			local executable=${filename%.*}
-			g++ -std=c++11 -O2 -Wall -Wextra -Wshadow -I${BOOST_ROOT}/include -L${BOOST_ROOT}/lib -lboost_regex $(root-config --cflags --glibs) -o ${executable} "$@"
-		}
-		function g++-root {
-			local filename=$(basename "$@")
-			local executable=${filename%.*}
-			g++ -std=c++11 -O2 -Wall -Wextra -Wshadow -I${BOOST_ROOT}/include -L${BOOST_ROOT}/lib -lboost_regex $(root-config --cflags --glibs) -lRooFit -lMinuit2 -I${BOOST_ROOT}/include -o ${executable} "$@"
-		}
-
-		#### System installed software
-		#module load vim
-		#module load cmake
-		#module load git
-		#module load python3/3.7-anaconda-2019.07
-		#module load root/6.18.00-py3
-
-		#if [[ "$NERSC_HOST" == "cori"* ]]; then
-		#	LD_LIBRARY_PATH_NEW=$HOME/.opt/openssl/openssl-1.1.1/lib # libraries needed specifically for tmux
-		#	if [[ -d "$LD_LIBRARY_PATH_NEW" ]]; then
-		#		export LD_LIBRARY_PATH=$LD_LIBRARY_PATH_NEW${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}
-		#	fi
-		#fi
-
-		### manually installed modules in Mich's home
-		#module use /global/homes/m/mich/.opt/modulefiles
-
-		#### libevent libraries
-		#if [[ -z "$TMUX" ]]; then
-		#	LD_LIBRARY_PATH_NEW=$HOME/.opt/libevent/libevent-2.1.8-stable/lib
-		#	if [[ -d "$LD_LIBRARY_PATH_NEW" ]]; then
-		#		export LD_LIBRARY_PATH=$LD_LIBRARY_PATH_NEW${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}
-		#	fi
-		#fi
-
-		### Aliases for shifterimg
-		alias shifter_cuoresw='shifter --image=michsakai/docker-cuoreswbase-geant4.9.6.p04'
-
-		### gvfs-trash command variables
-		export XDG_DATA_HOME=${XDG_DATA_HOME:="$HOME/.local/share"}
-		alias trash='gio trash'
-
-	elif [[ "$(hostname)" == "nino" ]]; then # Orebi-Gann Lab
-		### Command prompt
-		export PS1='\[\e[0;36m\]\u@\h:\w\$ \[\e[m\]'
-
-		function compile-with-root {
-			local filename=$(basename "${@: -1}")
-			local executable=${filename%.*}
-			g++ -std=c++11 -O2 -Wall -Wextra -pedantic -o ${executable} $(root-config --cflags) "$@" $(root-config --libs)
-		}
-		function compile-with-rat {
-			local filename=$(basename "${@: -1}")
-			local executable=${filename%.*}
-			g++ -std=c++11 -O2 -Wall -Wextra -pedantic -o ${executable} -I${RATROOT}/include $(root-config --cflags) "$@" -L${RATROOT}/lib -lRATEvent $(root-config --libs)
-		}
-
-		### libevent libraries
-		if [[ -z $TMUX ]]; then
-			LD_LIBRARY_PATH_NEW=$HOME/.opt/libevent/libevent-2.1.8-stable/lib
-			if [[ -d "$LD_LIBRARY_PATH_NEW" ]]; then
-				export LD_LIBRARY_PATH=$LD_LIBRARY_PATH_NEW${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}
-			fi
-		fi
-
-		### gvfs-trash command variables
-		export XDG_DATA_HOME=${XDG_DATA_HOME:="$HOME/.local/share"}
-		alias trash='gvfs-trash'
-
-	elif [[ "$(hostname)" == "vmUbuntuG4" ]] || [[ "$(hostname)" == "kahr" ]] || [[ "$(hostname)" == "amds-a3g-ld01" ]]; then
-		### Command prompt
-		export PS1='\[\e[0;34m\]\u@\h:\w\$ \[\e[m\]'
-
-		function compile-with-root {
-			local filename=$(basename "${@: -1}")
-			local executable=${filename%.*}
-			g++ -std=c++11 -O2 -Wall -Wextra -pedantic -o ${executable} $(root-config --cflags) "$@" $(root-config --libs)
-		}
+		alias grep="$(which grep) --color=always"
+		alias fgrep="$(which fgrep) --color=always"
+		alias egrep="$(which egrep) --color=always"
 	fi
 
 ### MacOS-specific settings:
 elif [[ "$OSTYPE" == "darwin"* ]]; then
+	# MacOS's default interactive shell is now zsh. Suppress related warnings.
 	export BASH_SILENCE_DEPRECATION_WARNING=1
 
-	### Expand environment variables.
-	### It is recommended to install modern bash using home brew. Follow the steps below:
+	# Aliases:
+	alias grep="$(which grep) --color=always"
+	alias fgrep="$(which fgrep) --color=always"
+	alias egrep="$(which egrep) --color=always"
+
+	# BASH terminal ls color setting:
+	export LSCOLORS=GxFxCxDxBxegedabagaced
+
+	# BASH tab-completion scripts (requires: brew install bash-completion)
+	[[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && source "/usr/local/etc/profile.d/bash_completion.sh"
+
+	### Note:
+	### It is recommended to install modern bash using home brew.
+	### Follow the steps below.
 	### $ brew install bash
 	### $ chsh -s /usr/local/bin/bash
 	### $ sudo bash -c 'echo /usr/local/bin/bash >> /etc/shells'
 	### $ ln -s /usr/local/bin/bash /usr/local/bin/bash-terminal-app
-
-	### bash tab-completion scripts (requires: brew install bash-completion)
-	[[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
-
-	### Alias for Docker
-	#alias doc_cuoresw='docker run -it --rm --mount type=bind,source="$HOME",destination=/root/michsakai,consistency=delegated -w="/root/michsakai" --entrypoint /bin/bash charstnut/docker-cuoreswbase /root/michsakai/Soft/docker_dev/cupid_mo_docker/entrypoint.sh'
-
-	#### Add brew related scripts into PATH
-	#if [[ -n "$TMUX" ]]; then
-	#	export PATH=/usr/local/bin${PATH:+:$PATH}
-	#fi
-
-	### Modify PATH for user-specific scripts.
-	PATH_NEW=$HOME/.opt/bin
-	if [ -d "$PATH_NEW" ]; then
-		export PATH=$PATH_NEW${PATH:+:$PATH}
-	fi
-
-	### Java environment manager
-	if [ -d $HOME/.jenv/bin ]; then
-		export PATH=$HOME/.jenv/bin${PATH:+:$PATH}
-		if command -v jenv &> /dev/null; then
-			eval "$(jenv init -)"
-		fi
-	fi
-	
-	### Command prompt
-	export PS1='\u@\h:\w\$ ' # default text color
-
-	### grep options
-	export GREP_OPTIONS='--color=auto'
-
-	### Matplotlib
-	export MATPLOTLIBRC=$HOME/.config/matplotlib
-
-	### Colored terminal settings ###
-	export CLICOLOR=1
-	export LSCOLORS=GxFxCxDxBxegedabagaced
-
-	### Source thisroot.sh if exists
-	THIS_ROOT=/usr/local/bin/thisroot.sh # $(brew --prefix) is /usr/local
-	if [ -f "$THIS_ROOT" ]; then
-		#source "$THIS_ROOT"
-		function compile-with-root {
-			local filename=$(basename "${@: -1}")
-			local executable=${filename%.*}
-			g++ -std=c++11 -O2 -Wall -Wextra -pedantic -o ${executable} $(root-config --cflags) "$@" $(root-config --libs)
-		}
-	fi
-
-	### python environment
-	if command -v pyenv &> /dev/null; then
-		eval "$(pyenv init -)"
-	fi
 fi
