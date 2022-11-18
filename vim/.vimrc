@@ -198,8 +198,9 @@ endfunction
 """ Color scheme
 "set background = dark
 "colorscheme default
-colorscheme molokai
-let g:molokai_original = 1
+"colorscheme molokai
+"let g:molokai_original = 1
+colorscheme tender
 let g:rehash256 = 1
 
 " Theme
