@@ -62,19 +62,5 @@ bind-key -t vi-copy 'r' rectangle-toggle
 
 # List of plugins
 run-shell ~/.tmux/plugins/tmux-yank/yank.tmux
-run-shell ~/.tmux/plugins/tmux-resurrect/resurrect.tmux
-run-shell ~/.tmux/plugins/tmux-continuum/continuum.tmux
 run-shell ~/.tmux/plugins/tmux-copycat/copycat.tmux
 run-shell ~/.tmux/plugins/tmux-open/open.tmux
-
-# Restoring vim and neovim sessions
-# for vim
-set-option -g @resurrect-strategy-vim 'session'
-# for neovim
-#set-option -g @resurrect-strategy-nvim 'session'
-
-# Automatic tmux environment restoration
-set-option -g @continuum-restore 'on'
-
-# tmux environment save interval in minutes
-set-option -g @continuum-save-interval '60'
