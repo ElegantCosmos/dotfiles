@@ -1,10 +1,20 @@
 ### .bashrc local file for APL MacBook
 # echo "~/.bashrc"
 
-# Source general definitions
-if [ -f $HOME/.bashrc_general ]; then
-	source $HOME/.bashrc_general
-fi
+# Command prompt:
+export PS1='\u@\h:\w\$ ' # default text color
+
+# Functions to update system environment variables while keeping entries unique:
+update_path_with() { case ":${PATH:=$1}:" in *:"$1":*) ;; *) export PATH="$1:$PATH" ;; esac; }
+update_ldlibrarypath_with() { case ":${LD_LIBRARY_PATH:=$1}:" in *:"$1":*) ;; *) export LD_LIBRARY_PATH="$1:$LD_LIBRARY_PATH" ;; esac; }
+
+# Function to source file:
+source_file () {
+    [[ -f "$1" ]] && source "$1"
+}
+
+source_file $HOME/.bashrc_general
+source_file /usr/local/etc/profile.d/bash_completion.sh # git, tmux completion
 
 # BASH
 export BASH_SILENCE_DEPRECATION_WARNING=1
