@@ -3,7 +3,22 @@ set nocompatible " Necesary for lots of cool vim things set nocompatible
 """ Pathogen VIM plugin runtime path manager """
 call pathogen#infect()
 
-syntax on
+""" Color scheme
+"colorscheme molokai
+"let g:molokai_original = 1
+colorscheme tender
+let g:rehash256 = 1
+
+""" Syntax colors
+"syntax on
+syntax enable
+
+" Search
+set hlsearch
+highlight clear Search
+highlight Search cterm = bold ctermfg = White ctermbg = DarkGreen
+set incsearch
+
 set synmaxcol=9999
 filetype plugin on
 filetype indent on
@@ -25,11 +40,9 @@ autocmd FileType * setlocal formatoptions=cqt
 set wildmode=longest,list,full " BASH-like tab completion in file search
 set wildmenu " list menu in file search
 set spelllang=en_us
-set hlsearch
 set scrolloff=1
 set ignorecase
 set smartcase
-set incsearch
 set nrformats-=octal
 "if $TMUX == '' " don't use unnamed register when using tmux
 "	set clipboard = unnamed
@@ -194,53 +207,37 @@ function s:MaybeMiddle()
 	endif
 endfunction
 
-""" Color scheme
-"set background = dark
-"colorscheme default
-"colorscheme molokai
-"let g:molokai_original = 1
-colorscheme tender
-let g:rehash256 = 1
-
-" Theme
-syntax enable
-
-""" Highlighting for spelling
-highlight clear SpellBad
-highlight SpellBad cterm = underline ctermfg = Red
-highlight SpellRare cterm = underline
-highlight SpellCap cterm = underline
-highlight SpellLocal cterm = underline
-highlight SpellBad gui = undercurl " Set style for gVim
-syn match myExCapitalWords +\<\w*[_0-9A-Z-]\w*\>+ contains = @NoSpell " don't check words that include '_', numbers, capital letters
-
-""" Transparent background.
-highlight Normal cterm = none ctermbg = none
+"""" Highlighting for spelling
+"highlight clear SpellBad
+"highlight SpellBad cterm = underline ctermfg = Red
+"highlight SpellRare cterm = underline
+"highlight SpellCap cterm = underline
+"highlight SpellLocal cterm = underline
+"highlight SpellBad gui = undercurl " Set style for gVim
+"syn match myExCapitalWords +\<\w*[_0-9A-Z-]\w*\>+ contains = @NoSpell " don't check words that include '_', numbers, capital letters
+"
+"""" Transparent background.
+"highlight Normal cterm = none ctermbg = none
 highlight DiffAdd cterm = none ctermfg = White ctermbg = DarkBlue
 highlight DiffDelete cterm = none ctermfg = White ctermbg = DarkGray
 highlight DiffChange cterm = none ctermfg = White ctermbg = DarkYellow
 highlight DiffText cterm = bold ctermfg = White ctermbg = DarkRed
-"highlight DiffAdd cterm = none ctermbg = LightBlue
-"highlight DiffDelete cterm = none ctermbg = DarkGray
-"highlight DiffChange cterm = none ctermfg = White ctermbg = DarkGray
-"highlight DiffText cterm = bold ctermfg = White ctermbg = DarkRed
-highlight clear LineNr
-highlight clear SignColumn
-highlight LineNr ctermfg = 237
+"highlight clear LineNr
+"highlight clear SignColumn
+"highlight LineNr ctermfg = 237
 
 """ Indent guides
 let g:indent_guides_auto_colors = 0
 let g:indent_guides_enable_on_vim_startup = 1
-highlight IndentGuidesEven ctermbg = 235
+highlight IndentGuidesEven ctermbg = 234
 highlight IndentGuidesOdd ctermbg = None
 
 """ Selection highlight color
-hi Visual  term = reverse cterm = reverse gui = none
+highlight Visual term = reverse cterm = reverse gui = none
 
 """ fold method
 set foldmethod=indent
 set foldopen-=search "Do not open fold during search
-highlight Folded ctermbg=DarkGray
 au BufRead * normal zR
 inoremap <F9> <C-O>za
 nnoremap <F9> za
