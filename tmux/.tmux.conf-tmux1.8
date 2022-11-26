@@ -28,6 +28,7 @@ set-option -g status-right '%Y %h %d %H:%M'
 # Rename window.
 unbind-key n  #DEFAULT KEY: Move to next window
 bind-key n command-prompt "rename-window '%%'"
+set-option -g allow-rename off # do not automatically rename window after manual rename
 
 # Splitting panes.
 unbind-key '"'
