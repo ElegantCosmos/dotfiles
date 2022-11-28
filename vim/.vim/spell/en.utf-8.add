@@ -20,7 +20,6 @@ R3600
 Cherenkov
 Tyvek
 PMT
-#7250
 R7250
 Kamiokande
 dynode
@@ -97,8 +96,6 @@ VUV
 monochromator
 systematics
 specular
-#m
-nm/!
 nm
 superinsulation
 convolved
@@ -132,3 +129,4 @@ MCTAL
 NIF
 Kapton
 Polyimide
+NGI
