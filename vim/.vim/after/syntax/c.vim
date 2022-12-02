@@ -1,39 +1,62 @@
+" ==============================================================================
 " Vim syntax file
-" Language:	C/C++ ROOT 
-" Maintainer:	Theo Christoudias
-" Last Change:	2008 Oct 18
-" Remark:	Addon to c.vim (see :help 44.11)
-" Remark:	ROOT webite: http://root.cern.ch
+" Language:        C Additions
+" Original Author: Mikhail Wolfson <mywolfson@gmail.com>
+" Maintainer:      bfrg <https://github.com/bfrg>
+" Website:         https://github.com/bfrg/vim-cpp-modern
+" Last Change:     Jul 24, 2021
+"
+" This syntax file is based on:
+" https://github.com/octol/vim-cpp-enhanced-highlight
+" ==============================================================================
 
-if !exists("c_no_cern_root")
-   syn keyword	cType		TH1 TH1C TH1D TH1F TH1I TH1K TH1S 
-   syn keyword	cType		TH2 TH2C TH2D TH2F TH2I TH2S
-   syn keyword	cType		TH3 TH3C TH3D TH3F TH3I TH3S
-   syn keyword	cType		TF1 TF2 TF3
-   syn keyword	cType		THStack TGraph TGraph2D TCanvas TRandom TLimit TLatex
-   syn keyword	cType		TNtuple TObject TTree TIter TKey TRandom2 TShape TPad TMacro
-   syn keyword	cType           TString TLine TLegend TFile TDatime TRandom3 TMath
-   syn keyword	cType           TLeaf TLeafB TLeafC TLeafD TLeafElement TLeafF TLeafI TLeafL TLeafO TLeafObject
-   syn keyword	cType           TChain TDirectory TList TArc TBox TEllipse TPolyLine TCurlyLine TCurlyArc TEllipse
-   syn keyword	cType           TMinuit TFitter TLinearFitter TLorentzVector TLorentzRotation TVector3 TVector2
-   syn keyword	cType           TRotation TGenPhaseSpace TFeldmanCousins TRobustEstimator TRolke TQuaternion
-   syn keyword	cType           TPostScript TSVG TPDF TImageDump THtml TColor TStyle TComplex TPRegexp
-   syn keyword	cType           TObjArrayIter TMapIter TClass TEnv TGlobal TCint TROOT TDictionary TTime TTimer
-   syn keyword	cType           Double_t Int_t Float_t Long_t Bool_t Byte_t
-   syn keyword	cType      	char_t Marker_t Double32_t Float16_t Long64_t
-   syn keyword	cType           Short_t Stat_t Style_t Text_t UShort_t  
-   syn keyword	cConstant       kRed kPink kBlue kMagenta kViolet kAzure kCyan kTeal kGreen kSpring kYellow
-   syn keyword	cConstant       kSolid kDashed kDotted kDashDotted kDot kPlus kStar kCircle kMultiply kFullDotSmall
-   syn keyword	cConstant       kFullDotMedium kFullDotLarge kOpenTriangleDown kFullCross kFullCircle kFullSquare
-   syn keyword	cConstant       kFullTriangleUp kFullTriangleDown kOpenCircle kOpenSquare kOpenTriangleUp 
-   syn keyword	cConstant       kOpenDiamond kOpenCross kFullStar kOpenStar
-   syn keyword	cConstant       kTRUE kFALSE 
-   syn keyword	cConstant       kIsClass kIsStruct kIsUnion kIsEnum kIsNamespace kIsTypedef kIsFundamental 
-   syn keyword	cConstant       kIsAbstract kIsVirtual kIsPureVirtual kIsPublic kIsProtected kIsPrivate kIsPointer 
-   syn keyword	cConstant       kIsArray kIsStatic kIsDefault kIsReference kIsConstant kIsConstPointer kIsMethConst
-   syn keyword	cSpecial        gGeometry gHistImagePalette gWebImagePalette gGrid gClassTable gObjectTable
-   syn keyword	cSpecial        gProof gPerfStats gTQSender gTQSlotParams gDebug gDirectory gROOT gFile gPad 
-   syn keyword	cSpecial        gApplication gBenchmark gEnv gErrorIgnoreLevel gErrorAbortLevel gRandom gStyle
-   syn keyword	cSpecial        gRootDir gProgName gProgPath gSystem gVirtualPS gDragManager gGuiBuilder gCurrentRegion
-   syn keyword	cSpecial        gClient gMinuit gHtml
+
+" Highlight additional keywords in the comments
+syn keyword cTodo contained BUG NOTE
+
+
+" Highlight function names
+if get(g:, 'cpp_function_highlight', 1)
+    syn match cUserFunction "\<\h\w*\>\(\s\|\n\)*("me=e-1 contains=cParen,cCppParen
+    hi def link cUserFunction Function
+endif
+
+
+" Highlight struct/class member variables
+if get(g:, 'cpp_member_highlight', 0)
+    syn match cMemberAccess "\.\|->" nextgroup=cStructMember,cppTemplateKeyword
+    syn match cStructMember "\<\h\w*\>\%((\|<\)\@!" contained
+    syn cluster cParenGroup add=cStructMember
+    syn cluster cPreProcGroup add=cStructMember
+    syn cluster cMultiGroup add=cStructMember
+    hi def link cStructMember Identifier
+
+    if &filetype ==# 'cpp'
+        syn keyword cppTemplateKeyword template
+        hi def link cppTemplateKeyword cppStructure
+    endif
+endif
+
+
+" Common ANSI-standard Names
+syn keyword cAnsiName
+        \ PRId8 PRIi16 PRIo32 PRIu64 PRId16 PRIi32 PRIo64 PRIuLEAST8 PRId32 PRIi64 PRIoLEAST8 PRIuLEAST16 PRId64 PRIiLEAST8 PRIoLEAST16 PRIuLEAST32 PRIdLEAST8 PRIiLEAST16 PRIoLEAST32 PRIuLEAST64 PRIdLEAST16 PRIiLEAST32 PRIoLEAST64 PRIuFAST8 PRIdLEAST32 PRIiLEAST64 PRIoFAST8 PRIuFAST16 PRIdLEAST64 PRIiFAST8 PRIoFAST16 PRIuFAST32 PRIdFAST8 PRIiFAST16 PRIoFAST32 PRIuFAST64 PRIdFAST16 PRIiFAST32 PRIoFAST64 PRIuMAX PRIdFAST32 PRIiFAST64 PRIoMAX PRIuPTR PRIdFAST64 PRIiMAX PRIoPTR PRIx8 PRIdMAX PRIiPTR PRIu8 PRIx16 PRIdPTR PRIo8 PRIu16 PRIx32 PRIi8 PRIo16 PRIu32 PRIx64 PRIxLEAST8 SCNd8 SCNiFAST32 SCNuLEAST32 PRIxLEAST16 SCNd16 SCNiFAST64 SCNuLEAST64 PRIxLEAST32 SCNd32 SCNiMAX SCNuFAST8 PRIxLEAST64 SCNd64 SCNiPTR SCNuFAST16 PRIxFAST8 SCNdLEAST8 SCNo8 SCNuFAST32 PRIxFAST16 SCNdLEAST16 SCNo16 SCNuFAST64 PRIxFAST32 SCNdLEAST32 SCNo32 SCNuMAX PRIxFAST64 SCNdLEAST64 SCNo64 SCNuPTR PRIxMAX SCNdFAST8 SCNoLEAST8 SCNx8 PRIxPTR SCNdFAST16 SCNoLEAST16 SCNx16 PRIX8 SCNdFAST32 SCNoLEAST32 SCNx32 PRIX16 SCNdFAST64 SCNoLEAST64 SCNx64 PRIX32 SCNdMAX SCNoFAST8 SCNxLEAST8 PRIX64 SCNdPTR SCNoFAST16 SCNxLEAST16 PRIXLEAST8 SCNi8 SCNoFAST32 SCNxLEAST32 PRIXLEAST16 SCNi16 SCNoFAST64 SCNxLEAST64 PRIXLEAST32 SCNi32 SCNoMAX SCNxFAST8 PRIXLEAST64 SCNi64 SCNoPTR SCNxFAST16 PRIXFAST8 SCNiLEAST8 SCNu8 SCNxFAST32 PRIXFAST16 SCNiLEAST16 SCNu16 SCNxFAST64 PRIXFAST32 SCNiLEAST32 SCNu32 SCNxMAX PRIXFAST64 SCNiLEAST64 SCNu64 SCNxPTR PRIXMAX SCNiFAST8 SCNuLEAST8 PRIXPTR SCNiFAST16 SCNuLEAST16 STDC CX_LIMITED_RANGE STDC FENV_ACCESS STDC FP_CONTRACT
+        \ errno environ and bitor not_eq xor and_eq compl or xor_eq bitand not or_eq
+
+" Booleans
+syn keyword cBoolean true false TRUE FALSE
+
+
+" Default highlighting
+hi def link cBoolean  Boolean
+hi def link cAnsiName Identifier
+
+
+" Highlight all standard C keywords as Statement
+" This is very similar to what other IDEs and editors do
+if get(g:, 'cpp_simple_highlight', 0)
+    hi! def link cStorageClass Statement
+    hi! def link cStructure    Statement
+    hi! def link cTypedef      Statement
+    hi! def link cLabel        Statement
 endif
