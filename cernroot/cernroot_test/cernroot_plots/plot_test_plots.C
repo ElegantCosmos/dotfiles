@@ -48,8 +48,8 @@
 	graph.Draw("ALP");
 	graph.SetLineColor(palette.GetColor("blue"));
 	graph.SetMarkerColor(palette.GetColor("blue"));
-	graph.GetXaxis()->SetTitle("A_{g}^{T}  Log_{10}/E_{pqyg} [cm] #sqrt{2}");
-	graph.GetYaxis()->SetTitle("A_{g}^{T}  Log_{10}/E_{pqyg} [A.U.] #sqrt{2}");
+	graph.GetXaxis()->SetTitle("A_{g}^{T} [cm] #sqrt{2} Log_{10}/E_{pqyg}");
+	graph.GetYaxis()->SetTitle("A_{g}^{T} [A.U.] #sqrt{2} Log_{10}/E_{pqyg}");
 	//graph.GetXaxis()->SetLimits(0, 5);
 	//graph.GetYaxis()->SetRangeUser(-1, 5); // also works
 	//graph.SetMaximum(5);
