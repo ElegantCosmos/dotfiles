@@ -109,12 +109,12 @@ void SetPaletteAxis(TH1* hist, const TString& title = "A_{g}^{T} Log_{10} #sqrt{
 
 	//gStyle->SetPalette(kRainBow, 0);
 	TPaletteAxis* axis = dynamic_cast<TPaletteAxis*>(hist->GetListOfFunctions()->FindObject("palette"));
-	double x_col = 0.92;
-	double width_col = 0.01;
-    x_col = (canvasWidth_mm - text_column_width_mm*(1 - x_col))/canvasWidth_mm; // scale with plot width
-    width_col = width_col*(text_column_width_mm/canvasWidth_mm); // scale with plot width
+	double x_col = leftMargin_mm/canvasWidth_mm;
+	double width_col = plotAreaWidth_mm/canvasWidth_mm;
+	double y_col = (canvasHeight_mm - topMargin_mm - plotAreaHeight_mm - 11)/canvasHeight_mm;
+	double height_col = 0.01;
 	axis->SetX1NDC(x_col); axis->SetX2NDC(x_col + width_col);
-	//hist->GetZaxis()->SetTitleOffset(-0.40);
+	axis->SetY1NDC(y_col); axis->SetY2NDC(y_col + height_col);
 	hist->GetZaxis()->SetTitle(title);
 	hist->SetContour(255); // resolution of palette
 	gPad->SetFrameLineWidth(10);
