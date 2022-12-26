@@ -3,7 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 xs = np.array([0.1, 1, 10, 100, 200])
-ys = np.array([-600, 20, 200, 100, 300])
+ys = np.array([-600, 20, 1000, 100, 300])
 
 # the histogram of the data
 fig, ax = plt.subplots()
