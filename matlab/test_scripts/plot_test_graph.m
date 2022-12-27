@@ -87,3 +87,4 @@ ax = gca;
 format_axes(ax);
 
 print('test_graph', '-dpdf', '-r600', '-painters', '-loose') % -painters needed for hi-res
+%export_fig('-nocrop', 'test_graph_export_fig.pdf')
