@@ -12,6 +12,12 @@ set(groot, 'defaultTextInterpreter', 'latex');
 set(groot, 'defaultLegendInterpreter', 'latex');
 set(groot, 'defaultColorbarTickLabelInterpreter', 'latex');
 set(groot, 'defaultLegendInterpreter', 'latex');
+set(groot, 'defaultTextboxshapeInterpreter', 'latex');
+set(groot, 'defaultTextarrowshapeInterpreter', 'latex');
+set(groot, 'defaultPolaraxesTickLabelInterpreter', 'latex');
+set(groot, 'defaultGraphplotInterpreter', 'latex');
+set(groot, 'defaultConstantlineInterpreter', 'latex');
+set(groot, 'defaultBubblelegendInterpreter', 'latex');
 
 %set(groot, 'defaultAxesFontName', 'CMU Serif Roman'); % kind of fonts of labels % [Times | Courier | ]
 %set(groot, 'defaultTextFontName', 'CMU Serif Roman'); % kind of fonts of labels % [Times | Courier | ]
@@ -26,74 +32,92 @@ set(groot, 'defaultAxesUnits', 'inches');
 
 % Global dimensions for formatting figure size:
 global global_figure_scale;
-global global_twocolumnarticle_columnwidth_in;
-global global_figurepaperwidth_in;
-global global_figurepaperheight_in;
+global global_fontsize_pt;
+global global_left_margin_frac;
+global global_plot_area_width_frac;
 
-global_figure_scale = 2.0; % arbitrary global_figure_scale of plot
-goldenratio = 0.5*(1 + sqrt(5)); % golden ratio constant
+global_figure_scale = 2.0; % arbitrary scale of plot for easier viewing
+golden_ratio = 0.5*(1 + sqrt(5)); % golden ratio constant
 mm_per_in = 25.4;
 
 % Paper text body dimensions:
-textcolumnwidth_mm = 90;
-
-% Common figure dimensions:
-margin_left_frac = 0.14;
-margin_bottom_frac = 0.20;
-figurewidth_frac = 0.72;
-figureheight_frac = 0.72;
-
-global_twocolumnarticle_columnwidth_in = textcolumnwidth_mm/mm_per_in;
+textcolumnwidth_mm = 90.0; % 90 mm, width of single column for double column paper
+textcolumnwidth_in = textcolumnwidth_mm/mm_per_in;
 
 % % Dimensions for figure with width = 90 mm and equal axes lengths
-% global_figurepaperwidth_in = textcolumnwidth_mm/mm_per_in;
-% global_figurepaperheight_in = global_figurepaperwidth_in;
+% figure_paper_width_in = textcolumnwidth_mm/mm_per_in;
+% figure_paper_height_in = figure_paper_width_in;
 
 % Dimensions for figure with width = 90 mm and golden ratio axes lengths
-global_figurepaperwidth_in = global_figure_scale*textcolumnwidth_mm/mm_per_in;
-global_figurepaperheight_in = global_figure_scale*textcolumnwidth_mm/mm_per_in/goldenratio; % golden ratio for figure height
+figure_paper_width_mm = textcolumnwidth_mm;
+figure_paper_height_mm = 57.5; % no color bar below plot
+%figure_paper_height_mm = 67.5; % color bar below plot
+
+figure_paper_width_in = figure_paper_width_mm/mm_per_in;
+figure_paper_height_in = figure_paper_height_mm/mm_per_in;
+
 
 % % Dimensions for figure with width = 190 mm and fixed vertical axis length
 % textcolumnspacing_mm = 10;
-% global_figurepaperwidth_in = (2*textcolumnwidth_mm + textcolumnspacing_mm)/mm_per_in;
-% global_figurepaperheight_in = textcolumnwidth_mm/mm_per_in/goldenratio;
-% margin_left_frac = margin_left_frac*textcolumnwidth_mm/mm_per_in/global_figurepaperwidth_in;
-% figurewidth_frac = 1 - 2*margin_left_frac;
+% figure_paper_width_in = (2*textcolumnwidth_mm + textcolumnspacing_mm)/mm_per_in;
+% figure_paper_height_in = textcolumnwidth_mm/mm_per_in/golden_ratio;
+% global_left_margin_frac = global_left_margin_frac*textcolumnwidth_mm/mm_per_in/figure_paper_width_in;
+% global_plot_area_width_frac = 1 - 2*global_left_margin_frac;
+
+% Common figure dimensions:
+top_margin_mm = 4.0;
+left_margin_mm = 13.0;
+plot_area_width_mm = 70;
+plot_area_height_mm = plot_area_width_mm/golden_ratio;
+
+global_left_margin_frac = left_margin_mm/figure_paper_width_mm;
+bottom_margin_frac = (figure_paper_height_mm - top_margin_mm - plot_area_height_mm)/figure_paper_height_mm;
+global_plot_area_width_frac = plot_area_width_mm/figure_paper_width_mm;
+plot_area_height_frac = plot_area_height_mm/figure_paper_height_mm;
 
 % Other dimensions:
-fontsize_pt = global_figure_scale*8;
-pt_per_in = 72.0;
-ticklength_in = fontsize_pt/3.0/pt_per_in;
-ticklength_norm = ticklength_in/max(figurewidth_frac*global_figurepaperwidth_in, figureheight_frac*global_figurepaperheight_in);
-ticklength_cb_norm = ticklength_in/(figureheight_frac*global_figurepaperheight_in);
+linewidth = 0.5;
+marker_size = 6;
+global_fontsize_pt = 8;
+pt_per_in = 72.0; % definition for international Pt (not US Pt)
+ticklength_in = global_fontsize_pt/pt_per_in/3.0; % 1/3 of standard font pt size
+ticklength_norm = ticklength_in/max(global_plot_area_width_frac*figure_paper_width_in, plot_area_height_frac*figure_paper_height_in);
+
+% Apply scaling:
+linewidth = global_figure_scale*linewidth;
+marker_size = global_figure_scale*marker_size;
+global_fontsize_pt = global_figure_scale*global_fontsize_pt;
+figure_paper_width_in = global_figure_scale*figure_paper_width_in;
+figure_paper_height_in = global_figure_scale*figure_paper_height_in;
 
 % Figure position and width/height used for *.eps plots
 % [left bottom width height]:
-set(groot, 'defaultFigurePosition', [1 1 global_figurepaperwidth_in global_figurepaperheight_in]);
+set(groot, 'defaultFigurePosition', [1 1 figure_paper_width_in figure_paper_height_in]);
 
 % Figure width/height used for *.pdf plots:
-set(groot, 'defaultFigurePaperSize', [global_figurepaperwidth_in global_figurepaperheight_in]);
+set(groot, 'defaultFigurePaperSize', [figure_paper_width_in figure_paper_height_in]);
 set(groot, 'defaultFigurePaperSizeMode', 'manual');
 set(groot, 'defaultFigurePaperType', '<custom>')
 set(groot, 'defaultFigurePaperTypeMode', 'manual');
 
 % Figure properties
 % Positioning of figure inside overall plot paper:
-set(groot, 'defaultFigurePaperPosition', [0 0 global_figurepaperwidth_in global_figurepaperheight_in]);
+set(groot, 'defaultFigurePaperPosition', [0 0 figure_paper_width_in figure_paper_height_in]);
 % we link the dimension of the figure ON THE PAPER in such a way that
 % it is equal to the dimension on the screen
 %
 % ATTENTION: if PaperPositionMode is not 'auto' the saved file
 % could have different dimensions from the one shown on the screen!
 set(groot, 'DefaultFigurePaperPositionMode', 'auto'); % recommended by documentation
+set(groot, 'defaultFigureColor', [1 1 1]);
 %set(groot, 'defaultFigureColormap', jet);
 
 % Axes properties:
-set(groot, 'DefaultAxesLineWidth', global_figure_scale*0.5)
+set(groot, 'DefaultAxesLineWidth', linewidth)
 set(groot, 'defaultAxesUnits', 'normalized', ... % positions and size of axes
-    'defaultAxesPosition',[margin_left_frac margin_bottom_frac figurewidth_frac figureheight_frac]);
+    'defaultAxesPosition',[global_left_margin_frac bottom_margin_frac global_plot_area_width_frac plot_area_height_frac]);
 set(groot, 'defaultAxesFontUnits', 'points'); % units of the size of fonts % [{points} | normalized | inches | centimeters | pixels]
-set(groot, 'defaultAxesFontSize', fontsize_pt); % size of fonts of labels
+set(groot, 'defaultAxesFontSize', global_fontsize_pt); % size of fonts of labels
 set(groot, 'defaultAxesFontSizeMode', 'manual');
 set(groot, 'defaultAxesFontWeight', 'normal'); % weight of fonts of labels % [light | {normal} | demi | bold]
 set(groot, 'defaultAxesTitleFontWeight', 'normal'); % weight of font of title % [light | {normal} | demi | bold]
@@ -109,15 +133,19 @@ set(groot, 'defaultAxesTitleFontSizeMultiplier', 1); % title font size multiplie
 set(groot, 'defaultAxesLabelFontSizeMultiplier', 1); % label font size multiplier factor
 % ...
 
+% Plot properties:
+set(groot, 'defaultLineLineWidth', linewidth);
+set(groot, 'defaultLineMarkerSize', marker_size);
+
 % 2-D histogram color bar properties:
-set(groot, 'defaultColorbarLineWidth', global_figure_scale*0.5)
+set(groot, 'defaultColorbarLineWidth', linewidth)
 set(groot, 'defaultColorbarPositionMode', 'manual');
 set(groot, 'defaultColorbarAxisLocationMode', 'manual');
 set(groot, 'defaultColorbarAxisLocation', 'out');
 set(groot, 'defaultColorbarTickDirection', 'out');
 set(groot, 'defaultColorbarCreateFcn', @colorBarCreateFcn);
 set(groot, 'defaultColorbarBox', 'off');
-set(groot, 'defaultColorbarTickLength', ticklength_cb_norm);
+set(groot, 'defaultColorbarTickLength', ticklength_norm);
 
 % Set default color order.
 % Classic Tableau 10:
@@ -180,10 +208,12 @@ disp("Start-up script executed.");
 set(groot, 'defaultAxesCreateFcn', @axesCreateFcn);
 
 function axesCreateFcn(~, ~)
+	global global_figure_scale;
+
     ax = gca;
-    ax.XRuler.TickLabelGapOffset = 0;
-    ax.YRuler.TickLabelGapOffset = 2;
-    % ax.ZRuler.TickLabelGapOffset = 5; % don't know best number yet
+    ax.XRuler.TickLabelGapOffset = int8(global_figure_scale*0);
+    ax.YRuler.TickLabelGapOffset = int8(global_figure_scale*1);
+    %ax.ZRuler.TickLabelGapOffset = int8(global_figure_scale*5); % don't know best number yet
 end
 
 function colorbarCreateFcn(~, ~)

@@ -3,30 +3,24 @@ function format_colorbar(cb)
 
     % Get global variables for figure dimensions:
 	global global_figure_scale;
-    global global_twocolumnarticle_columnwidth_in;
-    global global_figurepaperwidth_in;
-    global global_figurepaperheight_in;
+	global global_fontsize_pt;
+	global global_left_margin_frac;
+	global global_plot_area_width_frac;
 
     % Label properties:
     cb.Label.Interpreter = 'latex';
-    cb.Label.Units = 'normalized';
-    cb.Label.Position = [-4, 0.5];
-    % cb.Label.String = '$\log_{10}{10} E_{gqyp} 10^{10}/\sqrt{2}$ [cm]';
+    %cb.Label.Units = 'normalized';
+    %cb.Label.String = '$\log_{10}{10} E_{gqyp} 10^{10}/\sqrt{2}$ [cm]';
     
     % Ruler properties:
-    cb.Ruler.FontSize = global_figure_scale*8;
-    %cb.Ruler.TickLabelGapOffset = global_figure_scale*(-1.2);
+    cb.Ruler.FontSize = global_fontsize_pt;
+    cb.Ruler.TickLabelGapOffset = int8(global_figure_scale*0);
     
     % Position and shape of colorbar:
-    cb_pos_x = 0.902;
-    cb_pos_y = 0.20;
-    cb_width = 0.01;
-    cb_height = 0.72;
-    
-    %cb_pos_x = (global_figurepaperwidth_in - global_twocolumnarticle_columnwidth_in*(1 - cb_pos_x))/global_figurepaperwidth_in; % scale with plot width
-    %cb_width = cb_width*(global_twocolumnarticle_columnwidth_in/global_figurepaperwidth_in); % scale with plot width
-    
-    cb.Position = [cb_pos_x, cb_pos_y, cb_width, cb_height];
+	cb.Location = 'southoutside';
+    cb_pos_y = 0.15;
+    cb_height = 0.01;
+    cb.Position = [global_left_margin_frac, cb_pos_y, global_plot_area_width_frac, cb_height];
 
     % % For debugging:
     % cb_pos_x = 0.13;
@@ -44,7 +38,7 @@ function format_colorbar(cb)
                 'String', ['$\times 10^{', num2str(exp_cb), '}$'], ...
                 'Interpreter', 'latex', ...
                 'FontUnits', 'points', ...
-                'FontSize', 8, ...
+                'FontSize', global_fontsize_pt, ...
                 'EdgeColor', 'none', ...
                 'HorizontalAlignment', 'left', ...
                 'VerticalAlignment', 'bottom');
