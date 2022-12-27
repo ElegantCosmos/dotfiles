@@ -39,11 +39,12 @@
 
 
 	// Tick properties:
-	static const double tickLength_mm = fontSize_medium_pt*(mmPerInch/ptPerInch)/3.0;
+	static const double tickLength_mm =
+		fontSize_medium_pt*(mmPerInch/ptPerInch)/3.0; // 1/3 of standard font pt size
 
 
 	// Canvas/plot dimensions:
-	const double textColumnWidth_mm = 90; // 90 mm, width of single column for double column paper
+	const double textColumnWidth_mm = 90.0; // 90 mm, width of single column for double column paper
 
 	//// Dimensions for figure with width = 90 mm and equal axes lengths.
 	//static const double canvasWidth_mm = textColumnWidth_mm;
