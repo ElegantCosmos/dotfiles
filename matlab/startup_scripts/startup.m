@@ -36,7 +36,7 @@ global global_fontsize_pt;
 global global_left_margin_frac;
 global global_plot_area_width_frac;
 
-global_figure_scale = 2.0; % arbitrary scale of plot for easier viewing
+global_figure_scale = 1.0; % arbitrary scale of plot for easier viewing
 golden_ratio = 0.5*(1 + sqrt(5)); % golden ratio constant
 mm_per_in = 25.4;
 
@@ -108,12 +108,13 @@ set(groot, 'defaultFigurePaperPosition', [0 0 figure_paper_width_in figure_paper
 %
 % ATTENTION: if PaperPositionMode is not 'auto' the saved file
 % could have different dimensions from the one shown on the screen!
-set(groot, 'DefaultFigurePaperPositionMode', 'auto'); % recommended by documentation
+set(groot, 'defaultFigurePaperPositionMode', 'auto'); % recommended by documentation
 set(groot, 'defaultFigureColor', [1 1 1]);
 %set(groot, 'defaultFigureColormap', jet);
 
 % Axes properties:
-set(groot, 'DefaultAxesLineWidth', linewidth)
+set(groot, 'defaultAxesLineWidthMode', 'manual')
+set(groot, 'defaultAxesLineWidth', linewidth)
 set(groot, 'defaultAxesUnits', 'normalized', ... % positions and size of axes
     'defaultAxesPosition',[global_left_margin_frac bottom_margin_frac global_plot_area_width_frac plot_area_height_frac]);
 set(groot, 'defaultAxesFontUnits', 'points'); % units of the size of fonts % [{points} | normalized | inches | centimeters | pixels]
@@ -211,6 +212,10 @@ function axesCreateFcn(~, ~)
 	global global_figure_scale;
 
     ax = gca;
+	ax.XRuler.Label.Units = 'normalized'; % use fraction of plot area dimension?
+	ax.YRuler.Label.Units = 'normalized'; % use fraction of plot area dimension?
+    ax.XRuler.Label.Position(2) = -0.12; % vertical position
+    ax.YRuler.Label.Position(1) = -0.13; % horizontal position
     ax.XRuler.TickLabelGapOffset = int8(global_figure_scale*0);
     ax.YRuler.TickLabelGapOffset = int8(global_figure_scale*1);
     %ax.ZRuler.TickLabelGapOffset = int8(global_figure_scale*5); % don't know best number yet
