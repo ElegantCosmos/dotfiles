@@ -36,7 +36,7 @@ global global_fontsize_pt;
 global global_left_margin_frac;
 global global_plot_area_width_frac;
 
-global_figure_scale = 1.0; % arbitrary scale of plot for easier viewing
+global_figure_scale = 2.0; % arbitrary scale of plot for easier viewing
 golden_ratio = 0.5*(1 + sqrt(5)); % golden ratio constant
 mm_per_in = 25.4;
 
@@ -203,15 +203,16 @@ colors_tableau_classic_20 = [...
 clear variables;
 
 % Message for user:
-disp("Start-up script executed.");
+script_path = mfilename("fullpath");
+disp("Start-up script " + script_path + " executed.");
 
 % Settings for axes when they are created with a plot:
-set(groot, 'defaultAxesCreateFcn', @axesCreateFcn);
+set(groot, 'defaultAxesCreateFcn', @(~, ~)customizeAxes(gca));
+set(groot, 'defaultColorbarCreateFcn', @(~, ~)customizeColorbar(gca));
 
-function axesCreateFcn(~, ~)
+function customizeAxes(ax)
 	global global_figure_scale;
 
-    ax = gca;
 	ax.XRuler.Label.Units = 'normalized'; % use fraction of plot area dimension?
 	ax.YRuler.Label.Units = 'normalized'; % use fraction of plot area dimension?
     ax.XRuler.Label.Position(2) = -0.12; % vertical position
@@ -221,7 +222,9 @@ function axesCreateFcn(~, ~)
     %ax.ZRuler.TickLabelGapOffset = int8(global_figure_scale*5); % don't know best number yet
 end
 
-function colorbarCreateFcn(~, ~)
+function customizeColorbar(ax)
+	disp("customizeColorbar");
+
     % % None of these work; FIXME
     % ax = gca;
     % cb = ax.Colobar;
