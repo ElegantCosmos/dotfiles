@@ -14,7 +14,7 @@ function format_axes(ax)
     % % link axes in case of zooming
     % linkaxes([ax ax_b])
 
-	xticklabels(ax, strrep(yticklabels(ax),'-','$-$'));
+	xticklabels(ax, strrep(xticklabels(ax),'-','$-$'));
 	yticklabels(ax, strrep(yticklabels(ax),'-','$-$'));
-	zticklabels(ax, strrep(yticklabels(ax),'-','$-$'));
+	zticklabels(ax, strrep(zticklabels(ax),'-','$-$'));
 end
