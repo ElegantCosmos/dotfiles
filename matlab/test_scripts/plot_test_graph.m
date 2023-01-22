@@ -1,6 +1,7 @@
 clear;
 
-figure;
+fig = figure;
+format_for_publication(fig);
 
 x = [0.1 1.0 2.5 3.4 4.0 5.6 7.8 8.8 9.0 10.0];
 y = [20 30 45 40 60 65 80 75 95 90]*100; 
@@ -84,7 +85,8 @@ ax = gca;
 %axes(ax)
 % link axes in case of zooming
 %linkaxes([ax ax_b])
-format_axes(ax);
+format_for_publication(ax);
 
-print('test_graph', '-dpdf', '-r600', '-painters', '-loose') % -painters needed for hi-res
+%print('test_graph', '-dpdf', '-r600', '-painters', '-loose') % -painters needed for hi-res
 %export_fig('-nocrop', 'test_graph_export_fig.pdf')
+save_for_publication(gcf, 'test_graph');
