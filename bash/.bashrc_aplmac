@@ -14,6 +14,10 @@ if [ -f $HOME/.bash_tokens ]; then
 	source $HOME/.bash_tokens
 fi
 
+# Functions to update system environment variables while keeping entries unique
+update_path_with() { case ":${PATH:=$1}:" in *:"$1":*) ;; *) export PATH="$1:$PATH" ;; esac; }
+update_ldlibrarypath_with() { case ":${LD_LIBRARY_PATH:=$1}:" in *:"$1":*) ;; *) export LD_LIBRARY_PATH="$1:$LD_LIBRARY_PATH" ;; esac; }
+
 # Environment variable for UDRIVE
 for FILE in /Volumes/aplhome*; do
 	export UDRIVE=${FILE} # assign first dir found of aplhome*
@@ -37,9 +41,7 @@ if [ -f "$THIS_ROOT" ]; then
 	}
 fi
 
-## APL Root CA Certificate for Python
-#export PIP_CERT=${HOME}/files/access/ssl_proxy_certificate/JHUAPL-MS-Root-CA-05-21-2038-B64-text.cer # recommended by ITSD
-###export PIP_CERT=${HOME}/files/access/ssl_proxy_certificate/ca_apl.pem # recommended by ML strategic education
-#export REQUESTS_CA_BUNDLE=${HOME}/files/access/ssl_proxy_certificate/JHUAPL-MS-Root-CA-05-21-2038-B64-text.cer
-#export SSL_CERT_FILE=${HOME}/files/access/ssl_proxy_certificate/JHUAPL-MS-Root-CA-05-21-2038-B64-text.cer
-export PIP_CERT=/tmp/JHUAPL-MS-Root-CA-05-21-2038-B64-text.cer
+PATH_NEW=/Applications/MATLAB_R2022b.app/bin
+if [[ -d "$PATH_NEW" ]]; then
+	update_path_with "$PATH_NEW"
+fi
