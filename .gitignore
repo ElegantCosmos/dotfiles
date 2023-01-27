@@ -7,3 +7,6 @@ vim/.vim/backup
 
 # Binary VIM spell file that can be compiled.
 **.add.spl
+
+# Python temporary files
+**/__pycache__
