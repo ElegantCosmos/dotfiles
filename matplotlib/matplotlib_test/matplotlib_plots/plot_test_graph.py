@@ -1,11 +1,13 @@
 #!/usr/bin/env python
 import numpy as np
 import matplotlib.pyplot as plt
+import publication_format
 
 xs = np.array([0.1, 1, 10, 100, 200])
 ys = np.array([-600, 20, 1000, 100, 300])
 
 # the histogram of the data
+publication_format.set_rcparams()
 fig, ax = plt.subplots()
 ax.plot(xs, ys)
 #ax.get_yaxis().get_major_formatter().set_scientific(False)
