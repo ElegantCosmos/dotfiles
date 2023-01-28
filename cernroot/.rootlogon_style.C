@@ -15,8 +15,8 @@
 
 	// Get window manager decoration height and width:
 	TCanvas* canvas_tmp = new TCanvas("canvas_tmp", "canvas_tmp", 500, 500); // temporary canvas
-	const unsigned int decorationWidth_px = canvas_tmp->GetWindowWidth() - canvas_tmp->GetWw(); // get window decoration size
-	const unsigned int decorationHeight_px = canvas_tmp->GetWindowHeight() - canvas_tmp->GetWh(); // get window decoration size
+	const unsigned int windowBorderWidth_px = canvas_tmp->GetWindowWidth() - canvas_tmp->GetWw(); // get window decoration size
+	const unsigned int windowBorderHeight_px = canvas_tmp->GetWindowHeight() - canvas_tmp->GetWh(); // get window decoration size
 	delete canvas_tmp; // don't need this anymore
 	canvas_tmp = NULL;
 
@@ -88,10 +88,10 @@
 	// Canvas dimensions:
 	const int canvasWidth_px = int(canvasWidth_mm*(ppi/mmPerInch) + 0.5);
 	const int canvasHeight_px = int(canvasHeight_mm*(ppi/mmPerInch) + 0.5);
-	article_twoColumn->SetCanvasDefW(canvasWidth_px + decorationWidth_px); // canvas_width_px + decoration_width_px = window_width_px
-	article_twoColumn->SetCanvasDefH(canvasHeight_px + decorationHeight_px); // canvas_height_px + decoration_height px = window_height_px
-	//article_twoColumn->SetCanvasDefW(500 + decorationWidth_px); // canvas_width_px + decoration_width_px = window_width_px // for debug
-	//article_twoColumn->SetCanvasDefH(500 + decorationHeight_px); // canvas_height_px + decoration_height px = window_height_px // for debug
+	article_twoColumn->SetCanvasDefW(canvasWidth_px + windowBorderWidth_px); // canvas_width_px + decoration_width_px = window_width_px
+	article_twoColumn->SetCanvasDefH(canvasHeight_px + windowBorderHeight_px); // canvas_height_px + decoration_height px = window_height_px
+	//article_twoColumn->SetCanvasDefW(500 + windowBorderWidth_px); // canvas_width_px + decoration_width_px = window_width_px // for debug
+	//article_twoColumn->SetCanvasDefH(500 + windowBorderHeight_px); // canvas_height_px + decoration_height px = window_height_px // for debug
 
 	// Canvas and pad:
 	//article_twoColumn->SetHistFillStyle(0);
@@ -123,8 +123,8 @@
 	// Title text:
 	article_twoColumn->SetTitleColor(kBlack);
 	article_twoColumn->SetTitleX(0.5);
-	article_twoColumn->SetTitleY(0.995);
-	article_twoColumn->SetTitleAlign(23);
+	article_twoColumn->SetTitleY(1 - 0.5*topMargin_frac);
+	article_twoColumn->SetTitleAlign(22);
 	article_twoColumn->SetTitleFillColor(0);
 	article_twoColumn->SetTitleBorderSize(0);
 	article_twoColumn->SetTitleFont(font, "t"); // doesn't work in ROOT 5.34/23
@@ -151,9 +151,9 @@
 	// Axes label text:
 	article_twoColumn->SetLabelFont(font, "xyz");
 	article_twoColumn->SetLabelSize(fontSize_medium_px, "xyz"); // use pixels
-	article_twoColumn->SetLabelOffset(1.5/canvasHeight_mm, "x");
-	article_twoColumn->SetLabelOffset(1.7/canvasWidth_mm, "y");
-	article_twoColumn->SetLabelOffset(0.7/canvasWidth_mm, "z");
+	article_twoColumn->SetLabelOffset((1.3/3.0)*fontSize_medium_pt/ptPerInch*mmPerInch/canvasHeight_mm, "x");
+	article_twoColumn->SetLabelOffset((1.7/3.0)*fontSize_medium_pt/ptPerInch*mmPerInch/canvasWidth_mm, "y");
+	article_twoColumn->SetLabelOffset((0.5/3.0)*fontSize_medium_pt/ptPerInch*mmPerInch/canvasHeight_mm, "z");
 
 	// Axis ticks:
 	// Set length of axis ticks. The tick length is given as a fraction of the
@@ -171,8 +171,8 @@
 	const double plotAreaHeight_frac = plotAreaHeight_mm/canvasHeight_mm;
 	article_twoColumn->SetTickLength(-tickLength_mm/canvasHeight_mm/plotAreaWidth_frac, "x");
 	article_twoColumn->SetTickLength(-tickLength_mm/canvasWidth_mm/plotAreaHeight_frac, "y");
-	article_twoColumn->SetTickLength(-tickLength_mm/canvasWidth_mm/plotAreaHeight_frac, "z");
-	//article_twoColumn->SetNdivisions(10, "xyz");
+	article_twoColumn->SetTickLength(-tickLength_mm/canvasHeight_mm/plotAreaWidth_frac, "z"); // horizontal color bar axis with vertical ticks
+	//article_twoColumn->SetTickLength(-tickLength_mm/canvasWidth_mm/plotAreaHeight_frac, "z"); // vertical color bar axis with horizontal ticks
 	article_twoColumn->SetNdivisions(510, "xyz"); // show sub-ticks
 
 	// Statistics display:

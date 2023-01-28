@@ -51,8 +51,8 @@ void SetLogX(TObject* obj = nullptr, const bool flag = true) // Seems like a bet
 
 	// Set offset on appropriate object: TH1, TGraph.
 	// Set distance between the axis and the labels.
-	// The distance is expressed in per cent of the pad width. A negative value
-	// allow to draw the label on the other side of the axis.
+	// The distance is expressed in per cent of the pad width.
+	// A negative value draws the label on the other side of the axis.
 	if (obj) {
 		TH1* hist = dynamic_cast<TH1*>(obj);
 		if (hist) {
@@ -112,7 +112,7 @@ void SetPaletteAxis(TH1* hist, const TString& title = "A_{g}^{T} Log_{10} #sqrt{
 	double x_col = leftMargin_mm/canvasWidth_mm;
 	double width_col = plotAreaWidth_mm/canvasWidth_mm;
 	double y_col = (canvasHeight_mm - topMargin_mm - plotAreaHeight_mm - 11)/canvasHeight_mm;
-	double height_col = 0.01;
+	const double height_col = 0.3*fontSize_medium_pt/ptPerInch*mmPerInch/canvasHeight_mm;
 	axis->SetX1NDC(x_col); axis->SetX2NDC(x_col + width_col);
 	axis->SetY1NDC(y_col); axis->SetY2NDC(y_col + height_col);
 	hist->GetZaxis()->SetTitle(title);

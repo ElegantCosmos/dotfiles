@@ -17,7 +17,8 @@
 	//hist.GetYaxis()->SetRangeUser(-1e30, 3e30);
 	//hist.SetMaximum(3e30);
 	//hist.SetMinimum(-1e30);
-	plotting::SetLogY(&hist);
+	//plotting::SetLogY(&hist);
+	//gPad->SetLogx();
 	plotting::SetLogX(&hist);
 	gPad->SaveAs("histogram_plot.pdf");
 
