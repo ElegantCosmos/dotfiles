@@ -1,11 +1,12 @@
 {
-	palette = plotting::Palette("tableau");
+	publicationStyle::ApplyStyle();
+	palette = publicationStyle::Palette("tableau_10");
 
 	TCanvas c0("c0", "c0");
-	TH1F hist("hist", "hist", 5, 0, 1e30);
+	TH1F hist("hist", "hist", 10, 0, 1e4);
 	hist.Fill(0);
-	hist.Fill(4, 10);
-	hist.Fill(1000000000000, 1e30);
+	hist.Fill(5e3, 1e3);
+	hist.Fill(9e3, 1e3);
 	hist.Draw();
 	hist.SetLineColor(palette.GetColor("orange"));
 	hist.SetMarkerColor(palette.GetColor("orange"));
@@ -17,9 +18,7 @@
 	//hist.GetYaxis()->SetRangeUser(-1e30, 3e30);
 	//hist.SetMaximum(3e30);
 	//hist.SetMinimum(-1e30);
-	//plotting::SetLogY(&hist);
-	//gPad->SetLogx();
-	plotting::SetLogX(&hist);
+	publicationStyle::SetLogX(&hist);
 	gPad->SaveAs("histogram_plot.pdf");
 
 	TCanvas c1("c1", "c1");
@@ -31,11 +30,11 @@
 	hist2.Draw("Colz");
 	hist2.GetXaxis()->SetTitle("A_{g}^{T}  Log_{10}/E_{pqyg} [cm] #sqrt{2}");
 	hist2.GetYaxis()->SetTitle("A_{g}^{T}  Log_{10}/E_{pqyg} [A.U.] #sqrt{2}");
-	plotting::SetPaletteAxis(&hist2);
+	//publicationStyle::FormatPaletteAxis(&hist2);
 	//hist2.GetXaxis()->SetRangeUser(10, 90);
 	//hist2.GetYaxis()->SetRangeUser(10, 80);
-	//plotting::SetLogY(&hist2);
-	//plotting::SetLogX(&hist2);
+	//publicationStyle::SetLogY(&hist2);
+	//publicationStyle::SetLogX(&hist2);
 	gPad->SetLogz();
 	gPad->SaveAs("histogram2D_plot.pdf");
 	//gPad->SaveAs("histogram2D_plot.png");
@@ -47,16 +46,16 @@
 	std::vector<double> ys = {1, 100, 100000, 100000000, 1000000000000};
 	TGraph graph(xs.size(), &xs[0], &ys[0]);
 	graph.Draw("ALP");
-	graph.SetLineColor(palette.GetColor("blue"));
-	graph.SetMarkerColor(palette.GetColor("blue"));
+	//graph.SetLineColor(palette.GetColor("blue"));
+	//graph.SetMarkerColor(palette.GetColor("blue"));
 	graph.GetXaxis()->SetTitle("A_{g}^{T} [cm] #sqrt{2} Log_{10}/E_{pqyg}");
 	graph.GetYaxis()->SetTitle("A_{g}^{T} [A.U.] #sqrt{2} Log_{10}/E_{pqyg}");
 	//graph.GetXaxis()->SetLimits(0, 5);
 	//graph.GetYaxis()->SetRangeUser(-1, 5); // also works
 	//graph.SetMaximum(5);
 	//graph.SetMinimum(-1);
-	//plotting::SetLogX(&graph);
-	//plotting::SetLogY(&graph);
+	//publicationStyle::SetLogX(&graph);
+	publicationStyle::SetLogY(&graph);
 	gPad->Update();
 	gPad->SaveAs("graph_plot.pdf");
 }
