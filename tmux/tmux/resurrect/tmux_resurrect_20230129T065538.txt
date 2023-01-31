@@ -1,0 +1,9 @@
+pane	cernroot	0	0	:	0	michaplmac	:/Users/sakaim1/.dotfiles/cernroot/cernroot_test/cernroot_plots	1	bash	:
+pane	cernroot	1	1	:*	0	michaplmac	:/Users/sakaim1/.dotfiles/cernroot	1	Vim	:/Applications/MacVim.app/Contents/MacOS/Vim publicationStyle.C
+pane	cernroot	2	0	:-	0	michaplmac	:/Users/sakaim1/.dotfiles/cernroot/cernroot_test/cernroot_plots	1	Vim	:/Applications/MacVim.app/Contents/MacOS/Vim plot_test_plots.C
+pane	cernroot	3	0	:	0	michaplmac	:/Users/sakaim1	1	bash	:
+window	cernroot	0	:bash	0	:	b85d,80x54,0,0,0	:
+window	cernroot	1	:Vim	1	:*	b85e,80x54,0,0,1	:
+window	cernroot	2	:Vim	0	:-	b85f,80x54,0,0,2	:
+window	cernroot	3	:bash	0	:	b860,80x54,0,0,3	:
+state	cernroot	

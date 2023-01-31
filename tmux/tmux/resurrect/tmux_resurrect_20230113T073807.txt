@@ -1,0 +1,7 @@
+pane	matlab	0	0	:	0	michaplmac	:/Users/sakaim1/.dotfiles/matlab/test_scripts	1	bash	:
+pane	matlab	1	1	:*	0	michaplmac	:/Users/sakaim1/.dotfiles/matlab/startup_scripts	1	Vim	:/Applications/MacVim.app/Contents/MacOS/Vim /Users/sakaim1/Documents/MATLAB/create_publish_style_figure.m
+pane	matlab	2	0	:-	0	michaplmac	:/Users/sakaim1/.dotfiles/matlab/test_scripts	1	Vim	:/Applications/MacVim.app/Contents/MacOS/Vim test_hist_and_2dhist_with_bin_counts.m
+window	matlab	0	:bash	0	:	b85d,80x54,0,0,0	:
+window	matlab	1	:Vim	1	:*	b85e,80x54,0,0,1	:
+window	matlab	2	:Vim	0	:-	b85f,80x54,0,0,2	:
+state	matlab	

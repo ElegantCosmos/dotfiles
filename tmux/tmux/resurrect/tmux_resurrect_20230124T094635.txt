@@ -1,0 +1,9 @@
+pane	matplotlib	0	0	:-	0	michaplmac	:/Users/sakaim1/.dotfiles/matplotlib/matplotlib_test/matplotlib_plots	1	bash	:
+pane	matplotlib	1	0	:	0	michaplmac	:/Users/sakaim1/.dotfiles/matplotlib/modules	1	Vim	:/Applications/MacVim.app/Contents/MacOS/Vim format_for_publication.py
+pane	matplotlib	2	1	:*	0	michaplmac	:/Users/sakaim1/.dotfiles/matplotlib/matplotlib_test/matplotlib_plots	1	Vim	:/Applications/MacVim.app/Contents/MacOS/Vim plot_test_2dhist.py
+pane	matplotlib	3	0	:	0	michaplmac	:/Users/sakaim1/.dotfiles/matplotlib/matplotlib_test/matplotlib_plots	1	bash	:
+window	matplotlib	0	:bash	0	:-	be1d,222x54,0,0,0	:
+window	matplotlib	1	:Vim	0	:	be1e,222x54,0,0,1	:
+window	matplotlib	2	:Vim	1	:*	be1f,222x54,0,0,2	:
+window	matplotlib	3	:bash	0	:	be21,222x54,0,0,4	:
+state	matplotlib	

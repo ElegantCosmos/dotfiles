@@ -1,0 +1,5 @@
+pane	matlab	0	1	:*	0	michaplmac	:/Users/sakaim1/.dotfiles/matplotlib/matplotlib_test/matplotlib_plots	1	bash	:
+pane	matlab	1	0	:-	0	michaplmac	:/Users/sakaim1/.dotfiles/matplotlib/matplotlib_test/matplotlib_plots	1	bash	:
+window	matlab	0	:bash	1	:*	be1d,222x54,0,0,0	:
+window	matlab	1	:bash	0	:-	be24,222x54,0,0,7	:
+state	matlab	

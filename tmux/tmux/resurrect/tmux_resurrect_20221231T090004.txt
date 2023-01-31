@@ -1,0 +1,7 @@
+pane	matlab	0	0	:	0	michaplmac	:/Users/sakaim1/.dotfiles/matlab/test_scripts	1	bash	:
+pane	matlab	1	1	:*	0	michaplmac	:/Users/sakaim1/.dotfiles/matlab	1	Vim	:/Applications/MacVim.app/Contents/MacOS/Vim -R startup_scripts/startup.m
+pane	matlab	2	0	:-	0	michaplmac	:/Users/sakaim1/.dotfiles/matlab/test_scripts	1	MATLAB	:/Applications/MATLAB_R2020b.app/bin/maci64/MATLAB -nodisplay
+window	matlab	0	:bash	0	:	be1d,222x54,0,0,0	:
+window	matlab	1	:Vim	1	:*	be1e,222x54,0,0,1	:
+window	matlab	2	:MATLAB	0	:-	be1f,222x54,0,0,2	:
+state	matlab	
