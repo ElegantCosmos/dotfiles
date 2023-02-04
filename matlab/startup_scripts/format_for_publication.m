@@ -1,12 +1,12 @@
 function format_for_publishing(obj)
-	% Dimensions for formatting:
-	figure_scale = 2.0; % arbitrary scale of plot for easier viewing
-	golden_ratio = 0.5*(1 + sqrt(5)); % golden ratio constant
+	%% Constants for formatting:
+	figure_scale = 2.0; % arbitrary scale for easier viewing on high PPI screen
+	golden_ratio = 0.5*(1 + sqrt(5)); % golden ratio
 	cm_per_in = 2.54;
 	pt_per_in = 72.0; % definition for international Pt (not US Pt)
 	fontsize_pt = 8;
-	linewidth = 0.5;
-	marker_size = 6;
+	linewidth_pt = 0.5;
+	markersize_pt = 6;
 	ticklabel_xoffset = 0;
 	ticklabel_yoffset = 0.5;
 	%ticklabel_zoffset = ?;
@@ -15,31 +15,31 @@ function format_for_publishing(obj)
 	%axislabel_zoffset_cm = ?;
 
 
-	%% Paper text body dimensions:
-	textcolumnwidth_cm = 9.00; % width of single column for double column paper
-
-
-	%% Dimensions for figure with width = 9.00 cm and golden ratio axes lengths:
-	figure_paper_width_cm = textcolumnwidth_cm;
-	%figure_paper_height_cm = 5.75; % no color bar below plot
-	figure_paper_height_cm = 6.75; % color bar below plot
-
-	%% Dimensions for figure with width = 9.00 cm and equal axes lengths:
-	%figure_paper_width_cm = textcolumnwidth_cm/cm_per_in;
-	%figure_paper_height_cm = figure_paper_width_cm;
-
-	%% Dimensions for figure with width = 19.0 cm and fixed vertical axis length:
-	%textcolumnspacing_cm = 1.0;
-	%figure_paper_width_cm = (2*textcolumnwidth_cm + textcolumnspacing_cm)/cm_per_in;
-	%figure_paper_height_cm = textcolumnwidth_cm/cm_per_in/golden_ratio;
-	%left_margin_frac = left_margin_frac*textcolumnwidth_cm/cm_per_in/figure_paper_width_cm;
-	%plot_area_width_frac = 1 - 2*left_margin_frac;
-
-
-	%% Common figure dimensions:
+	%% Constant figure dimensions:
+	textcolumnwidth_cm = 9.00; % width of text column for double-column article
 	top_margin_cm = 0.40;
 	left_margin_cm = 1.30;
 	plot_area_width_cm = 7.0;
+
+
+	%% Dimensions for figure paper with single text column width:
+	figure_paper_width_cm = textcolumnwidth_cm; % width for single y-axis on left-hand side
+	%figure_paper_width_cm = 2*left_margin_cm + plot_area_width_cm; % width for y-axes on left and right-hand sides
+	figure_paper_height_cm = 5.75; % no color bar below plot
+	%figure_paper_height_cm = 6.75; % color bar below plot
+
+	%% Dimensions for square figure paper with single text column width:
+	%figure_paper_width_cm = textcolumnwidth_cm;
+	%figure_paper_height_cm = figure_paper_width_cm;
+
+	%% Dimensions for figure paper with double text column width:
+	%textcolumnspacing_cm = 1.0;
+	%figure_paper_width_cm = 2*textcolumnwidth_cm + textcolumnspacing_cm;
+	%figure_paper_height_cm = 5.75; % no color bar below plot
+	%figure_paper_height_cm = 6.75; % color bar below plot
+
+
+	%% Derived figure dimensions:
 	plot_area_height_cm = plot_area_width_cm/golden_ratio;
 	bottom_margin_cm = figure_paper_height_cm - top_margin_cm - plot_area_height_cm;
 
@@ -49,14 +49,14 @@ function format_for_publishing(obj)
 	plot_area_height_frac = plot_area_height_cm/figure_paper_height_cm;
 
 
-	% Other dimensions:
+	%% Other dimensions:
 	ticklength_cm = fontsize_pt/pt_per_in*cm_per_in/3.0; % 1/3 of standard font pt size
 	ticklength_norm = ticklength_cm/max(plot_area_width_frac*figure_paper_width_cm, plot_area_height_frac*figure_paper_height_cm);
 
 
-	% Apply scaling:
-	linewidth = figure_scale*linewidth;
-	marker_size = figure_scale*marker_size;
+	%% Apply scaling:
+	linewidth_pt = figure_scale*linewidth_pt;
+	markersize_pt = figure_scale*markersize_pt;
 	fontsize_pt = figure_scale*fontsize_pt;
 	axislabel_xoffset_cm = figure_scale*axislabel_xoffset_cm;
 	axislabel_yoffset_cm = figure_scale*axislabel_yoffset_cm;
@@ -77,43 +77,31 @@ function format_for_publishing(obj)
 		%% Format figure properties.
 		fig = obj;
 
-		%get(groot, 'factory') % show default factory values of plot properties
+		%get(groot, 'factory') % show default factory values for debugging
 
-		%% Figure position and width/height used for *.eps plots
-		%% [left bottom width height]:
-		%set(groot, 'defaultFigurePosition', [1 1 figure_paper_width_cm figure_paper_height_cm]);
-
-		% Figure width/height used for *.pdf plots:
-		%set(groot, 'defaultFigurePaperSize', [figure_paper_width_cm figure_paper_height_cm]);
-		%set(groot, 'defaultFigurePaperSizeMode', 'manual');
-		%set(groot, 'defaultFigurePaperType', '<custom>')
-		%set(groot, 'defaultFigurePaperTypeMode', 'manual');
+		%% Figure dimensions:
 		fig.Units = 'centimeters';
-		fig.Position = [1 1 figure_paper_width_cm figure_paper_height_cm];
+		%% Paper* arguments below for *.pdf plots?
 		fig.PaperUnits = 'centimeters';
 		fig.PaperSizeMode = 'manual';
 		fig.PaperSize = [figure_paper_width_cm figure_paper_height_cm];
 		fig.PaperPosition = [1 1 figure_paper_width_cm figure_paper_height_cm];
+		%% ATTENTION: if PaperPositionMode is not 'auto' the saved file
+		%% could have different dimensions from the one shown on the screen!
 		fig.PaperPositionMode = 'auto';
 		fig.PaperTypeMode = 'manual';
 		fig.PaperType = '<custom>';
+		%% for *.eps plots?
+		fig.Position = [1 1 figure_paper_width_cm figure_paper_height_cm];
 		fig.Color = [1 1 1]; % background color of figure
 
-		%% Figure properties
-		%% Positioning of figure inside overall plot paper:
-		%set(groot, 'defaultFigurePaperPosition', [0 0 figure_paper_width_cm figure_paper_height_cm]);
-		%% we link the dimension of the figure ON THE PAPER in such a way that
-		%% it is equal to the dimension on the screen
-		%%
-		%% ATTENTION: if PaperPositionMode is not 'auto' the saved file
-		%% could have different dimensions from the one shown on the screen!
-		set(groot, 'defaultFigurePaperPositionMode', 'auto'); % recommended by documentation
-		%set(groot, 'defaultFigureColor', [1 1 1]);
-		%%set(groot, 'defaultFigureColormap', jet);
-
+		%% Other settings I couldn't find handles for so use global setting.
+		%% Not ideal. FIXME
 		set(groot, 'defaultLegendInterpreter', 'latex');
-		set(groot, 'defaultLineLineWidth', linewidth);
-		set(groot, 'defaultStairLineWidth', linewidth);
+		set(groot, 'defaultLineLineWidth', linewidth_pt);
+		set(groot, 'defaultStairLineWidth', linewidth_pt);
+		set(groot, 'defaultHistogramDisplayStyle', 'stairs');
+		set(groot, 'defaultHistogramEdgeColor', [1, 1, 1]);
 		set(groot, 'defaultHistogramLineWidth', 2);
 		set(groot, 'defaultLineMarkerSize', 2);
 
@@ -135,18 +123,17 @@ function format_for_publishing(obj)
 		ax.FontSizeMode = 'manual';
 		ax.FontSize = fontsize_pt; % size of fonts of labels
 		ax.LineWidthMode = 'manual';
-		ax.LineWidth = linewidth;
+		ax.linewidth_pt = linewidth_pt;
 		ax.FontWeight = 'normal'; % weight of fonts of labels % [light | {normal} | demi | bold]
 		ax.TitleFontWeight = 'normal'; % weight of font of title % [light | {normal} | demi | bold]
 		ax.FontAngle = 'normal'; % inclination of fonts of labels % [{normal} | italic | oblique] ps: only for axes
 		ax.XMinorTick = 'on'; % [on | {off}]
-		ax.YMinorTick = 'on';  % [on | {off}]
+		ax.YMinorTick = 'on'; % [on | {off}]
 		ax.TickDirMode = 'manual';
-		ax.TickDir = 'out';    % [{in} | out] inside or outside (for 2D)
+		ax.TickDir = 'out'; % [{in} | out] inside or outside (for 2D)
 		ax.TickLength = [ticklength_norm ticklength_norm]; % length of the ticks
 		ax.TitleFontSizeMultiplier = 1; % title font size multiplier factor
 		ax.LabelFontSizeMultiplier = 1; % label font size multiplier factor
-		% ...
 
 		ax.XRuler.Label.Units = 'centimeters';
 		ax.YRuler.Label.Units = 'centimeters';
@@ -166,7 +153,7 @@ function format_for_publishing(obj)
 		children = ax.Children;
 		for i = 1:length(children)
 			child = children(i);
-			child.LineWidth = linewidth;
+			child.linewidth_pt = linewidth_pt;
 		end
 
 
@@ -237,7 +224,7 @@ function format_for_publishing(obj)
 			'Box', 'on', ...
 			'XTick', [], ...
 			'YTick', [], ...
-			'LineWidth', linewidth, ...
+			'linewidth_pt', linewidth_pt, ...
 			'XLim', ax.XLim, ...
 			'YLim', ax.YLim, ...
 			'ZLim', ax.ZLim);
@@ -292,7 +279,7 @@ function format_for_publishing(obj)
 		cb = obj;
 
 		% Colorbar properties:
-		cb.LineWidth = linewidth;
+		cb.linewidth_pt = linewidth_pt;
 
 		% Label properties:
 		cb.Label.Interpreter = 'latex';
@@ -303,7 +290,7 @@ function format_for_publishing(obj)
 
 		% Ruler properties:
 		cb.Ruler.LineWidthMode = 'manual';
-		cb.Ruler.LineWidth = linewidth;
+		cb.Ruler.linewidth_pt = linewidth_pt;
 		cb.Ruler.FontSize = fontsize_pt;
 		cb.Ruler.Label.Units = 'centimeters';
 		%cb.Ruler.Label.Position(2) = axislabel_xoffset_cm; % vertical position; does not seem to work
