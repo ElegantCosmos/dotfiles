@@ -30,7 +30,7 @@
 	hist2.Draw("Colz");
 	hist2.GetXaxis()->SetTitle("A_{g}^{T}  Log_{10}/E_{pqyg} [cm] #sqrt{2}");
 	hist2.GetYaxis()->SetTitle("A_{g}^{T}  Log_{10}/E_{pqyg} [A.U.] #sqrt{2}");
-	//publicationStyle::FormatPaletteAxis(&hist2);
+	publicationStyle::FormatPaletteAxis(&hist2);
 	//hist2.GetXaxis()->SetRangeUser(10, 90);
 	//hist2.GetYaxis()->SetRangeUser(10, 80);
 	//publicationStyle::SetLogY(&hist2);

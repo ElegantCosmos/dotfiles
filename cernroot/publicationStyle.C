@@ -19,8 +19,8 @@ const double textColumnWidth_mm = 90.0; // 90 mm, width of single column for dou
 
 // Dimensions for figure with width = 90 mm and golden ratio axes lengths.
 const double canvasWidth_mm = textColumnWidth_mm;
-static const double canvasHeight_mm = 57.5; // no color bar below plot
-//const double canvasHeight_mm = 67.5; // color bar below plot
+//static const double canvasHeight_mm = 57.5; // no color bar below plot
+const double canvasHeight_mm = 67.5; // color bar below plot
 
 const double topMargin_mm = 4;
 const double leftMargin_mm = 13;
@@ -69,7 +69,7 @@ void ApplyStyle()
 	//**********************************************************
 
 	//// Style compatible with new ROOT 6.
-	TStyle* singleColumnWidthStyle= new TStyle("singleColumnWidthStyle","LaTeX two-column article");
+	TStyle* singleColumnWidthStyle = new TStyle("singleColumnWidthStyle", "LaTeX two-column article");
 
 	// Paper size (do we need this?):
 	singleColumnWidthStyle->SetPaperSize(TStyle::kUSLetter);
@@ -181,28 +181,8 @@ void ApplyStyle()
 	singleColumnWidthStyle->SetLegendFont(font);
 	singleColumnWidthStyle->SetLegendTextSize(fontSize_small_px);
 
-
-	//**********************************************************
-	//
-	// Example of how to make palette axis neat
-	//
-	//**********************************************************
-
-	//TH2F hist2("hist2", "hist2", 100, 0, 10000, 100, 0, 10000);
-	//hist2.Fill(0.0, 0.0, 10);
-	//hist2.Fill(0.0, 100.0, 100);
-	//hist2.Fill(100.0, 100.0, 1000000);
-	//hist2.Draw("Colz");
-	//hist2.GetXaxis()->SetTitle("gpqy-axis [cm]");
-	//hist2.GetYaxis()->SetTitle("gpqy-axis [A.U.]");
-	////gPad->Modified();
-	//gPad->Update();
-	//TPaletteAxis* pa = dynamic_cast<TPaletteAxis*>(hist2.GetListOfFunctions()->FindObject("palette"));
-	//pa->SetX1NDC(0.90); pa->SetX2NDC(0.91);
-	////pa->GetAxis()->SetTitleOffset(0);
-	////pa->GetAxis()->SetTitle("Titlegy [unit]");
-	//hist2.GetZaxis()->SetTitle("Titlegy [unit]");
-	//hist2.GetZaxis()->SetTitleOffset(-0.3);
+	// Miscellaneous.
+	singleColumnWidthStyle->SetLineScalePS(4.5);
 
 
 	gROOT->SetStyle("singleColumnWidthStyle");
@@ -297,6 +277,29 @@ void SetLogY(TObject* obj = nullptr, const bool logScale = true)
 
 void FormatPaletteAxis(TH1* hist, const TString& title = "A_{g}^{T} Log_{10} #sqrt{2} E_{pqyg} [unit]")
 {
+	//**********************************************************
+	//
+	// Example of how to make palette axis neat
+	//
+	//**********************************************************
+
+	//TH2F hist2("hist2", "hist2", 100, 0, 10000, 100, 0, 10000);
+	//hist2.Fill(0.0, 0.0, 10);
+	//hist2.Fill(0.0, 100.0, 100);
+	//hist2.Fill(100.0, 100.0, 1000000);
+	//hist2.Draw("Colz");
+	//hist2.GetXaxis()->SetTitle("gpqy-axis [cm]");
+	//hist2.GetYaxis()->SetTitle("gpqy-axis [A.U.]");
+	////gPad->Modified();
+	//gPad->Update();
+	//TPaletteAxis* pa = dynamic_cast<TPaletteAxis*>(hist2.GetListOfFunctions()->FindObject("palette"));
+	//pa->SetX1NDC(0.90); pa->SetX2NDC(0.91);
+	////pa->GetAxis()->SetTitleOffset(0);
+	////pa->GetAxis()->SetTitle("Titlegy [unit]");
+	//hist2.GetZaxis()->SetTitle("Titlegy [unit]");
+	//hist2.GetZaxis()->SetTitleOffset(-0.3);
+
+
 	gPad->Modified();
 	gPad->Update();
 
