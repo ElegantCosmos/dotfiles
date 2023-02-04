@@ -6,7 +6,7 @@ function format_for_publishing(obj)
 	pt_per_in = 72.0; % definition for international Pt (not US Pt)
 	fontsize_pt = 8;
 	linewidth_pt = 0.5;
-	markersize_pt = 6;
+	markersize_pt = 3;
 	ticklabel_xoffset = 0;
 	ticklabel_yoffset = 0.5;
 	%ticklabel_zoffset = ?;
@@ -20,6 +20,7 @@ function format_for_publishing(obj)
 	top_margin_cm = 0.40;
 	left_margin_cm = 1.30;
 	plot_area_width_cm = 7.0;
+	plot_area_height_cm = plot_area_width_cm/golden_ratio;
 
 
 	%% Dimensions for figure paper with single text column width:
@@ -37,10 +38,10 @@ function format_for_publishing(obj)
 	%figure_paper_width_cm = 2*textcolumnwidth_cm + textcolumnspacing_cm;
 	%figure_paper_height_cm = 5.75; % no color bar below plot
 	%figure_paper_height_cm = 6.75; % color bar below plot
+	%plot_area_width_cm = plot_area_width_cm + textcolumnspacing_cm + textcolumnwidth_cm % extend by extra width available spanning two columns
 
 
 	%% Derived figure dimensions:
-	plot_area_height_cm = plot_area_width_cm/golden_ratio;
 	bottom_margin_cm = figure_paper_height_cm - top_margin_cm - plot_area_height_cm;
 
 	left_margin_frac = left_margin_cm/figure_paper_width_cm;
@@ -55,9 +56,9 @@ function format_for_publishing(obj)
 
 
 	%% Apply scaling:
+	fontsize_pt = figure_scale*fontsize_pt;
 	linewidth_pt = figure_scale*linewidth_pt;
 	markersize_pt = figure_scale*markersize_pt;
-	fontsize_pt = figure_scale*fontsize_pt;
 	axislabel_xoffset_cm = figure_scale*axislabel_xoffset_cm;
 	axislabel_yoffset_cm = figure_scale*axislabel_yoffset_cm;
 	ticklabel_xoffset = figure_scale*ticklabel_xoffset;
@@ -71,6 +72,7 @@ function format_for_publishing(obj)
 	plot_area_height_cm = figure_scale*plot_area_height_cm;
 
 
+	%% Below is where the action happens.
 	class_name = class(obj);
 	disp(class_name);
 	if strcmp(class_name, 'matlab.ui.Figure') == true

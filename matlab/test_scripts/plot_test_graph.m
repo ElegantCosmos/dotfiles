@@ -1,12 +1,13 @@
 clear;
 
-fig = figure;
+fig = figure(1);
 format_for_publication(fig);
 
 x = [0.1 1.0 2.5 3.4 4.0 5.6 7.8 8.8 9.0 10.0];
 y = [20 30 45 40 60 65 80 75 95 90]*100; 
-err = [5 8 2 9 3 3 8 3 9 3];
-errorbar(x,y,err);
+err_frac = [0.5 0.1 0.2 0.1 0.3 0.3 0.1 0.3 0.1 0.3];
+err = y.*err_frac;
+errorbar(x, y, err, 'o');
 
 % Plot labels:
 title('Test graph');
