@@ -77,7 +77,7 @@ function format_for_publishing(obj)
 		%% Format figure properties.
 		fig = obj;
 
-		%get(groot, 'factory') % show default factory values for debugging
+		get(groot, 'factory') % show default factory values for debugging
 
 		%% Figure dimensions:
 		fig.Units = 'centimeters';
@@ -102,8 +102,8 @@ function format_for_publishing(obj)
 		set(groot, 'defaultStairLineWidth', linewidth_pt);
 		set(groot, 'defaultHistogramDisplayStyle', 'stairs');
 		set(groot, 'defaultHistogramEdgeColor', [1, 1, 1]);
-		set(groot, 'defaultHistogramLineWidth', 2);
-		set(groot, 'defaultLineMarkerSize', 2);
+		set(groot, 'defaultHistogramLineWidth', linewidth_pt);
+		set(groot, 'defaultLineMarkerSize', markersize_pt); % doesn't work?
 
 	elseif strcmp(class_name, 'matlab.graphics.axis.Axes') == true
 		%% Format axes properties.
@@ -123,7 +123,7 @@ function format_for_publishing(obj)
 		ax.FontSizeMode = 'manual';
 		ax.FontSize = fontsize_pt; % size of fonts of labels
 		ax.LineWidthMode = 'manual';
-		ax.linewidth_pt = linewidth_pt;
+		ax.LineWidth = linewidth_pt;
 		ax.FontWeight = 'normal'; % weight of fonts of labels % [light | {normal} | demi | bold]
 		ax.TitleFontWeight = 'normal'; % weight of font of title % [light | {normal} | demi | bold]
 		ax.FontAngle = 'normal'; % inclination of fonts of labels % [{normal} | italic | oblique] ps: only for axes
@@ -153,7 +153,7 @@ function format_for_publishing(obj)
 		children = ax.Children;
 		for i = 1:length(children)
 			child = children(i);
-			child.linewidth_pt = linewidth_pt;
+			child.LineWidth = linewidth_pt;
 		end
 
 
@@ -224,7 +224,7 @@ function format_for_publishing(obj)
 			'Box', 'on', ...
 			'XTick', [], ...
 			'YTick', [], ...
-			'linewidth_pt', linewidth_pt, ...
+			'LineWidth', linewidth_pt, ...
 			'XLim', ax.XLim, ...
 			'YLim', ax.YLim, ...
 			'ZLim', ax.ZLim);
@@ -279,7 +279,7 @@ function format_for_publishing(obj)
 		cb = obj;
 
 		% Colorbar properties:
-		cb.linewidth_pt = linewidth_pt;
+		cb.LineWidth = linewidth_pt;
 
 		% Label properties:
 		cb.Label.Interpreter = 'latex';
@@ -290,7 +290,7 @@ function format_for_publishing(obj)
 
 		% Ruler properties:
 		cb.Ruler.LineWidthMode = 'manual';
-		cb.Ruler.linewidth_pt = linewidth_pt;
+		cb.Ruler.LineWidth = linewidth_pt;
 		cb.Ruler.FontSize = fontsize_pt;
 		cb.Ruler.Label.Units = 'centimeters';
 		%cb.Ruler.Label.Position(2) = axislabel_xoffset_cm; % vertical position; does not seem to work
