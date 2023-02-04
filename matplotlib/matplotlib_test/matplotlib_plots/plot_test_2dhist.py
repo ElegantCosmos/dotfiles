@@ -2,17 +2,11 @@ from matplotlib.colors import LogNorm
 import matplotlib.pyplot as plt
 import numpy as np
 from mpl_toolkits.axes_grid1 import make_axes_locatable
+
 import sys
 sys.path.append("/Users/sakaim1/.dotfiles/matplotlib/modules")
 import publication_format
 
-
-def colorbar(mappable):
-    ax = mappable.axes
-    fig = ax.figure
-    divider = make_axes_locatable(ax)
-    cax = divider.append_axes("right", size="5%", pad=0.05)
-    return fig.colorbar(mappable, cax=cax)
 
 # normal distribution center at x=0 and y=0
 bin_edges_x = (0, 1000, 2000, 3000)
@@ -30,12 +24,9 @@ ax.set_xlabel(r"$\log{10}_{10}$ $E_{gqyp}$ $10^{10}$/$\sqrt{2}$ [cm]", labelpad=
 ax.set_ylabel(r"$\log{10}_{10}$ $E_{gqyp}$ $10^{10}$/$\sqrt{2}$ [cm]", labelpad=None)
 #publication_format.format(ax)
 
-cax = fig.add_axes((0.144, 0.13, 0.778, 0.01)) # 90 mm plot width
-#cax = fig.add_axes([(190 - 90*(1 - 0.912))/190, 0.172, 0.010*(90/190), 0.740]) # 190 mm plot width
-
-#cbar = fig.colorbar(image, cax=cax, orientation='vertical')
+cax = fig.add_axes((0, 0, 0, 0))
+publication_format.format_colorbar_axes(cax)
 cbar = fig.colorbar(image, cax=cax, orientation='horizontal')
-
 cax.set_xlabel(r"$E_{gqyp}$ $\log{10}_{10}$ $10^{10}$ $\sqrt{2}$ [cm]")
 
 #plt.show()
