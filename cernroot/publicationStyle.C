@@ -182,7 +182,7 @@ void ApplyStyle()
 	singleColumnWidthStyle->SetLegendTextSize(fontSize_small_px);
 
 	// Miscellaneous.
-	singleColumnWidthStyle->SetLineScalePS(4.5);
+	singleColumnWidthStyle->SetLineScalePS(4.5); // scaling for PS, PDF.
 
 
 	gROOT->SetStyle("singleColumnWidthStyle");
