@@ -1,4 +1,4 @@
-# .bashrc
+### .bashrc
 #echo bashrc
 
 # Source global definitions
@@ -87,7 +87,8 @@ ulimit -s unlimited
 
 ### Cubit
 #PATH_CUBIT="$HOME/.opt/cubit/Cubit-15.7"
-PATH_CUBIT="$HOME/.opt/cubit/Cubit-16.04"
+#PATH_CUBIT="$HOME/.opt/cubit/Cubit-16.04"
+PATH_CUBIT="$HOME/.opt/cubit/Cubit-16.08"
 if [ -d "$PATH_CUBIT" ]; then
 	update_path_with "$PATH_CUBIT"
 fi
@@ -121,19 +122,3 @@ function compile-with-root {
 	local executable=${filename%.*}
 	g++ -std=c++11 -O2 -Wall -Wextra -pedantic -o ${executable} $(root-config --cflags) "$@" $(root-config --libs)
 }
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/software/anaconda3-2021.11/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/home/software/anaconda3-2021.11/etc/profile.d/conda.sh" ]; then
-        . "/home/software/anaconda3-2021.11/etc/profile.d/conda.sh"
-    else
-        export PATH="/home/software/anaconda3-2021.11/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
-
