@@ -1,4 +1,4 @@
-function save_for_publishing(fig, fig_name, format)
+function save_for_publication(fig, fig_name, format)
 	if nargin < 3
 		format = 'pdf';
 	end
