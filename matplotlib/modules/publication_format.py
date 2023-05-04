@@ -41,8 +41,8 @@ plot_area_height_cm = plot_area_width_cm/golden_ratio
 ## Dimensions for figure paper with single text column width:
 figure_paper_width_cm = textcolumnwidth_cm # width for single y-axis on left-hand side
 #figure_paper_width_cm = 2*left_margin_cm + plot_area_width_cm; # width for y-axes on left and right-hand sides
-#figure_paper_height_cm = 5.75 # no color bar below plot
-figure_paper_height_cm = 6.75 # color bar below plot
+figure_paper_height_cm = 5.75 # no color bar below plot
+#figure_paper_height_cm = 6.75 # color bar below plot
 
 ## Dimensions for square figure paper with single text column width:
 #figure_paper_width_cm = textcolumnwidth_cm
