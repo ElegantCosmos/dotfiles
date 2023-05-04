@@ -113,6 +113,13 @@ if [ -d "$LATEX_PATH" ]; then
 	update_path_with "$LATEX_PATH"
 fi
 
+## GSCENARIO
+#GSCENARIO_PATH="$HOME/.opt/gscenario/gscenario_2020/bin_linux" # not working
+#if [ -d "$GSCENARIO_PATH" ]; then
+#	update_path_with "$GSCENARIO_PATH"
+#fi
+alias gscenario="$HOME/.opt/gscenario/gscenario_2020/bin_linux/gscenario" # execute by specifying full path to executable
+
 # TMux
 source "$HOME/.tmux.completion.bash"
 
