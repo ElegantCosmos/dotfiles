@@ -13,17 +13,6 @@ export PS1='\u@\h:\w\$ ' # default text color
 update_path_with() { case ":${PATH:=$1}:" in *:"$1":*) ;; *) export PATH="$1:$PATH" ;; esac; }
 update_ldlibrarypath_with() { case ":${LD_LIBRARY_PATH:=$1}:" in *:"$1":*) ;; *) export LD_LIBRARY_PATH="$1:$LD_LIBRARY_PATH" ;; esac; }
 
-# Homebrew.
-HOMEBREW_DIR=$HOME/.opt/homebrew
-PATH_NEW=$HOMEBREW_DIR/bin
-if [[ -d "$PATH_NEW" ]]; then
-	update_path_with "$PATH_NEW"
-fi
-PATH_NEW=$(brew --prefix)$HOME/sbin
-if [[ -d "$PATH_NEW" ]]; then
-	update_path_with "$PATH_NEW"
-fi
-
 # Bash completion for Bash v4 or later:
 export BASH_COMPLETION_COMPAT_DIR="$(brew --prefix)/etc/bash_completion.d"
 [[ -r "$(brew --prefix)/etc/profile.d/bash_completion.sh" ]] && . "$(brew --prefix)/etc/profile.d/bash_completion.sh"
@@ -45,16 +34,16 @@ if [ -d "$BOX_PATH" ]; then
 	export BOX=$BOX_PATH
 fi
 
-### Source thisroot.sh if exists
-THIS_ROOT=$(brew --prefix)/bin/thisroot.sh
-if [ -f "$THIS_ROOT" ]; then
-	#source "$THIS_ROOT"
-	function compile-with-root {
-		local filename=$(basename "${@: -1}")
-		local executable=${filename%.*}
-		g++ -std=c++11 -O2 -Wall -Wextra -pedantic -o ${executable} $(root-config --cflags) "$@" $(root-config --libs)
-	}
-fi
+#### Source thisroot.sh if exists
+#THIS_ROOT=$(brew --prefix)/bin/thisroot.sh
+#if [ -f "$THIS_ROOT" ]; then
+#	#source "$THIS_ROOT"
+#	function compile-with-root {
+#		local filename=$(basename "${@: -1}")
+#		local executable=${filename%.*}
+#		g++ -std=c++11 -O2 -Wall -Wextra -pedantic -o ${executable} $(root-config --cflags) "$@" $(root-config --libs)
+#	}
+#fi
 
 PATH_NEW=/Applications/MATLAB_R2022b.app/bin
 if [[ -d "$PATH_NEW" ]]; then

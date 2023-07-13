@@ -10,6 +10,10 @@ if [ -n $TMUX ]; then # if length of string TMUX is non-zero
 	fi
 fi
 
-if [ -n "$PS1" -a -n "$BASH_VERSION" ]; then
+if [ -n "$PS1" ] && [ -n "$BASH_VERSION" ]; then
 	source ~/.bashrc;
+fi
+
+if [ -f /usr/local/bin/brew ]; then # add Homebrew to PATH, MANPATH, INFOPATH
+	eval "$(/usr/local/bin/brew shellenv)"
 fi
