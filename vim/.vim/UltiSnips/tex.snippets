@@ -42,6 +42,10 @@ snippet numr "\numrange{}{}{}" w
 \numrange{$1}{$2}{$3}
 endsnippet
 
+snippet qty "\qty{}{}" w
+\qty{${1:${VISUAL}}}{$2}
+endsnippet
+
 snippet si "\si{}" w
 \si{${1:${VISUAL}}}
 endsnippet
@@ -285,10 +289,6 @@ snippet tod "\tod{}{}" w
 \tod{$1}{$2}
 endsnippet
 
-snippet chem "\chem{}" w
-\chem{$1}
-endsnippet
-
 snippet newgl "\newglossaryentry{}" b
 \newglossaryentry{$1}
 {
@@ -425,7 +425,7 @@ snippet cols2 "\begin{columns}" b
 		${1}
 	\end{column}
 	\begin{column}{0.5\linewidth}
-		${0}
+		${2}
 	\end{column}
 \end{columns}
 endsnippet
@@ -433,13 +433,19 @@ endsnippet
 snippet cols3 "\begin{columns}" b
 \begin{columns}[onlytextwidth]
 	\begin{column}{0.33\linewidth}
-		${0}
-	\end{column}
-	\begin{column}{0.33\linewidth}
 		${1}
 	\end{column}
 	\begin{column}{0.33\linewidth}
 		${2}
 	\end{column}
+	\begin{column}{0.33\linewidth}
+		${3}
+	\end{column}
 \end{columns}
+endsnippet
+
+snippet aplframe "\begin{aplframe}" b
+\begin{aplframe}[title={$1}]
+	${0}
+\end{aplframe}
 endsnippet

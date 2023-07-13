@@ -15,6 +15,9 @@ export PS1='\[\e[0;34m\]\u@\h:\w\$ \[\e[m\]'
 # User specific aliases and functions
 alias open='gio open'
 alias trash='gio trash'
+alias aconda='source /opt/anaconda3/bin/activate'
+alias condals='conda env list'
+alias condaa='conda activate'
 
 # Source general definitions
 if [ -f $HOME/.bashrc_general ]; then
@@ -48,9 +51,6 @@ export SSL_CERT_FILE=etc/pki/ca-trust/extracted/openssl/ca-bundle.trust.crt
 #	eval "$(pyenv init --path)"
 #	eval "$(pyenv virtualenv-init -)"
 #fi
-
-### Anaconda
-# source /opt/anaconda3/bin/activate
 
 ### Modify PATH for user-specific scripts.
 PATH_NEW=$HOME/.opt/bin
@@ -93,13 +93,6 @@ if [ -d "$PATH_CUBIT" ]; then
 	update_path_with "$PATH_CUBIT"
 fi
 
-#### VIM 8.2
-#PATH_VIM="$HOME/.opt/vim/vim-8.2.3877"
-#if [ -d "$PATH_VIM" ]; then
-#	export VIMRUNTIME=$HOME/.opt/vim/vim-8.2.3877/share/vim/vim82 # to find correct syntax file
-#	export PATH=$PATH_VIM/bin${PATH:+:$PATH}
-#fi
-
 # Abaqus
 ABAQUS_PATH="$HOME/.opt/abaqus/SIMULIA/EstProducts"
 if [ -d "$ABAQUS_PATH" ]; then
@@ -107,10 +100,10 @@ if [ -d "$ABAQUS_PATH" ]; then
 	export LM_LICENSE_FILE=2700@aplvlic0
 fi
 
-# Tex
-LATEX_PATH="$HOME/.opt/tex/texlive/texlive_2022/bin/x86_64-linux"
-if [ -d "$LATEX_PATH" ]; then
-	update_path_with "$LATEX_PATH"
+# MATLAB
+MATLAB_PATH="/home/software/MATLAB/R2022b/bin"
+if [ -d "$MATLAB_PATH" ]; then
+	update_path_with "$MATLAB_PATH"
 fi
 
 ## GSCENARIO
