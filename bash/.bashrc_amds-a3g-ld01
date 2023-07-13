@@ -15,7 +15,7 @@ export PS1='\[\e[0;34m\]\u@\h:\w\$ \[\e[m\]'
 # User specific aliases and functions
 alias open='gio open'
 alias trash='gio trash'
-alias aconda='source /opt/anaconda3/bin/activate'
+alias aconda='source ~/.opt/conda/miniconda3/bin/activate'
 alias condals='conda env list'
 alias condaa='conda activate'
 
@@ -40,9 +40,12 @@ if [[ -d "$LD_LIBRARY_PATH_NEW" ]]; then
 fi
 
 ### Root CA Certificate with Python
-export PIP_CERT=/etc/pki/ca-trust/extracted/openssl/ca-bundle.trust.crt
-export REQUESTS_CA_BUNDLE=/etc/pki/ca-trust/extracted/openssl/ca-bundle.trust.crt
-export SSL_CERT_FILE=etc/pki/ca-trust/extracted/openssl/ca-bundle.trust.crt
+#export PIP_CERT=/etc/pki/ca-trust/extracted/openssl/ca-bundle.trust.crt
+#export REQUESTS_CA_BUNDLE=/etc/pki/ca-trust/extracted/openssl/ca-bundle.trust.crt
+#export SSL_CERT_FILE=/etc/pki/ca-trust/extracted/openssl/ca-bundle.trust.crt
+export PIP_CERT=/home/software/JHUAPL-MS-Root-CA-05-21-2038-B64-text.cer
+export REQUESTS_CA_BUNDLE=/home/software/JHUAPL-MS-Root-CA-05-21-2038-B64-text.cer
+export SSL_CERT_FILE=/home/software/JHUAPL-MS-Root-CA-05-21-2038-B64-text.cer
 
 ### Don't use below b/c using Anaconda now instead of pyenv
 #if shopt -q login_shell; then 
@@ -115,6 +118,12 @@ alias gscenario="$HOME/.opt/gscenario/gscenario_2020/bin_linux/gscenario" # exec
 
 # TMux
 source "$HOME/.tmux.completion.bash"
+
+# LaTeX
+TEXLIVE_PATH="/home/sakaim1/.opt/tex/texlive/texlive_2022/bin/x86_64-linux"
+if [ -d "$TEXLIVE_PATH" ]; then
+	update_path_with "$TEXLIVE_PATH"
+fi
 
 # User functions:
 function compile-with-root {
