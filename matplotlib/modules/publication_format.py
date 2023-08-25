@@ -20,29 +20,29 @@ class OOMFormatter(matplotlib.ticker.ScalarFormatter):
 
 
 ## Dimensions for formatting:
-figure_scale = 2.0 # arbitrary scale for easier viewing on high PPI screen
+figure_scale = 1.0 # arbitrary scale for easier viewing on high PPI screen
 golden_ratio = 0.5*(1 + math.sqrt(5)) # golden ratio
 cm_per_in = 2.54
 pt_per_in = 72.0 # definition for international Pt (not US Pt)
 fontsize_pt = 8
 linewidth_pt = 0.5
 markersize_pt = 3
-labelpad_pt = 3
+labelpad_pt = 4
 
 
 ## Constant figure dimensions:
 textcolumnwidth_cm = 9.00 # width of single column for double column paper
 top_margin_cm = 0.40
-left_margin_cm = 1.30
-plot_area_width_cm = 7.0
+left_margin_cm = 1.35
+plot_area_width_cm = 7.30
 plot_area_height_cm = plot_area_width_cm/golden_ratio
 
 
 ## Dimensions for figure paper with single text column width:
 figure_paper_width_cm = textcolumnwidth_cm # width for single y-axis on left-hand side
 #figure_paper_width_cm = 2*left_margin_cm + plot_area_width_cm; # width for y-axes on left and right-hand sides
-figure_paper_height_cm = 5.75 # no color bar below plot
-#figure_paper_height_cm = 6.75 # color bar below plot
+figure_paper_height_cm = 5.85 # no color bar below plot
+#figure_paper_height_cm = 7.05 # color bar below plot
 
 ## Dimensions for square figure paper with single text column width:
 #figure_paper_width_cm = textcolumnwidth_cm
@@ -65,16 +65,16 @@ plot_area_width_frac = plot_area_width_cm/figure_paper_width_cm
 
 
 ## Apply scaling:
-fontsize_pt = figure_scale*fontsize_pt
-linewidth_pt = figure_scale*linewidth_pt
-markersize_pt = figure_scale*markersize_pt
-figure_paper_width_cm = figure_scale*figure_paper_width_cm
-figure_paper_height_cm = figure_scale*figure_paper_height_cm
-plot_area_width_cm = figure_scale*plot_area_width_cm
-plot_area_height_cm = figure_scale*plot_area_height_cm
-top_margin_cm = figure_scale*top_margin_cm
-left_margin_cm = figure_scale*left_margin_cm
-labelpad_pt = figure_scale*labelpad_pt
+fontsize_pt *= figure_scale
+linewidth_pt *= figure_scale
+markersize_pt *= figure_scale
+figure_paper_width_cm *= figure_scale
+figure_paper_height_cm *= figure_scale
+plot_area_width_cm *= figure_scale
+plot_area_height_cm *= figure_scale
+top_margin_cm *= figure_scale
+left_margin_cm *= figure_scale
+labelpad_pt *= figure_scale
 
 
 def set_rcparams():
@@ -127,17 +127,22 @@ def set_rcparams():
 	plt.rcParams['ytick.major.pad'] = fontsize_pt/4.0
 	plt.rcParams['ytick.minor.visible'] = True
 
-	plt.rcParams['grid.linewidth'] = linewidth_pt
+	plt.rcParams['grid.linewidth'] = 0.5*linewidth_pt
 
 	plt.rcParams['legend.fontsize'] = 'small'
+	plt.rcParams['legend.frameon'] = False
 
 	plt.rcParams['lines.linewidth'] = linewidth_pt
 	plt.rcParams['lines.markersize'] = markersize_pt
 
+	plt.rcParams['patch.linewidth'] = linewidth_pt
+
+	plt.rcParams['hatch.linewidth'] = linewidth_pt
+
 def format_colorbar_axes(cax):
 	# Settings for 90 mm figure width:
-	cax_yoffset_cm = -1.1
-	cax_yoffset_cm = figure_scale*cax_yoffset_cm
+	cax_yoffset_cm = -1.2
+	cax_yoffset_cm *= figure_scale
 	cax_y_frac = (figure_paper_height_cm - top_margin_cm - plot_area_height_cm + cax_yoffset_cm)/figure_paper_height_cm
 	cax_height_frac = (fontsize_pt/pt_per_in*cm_per_in/3.0)/figure_paper_height_cm
 
