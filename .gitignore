@@ -8,5 +8,10 @@ vim/.vim/backup
 # Binary VIM spell file that can be compiled.
 **.add.spl
 
-# Python temporary files
+# Python temporary files.
 **/__pycache__
+
+# Cern ROOT Tex files.
+cernroot/cernroot_test/cernroot_plots/*.aux
+cernroot/cernroot_test/cernroot_plots/*.log
+cernroot/cernroot_test/cernroot_plots/*.tex
