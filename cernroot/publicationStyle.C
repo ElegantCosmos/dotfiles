@@ -6,7 +6,7 @@
 
 // Commonly used constants:
 const double goldenRatio = 0.5*(1 + sqrt(5));
-const int ppi = 600; // pixels per inch
+const int ppi = 300; // pixels per inch
 const double ptPerInch = 72.0; // definition for international Pt (not US Pt)
 const double mmPerInch = 25.4;
 
@@ -14,38 +14,56 @@ const double mmPerInch = 25.4;
 const double textColumnWidth_mm = 90.0; // 90 mm, width of single column for double column paper
 
 //// Dimensions for figure with width = 90 mm and equal axes lengths.
-//static const double canvasWidth_mm = textColumnWidth_mm;
-//static const double canvasHeight_mm = canvasWidth_mm;
+//double canvasWidth_mm = textColumnWidth_mm;
+//double canvasHeight_mm = canvasWidth_mm;
 
 // Dimensions for figure with width = 90 mm and golden ratio axes lengths.
-const double canvasWidth_mm = textColumnWidth_mm;
-//static const double canvasHeight_mm = 57.5; // no color bar below plot
-const double canvasHeight_mm = 67.5; // color bar below plot
+double canvasWidth_mm = textColumnWidth_mm;
+double canvasHeight_mm = 58.5; // no color bar below plot
+//double canvasHeight_mm = 70.5; // color bar below plot
 
-const double topMargin_mm = 4;
-const double leftMargin_mm = 13;
-const double plotAreaWidth_mm = 70;
-const double plotAreaHeight_mm = plotAreaWidth_mm/goldenRatio;
+double topMargin_mm = 4.0;
+double leftMargin_mm = 13.5;
+double plotAreaWidth_mm = 73.0;
+double plotAreaHeight_mm = plotAreaWidth_mm/goldenRatio;
 
 // Commonly used constants:
 const int font = 133; // Time New Roman (precision 3: font size specified in pixels)
-const double fontSize_pt = 8; // default font size
-const double fontSize_small_pt = 7; // small font size
-const double fontSize_xsmall_pt = 6; // small font size
-const double fontSize_xxsmall_pt = 5; // small font size
-const double fontSize_px = ppi*fontSize_pt/ptPerInch;
-const double fontSize_small_px = ppi*fontSize_small_pt/ptPerInch;
-const double fontSize_xsmall_px = ppi*fontSize_xsmall_pt/ptPerInch;
-const double fontSize_xxsmall_px = ppi*fontSize_xxsmall_pt/ptPerInch;
+double fontSize_pt = 8; // default font size
+//double fontSize_pt = 10; // default font size
+double fontSize_small_pt = 7; // small font size
+double fontSize_xsmall_pt = 6; // small font size
+double fontSize_xxsmall_pt = 5; // small font size
+double fontSize_px = ppi*fontSize_pt/ptPerInch;
+double fontSize_small_px = ppi*fontSize_small_pt/ptPerInch;
+double fontSize_xsmall_px = ppi*fontSize_xsmall_pt/ptPerInch;
+double fontSize_xxsmall_px = ppi*fontSize_xxsmall_pt/ptPerInch;
 
 // Tick properties:
-const double tickLength_mm = fontSize_pt*(mmPerInch/ptPerInch)/3.0; // 1/3 of standard font pt size
+double tickLength_mm = fontSize_pt*(mmPerInch/ptPerInch)/3.0; // 1/3 of standard font pt size
 
+const double figureScale = 1.0;
 
 namespace publicationStyle {
 void ApplyStyle()
 {
 	gROOT->SetBatch(kTRUE);
+
+
+	canvasWidth_mm *= figureScale;
+	canvasHeight_mm *= figureScale;
+	topMargin_mm *= figureScale;
+	leftMargin_mm *= figureScale;
+	plotAreaWidth_mm *= figureScale;
+	plotAreaHeight_mm *= figureScale;
+	fontSize_pt *= figureScale;
+	fontSize_small_pt *= figureScale;
+	fontSize_xsmall_pt *= figureScale;
+	fontSize_xxsmall_pt *= figureScale;
+	fontSize_px *= figureScale;
+	fontSize_small_px *= figureScale;
+	fontSize_xsmall_px *= figureScale;
+	fontSize_xxsmall_px *= figureScale;
 
 
 	// Get window manager decoration height and width:
@@ -98,11 +116,16 @@ void ApplyStyle()
 	singleColumnWidthStyle->SetFrameLineWidth(1);
 	singleColumnWidthStyle->SetFrameLineColor(kBlack);
 
+    // Grid:
+    singleColumnWidthStyle->SetGridWidth(1);
+    singleColumnWidthStyle->SetGridStyle(kDotted);
+    singleColumnWidthStyle->SetGridColor(kGray);
+
 	// Lines and markers:
 	singleColumnWidthStyle->SetLineWidth(1);
 	singleColumnWidthStyle->SetHistLineWidth(1);
-	singleColumnWidthStyle->SetMarkerStyle(8);
-	singleColumnWidthStyle->SetMarkerSize(2);
+	singleColumnWidthStyle->SetMarkerStyle(kFullDotLarge);
+	singleColumnWidthStyle->SetMarkerSize(1.5);
 
 	// Title text:
 	singleColumnWidthStyle->SetTitleX(0.5);
@@ -124,9 +147,9 @@ void ApplyStyle()
 	//singleColumnWidthStyle->SetTitleOffset(-0.68, "z"); // doesn't work in ROOT 5.34/23
 
 	// Dimensions for figure with width = 90 mm and golden ratio axes lengths
-	singleColumnWidthStyle->SetTitleOffset(1.5, "x"); // lowest part of log_{10} is barely on the pad; I think log_{10} has the lowest reaching text
-	singleColumnWidthStyle->SetTitleOffset(2.3, "y"); // highest part of sqrt(2) is barely on the pad; I think sqrt(2) has the highest reaching text
-	singleColumnWidthStyle->SetTitleOffset(1.5, "z"); // doesn't work in ROOT 5.34/23
+	singleColumnWidthStyle->SetTitleOffset(1.6, "x"); // lowest part of log_{10} is barely on the pad; I think log_{10} has the lowest reaching text
+	singleColumnWidthStyle->SetTitleOffset(1.6, "y"); // highest part of sqrt(2) is barely on the pad; I think sqrt(2) has the highest reaching text
+	singleColumnWidthStyle->SetTitleOffset(1.6, "z"); // doesn't work in ROOT 5.34/23
 	
 	//// Dimensions for figure with width = 190 mm and fixed vertical axis length
 	//singleColumnWidthStyle->SetTitleOffset(1.65, "x"); // lowest part of log_{10} is barely on the pad; I think log_{10} has the lowest reaching text
@@ -168,21 +191,23 @@ void ApplyStyle()
 	singleColumnWidthStyle->SetStatBorderSize(1);
 	singleColumnWidthStyle->SetStatFontSize(fontSize_xxsmall_px);
 
-	const double statboxWidth_mm = 10;
+	const double statboxWidth_mm = 15;
 	const double statboxHeight_mm = 10;
-	singleColumnWidthStyle->SetStatY(1 - 1.0/canvasHeight_mm);
-	singleColumnWidthStyle->SetStatX(1 - 1.0/canvasWidth_mm);
+	singleColumnWidthStyle->SetStatX(1 - 0.5/canvasWidth_mm);
+	singleColumnWidthStyle->SetStatY(1 - 0.5/canvasHeight_mm);
 	singleColumnWidthStyle->SetStatW(statboxWidth_mm/canvasWidth_mm);
 	singleColumnWidthStyle->SetStatH(statboxHeight_mm/canvasHeight_mm);
 
 	// Legend.
 	singleColumnWidthStyle->SetLegendBorderSize(0);
+	singleColumnWidthStyle->SetFillStyle(4000); // only known way to make legend transparent; FIXME
 	singleColumnWidthStyle->SetLegendFillColor(0);
 	singleColumnWidthStyle->SetLegendFont(font);
 	singleColumnWidthStyle->SetLegendTextSize(fontSize_small_px);
 
 	// Miscellaneous.
-	singleColumnWidthStyle->SetLineScalePS(4.5); // scaling for PS, PDF.
+	//singleColumnWidthStyle->SetLineScalePS(4); // scaling for PS, PDF.
+	singleColumnWidthStyle->SetLineScalePS(3.5); // scaling for PS, PDF.
 
 
 	gROOT->SetStyle("singleColumnWidthStyle");
@@ -275,6 +300,44 @@ void SetLogY(TObject* obj = nullptr, const bool logScale = true)
 	gPad->SetLogy(logScale);
 }
 
+void FormatAxes(TGraph* graph)
+{
+	// Center axes titles.
+	graph->GetXaxis()->CenterTitle();
+	graph->GetYaxis()->CenterTitle();
+
+	// Move x-axis exponent closer to x-axis title to keep it on canvas.
+	TGaxis::SetExponentOffset(-0.05, -0.12, "x");
+}
+
+void FormatAxes(TH1* hist)
+{
+    //// Use 68.3% (1 sigma) Poisson error bars.
+    //hist->SetBinErrorOption(TH1::kPoisson);
+
+	// Center axes titles.
+	hist->GetXaxis()->CenterTitle();
+	hist->GetYaxis()->CenterTitle();
+
+	// Move x-axis exponent closer to x-axis title to keep it on canvas.
+	TGaxis::SetExponentOffset(-0.05, -0.12, "x");
+}
+
+void FormatAxes(THStack* hists)
+{
+    //// Use 68.3% (1 sigma) Poisson error bars.
+    //for (int i_hist = 0; i_hist < hists->GetNhists(); ++i_hist) {
+    //    ((TH1F*)(hists->GetHists()->At(i_hist)))->SetBinErrorOption(TH1::kPoisson);
+    //}
+
+	// Center axes titles.
+	hists->GetXaxis()->CenterTitle();
+	hists->GetYaxis()->CenterTitle();
+
+	// Move x-axis exponent closer to x-axis title to keep it on canvas.
+	TGaxis::SetExponentOffset(-0.05, -0.12, "x");
+}
+
 void FormatPaletteAxis(TH1* hist, const TString& title = "A_{g}^{T} Log_{10} #sqrt{2} E_{pqyg} [unit]")
 {
 	//**********************************************************
@@ -305,12 +368,12 @@ void FormatPaletteAxis(TH1* hist, const TString& title = "A_{g}^{T} Log_{10} #sq
 
 	//gStyle->SetPalette(kRainBow, 0);
 	TPaletteAxis* ax = dynamic_cast<TPaletteAxis*>(hist->GetListOfFunctions()->FindObject("palette"));
-	double x_col_frac = leftMargin_mm/canvasWidth_mm;
-	double width_col_frac = plotAreaWidth_mm/canvasWidth_mm;
-	double y_col_frac = (canvasHeight_mm - topMargin_mm - plotAreaHeight_mm - 11)/canvasHeight_mm;
-	const double height_col_frac = 0.3*fontSize_pt/ptPerInch*mmPerInch/canvasHeight_mm;
-	ax->SetX1NDC(x_col_frac); ax->SetX2NDC(x_col_frac + width_col_frac);
-	ax->SetY1NDC(y_col_frac); ax->SetY2NDC(y_col_frac + height_col_frac);
+	const double x_frac = leftMargin_mm/canvasWidth_mm;
+	const double width_frac = plotAreaWidth_mm/canvasWidth_mm;
+	const double y_frac = (canvasHeight_mm - topMargin_mm - plotAreaHeight_mm - 11)/canvasHeight_mm;
+	const double height_frac = 0.3*fontSize_pt/ptPerInch*mmPerInch/canvasHeight_mm;
+	ax->SetX1NDC(x_frac); ax->SetX2NDC(x_frac + width_frac);
+	ax->SetY1NDC(y_frac); ax->SetY2NDC(y_frac + height_frac);
 	hist->GetZaxis()->SetTitle(title);
 	hist->SetContour(255); // resolution of palette
 }
