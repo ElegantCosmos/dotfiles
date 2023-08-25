@@ -1,33 +1,33 @@
 function format_for_publication(obj)
 	%% Constants for formatting:
-	figure_scale = 2.0; % arbitrary scale for easier viewing on high PPI screen
+	figure_scale = 1.0; % arbitrary scale for easier viewing on high PPI screen
 	golden_ratio = 0.5*(1 + sqrt(5)); % golden ratio
 	cm_per_in = 2.54;
 	pt_per_in = 72.0; % definition for international Pt (not US Pt)
 	fontsize_pt = 8;
 	linewidth_pt = 0.5;
-	markersize_pt = 3;
-	ticklabel_xoffset = 0;
+	markersize_pt = 4;
+	ticklabel_xoffset = -0.5;
 	ticklabel_yoffset = 0.5;
 	%ticklabel_zoffset = ?;
-	axislabel_xoffset_cm = -0.5;
-	axislabel_yoffset_cm = -0.9;
+	axislabel_xoffset_cm = -0.55;
+	axislabel_yoffset_cm = -0.95;
 	%axislabel_zoffset_cm = ?;
 
 
 	%% Constant figure dimensions:
 	textcolumnwidth_cm = 9.00; % width of text column for double-column article
 	top_margin_cm = 0.40;
-	left_margin_cm = 1.30;
-	plot_area_width_cm = 7.0;
+	left_margin_cm = 1.35;
+	plot_area_width_cm = 7.30;
 	plot_area_height_cm = plot_area_width_cm/golden_ratio;
 
 
 	%% Dimensions for figure paper with single text column width:
 	figure_paper_width_cm = textcolumnwidth_cm; % width for single y-axis on left-hand side
 	%figure_paper_width_cm = 2*left_margin_cm + plot_area_width_cm; % width for y-axes on left and right-hand sides
-	figure_paper_height_cm = 5.75; % no color bar below plot
-	%figure_paper_height_cm = 6.75; % color bar below plot
+	figure_paper_height_cm = 5.85; % no color bar below plot
+	%figure_paper_height_cm = 7.05; % color bar below plot
 
 	%% Dimensions for square figure paper with single text column width:
 	%figure_paper_width_cm = textcolumnwidth_cm;
@@ -100,6 +100,7 @@ function format_for_publication(obj)
 		%% Other settings I couldn't find handles for so use global setting.
 		%% Not ideal. FIXME
 		set(groot, 'defaultLegendInterpreter', 'latex');
+		set(groot, 'defaultLegendBox', false); % doesn't work?
 		set(groot, 'defaultLineLineWidth', linewidth_pt);
 		set(groot, 'defaultStairLineWidth', linewidth_pt);
 		set(groot, 'defaultHistogramDisplayStyle', 'stairs');
@@ -136,7 +137,7 @@ function format_for_publication(obj)
 		ax.TickDirMode = 'manual';
 		ax.TickDir = 'out'; % [{in} | out] inside or outside (for 2D)
 		ax.TickLength = [ticklength_norm ticklength_norm]; % length of the ticks
-		ax.TitleFontSizeMultiplier = 1; % title font size multiplier factor
+		ax.TitleFontSizeMultiplier = 0.6; % title font size multiplier factor
 		ax.LabelFontSizeMultiplier = 1; % label font size multiplier factor
 
 		ax.XRuler.Label.Units = 'centimeters';
@@ -213,37 +214,37 @@ function format_for_publication(obj)
 		%ax.ColorOrder = colors_tableau_classic_20;
 
 
-		%%% Function to remove ticks above and on the right hand side of plot.
-		%%% I want to merge this code into defaultAxesCreateFcn in setup.m,
-		%%% but I don't know how.
-		%% Get handle to current axes:
-		%%ax = gca;
-		%% set box property to off and remove background color
-		%set(ax, 'Box', 'off', 'Color', 'none');
-		%% create new, empty axes with box but without ticks
-		%ax_b = axes(...
-		%	'Parent', ax.Parent, ...
-		%	'Units', ax.Units, ...
-		%	'Position', ax.Position, ...
-		%	'Box', 'on', ...
-		%	'XTick', [], ...
-		%	'YTick', [], ...
-		%	'LineWidth', linewidth_pt, ...
-		%	'XLim', ax.XLim, ...
-		%	'YLim', ax.YLim, ...
-		%	'ZLim', ax.ZLim);
-		%% set original axes as active
-		%axes(ax);
-		%% link axes in case of zooming
-		%linkaxes([ax ax_b])
+		%% Function to remove ticks above and on the right hand side of plot.
+		%% I want to merge this code into defaultAxesCreateFcn in setup.m,
+		%% but I don't know how.
+		% set box property to off and remove background color
+		set(ax, 'Box', 'off', 'Color', 'none');
+		% create new, empty axes with box but without ticks
+		ax_b = axes(...
+			'Parent', ax.Parent, ...
+			'Units', ax.Units, ...
+			'Position', ax.Position, ...
+			'Box', 'on', ...
+			'XTick', [], ...
+			'YTick', [], ...
+			'LineWidth', linewidth_pt, ...
+			'XLim', ax.XLim, ...
+			'YLim', ax.YLim, ...
+			'ZLim', ax.ZLim);
+		% set original axes as active
+		axes(ax);
+		% link axes in case of zooming
+		linkaxes([ax ax_b])
 
 		%%%% Use math format minus sign instead of hyphen in tick labels if axis is linear.
 		%if strcmp(ax.XRuler.Scale, 'linear') == true % only linear scale tick labels need to be fixed for some reason
 		%	ax.XAxis.TickLabels = strrep(ax.XAxis.TickLabels, '-', '$-$'); % forces axis exponent to not be displayed
 		%	ax.XRuler.TickLabels = strrep(ax.XRuler.TickLabels, '-', '$-$'); % forces axis exponent to not be displayed, may be redundant
-		%	text(0, 0, ax.XRuler.SecondaryLabel.String, ... % write exponent manually
+		%	text(...
+		%		ax.XRuler.SecondaryLabel.Position(1), ...
+		%		ax.XRuler.SecondaryLabel.Position(2), ...
+		%		ax.XRuler.SecondaryLabel.String, ... % write exponent manually
 		%		'Units', ax.XRuler.SecondaryLabel.Units, ...
-		%		'Position', ax.XRuler.SecondaryLabel.Position, ...
 		%		'HorizontalAlignment', ax.XRuler.SecondaryLabel.HorizontalAlignment, ...
 		%		'VerticalAlignment', ax.XRuler.SecondaryLabel.VerticalAlignment, ...
 		%		'Interpreter', 'latex', ...
@@ -254,9 +255,11 @@ function format_for_publication(obj)
 		%if strcmp(ax.YRuler.Scale, 'linear') == true % only linear scale tick labels need to be fixed for some reason
 		%	ax.YAxis.TickLabels = strrep(ax.YAxis.TickLabels, '-', '$-$'); % forces axis exponent to not be displayed
 		%	ax.YRuler.TickLabels = strrep(ax.YRuler.TickLabels, '-', '$-$'); % forces axis exponent to not be displayed, may be redundant
-		%	text(0, 0, ax.YRuler.SecondaryLabel.String, ... % write exponent manually
+		%	text(...
+		%		ax.YRuler.SecondaryLabel.Position(1), ...
+		%		ax.YRuler.SecondaryLabel.Position(2), ...
+		%		ax.YRuler.SecondaryLabel.String, ... % write exponent manually
 		%		'Units', ax.YRuler.SecondaryLabel.Units, ...
-		%		'Position', ax.YRuler.SecondaryLabel.Position, ...
 		%		'HorizontalAlignment', ax.YRuler.SecondaryLabel.HorizontalAlignment, ...
 		%		'VerticalAlignment', ax.YRuler.SecondaryLabel.VerticalAlignment, ...
 		%		'Interpreter', 'latex', ...
@@ -267,9 +270,11 @@ function format_for_publication(obj)
 		%if strcmp(ax.ZRuler.Scale, 'linear') == true % only linear scale tick labels need to be fixed for some reason
 		%	ax.ZAxis.TickLabels = strrep(ax.ZAxis.TickLabels, '-', '$-$'); % forces axis exponent to not be displayed
 		%	ax.ZRuler.TickLabels = strrep(ax.ZRuler.TickLabels, '-', '$-$'); % forces axis exponent to not be displayed, may be redundant
-		%	text(0, 0, ax.ZRuler.SecondaryLabel.String, ... % write exponent manually
+		%	text(...
+		%		ax.ZRuler.SecondaryLabel.Position(1), ...
+		%		ax.ZRuler.SecondaryLabel.Position(2), ...
+		%		ax.ZRuler.SecondaryLabel.String, ... % write exponent manually
 		%		'Units', ax.ZRuler.SecondaryLabel.Units, ...
-		%		'Position', ax.ZRuler.SecondaryLabel.Position, ...
 		%		'HorizontalAlignment', ax.ZRuler.SecondaryLabel.HorizontalAlignment, ...
 		%		'VerticalAlignment', ax.ZRuler.SecondaryLabel.VerticalAlignment, ...
 		%		'Interpreter', 'latex', ...
@@ -296,14 +301,19 @@ function format_for_publication(obj)
 		cb.Ruler.LineWidthMode = 'manual';
 		cb.Ruler.LineWidth = linewidth_pt;
 		cb.Ruler.FontSize = fontsize_pt;
-		cb.Ruler.Label.Units = 'centimeters';
-		%cb.Ruler.Label.Position(2) = axislabel_xoffset_cm; % vertical position; does not seem to work
+		cb.Ruler.Label.PositionMode = 'manual';
 		cb.Ruler.TickLabelGapOffset = ticklabel_xoffset;
+		cb.Ruler.Label.Units = 'centimeters';
+		cb.Ruler.Label.Position(1) = 0.5*plot_area_width_cm;
+		cb.Ruler.Label.Position(2) = axislabel_xoffset_cm;
+		cb.Ruler.SecondaryLabel.Units = 'centimeters';
+		cb.Ruler.SecondaryLabel.Position(1) = plot_area_width_cm;
+		cb.Ruler.SecondaryLabel.Position(2) = axislabel_xoffset_cm;
 
 		% Position and shape of colorbar:
 		cb.Units = 'centimeters';
 		cb.Location = 'southoutside';
-		cb_yoffset_cm = -1.1;
+		cb_yoffset_cm = -1.2;
 		cb_yoffset_cm = figure_scale*cb_yoffset_cm;
 		pos_cb_y_cm = (figure_paper_height_cm - top_margin_cm - plot_area_height_cm + cb_yoffset_cm);
 		cb_height_cm = fontsize_pt/pt_per_in*cm_per_in/3.0;
@@ -338,22 +348,22 @@ function format_for_publication(obj)
 		%	cb.Ruler.TickLabels = cb_ticks; % manually set colorbar tick values
 		%end
 
-		%%% Format hyphen to be minus sign in colorbar tick labels.
-		if strcmp(cb.Ruler.Scale, 'linear') == true % only linear scale tick labels need to be fixed for some reason
-			cb.TickLabels = strrep(cb.TickLabels, '-', '$-$');  % forces axis exponent to not be displayed
-			cb.Ruler.TickLabels = strrep(cb.Ruler.TickLabels, '-', '$-$'); % forces axis exponent to not be displayed, may be redundant
-			cb_exp_str = cb.Ruler.SecondaryLabel.String;
-			cb_exp_yoffset_cm = -0.6; % offset wrt y-position of x-axis
-			cb_exp_yoffset_cm = figure_scale*cb_exp_yoffset_cm;
-			tc = text(0, 0, cb_exp_str, ... % write exponent manually
-				'Units', 'centimeters', ...
-				'Position', [plot_area_width_cm, cb_yoffset_cm + cb_exp_yoffset_cm, 0], ...
-				'HorizontalAlignment', cb.Ruler.SecondaryLabel.HorizontalAlignment, ...
-				'VerticalAlignment', cb.Ruler.SecondaryLabel.VerticalAlignment, ...
-				'Interpreter', 'latex', ...
-				'FontUnits', 'points', ...
-				'FontSize', fontsize_pt, ...
-				'EdgeColor', 'none');
-		end
+		%%%% Format hyphen to be minus sign in colorbar tick labels.
+		%if strcmp(cb.Ruler.Scale, 'linear') == true % only linear scale tick labels need to be fixed for some reason
+		%	cb.TickLabels = strrep(cb.TickLabels, '-', '$-$');  % forces axis exponent to not be displayed
+		%	cb.Ruler.TickLabels = strrep(cb.Ruler.TickLabels, '-', '$-$'); % forces axis exponent to not be displayed, may be redundant
+		%	cb_exp_str = cb.Ruler.SecondaryLabel.String;
+		%	cb_exp_yoffset_cm = -0.6; % offset wrt y-position of x-axis
+		%	cb_exp_yoffset_cm = figure_scale*cb_exp_yoffset_cm;
+		%	tc = text(0, 0, cb_exp_str, ... % write exponent manually
+		%		'Units', 'centimeters', ...
+		%		'Position', [plot_area_width_cm, cb_yoffset_cm + cb_exp_yoffset_cm, 0], ...
+		%		'HorizontalAlignment', cb.Ruler.SecondaryLabel.HorizontalAlignment, ...
+		%		'VerticalAlignment', cb.Ruler.SecondaryLabel.VerticalAlignment, ...
+		%		'Interpreter', 'latex', ...
+		%		'FontUnits', 'points', ...
+		%		'FontSize', fontsize_pt, ...
+		%		'EdgeColor', 'none');
+		%end
 	end
 end

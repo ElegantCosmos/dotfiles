@@ -26,7 +26,7 @@ ax.YLim = [1, 12];
 format_for_publication(ax);
 
 %print('test_hist', '-dpdf', '-painters');
-save_for_publication(fig, 'test_hist');
+save_for_publication(fig, 'matlab_hist1d');
 
 
 %%% 2-D histogram:
@@ -34,8 +34,8 @@ fig = figure(4);
 format_for_publication(fig);
 
 bin_counts = [0, 0, 0; 0, 0, 0; 1e-3, 0, 1e-6];
-x_edges = [1000, 2000, 3000, 4000];
-y_edges = [-600, -200, 200, 600];
+x_edges = [-1000000, -500000, 500000, 1000000];
+y_edges = [-1000000, -500000, 500000, 1000000];
 histogram2('XBinEdges', x_edges, 'YBinEdges', y_edges, 'BinCounts', bin_counts, 'DisplayStyle', 'tile', 'LineStyle', 'none');
 title('Test 2-D histogram');
 xlabel('$\log_{10}{10} E_{gqyp} 10^{10}/\sqrt{2}$ [cm]');
@@ -49,6 +49,7 @@ ax.ColorScale = 'linear';
 %ax.XScale = 'log';
 %ax.CLim = ([1e-7 10e-5]);
 ax.XRuler.Exponent = 3;
+ax.YRuler.Exponent = 3;
 cb.Ruler.Exponent = -3;
 format_for_publication(ax);
 
@@ -59,4 +60,4 @@ cb.Label.String = '$\log_{10}{10} E_{gqyp} 10^{10}/\sqrt{2}$ [cm]';
 
 
 %print('test_hist2d', '-dpdf', '-painters'); % -painters needed for hi-res
-save_for_publication(fig, 'test_hist2d');
+save_for_publication(fig, 'matlab_hist2d');
